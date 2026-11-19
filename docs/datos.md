@@ -5,17 +5,23 @@ Google Sheets ([arquitectura.md](arquitectura.md) §3.1).
 
 ## 1. Exámenes actuales
 
-| Código | `id` | Preguntas | Clave | Notas |
-|---|---|---|---|---|
-| N0E01 | diagnostico-1 | 80 | A 39 · B 33 · C 8 (**desbalanceada**) | Sin `subarea` |
-| N0E02 | diagnostico-2 | 100 | A 47 · B 49 · C 4 (**desbalanceada**) | Sin `subarea` |
-| N0E03–N0E05 | diagnostico-3 … 5 | 100 | En tercios | Sin `subarea` |
-| N1E01–N1E05 | diagnostico-6 … 10 | 150 | 50 · 50 · 50 | Proporción oficial de áreas, con `subarea`, generados con `exam-builder` |
+| `id` | Preguntas | Clave | Notas |
+|---|---|---|---|
+| N0E01 | 80 | A 39 · B 33 · C 8 (**desbalanceada**) | Sin `subarea` |
+| N0E02 | 100 | A 47 · B 49 · C 4 (**desbalanceada**) | Sin `subarea` |
+| N0E03–N0E05 | 100 | En tercios | Sin `subarea` |
+| N1E01–N1E05 | 150 | 50 · 50 · 50 | Proporción oficial de áreas, con `subarea`, generados con `exam-builder` |
 
-**Nombres.** «Examen Diagnóstico N<nivel>E<examen>»: los cinco primeros son nivel 0 y los
-cinco siguientes, nivel 1. El `id` (`diagnostico-N`) **no cambia nunca**: con él se
-relacionan los intentos guardados en la hoja y en cada navegador. El título sí puede
-cambiar; la app muestra siempre el del catálogo.
+**Nombres.** El `id` es el código `N<nivel>E<examen>` (los cinco primeros son nivel 0 y los
+cinco siguientes, nivel 1) y es el mismo en todas partes: catálogo, carpeta
+(`data/N1E02/`), URL (`#examen/N1E02`), hoja de cálculo y cadena de respuestas. El título
+es «Examen N1E02». Con el `id` se relacionan los intentos guardados en la hoja y en cada
+navegador, así que no debe cambiar.
+
+**Ids anteriores.** Hasta el 2026-11-19 el `id` era `diagnostico-N` (`diagnostico-7` =
+`N1E02`) y el título «Examen Diagnóstico N1E02». La app y el Apps Script traducen los ids
+anteriores al leer (hoja, caché, cola de subida, intentos en curso y enlaces guardados);
+ver [decisiones.md](decisiones.md) D-14.
 
 ---
 
@@ -24,22 +30,20 @@ cambiar; la app muestra siempre el del catálogo.
 ```json
 [
   {
-    "id": "diagnostico-6",
-    "code": "N1E01",
-    "title": "Examen Diagnóstico N1E01",
+    "id": "N1E01",
+    "title": "Examen N1E01",
     "version": "2.0",
     "questionCount": 150,
     "estimatedMinutes": 255,
-    "questions": "diagnostico-6/questions.json",
-    "answers": "diagnostico-6/answers.json"
+    "questions": "N1E01/questions.json",
+    "answers": "N1E01/answers.json"
   }
 ]
 ```
 
 | Campo | Obligatorio | Notas |
 |---|---|---|
-| `id` | sí | Único y estable |
-| `code` | sí | Código corto y único (`N1E01`), solo A–Z y 0–9; encabeza la cadena de respuestas |
+| `id` | sí | Código del examen (`N1E01`): único, estable, solo A–Z y 0–9. Va en la URL y encabeza la cadena de respuestas |
 | `title` | sí | Se muestra en las pestañas y en Mi progreso |
 | `version` | sí | Igual a la del examen y la clave |
 | `questionCount` | sí | Igual al número real de preguntas |
@@ -56,8 +60,8 @@ abrirlo.
 ```json
 {
   "exam": {
-    "id": "diagnostico-6",
-    "title": "Examen Diagnóstico N1E01",
+    "id": "N1E01",
+    "title": "Examen N1E01",
     "version": "2.0",
     "questionCount": 150,
     "areas": [
@@ -89,7 +93,7 @@ abrirlo.
 ## 4. `data/<id>/answers.json`
 
 ```json
-{ "examId": "diagnostico-6", "version": "2.0",
+{ "examId": "N1E01", "version": "2.0",
   "answers": [ { "id": 1, "correctAnswer": "A" } ] }
 ```
 
@@ -103,8 +107,8 @@ Se carga solo al pulsar *Terminar*.
 cada push. Ante cualquier fallo, la app se detiene con un mensaje que dice el archivo, la
 pregunta y el problema.
 
-**Catálogo:** array no vacío, `id` y `code` únicos, campos obligatorios presentes, `code`
-solo con A–Z y 0–9.
+**Catálogo:** array no vacío, `id` únicos y solo con A–Z y 0–9, campos obligatorios
+presentes.
 
 **Examen:**
 
@@ -158,7 +162,7 @@ va siempre primero. El generador:
   y repartida dentro de cada área (semilla fija `1000 + nivel`, así que es reproducible);
 - evalúa las comprobaciones numéricas de cada pregunta;
 - informa en qué porcentaje la correcta es la opción más larga (se mantuvo entre 23 % y 35 %);
-- escribe los JSON, actualiza el catálogo (con `code`) y pone el título con el código N1E0n.
+- escribe los JSON en `data/N1E0n/`, actualiza el catálogo con `id` N1E0n y título «Examen N1E0n».
 
 Proporción de áreas de un examen de 150: PC 28 · CL 28 · RI 28 · PM 38 · Inglés 28 (la
 escala oficial de 160, redondeada; ver [guia-exani-i.md](guia-exani-i.md)).

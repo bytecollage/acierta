@@ -1,4 +1,4 @@
-"""Genera data/diagnostico-N/{questions,answers}.json desde un archivo fuente.
+"""Genera data/<código>/{questions,answers}.json desde un archivo fuente (p. ej. data/N1E02/).
 
 Uso: python3 -I build.py exams/n6.py [--write]
 
@@ -80,7 +80,9 @@ def main():
     src = sys.argv[1]
     ns = load(src)
     level = ns["LEVEL"]
-    exam_id = f"diagnostico-{level}"
+    # Código N<nivel>E<examen>: los diagnósticos 1–5 son N0E01–N0E05 y los 6–10, N1E01–N1E05.
+    # Es el id del examen en todas partes (catálogo, carpeta, URL, hoja y cadena).
+    exam_id = f"N{(level - 1) // 5}E{(level - 1) % 5 + 1:02d}"
     items, stimuli = flatten(ns)
     errs = []
 
@@ -121,9 +123,7 @@ def main():
     areas, start = [], 1
     for a in TARGET:
         areas.append({"name": a, "start": start, "end": start + TARGET[a] - 1}); start += TARGET[a]
-    # Código N<nivel>E<examen>: los diagnósticos 1–5 son N0E01–N0E05 y los 6–10, N1E01–N1E05.
-    code = f"N{(level - 1) // 5}E{(level - 1) % 5 + 1:02d}"
-    title = f"Examen Diagnóstico {code}"
+    title = f"Examen {exam_id}"
     qdoc = {"exam": {"id": exam_id, "title": title, "version": "2.0",
                      "questionCount": len(questions), "areas": areas},
             "stimuli": stimuli, "questions": questions}
@@ -142,7 +142,7 @@ def main():
         json.dump(adoc, open(os.path.join(d, "answers.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=2)
         cat_path = os.path.join(WEB, "exams.json")
         cat = json.load(open(cat_path, encoding="utf-8"))
-        entry = {"id": exam_id, "code": code, "title": title, "version": "2.0", "questionCount": len(questions),
+        entry = {"id": exam_id, "title": title, "version": "2.0", "questionCount": len(questions),
                  "estimatedMinutes": 255,
                  "questions": f"{exam_id}/questions.json", "answers": f"{exam_id}/answers.json"}
         cat = [c for c in cat if c["id"] != exam_id] + [entry]

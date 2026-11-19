@@ -13,6 +13,10 @@
  *   import  { adminKey, email, records }   -> carga intentos antiguos para un correo;
  *                                             se asignan al estudiante en su primer login
  *
+ * Mantenimiento (se ejecuta a mano desde el editor de Apps Script):
+ *
+ *   migrateExamIds()  -> pasa la hoja a los ids nuevos (diagnostico-7 → N1E02). Ver D-14.
+ *
  * No hay acciones de borrado ni de edición: la API pública solo lee y añade.
  *
  * Identidad: el cliente inicia sesión con Google (Google Identity Services) y manda el
@@ -41,6 +45,40 @@ const MAX_ATTEMPTS_PER_EXAM = 200;   // tope por estudiante y examen (no se borr
 const RATE_LIMIT = { creates: 30, windowSec: 600 };
 const PENDING_PREFIX = 'pending:';
 const PENDING_PROP = 'PENDING_CLAIMS';
+
+/* ===================================================== ids de examen (D-14) */
+
+/** Hasta el 2026-11-19 los exámenes se identificaban como diagnostico-N; ahora el id es el
+ *  código N<nivel>E<examen>. Se traduce al leer y al escribir, así que la hoja puede tener
+ *  aún filas antiguas sin que nada falle; migrateExamIds() las normaliza. */
+function canonExamId(id) {
+  const m = /^diagnostico-(\d+)$/.exec(String(id));
+  if (!m) return String(id);
+  const n = Number(m[1]) - 1;
+  return 'N' + Math.floor(n / 5) + 'E' + ('0' + ((n % 5) + 1)).slice(-2);
+}
+
+function canonTitle(t) {
+  return String(t).replace(/\s*Diagn[oó]stico\b/i, '');
+}
+
+/** Normaliza examId y examTitle de todas las filas de la hoja. Idempotente. */
+function migrateExamIds() {
+  return withLock(() => {
+    const sh = sheet(SHEET_ATTEMPTS, ATTEMPT_COLUMNS);
+    const rows = allRows(sh, ATTEMPT_COLUMNS);
+    if (!rows.length) return 0;
+    let changed = 0;
+    const cols = rows.map((r) => {
+      const id = canonExamId(r[2]), title = canonTitle(r[3]);
+      if (id !== String(r[2]) || title !== String(r[3])) changed++;
+      return [id, title];
+    });
+    sh.getRange(2, 3, cols.length, 2).setValues(cols);
+    Logger.log('migrateExamIds: ' + changed + ' de ' + rows.length + ' filas actualizadas');
+    return changed;
+  });
+}
 
 /* =================================================================== HTTP */
 
@@ -195,8 +233,9 @@ function sanitizeRecord(r) {
   const out = {};
 
   out.examId = str(r.examId, 40);
-  if (!/^[a-z0-9-]+$/.test(out.examId)) throw new ApiError('bad_request', 'examId inválido');
-  out.examTitle = str(r.examTitle, 200);
+  if (!/^[A-Za-z0-9-]+$/.test(out.examId)) throw new ApiError('bad_request', 'examId inválido');
+  out.examId = canonExamId(out.examId);
+  out.examTitle = canonTitle(str(r.examTitle, 200));
   // Un texto que empieza con = + - @ se interpretaría como fórmula en la hoja.
   if (/^[=+\-@]/.test(out.examTitle)) throw new ApiError('bad_request', 'examTitle inválido');
   out.version = str(r.version, 10);
@@ -285,6 +324,8 @@ function rowToAttempt(row) {
   ['examId', 'examTitle', 'version', 'completedAt', 'answers', 'createdAt'].forEach((k) => {
     o[k] = String(o[k]);
   });
+  o.examId = canonExamId(o.examId);
+  o.examTitle = canonTitle(o.examTitle);
   delete o.studentId;
   return o;
 }
@@ -300,7 +341,8 @@ function readAttempts(studentId) {
 /** Añade un intento ya validado. Idempotente: examen + fecha + cadena identifican un intento. */
 function appendAttempt(studentId, rec) {
   const sh = sheet(SHEET_ATTEMPTS, ATTEMPT_COLUMNS);
-  const mine = allRows(sh, ATTEMPT_COLUMNS).filter((r) => r[1] === studentId && r[2] === rec.examId);
+  const mine = allRows(sh, ATTEMPT_COLUMNS)
+    .filter((r) => r[1] === studentId && canonExamId(r[2]) === rec.examId);
 
   const dup = mine.find((r) => String(r[5]) === rec.completedAt && String(r[16]) === rec.answers);
   if (dup) return { saved: rowToAttempt(dup), duplicate: true };
@@ -333,9 +375,14 @@ function appendAttempt(studentId, rec) {
 function renumber(sh, studentId, examId) {
   const rows = allRows(sh, ATTEMPT_COLUMNS);
   const idx = [];
-  rows.forEach((r, i) => { if (r[1] === studentId && (!examId || r[2] === examId)) idx.push(i); });
+  rows.forEach((r, i) => {
+    if (r[1] === studentId && (!examId || canonExamId(r[2]) === examId)) idx.push(i);
+  });
   const byExam = {};
-  idx.forEach((i) => { (byExam[rows[i][2]] = byExam[rows[i][2]] || []).push(i); });
+  idx.forEach((i) => {
+    const ex = canonExamId(rows[i][2]);
+    (byExam[ex] = byExam[ex] || []).push(i);
+  });
   Object.keys(byExam).forEach((ex) => {
     byExam[ex]
       .sort((a, b) => String(rows[a][5]).localeCompare(String(rows[b][5])))

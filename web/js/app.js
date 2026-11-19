@@ -49,8 +49,6 @@
     return `${nums.slice(0, -1).join(", ")} y ${nums[nums.length - 1]}`;
   }
 
-  /** Título sin la palabra «Diagnóstico»: «Examen Diagnóstico N1E02» → «Examen N1E02». */
-  const shortTitle = (t) => String(t).replace(/\s*Diagn[oó]stico\b/i, "");
 
   const ICONS = {
     play: '<path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/>',
@@ -61,7 +59,7 @@
 
   /** Botón de solo ícono; la etiqueta va en aria-label y en el title. */
   function iconBtn(action, entry, name, label, primary) {
-    const full = `${label} ${shortTitle(entry.title)}`;
+    const full = `${label} ${entry.title}`;
     return `<button type="button" class="icon-btn${primary ? " primary" : ""}" data-action="${action}"
               data-id="${esc(entry.id)}" aria-label="${esc(full)}" title="${esc(label)}">${icon(name)}</button>`;
   }
@@ -97,7 +95,7 @@
       rec.completedAt ? fmtShortDate(rec.completedAt) : "",
       hist.length > 1 ? `${hist.length} intentos · mejor ${best.percentage}%` : "",
     ].filter(Boolean).join(" · ");
-    return `<h3>${esc(shortTitle(entry.title))} <span class="row-sep">·</span> <span class="row-pct">${rec.percentage}%</span></h3>
+    return `<h3>${esc(entry.title)} <span class="row-sep">·</span> <span class="row-pct">${rec.percentage}%</span></h3>
       <div class="exam-meta">${meta}${rec.pending ? ` <span class="chip low">pendiente de subir</span>` : ""}</div>`;
   }
 
@@ -375,7 +373,10 @@
   }
 
   function route() {
-    const [name, id] = location.hash.replace(/^#/, "").split("/");
+    const [name, rawId] = location.hash.replace(/^#/, "").split("/");
+    // Enlaces guardados con el id anterior (#resultados/diagnostico-6) van al nuevo (D-14).
+    const id = rawId && window.Storage.canonId(rawId);
+    if (id && id !== rawId) history.replaceState(null, "", `#${name}/${id}`);
     const entry = id ? state.catalog.find((e) => e.id === id) : null;
 
     if ((name === "examen" || name === "resultados" || name === "correccion") && entry) {
@@ -491,7 +492,7 @@
       return `<a class="exam-row${active ? " is-active" : ""}" href="#examen/${esc(e.id)}"
                  data-action="${action}" data-id="${esc(e.id)}">
         <div class="exam-info">
-          <h3>${esc(shortTitle(e.title))}</h3>
+          <h3>${esc(e.title)}</h3>
           ${meta}
         </div>
         ${CHEVRON}
@@ -650,7 +651,7 @@
         state.result = grade(exam, questions, state.selectedAnswers, keyMap, {
           activeMs: state.activeMs,
           elapsedWallMs: wallMs,
-        }, entry.code);
+        }, entry.id);
         paintCorrection();
         renderResults();
         history.replaceState(null, "", `#${target}/${entry.id}`);
@@ -669,7 +670,7 @@
   }
 
   function renderExam() {
-    $("#topbar-title").textContent = shortTitle(state.exam.title);
+    $("#topbar-title").textContent = state.exam.title;
     const byStimulus = new Map(state.stimuli.map((s) => [s.id, s]));
 
     $("#questions").innerHTML = state.exam.areas.map((area) => {
@@ -790,7 +791,7 @@
       const keyMap = validateAnswerKey(key, state.exam, state.questions);
       const elapsedWallMs = Date.now() - new Date(state.startedAt).getTime();
       state.result = grade(state.exam, state.questions, state.selectedAnswers, keyMap,
-        { activeMs: state.activeMs, elapsedWallMs }, state.entry.code);
+        { activeMs: state.activeMs, elapsedWallMs }, state.entry.id);
       state.completed = true;
       state.completedAt = new Date().toISOString();
 
@@ -856,7 +857,7 @@
 
   function renderResults() {
     const r = state.result;
-    $("#topbar-title").textContent = shortTitle(state.exam.title);
+    $("#topbar-title").textContent = state.exam.title;
 
     // Mismos datos que la fila de Completados, con ↻ y «Ver detalles» a la derecha.
     const hist = window.Storage.getHistory(state.entry.id);

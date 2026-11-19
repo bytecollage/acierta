@@ -66,6 +66,46 @@
     try { localStorage.removeItem(key); } catch (_) { /* nada que hacer */ }
   }
 
+  /* ------------------------------------------------------- ids anteriores */
+
+  /** Hasta el 2026-11-19 los exámenes se identificaban como diagnostico-N; ahora el id es el
+   *  código N<nivel>E<examen> (diagnostico-7 → N1E02). Ver docs/decisiones.md D-14. */
+  function canonId(id) {
+    const m = /^diagnostico-(\d+)$/.exec(String(id));
+    if (!m) return id;
+    const n = Number(m[1]) - 1;
+    return `N${Math.floor(n / 5)}E${String((n % 5) + 1).padStart(2, "0")}`;
+  }
+  const canonTitle = (t) => String(t || "").replace(/\s*Diagn[oó]stico\b/i, "");
+  const canon = (r) => (r && typeof r === "object"
+    ? { ...r, examId: canonId(r.examId), examTitle: canonTitle(r.examTitle) } : r);
+
+  /** Pasa lo guardado en este navegador a los ids nuevos: intentos en curso, cola de subida,
+   *  caché e historial local. Es idempotente; sin datos antiguos no hace nada. */
+  function migrateLegacyIds() {
+    try {
+      Object.keys(localStorage).forEach((key) => {
+        const m = /^exani\.attempt\.(diagnostico-\d+)\.v(.+)$/.exec(key);
+        if (!m) return;
+        const a = read(key);
+        const id = canonId(m[1]);
+        const target = ATTEMPT(id, m[2]);
+        // Si ya existe un intento con el id nuevo, se conserva ese y se descarta el antiguo.
+        if (a && !read(target)) write(target, { ...a, examId: id });
+        remove(key);
+      });
+      const queue = read(PENDING);
+      if (Array.isArray(queue)) write(PENDING, queue.map((p) => ({ ...p, record: canon(p.record) })));
+      const cache = read(CACHE);
+      if (cache && Array.isArray(cache.history)) write(CACHE, { ...cache, history: cache.history.map(canon) });
+      const local = read(LOCAL_HISTORY);
+      if (Array.isArray(local)) write(LOCAL_HISTORY, local.map(canon));
+    } catch (e) {
+      console.warn("[storage] no se pudieron migrar los ids anteriores:", e);
+    }
+  }
+  migrateLegacyIds();
+
   const byDate = (a, b) => String(a.completedAt).localeCompare(String(b.completedAt));
   const identity = (r) => `${r.examId}|${r.completedAt}|${r.answers}`;
 
@@ -112,8 +152,9 @@
         const data = await call("create", { idToken: token, record: item.record });
         const queue = (read(PENDING) || []).filter((p) => identity(p.record) !== identity(item.record));
         write(PENDING, queue);
-        if (data.saved && !remote.some((r) => identity(r) === identity(data.saved))) {
-          remote.push(data.saved);
+        const saved = canon(data.saved);
+        if (saved && !remote.some((r) => identity(r) === identity(saved))) {
+          remote.push(saved);
           remote.sort(byDate);
         }
         lastError = null;
@@ -148,7 +189,8 @@
   async function fetchRemote(token) {
     try {
       const data = await call("list", { idToken: token });
-      remote = Array.isArray(data.history) ? data.history.sort(byDate) : [];
+      // El servidor ya devuelve ids nuevos; canon() cubre una versión anterior del script.
+      remote = Array.isArray(data.history) ? data.history.map(canon).sort(byDate) : [];
       lastError = null;
     } catch (e) {
       console.warn("[storage] no se pudo leer el historial:", e);
@@ -249,6 +291,7 @@
     getLastError: () => lastError,
     pendingCount: () => (mode === "local" ? 0
       : pendingFor(window.Auth.getSession() && window.Auth.getSession().sub).length),
+    canonId,
     getAllHistory, getHistory, nextAttemptNumber, addHistory,
     loadAttempt, saveAttempt, clearAttempt,
     onStorageWarning(fn) { onWarn = fn; },

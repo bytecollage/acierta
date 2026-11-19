@@ -1,102 +1,92 @@
 [
   {
-    "id": "diagnostico-1",
-    "code": "N0E01",
-    "title": "Examen Diagnóstico N0E01",
+    "id": "N0E01",
+    "title": "Examen N0E01",
     "version": "2.0",
     "questionCount": 80,
     "estimatedMinutes": 60,
-    "questions": "diagnostico-1/questions.json",
-    "answers": "diagnostico-1/answers.json"
+    "questions": "N0E01/questions.json",
+    "answers": "N0E01/answers.json"
   },
   {
-    "id": "diagnostico-2",
-    "code": "N0E02",
-    "title": "Examen Diagnóstico N0E02",
+    "id": "N0E02",
+    "title": "Examen N0E02",
     "version": "2.0",
     "questionCount": 100,
     "estimatedMinutes": 75,
-    "questions": "diagnostico-2/questions.json",
-    "answers": "diagnostico-2/answers.json"
+    "questions": "N0E02/questions.json",
+    "answers": "N0E02/answers.json"
   },
   {
-    "id": "diagnostico-3",
-    "code": "N0E03",
-    "title": "Examen Diagnóstico N0E03",
+    "id": "N0E03",
+    "title": "Examen N0E03",
     "version": "2.0",
     "questionCount": 100,
     "estimatedMinutes": 75,
-    "questions": "diagnostico-3/questions.json",
-    "answers": "diagnostico-3/answers.json"
+    "questions": "N0E03/questions.json",
+    "answers": "N0E03/answers.json"
   },
   {
-    "id": "diagnostico-4",
-    "code": "N0E04",
-    "title": "Examen Diagnóstico N0E04",
+    "id": "N0E04",
+    "title": "Examen N0E04",
     "version": "2.0",
     "questionCount": 100,
     "estimatedMinutes": 75,
-    "questions": "diagnostico-4/questions.json",
-    "answers": "diagnostico-4/answers.json"
+    "questions": "N0E04/questions.json",
+    "answers": "N0E04/answers.json"
   },
   {
-    "id": "diagnostico-5",
-    "code": "N0E05",
-    "title": "Examen Diagnóstico N0E05",
+    "id": "N0E05",
+    "title": "Examen N0E05",
     "version": "2.0",
     "questionCount": 100,
     "estimatedMinutes": 75,
-    "questions": "diagnostico-5/questions.json",
-    "answers": "diagnostico-5/answers.json"
+    "questions": "N0E05/questions.json",
+    "answers": "N0E05/answers.json"
   },
   {
-    "id": "diagnostico-6",
-    "code": "N1E01",
-    "title": "Examen Diagnóstico N1E01",
+    "id": "N1E01",
+    "title": "Examen N1E01",
     "version": "2.0",
     "questionCount": 150,
     "estimatedMinutes": 255,
-    "questions": "diagnostico-6/questions.json",
-    "answers": "diagnostico-6/answers.json"
+    "questions": "N1E01/questions.json",
+    "answers": "N1E01/answers.json"
   },
   {
-    "id": "diagnostico-7",
-    "code": "N1E02",
-    "title": "Examen Diagnóstico N1E02",
+    "id": "N1E02",
+    "title": "Examen N1E02",
     "version": "2.0",
     "questionCount": 150,
     "estimatedMinutes": 255,
-    "questions": "diagnostico-7/questions.json",
-    "answers": "diagnostico-7/answers.json"
+    "questions": "N1E02/questions.json",
+    "answers": "N1E02/answers.json"
   },
   {
-    "id": "diagnostico-8",
-    "code": "N1E03",
-    "title": "Examen Diagnóstico N1E03",
+    "id": "N1E03",
+    "title": "Examen N1E03",
     "version": "2.0",
     "questionCount": 150,
     "estimatedMinutes": 255,
-    "questions": "diagnostico-8/questions.json",
-    "answers": "diagnostico-8/answers.json"
+    "questions": "N1E03/questions.json",
+    "answers": "N1E03/answers.json"
   },
   {
-    "id": "diagnostico-9",
-    "code": "N1E04",
-    "title": "Examen Diagnóstico N1E04",
+    "id": "N1E04",
+    "title": "Examen N1E04",
     "version": "2.0",
     "questionCount": 150,
     "estimatedMinutes": 255,
-    "questions": "diagnostico-9/questions.json",
-    "answers": "diagnostico-9/answers.json"
+    "questions": "N1E04/questions.json",
+    "answers": "N1E04/answers.json"
   },
   {
-    "id": "diagnostico-10",
-    "code": "N1E05",
-    "title": "Examen Diagnóstico N1E05",
+    "id": "N1E05",
+    "title": "Examen N1E05",
     "version": "2.0",
     "questionCount": 150,
     "estimatedMinutes": 255,
-    "questions": "diagnostico-10/questions.json",
-    "answers": "diagnostico-10/answers.json"
+    "questions": "N1E05/questions.json",
+    "answers": "N1E05/answers.json"
   }
 ]

@@ -52,6 +52,7 @@ const ctx = {
   CacheService: { getScriptCache: () => ({ get: (k) => cache.get(k) ?? null, put: (k, v) => cache.set(k, v) }) },
   PropertiesService: { getScriptProperties: () => ({ getProperty: (k) => props[k] ?? null, setProperty: (k, v) => { props[k] = v; } }) },
   LockService: { getScriptLock: () => ({ waitLock() {}, releaseLock() {} }) },
+  Logger: { log() {} },
   UrlFetchApp: { fetch(url) { fetches++; const t = decodeURIComponent(url.split('id_token=')[1]); const p = tokens[t];
     return { getResponseCode: () => (p ? 200 : 400), getContentText: () => JSON.stringify(p || { error: 'invalid' }) }; } },
   ContentService: { MimeType: { JSON: 'json' }, createTextOutput: (s) => ({ setMimeType() { return this; }, s }) },
@@ -80,7 +81,10 @@ assert.equal(post({ action: 'list', idToken: 'tok-other' }).history.length, 0);
 // owner claims on first list
 const l = post({ action: 'list', idToken: 'tok-yander' });
 assert.equal(l.history.length, 6);
-const h6 = l.history.find((r) => r.examId === 'diagnostico-6');
+// los registros antiguos (diagnostico-N, «Examen Diagnóstico …») se guardan con el id nuevo
+assert.deepEqual(l.history.map((r) => r.examId), ['N0E01', 'N0E02', 'N0E03', 'N0E04', 'N0E05', 'N1E01']);
+assert.ok(!JSON.stringify(sheets.attempts.data).includes('diagnostico-'));
+const h6 = l.history.find((r) => r.examId === 'N1E01');
 assert.equal(h6.score, 125); assert.equal(h6.isFirstAttempt, true); assert.equal(h6.attemptNumber, 1);
 assert.equal(h6.areaResults['Comprensión lectora'].correct, 28);
 assert.equal(Object.keys(h6.topicResults).length, 104);
@@ -90,14 +94,14 @@ assert.equal(JSON.parse(props.PENDING_CLAIMS).length, 0);
 // no emails stored anywhere
 assert.ok(!JSON.stringify(sheets).includes('gmail'));
 
-// create: second attempt of diagnostico-6, then an earlier-dated one → renumber
+// create: second attempt of N1E01, then an earlier-dated one → renumber
 const base = { ...hist[5] };
 let c = post({ action: 'create', idToken: 'tok-yander', record: { ...base, completedAt: '2026-11-20T10:00:00.000Z', attemptNumber: 99 } });
 assert.equal(c.saved.attemptNumber, 2); assert.equal(c.saved.isFirstAttempt, false);
 c = post({ action: 'create', idToken: 'tok-yander', record: { ...base, completedAt: '2026-11-20T10:00:00.000Z' } });
 assert.equal(c.duplicate, true);
 c = post({ action: 'create', idToken: 'tok-yander', record: { ...base, completedAt: '2026-11-01T10:00:00.000Z' } });
-const six = post({ action: 'list', idToken: 'tok-yander' }).history.filter((r) => r.examId === 'diagnostico-6');
+const six = post({ action: 'list', idToken: 'tok-yander' }).history.filter((r) => r.examId === 'N1E01');
 assert.deepEqual(six.map((r) => [r.completedAt.slice(0, 10), r.attemptNumber, r.isFirstAttempt]),
   [['2026-11-01', 1, true], ['2026-11-18', 2, false], ['2026-11-20', 3, false]]);
 
@@ -117,6 +121,21 @@ assert.equal(bad({ ...base, examTitle: '=IMPORTXML(1)' }), 'bad_request');
 // unknown fields dropped
 post({ action: 'create', idToken: 'tok-yander', record: { ...base, completedAt: '2026-11-21T10:00:00.000Z', evil: '=HYPERLINK()' } });
 assert.ok(!JSON.stringify(sheets).includes('HYPERLINK'));
+
+// D-14: una fila antigua que sigue en la hoja se lee con el id nuevo, cuenta para el número
+// de intento de los registros nuevos y migrateExamIds() la normaliza.
+const att = sheets.attempts.data;
+const legacyRow = att[att.length - 1].slice();
+legacyRow[0] = 'legacy-row'; legacyRow[2] = 'diagnostico-7'; legacyRow[3] = 'Examen Diagnóstico N1E02';
+legacyRow[5] = '2026-10-01T10:00:00.000Z'; legacyRow[6] = '1'; legacyRow[7] = 'true';
+att.push(legacyRow);
+const n2 = post({ action: 'list', idToken: 'tok-yander' }).history.filter((r) => r.examId === 'N1E02');
+assert.deepEqual(n2.map((r) => [r.examTitle, r.attemptNumber]), [['Examen N1E02', 1]]);
+c = post({ action: 'create', idToken: 'tok-yander', record: { ...base, examId: 'N1E02', examTitle: 'Examen N1E02', completedAt: '2026-11-22T11:00:00.000Z' } });
+assert.equal(c.saved.attemptNumber, 2);
+assert.equal(ctx.migrateExamIds(), 1);
+assert.equal(ctx.migrateExamIds(), 0);
+assert.ok(!JSON.stringify(att).includes('diagnostico-') && !JSON.stringify(att).includes('Diagnóstico'));
 
 // token cache: repeated calls don't refetch
 const f0 = fetches; post({ action: 'list', idToken: 'tok-yander' }); assert.equal(fetches, f0);

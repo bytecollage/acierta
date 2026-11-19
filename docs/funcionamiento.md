@@ -66,8 +66,7 @@ van en el pie del panel y del Reporte detallado, espejo de la barra fija: solo u
 completo, sin fondo, a 56 px del borde inferior. Con poco contenido el pie queda al fondo
 de la pantalla; con mucho, al final de la página.
 
-**Filas de examen.** Cada examen ocupa una fila compacta: el título sin la palabra
-«Diagnóstico» (`Examen N1E02`) y, debajo y más pequeño, `150 preguntas · ~255 min`. En
+**Filas de examen.** Cada examen ocupa una fila compacta: el título (`Examen N1E02`) y, debajo y más pequeño, `150 preguntas · ~255 min`. En
 Completados el porcentaje va justo después del título (`Examen N1E01 · 83%`) y debajo `aciertos · minutos · fecha` (el año
 solo si no es el actual). Un intento a medias resalta la fila con fondo y muestra
 `97/150 preguntas` con una barra fina. Las filas no tienen botones: toda la fila es el
@@ -156,7 +155,7 @@ intento se hizo a trozos y no cuenta para el tiempo medio.
 N0E01|35|AABCCBABBA
 │     │  └── una letra por pregunta, ordenadas por id
 │     └───── minutos activos, redondeados; mínimo 1
-└─────────── código del examen (`code` en exams.json)
+└─────────── código del examen (su `id` en exams.json)
 ```
 
 Tres partes separadas por `|`, en mayúsculas, siempre con `questionCount` letras y
@@ -204,7 +203,7 @@ pestaña. Usa la barra fija con ← para volver a Mi progreso.
 | Rendimiento por área | Acumulado de todos los intentos, de peor a mejor; barras con el nombre y `% · aciertos/total` encima |
 
 El resumen usa todo el historial, sin filtros. El **Reporte detallado** tiene los filtros
-(Examen y Área lado a lado, con «Todos» / «Todas» y los exámenes sin «Diagnóstico», para
+(Examen y Área lado a lado, con «Todos» / «Todas» y los títulos cortos de examen, para
 que quepan sin saltos de línea; el interruptor de repeticiones debajo) y contiene:
 
 | Sección | Contenido |

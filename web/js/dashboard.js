@@ -18,7 +18,6 @@
   /* ------------------------------------------------------------ utilidades */
 
   const pct = (c, t) => (t ? Math.round((c / t) * 100) : 0);
-  const shortTitle = (t) => String(t).replace(/\s*Diagn[oó]stico\b/i, "");
   const fmtDate = (iso) => new Date(iso).toLocaleDateString("es-MX",
     { day: "numeric", month: "short", year: "numeric" });
 
@@ -99,7 +98,7 @@
     const exams = [...new Map(history.map((h) => [h.examId, h.examTitle])).entries()];
     // Textos cortos: los dos filtros caben lado a lado en el celular.
     $("#f-exam").innerHTML = `<option value="*">Todos</option>` +
-      exams.map(([id, t]) => `<option value="${esc(id)}">${esc(shortTitle(t))}</option>`).join("");
+      exams.map(([id, t]) => `<option value="${esc(id)}">${esc(t)}</option>`).join("");
 
     const areas = new Set();
     history.forEach((h) => Object.keys(h.areaResults || {}).forEach((a) => areas.add(a)));
@@ -161,7 +160,7 @@
         x: new Date(r.completedAt),
         y: r.percentage,
         filled: true,
-        title: `${shortTitle(r.examTitle)}\n${fmtDate(r.completedAt)}\n${r.score}/${r.total} (${r.percentage}%)`,
+        title: `${r.examTitle}\n${fmtDate(r.completedAt)}\n${r.score}/${r.total} (${r.percentage}%)`,
       })),
     }], [], { height: 190, yMin: Math.max(0, Math.floor((min - 10) / 10) * 10), labelLast: true });
   }
@@ -197,7 +196,7 @@
       <div class="kpi">
         <div class="l">Mejor resultado</div>
         <div class="v">${best.percentage}%</div>
-        <div class="s">${esc(shortTitle(best.examTitle))} · ${fmtDate(best.completedAt)}</div>
+        <div class="s">${esc(best.examTitle)} · ${fmtDate(best.completedAt)}</div>
       </div>
       <div class="kpi">
         <div class="l">Último resultado</div>
@@ -216,7 +215,7 @@
     const byExam = new Map();
     rows.forEach((r) => byExam.set(r.examId, [...(byExam.get(r.examId) || []), r]));
     $("#exam-breakdown").textContent = [...byExam.values()]
-      .map((rs) => `${shortTitle(rs[0].examTitle)}: ${rs.length} intento${rs.length > 1 ? "s" : ""}`)
+      .map((rs) => `${rs[0].examTitle}: ${rs.length} intento${rs.length > 1 ? "s" : ""}`)
       .join(" · ");
   }
 
@@ -244,7 +243,7 @@
     byExam.forEach((rs, examId) => {
       const color = window.Charts.PALETTE[i % window.Charts.PALETTE.length];
       series.push({
-        label: shortTitle(rs[0].examTitle),
+        label: rs[0].examTitle,
         color,
         points: rs.map((r) => ({
           x: new Date(r.completedAt),
@@ -271,7 +270,7 @@
       host,
       ["Fecha", "Examen", "Resultado", "%", "Tiempo", "Intento"],
       rows.map((r) => [
-        fmtDate(r.completedAt), esc(shortTitle(r.examTitle)), `${r.score}/${r.total}`,
+        fmtDate(r.completedAt), esc(r.examTitle), `${r.score}/${r.total}`,
         `${r.percentage}%`, `${r.minutes} min`,
         r.isFirstAttempt === false ? `#${r.attemptNumber} (repetición)` : `#${r.attemptNumber}`,
       ]),

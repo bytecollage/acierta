@@ -23,16 +23,15 @@
     const ids = catalog.map((x) => x && x.id);
     if (new Set(ids).size !== ids.length) e.push("Hay ids de examen duplicados.");
     catalog.forEach((x, i) => {
-      ["id", "code", "title", "version", "questionCount", "questions", "answers"].forEach((k) => {
+      ["id", "title", "version", "questionCount", "questions", "answers"].forEach((k) => {
         if (x[k] === undefined || x[k] === null || x[k] === "") {
           e.push(`Entrada ${i}: falta el campo "${k}".`);
         }
       });
-      // El código encabeza la cadena de respuestas: sin «|» ni minúsculas.
-      if (x.code && !/^[A-Z0-9]{1,20}$/.test(x.code)) e.push(`Entrada ${i}: code "${x.code}" no es válido (A–Z, 0–9).`);
+      // El id es el código del examen (N1E02): va en las URL y encabeza la cadena de
+      // respuestas, así que solo mayúsculas y dígitos, sin «|».
+      if (x.id && !/^[A-Z0-9]{1,20}$/.test(x.id)) e.push(`Entrada ${i}: id "${x.id}" no es válido (A–Z, 0–9).`);
     });
-    const codes = catalog.map((x) => x && x.code);
-    if (new Set(codes).size !== codes.length) e.push("Hay códigos de examen duplicados.");
     if (e.length) throw new DataError("exams.json no es válido.", e.join("\n"));
     return catalog;
   }

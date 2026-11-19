@@ -1,7 +1,7 @@
 {
   "exam": {
-    "id": "diagnostico-5",
-    "title": "Examen Diagnóstico N0E05",
+    "id": "N0E05",
+    "title": "Examen N0E05",
     "version": "2.0",
     "questionCount": 100,
     "areas": [

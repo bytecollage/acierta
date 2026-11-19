@@ -122,6 +122,13 @@ encabezados a mano.
 Si se crea una implementación nueva en lugar de editar la existente, la URL `/exec`
 cambia y hay que actualizar `web/js/config.js`.
 
+**Mantenimiento.** Funciones que se ejecutan a mano desde el editor (seleccionar la función
+y pulsar *Ejecutar*); el resultado queda en el registro de ejecución:
+
+| Función | Para qué |
+|---|---|
+| `migrateExamIds()` | Pasa las filas con el id anterior (`diagnostico-7`, «Examen Diagnóstico N1E02») a `N1E02` / «Examen N1E02». Idempotente; una vez basta (D-14) |
+
 ---
 
 ## 4. Almacenamiento en el navegador (`js/storage.js`)

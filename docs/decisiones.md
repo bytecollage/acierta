@@ -20,6 +20,7 @@ que dentro de seis meses se entienda.
 | D-11 | App pública en GitHub Pages, historial en Google Sheets, inicio de sesión con Google | Vigente |
 | D-12 | Bienvenida + panel con pestañas; uso en celular; nombre e ícono | Vigente (interfaz revisada en D-13) |
 | D-13 | Interfaz compacta para celular; Mi progreso de un vistazo; cadena con código | Vigente |
+| D-14 | El código del examen (N1E02) es su id en todas partes | Vigente |
 
 ---
 
@@ -146,7 +147,7 @@ archivos estáticos.
   macOS: 192 y 512 redondeados, 512 *maskable* con el dibujo al 80 % para la zona segura
   de Android, y 180 cuadrado para iOS.
 - **Nombres de examen:** «Examen Diagnóstico N<nivel>E<examen>». El `id` no cambia; los
-  títulos de la hoja se migraron una vez desde el `id`.
+  títulos de la hoja se migraron una vez desde el `id`. *(Sustituido por D-14.)*
 
 ## D-13 · Interfaz compacta, Mi progreso de un vistazo y cadena con código
 
@@ -161,7 +162,7 @@ mostraba demasiado para leerlo de un vistazo.
   contenido): pestañas de ícono en el panel; ← y título en examen, resultados y reporte.
   En el examen el progreso es una línea en su borde inferior. Sin logo ni nombre en el
   panel; la cuenta va en un pie simétrico a la barra.
-- **Filas compactas** con el título sin «Diagnóstico»; toda la fila es el enlace. Reintentar
+- **Filas compactas** con el título corto; toda la fila es el enlace. Reintentar
   va dentro: ↻ en la barra del examen (con confirmación) y en la tarjeta del resultado.
 - **Corrección visible:** *Ver detalles* en Resultados abre el examen corregido. Antes la
   corrección se pintaba pero su pantalla nunca se mostraba tras terminar.
@@ -171,12 +172,35 @@ mostraba demasiado para leerlo de un vistazo.
   tarjetas de datos y barras por área. Lo demás va a la pantalla *Reporte detallado*.
 - **Estilo con variables** (tamaños, radios, separaciones) para que todo sea homogéneo.
 - **Cadena `<código>|<minutos>|<LETRAS>`:** identifica el examen sin depender de dónde se
-  pegue. El código es el campo `code` del catálogo, no se deduce del título. Los intentos
+  pegue. El código es el `id` del catálogo (D-14), no se deduce del título. Los intentos
   anteriores no se migran: app y Apps Script aceptan los dos formatos.
 
 **Consecuencia.** El Apps Script debe publicarse (nueva versión de la implementación)
 antes o junto con la web; mientras tanto, los resultados con el formato nuevo se rechazan y
 quedan en la cola local hasta que el servidor los acepte.
+
+
+## D-14 · El código del examen es su id en todas partes
+
+**Problema.** Cada examen tenía tres nombres: `diagnostico-7` (id, carpeta, URL y hoja),
+`N1E02` (código, en la cadena de respuestas) y «Examen Diagnóstico N1E02» (título). Las
+URL como `#resultados/diagnostico-5` no decían de qué examen se trataba.
+
+**Decisión.** El `id` pasa a ser el código: `N1E02` en el catálogo, la carpeta
+`data/N1E02/`, las URL, la hoja y la cadena. El título queda «Examen N1E02». Desaparece el
+campo `code`.
+
+**Compatibilidad.** El cambio de id es único, pero hay datos con el id anterior en la
+hoja y en cada navegador. Por eso:
+
+- La app migra al cargar lo guardado en el navegador (intentos en curso, cola de subida,
+  caché e historial local) y redirige los enlaces antiguos (`#resultados/diagnostico-6` →
+  `#resultados/N1E01`). Es idempotente.
+- El Apps Script traduce los ids y títulos anteriores al leer y al escribir, y cuenta los
+  intentos de ambas formas juntos. `migrateExamIds()`, ejecutada una vez desde el editor,
+  normaliza la hoja.
+- El Apps Script anterior rechaza ids con mayúsculas: hay que publicarlo **antes** que la
+  web. Mientras tanto, los resultados nuevos esperan en la cola local.
 
 ---
 
@@ -248,6 +272,7 @@ mano.
 
 | Fecha | Cambio |
 |---|---|
+| 2026-11-19 | Ids de examen = código (N1E02) en catálogo, carpetas, URL, hoja y cadena; migración automática en el navegador y `migrateExamIds()` para la hoja (D-14) |
 | 2026-11-19 | Interfaz compacta para celular, barra fija común, Mi progreso de un vistazo con Reporte detallado aparte y cadena con código del examen (D-13) |
 | 2026-11-19 | Documentación consolidada en `docs/`; `app_idea/` pasa a `docs/app_idea/` como archivo histórico. Repo transferido a `bytecollage/acierta` |
 | 2026-11-19 | Nombre Acierta e ícono; carga anticipada y caché del historial; exámenes nombrados por código (D-12) |
