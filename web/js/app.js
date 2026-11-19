@@ -173,7 +173,9 @@
   async function loadJSON(path) {
     let res;
     try {
-      res = await fetch(path, { cache: "no-store" });
+      // no-cache revalida con el servidor (respuesta 304 si no cambió) y aprovecha la
+      // precarga que hace la bienvenida.
+      res = await fetch(path, { cache: "no-cache" });
     } catch (e) {
       throw new DataError(
         `No se pudo cargar "${path}".`,
@@ -195,12 +197,25 @@
       if (box) box.classList.remove("hidden");
     });
 
+    // El panel se ve desde el primer instante, con un indicador mientras llegan los datos.
+    showScreen("panel");
+
     try {
       state.catalog = validateCatalog(await loadJSON("data/exams.json"));
     } catch (e) { fatal(e); return; }
 
-    // Carga el historial (de la cuenta si hay sesión) antes de pintar.
-    await window.Storage.init();
+    // Con caché de esta cuenta (la deja la bienvenida) se pinta al instante y se
+    // actualiza en segundo plano; sin caché, se espera al servidor con el indicador.
+    await window.Storage.init({ stale: true });
+    document.body.classList.remove("is-loading");
+    paintSync();
+    window.Storage.onUpdate(() => {
+      paintSync();
+      if (currentScreen !== "examen") renderPanel();
+      if (currentScreen === "resultados") paintSaveStatus();
+    });
+    // Sesión vencida: Google puede renovarla sin interacción si el navegador lo permite.
+    if (window.Auth.getSession() && !window.Auth.getToken()) window.Auth.refresh();
 
     window.Auth.mount($("#account"));
     window.Auth.mount($("#result-account"));
@@ -208,7 +223,9 @@
       // Al entrar o salir cambia de quién es el historial. Durante un examen no se
       // repinta nada: el intento en curso es local y no depende de la sesión.
       if (currentScreen === "examen") return;
-      await window.Storage.init();
+      busy("Cargando tu historial…");
+      try { await window.Storage.init(); } finally { busy(null); }
+      paintSync();
       renderPanel();
       if (currentScreen === "resultados") paintSaveStatus();
     });
@@ -232,6 +249,23 @@
     window.addEventListener("beforeunload", () => {
       if (currentScreen === "examen" && state.entry && !state.completed) save();
     });
+  }
+
+  /* ------------------------------------------------------------- carga */
+
+  /** Indicador bloqueante para esperas que el estudiante provocó (abrir, guardar). */
+  function busy(text) {
+    const el = $("#busy");
+    if (!el) return;
+    if (text) $("#busy-text").textContent = text;
+    el.classList.toggle("hidden", !text);
+    el.setAttribute("aria-busy", text ? "true" : "false");
+  }
+
+  /** Aviso discreto mientras el historial se actualiza en segundo plano. */
+  function paintSync() {
+    const el = $("#sync");
+    if (el) el.classList.toggle("hidden", !window.Storage.isRefreshing());
   }
 
   /* ---------------------------------------------------------- navegación */
@@ -490,6 +524,7 @@
   }
 
   async function openExam(entry, action) {
+    busy("Cargando examen…");
     try {
       const data = await loadJSON(`data/${entry.questions}`);
       const { exam, stimuli, questions } = validateExam(data, entry);
@@ -547,6 +582,7 @@
       renderTimer();
       save();
     } catch (e) { fatal(e); }
+    finally { busy(null); }
   }
 
   function renderExam() {
@@ -672,6 +708,7 @@
 
     box.classList.add("hidden");
     stopTimer();
+    busy("Corrigiendo y guardando tu resultado…");
 
     try {
       const key = await loadJSON(`data/${state.entry.answers}`);
@@ -709,6 +746,8 @@
       box.classList.remove("hidden");
       box.scrollIntoView({ block: "center" });
       console.error(e);
+    } finally {
+      busy(null);
     }
   }
 

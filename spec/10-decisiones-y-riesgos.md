@@ -222,6 +222,13 @@ solo sirve archivos estáticos, así que la API de `server.py` (D-09) deja de se
 **Riesgo asumido.** No hay *service worker*, así que la app no funciona sin conexión. Se
 evita a propósito: una caché desactualizada podría servir exámenes o claves viejas.
 
+**Nombre (2026-11-19).** La app se llama **Acierta** (nombre en el celular, pestaña del navegador y bienvenida); «Exámenes diagnósticos» queda como subtítulo. No se revisó si el nombre está registrado como marca.
+
+**Ícono (2026-11-19).** Hoja de respuestas: tres círculos (A, B, C) con el del centro relleno
+en verde y palomeado, sobre fondo verde claro. Fuente en `web/icons/icon.svg`; los PNG
+(192, 512, 512 *maskable* con el dibujo al 80 % para la zona segura de Android, y 180 para
+iOS) se generan desde ese dibujo con `sips` de macOS.
+
 **Nombres de examen (2026-11-19).** Los exámenes se nombran «Examen Diagnóstico N<n>E<ee>»
 (nivel y número de examen): los diagnósticos 1–5 son N0E01–N0E05 y los 6–10, N1E01–N1E05.
 El `id` (`diagnostico-N`) no cambia, porque identifica los intentos en la hoja y en

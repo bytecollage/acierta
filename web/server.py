@@ -37,6 +37,13 @@ class Handler(SimpleHTTPRequestHandler):
         pass
 
 
+class Server(ThreadingHTTPServer):
+    # El valor por defecto (5) hace que el navegador vea conexiones rechazadas cuando pide
+    # muchos archivos a la vez; los scripts que fallan dejan el panel en «Cargando…».
+    request_queue_size = 128
+    daemon_threads = True
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -45,13 +52,13 @@ def main():
                     help="127.0.0.1 por defecto. Usa 0.0.0.0 para la red local.")
     args = ap.parse_args()
 
-    print("Exámenes diagnósticos — servidor local")
+    print("Acierta — servidor local")
     print(f"  carpeta: {BASE}")
     print(f"  abre:    http://{'localhost' if args.host == '127.0.0.1' else args.host}:{args.port}")
     print("  Ctrl+C para detener.\n")
 
     try:
-        ThreadingHTTPServer((args.host, args.port), Handler).serve_forever()
+        Server((args.host, args.port), Handler).serve_forever()
     except KeyboardInterrupt:
         print("\nServidor detenido.")
     except OSError as e:

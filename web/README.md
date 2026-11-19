@@ -1,4 +1,4 @@
-# Exámenes diagnósticos
+# Acierta — exámenes diagnósticos
 
 Aplicación web para aplicar exámenes diagnósticos, corregirlos y seguir la evolución del
 estudiante. Sitio estático sin dependencias; el historial de cada estudiante se guarda en

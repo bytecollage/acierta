@@ -6,19 +6,25 @@
 <meta name="theme-color" content="#1d4ed8">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Exámenes">
+<meta name="apple-mobile-web-app-title" content="Acierta">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<title>Exámenes diagnósticos</title>
-<link rel="stylesheet" href="styles.css">
+<title>Acierta · Exámenes diagnósticos</title>
+<link rel="stylesheet" href="styles.css?v=__BUILD__">
 </head>
 <body>
 <div class="wrap">
   <header>
     <div class="account" id="account"></div>
-    <h1>Exámenes diagnósticos</h1>
+    <div class="brand">
+      <img src="icons/icon.svg" alt="" width="56" height="56">
+      <div>
+        <h1>Acierta</h1>
+        <p class="brand-sub">Exámenes diagnósticos</p>
+      </div>
+    </div>
     <p class="lead">Practica, mide tu nivel y descubre qué temas conviene reforzar.</p>
   </header>
 
@@ -48,10 +54,17 @@
   <p class="small muted center-text"><a href="privacidad.html">Aviso de privacidad</a></p>
 </div>
 
-<script src="js/config.js"></script>
-<script src="js/auth.js"></script>
+<script src="js/config.js?v=__BUILD__"></script>
+<script src="js/auth.js?v=__BUILD__"></script>
+<script src="js/storage.js?v=__BUILD__"></script>
 <script>
+  // Carga anticipada: mientras se leen las instrucciones se trae el catálogo y el
+  // historial. El historial queda en caché y el panel lo pinta al instante.
   window.Auth.mount(document.getElementById("account"));
+  fetch("data/exams.json", { cache: "no-cache" }).catch(() => {});
+  window.Storage.init();
+  window.Auth.onChange(() => window.Storage.init());
+  if (window.Auth.getSession() && !window.Auth.getToken()) window.Auth.refresh();
 </script>
 </body>
 </html>

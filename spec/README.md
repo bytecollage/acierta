@@ -1,4 +1,4 @@
-# Especificación — Aplicación de exámenes diagnósticos UADY / EXANI-I
+# Especificación — Acierta, aplicación de exámenes diagnósticos
 
 **Estado:** definición acordada · **Versión:** 1.0 · **Fecha:** 17 de septiembre de 2026
 

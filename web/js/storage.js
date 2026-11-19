@@ -13,6 +13,11 @@
  *
  * El INTENTO EN CURSO se queda siempre en localStorage: es efímero y por dispositivo.
  *
+ * CACHÉ. El último historial leído del servidor se guarda en exani.cache (por cuenta).
+ * La bienvenida lo precarga, y el panel se dibuja al instante con él mientras lo
+ * actualiza en segundo plano (init({ stale: true })). La caché se borra al cerrar
+ * sesión.
+ *
  * No hay borrado: la API no lo permite. Ver spec/08-persistencia.md
  */
 
@@ -22,6 +27,7 @@
   const ATTEMPT = (examId, version) => `exani.attempt.${examId}.v${version}`;
   const PENDING = "exani.pending";
   const LOCAL_HISTORY = "exani.history.local";
+  const CACHE = "exani.cache";
   const cfg = window.ExaniConfig || {};
 
   let warned = false;
@@ -30,6 +36,8 @@
   let mode = "local";   // "remote" (con sesión) | "guest" (API sin sesión) | "local" (sin API)
   let remote = [];      // historial confirmado por el servidor
   let lastError = null;
+  let refreshing = null;  // promesa de la actualización en segundo plano, si hay una
+  const updateListeners = [];
 
   /* ------------------------------------------------------------ localStorage */
 
@@ -120,9 +128,45 @@
     return pendingFor(sub).length;
   }
 
+  /* ----------------------------------------------------------------- caché */
+
+  function readCache(sub) {
+    const c = read(CACHE);
+    return c && c.sub === sub && Array.isArray(c.history) ? c.history : null;
+  }
+
+  function writeCache() {
+    const sub = window.Auth && window.Auth.getSession() && window.Auth.getSession().sub;
+    if (mode === "remote" && sub) write(CACHE, { sub, savedAt: new Date().toISOString(), history: remote });
+  }
+
+  if (window.Auth && window.Auth.onChange) {
+    window.Auth.onChange((session) => { if (!session) remove(CACHE); });
+  }
+
+  /** Lee el historial del servidor y sube lo pendiente. Nunca lanza. */
+  async function fetchRemote(token) {
+    try {
+      const data = await call("list", { idToken: token });
+      remote = Array.isArray(data.history) ? data.history.sort(byDate) : [];
+      lastError = null;
+    } catch (e) {
+      console.warn("[storage] no se pudo leer el historial:", e);
+      lastError = e;
+      if (e.code === "auth") { mode = "guest"; remote = []; }
+      return;
+    }
+    await flush();
+    writeCache();
+  }
+
   /* ------------------------------------------------------------------ init */
 
-  async function init() {
+  /**
+   * Carga el historial. Con { stale: true } y caché de esta cuenta, vuelve al instante
+   * con la caché y actualiza en segundo plano; al terminar avisa a onUpdate().
+   */
+  async function init(opts = {}) {
     if (!cfg.API_URL || !window.Auth || !window.Auth.enabled) {
       mode = "local";
       remote = read(LOCAL_HISTORY) || [];
@@ -135,17 +179,17 @@
       return mode;
     }
     mode = "remote";
-    try {
-      const data = await call("list", { idToken: token });
-      remote = Array.isArray(data.history) ? data.history.sort(byDate) : [];
-      lastError = null;
-    } catch (e) {
-      console.warn("[storage] no se pudo leer el historial:", e);
-      lastError = e;
-      remote = [];
-      if (e.code === "auth") mode = "guest";
+    const cached = opts.stale ? readCache(window.Auth.getSession().sub) : null;
+    if (cached) {
+      remote = cached.slice();
+      refreshing = fetchRemote(token).finally(() => {
+        refreshing = null;
+        updateListeners.forEach((fn) => fn());
+      });
+      return mode;
     }
-    await flush();
+    remote = [];
+    await fetchRemote(token);
     return mode;
   }
 
@@ -178,6 +222,7 @@
       write(PENDING, queue);
     }
     const left = await flush();
+    writeCache();
     const saved = remote.find((r) => identity(r) === identity(record));
     return { record: saved || record, synced: !!saved && left === 0 };
   }
@@ -199,6 +244,8 @@
     init,
     flush,
     getMode: () => mode,
+    isRefreshing: () => !!refreshing,
+    onUpdate(fn) { updateListeners.push(fn); },
     getLastError: () => lastError,
     pendingCount: () => (mode === "local" ? 0
       : pendingFor(window.Auth.getSession() && window.Auth.getSession().sub).length),
