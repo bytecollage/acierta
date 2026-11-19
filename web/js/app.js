@@ -1,4 +1,6 @@
-/* app.js — flujo del examen: inicio, examen, corrección y resultados.
+/* app.js — panel de exámenes (pestañas), examen, corrección y resultados.
+   Vive en panel.html. La navegación va por hash para que el botón «atrás» del móvil
+   funcione: #examenes, #completados, #progreso, #examen/<id>, #resultados/<id>.
    Ver spec/03-pantallas-y-flujo.md, 04-examen-y-correccion.md, 05-tiempo-y-cadena.md */
 
 (function () {
@@ -55,11 +57,14 @@
     setTimeout(() => el.remove(), 2200);
   }
 
-  let currentScreen = "inicio";
+  let currentScreen = "panel";
+  let currentTab = "examenes";
+  let nextAction = null;   // acción pedida desde una tarjeta antes de cambiar el hash
+  const TABS = ["examenes", "completados", "progreso"];
 
   function showScreen(name) {
     currentScreen = name;
-    ["inicio", "examen", "resultados"].forEach((s) => {
+    ["panel", "examen", "resultados"].forEach((s) => {
       $(`#screen-${s}`).classList.toggle("hidden", s !== name);
     });
     $("#topbar").classList.toggle("hidden", name !== "examen");
@@ -69,13 +74,13 @@
   function fatal(err) {
     stopTimer();
     const detail = err instanceof DataError && err.detail ? `<pre>${esc(err.detail)}</pre>` : "";
-    $("#screen-inicio").innerHTML =
+    $("#screen-panel").innerHTML =
       `<div class="card"><div class="alert error" role="alert">
          <strong>No se puede continuar.</strong>
          <p>${esc(err.message)}</p>${detail}
        </div>
        <p class="small muted">Corrige los archivos de datos y recarga la página.</p></div>`;
-    showScreen("inicio");
+    showScreen("panel");
     console.error(err);
   }
 
@@ -133,6 +138,7 @@
   }
 
   function noteActivity() {
+    if (currentScreen !== "examen") return;
     state.lastActivityAt = Date.now();
     if (state.paused && !state.completed) resumeTimer();
   }
@@ -196,9 +202,6 @@
     // Carga el historial (de la cuenta si hay sesión) antes de pintar.
     await window.Storage.init();
 
-    renderInicio();
-    showScreen("inicio");
-
     window.Auth.mount($("#account"));
     window.Auth.mount($("#result-account"));
     window.Auth.onChange(async () => {
@@ -206,27 +209,87 @@
       // repinta nada: el intento en curso es local y no depende de la sesión.
       if (currentScreen === "examen") return;
       await window.Storage.init();
-      if (currentScreen === "inicio") renderInicio();
+      renderPanel();
       if (currentScreen === "resultados") paintSaveStatus();
     });
+
+    document.addEventListener("click", (ev) => {
+      const el = ev.target.closest("[data-goto]");
+      if (!el) return;
+      ev.preventDefault();
+      go(el.dataset.goto);
+    });
+    window.addEventListener("hashchange", route);
+    route();
 
     ["pointerdown", "keydown", "scroll", "pointermove"].forEach((ev) =>
       window.addEventListener(ev, noteActivity, { passive: true }));
     document.addEventListener("visibilitychange", () => {
-      if (state.completed || !state.entry) return;
+      if (currentScreen !== "examen" || state.completed || !state.entry) return;
       if (document.visibilityState === "hidden") { pauseTimer(); save(); }
       else { noteActivity(); }
     });
-    window.addEventListener("beforeunload", () => { if (state.entry && !state.completed) save(); });
+    window.addEventListener("beforeunload", () => {
+      if (currentScreen === "examen" && state.entry && !state.completed) save();
+    });
   }
 
-  function paintDashboardLink() {
-    const link = $("#dashboard-link");
-    const empty = window.Storage.getAllHistory().length === 0;
-    link.classList.toggle("disabled", empty);
-    if (empty) link.setAttribute("aria-disabled", "true");
-    else link.removeAttribute("aria-disabled");
-    link.textContent = empty ? "Aún no hay intentos registrados" : "Ver mi progreso";
+  /* ---------------------------------------------------------- navegación */
+
+  function go(hash) {
+    const h = "#" + hash;
+    if (location.hash === h) route();
+    else location.hash = h;
+  }
+
+  /** Lleva a un examen desde una tarjeta: la acción viaja aparte del hash. */
+  function openFromList(entry, action) {
+    nextAction = action;
+    go(`examen/${entry.id}`);
+  }
+
+  /** Sale del examen guardando todo: el intento queda para «Continuar». */
+  function leaveExam() {
+    if (currentScreen === "examen" && state.entry && !state.completed) {
+      save();
+      stopTimer();
+    }
+  }
+
+  function route() {
+    const [name, id] = location.hash.replace(/^#/, "").split("/");
+    const entry = id ? state.catalog.find((e) => e.id === id) : null;
+
+    if ((name === "examen" || name === "resultados") && entry) {
+      const action = nextAction || (name === "resultados" ? "view" : "continue");
+      nextAction = null;
+      const same = state.entry && state.entry.id === entry.id;
+      if (same && name === "examen" && currentScreen === "examen" && action === "continue") return;
+      if (same && name === "resultados" && currentScreen === "resultados") return;
+      if (action === "continue" && name === "examen") {
+        const saved = window.Storage.loadAttempt(entry.id, entry.version);
+        // Recargar #examen/<id> sin intento guardado no inventa uno nuevo.
+        if (!saved) { history.replaceState(null, "", "#examenes"); showTab("examenes"); return; }
+      }
+      leaveExam();
+      openExam(entry, action);
+      return;
+    }
+
+    leaveExam();
+    showTab(TABS.includes(name) ? name : "examenes");
+  }
+
+  function showTab(tab) {
+    currentTab = tab;
+    TABS.forEach((t) => {
+      const on = t === tab;
+      $(`#tab-${t}`).setAttribute("aria-selected", String(on));
+      $(`#tab-${t}`).classList.toggle("active", on);
+      $(`#panel-${t}`).classList.toggle("hidden", !on);
+    });
+    renderPanel();
+    showScreen("panel");
   }
 
   function paintAccountNote() {
@@ -238,6 +301,7 @@
       mode === "guest" ? "Inicia sesión para guardar tus resultados en tu cuenta y verlos desde cualquier dispositivo." :
       mode === "remote" && err ? `No se pudo conectar con el servidor (${err.message}). Tus resultados nuevos se guardan en este navegador y se subirán después.` :
       "";
+    note.className = mode === "remote" && err ? "alert warn" : "alert info";
     note.classList.toggle("hidden", !note.textContent);
   }
 
@@ -255,60 +319,128 @@
       : "Resultado guardado en este navegador; se subirá a tu cuenta cuando haya conexión.";
   }
 
-  function renderInicio() {
-    paintDashboardLink();
-    paintAccountNote();
-    const host = $("#exam-list");
-    host.innerHTML = state.catalog.map((e) => {
-      const attempt = window.Storage.loadAttempt(e.id, e.version);
-      const hist = window.Storage.getHistory(e.id);
-      const done = hist.length;
-      const last = done ? hist[hist.length - 1] : null;
-      // Un examen resuelto se anuncia igual venga el resultado del historial o de un
-      // intento guardado en este navegador: para quien lo usa es el mismo estado, y
-      // de dónde salga el dato es un detalle interno que no debe asomar en la interfaz.
-      const corregido = (attempt && attempt.completed) || last;
-      const marcador = last || (attempt && attempt.result) || null;
+  /* --------------------------------------------------------------- panel */
 
+  function renderPanel() {
+    paintAccountNote();
+    const hist = window.Storage.getAllHistory();
+    const pending = [], done = [];
+    state.catalog.forEach((e) => {
+      const h = hist.filter((r) => r.examId === e.id);
+      (h.length ? done : pending).push({ entry: e, hist: h, attempt: window.Storage.loadAttempt(e.id, e.version) });
+    });
+
+    $("#tab-examenes").dataset.count = pending.length;
+    $("#tab-completados").dataset.count = done.length;
+
+    renderExamList(pending);
+    renderDoneList(done);
+    if (currentTab === "progreso") window.Dashboard.show(hist);
+  }
+
+  function renderExamList(items) {
+    const host = $("#exam-list");
+    if (!items.length) {
+      host.innerHTML = `<div class="card empty-state">
+          <h2>¡Completaste todos los exámenes!</h2>
+          <p>Revisa tus resultados o vuelve a intentar alguno en
+             <a href="#completados">Completados</a>.</p>
+        </div>`;
+      return;
+    }
+    host.innerHTML = items.map(({ entry: e, attempt }) => {
       let badge = "", buttons;
-      if (corregido) {
-        badge = marcador
-          ? `<span class="badge done">Resuelto · ${marcador.score}/${marcador.total}
-               (${marcador.percentage}%)${marcador.minutes ? ` en ${marcador.minutes} min` : ""}</span>`
-          : `<span class="badge done">Resuelto</span>`;
-        buttons = `<button class="primary" data-action="view" data-id="${esc(e.id)}">Ver resultados</button>
-                   <button data-action="restart" data-id="${esc(e.id)}">Volver a intentarlo</button>`;
+      // Un intento corregido sin historial es un resultado que aún no se ha subido.
+      if (attempt && attempt.completed) {
+        badge = `<span class="badge done">Resuelto · pendiente de guardar</span>`;
+        buttons = `<button class="primary" data-action="view" data-id="${esc(e.id)}">Ver resultados</button>`;
       } else if (attempt) {
         const n = Object.keys(attempt.selectedAnswers || {}).length;
-        badge = `<span class="badge">Intento sin terminar · ${n} de ${e.questionCount} respondidas</span>`;
+        badge = `<span class="badge">Sin terminar · ${n} de ${e.questionCount} respondidas</span>`;
         buttons = `<button class="primary" data-action="continue" data-id="${esc(e.id)}">Continuar</button>
                    <button data-action="restart" data-id="${esc(e.id)}">Comenzar de nuevo</button>`;
       } else {
         buttons = `<button class="primary" data-action="start" data-id="${esc(e.id)}">Comenzar</button>`;
       }
       const mins = e.estimatedMinutes ? ` · ~${e.estimatedMinutes} min` : "";
-      const prev = done ? ` · ${done} intento${done > 1 ? "s" : ""} completado${done > 1 ? "s" : ""}` : "";
-      return `<div class="exam-card">
+      return `<article class="exam-card">
         <h3>${esc(e.title)}</h3>
-        <div class="exam-meta">${e.questionCount} preguntas${mins}${prev}</div>
+        <div class="exam-meta">${e.questionCount} preguntas${mins}</div>
         ${badge}
         <div class="btn-row">${buttons}</div>
-      </div>`;
+      </article>`;
     }).join("");
+    host.onclick = onCardAction;
+  }
 
-    host.onclick = (ev) => {
-      const btn = ev.target.closest("button[data-action]");
-      if (!btn) return;
-      const entry = state.catalog.find((x) => x.id === btn.dataset.id);
-      const action = btn.dataset.action;
-      if (action === "restart") {
-        if (!confirm("Empezarás este examen desde cero. El resultado anterior se conserva en el historial.\n\n¿Continuar?")) return;
-        window.Storage.clearAttempt(entry.id, entry.version);
-        openExam(entry, "start");
-        return;
-      }
-      openExam(entry, action);
-    };
+  function renderDoneList(items) {
+    const host = $("#done-list");
+    if (!items.length) {
+      host.innerHTML = `<div class="card empty-state">
+          <h2>Aún no has completado ningún examen</h2>
+          <p>Elige uno en <a href="#examenes">Exámenes</a>. Al terminarlo aparecerá aquí con
+             su resultado.</p>
+          ${window.Storage.getMode() === "guest"
+            ? `<p class="small muted">Si ya hiciste exámenes, inicia sesión para verlos.</p>` : ""}
+        </div>`;
+      return;
+    }
+    // El más reciente primero: es el que normalmente se quiere revisar.
+    items.sort((a, b) => String(b.hist[b.hist.length - 1].completedAt)
+      .localeCompare(String(a.hist[a.hist.length - 1].completedAt)));
+
+    host.innerHTML = items.map(({ entry: e, hist, attempt }) => {
+      const last = hist[hist.length - 1];
+      const best = hist.reduce((a, b) => (b.percentage > a.percentage ? b : a));
+      const retrying = attempt && !attempt.completed;
+      const n = retrying ? Object.keys(attempt.selectedAnswers || {}).length : 0;
+      const date = new Date(last.completedAt).toLocaleDateString("es-MX",
+        { day: "numeric", month: "short", year: "numeric" });
+      return `<article class="exam-card">
+        <h3>${esc(e.title)}</h3>
+        <div class="result-line">
+          <span class="result-big">${last.percentage}%</span>
+          <span class="muted">${last.score}/${last.total}${last.minutes ? ` · ${last.minutes} min` : ""} · ${date}</span>
+        </div>
+        <div class="exam-meta">
+          ${hist.length} intento${hist.length > 1 ? "s" : ""}
+          ${hist.length > 1 ? ` · mejor: ${best.percentage}%` : ""}
+          ${last.pending ? ` · <span class="chip low">pendiente de subir</span>` : ""}
+        </div>
+        ${retrying ? `<span class="badge">Nuevo intento sin terminar · ${n} de ${e.questionCount}</span>` : ""}
+        <div class="btn-row">
+          <button class="primary" data-action="view" data-id="${esc(e.id)}">Ver resultados</button>
+          ${retrying
+            ? `<button data-action="continue" data-id="${esc(e.id)}">Continuar intento</button>`
+            : `<button data-action="restart" data-id="${esc(e.id)}">Volver a intentarlo</button>`}
+        </div>
+      </article>`;
+    }).join("");
+    host.onclick = onCardAction;
+  }
+
+  function onCardAction(ev) {
+    const btn = ev.target.closest("button[data-action]");
+    if (!btn) return;
+    const entry = state.catalog.find((x) => x.id === btn.dataset.id);
+    const action = btn.dataset.action;
+    if (action === "restart") {
+      const attempt = window.Storage.loadAttempt(entry.id, entry.version);
+      if (attempt && !attempt.completed &&
+          !confirm("Empezarás este examen desde cero y se perderán las respuestas del intento sin terminar. Los resultados anteriores se conservan.\n\n¿Continuar?")) return;
+      window.Storage.clearAttempt(entry.id, entry.version);
+      openFromList(entry, "start");
+      return;
+    }
+    if (action === "view") {
+      // Ver resultados muestra el último intento del historial, no un intento a medias.
+      const attempt = window.Storage.loadAttempt(entry.id, entry.version);
+      nextAction = "view";
+      if (attempt && !attempt.completed) nextAction = "view-history";
+      go(`resultados/${entry.id}`);
+      return;
+    }
+    openFromList(entry, action);
   }
 
   /* -------------------------------------------------------------- examen */
@@ -361,9 +493,13 @@
       state.stimuli = stimuli;
       state.questions = questions;
 
-      let saved = window.Storage.loadAttempt(entry.id, entry.version);
-      if (!saved && action === "view") saved = attemptFromHistory(entry, questions);
-      if (saved && (action === "continue" || action === "view")) {
+      let saved = action === "view-history" ? null : window.Storage.loadAttempt(entry.id, entry.version);
+      if (saved && action === "view" && !saved.completed) saved = null;
+      if (!saved && (action === "view" || action === "view-history")) {
+        saved = attemptFromHistory(entry, questions);
+        if (!saved) { history.replaceState(null, "", "#completados"); showTab("completados"); return; }
+      }
+      if (saved && (action === "continue" || action === "view" || action === "view-history")) {
         state.selectedAnswers = saved.selectedAnswers || {};
         state.startedAt = saved.startedAt;
         state.activeMs = saved.activeMs || 0;
@@ -394,10 +530,12 @@
         });
         paintCorrection();
         renderResults();
+        history.replaceState(null, "", `#resultados/${entry.id}`);
         showScreen("resultados");
         return;
       }
 
+      history.replaceState(null, "", `#examen/${entry.id}`);
       showScreen("examen");
       startTimer();
       renderProgress();
@@ -555,6 +693,7 @@
 
       paintCorrection();
       renderResults();
+      history.replaceState(null, "", `#resultados/${state.entry.id}`);
       showScreen("resultados");
       if (window.Storage.getMode() === "guest" || window.Storage.pendingCount()) window.Auth.refresh();
     } catch (e) {
@@ -639,11 +778,10 @@
     $("#btn-copy-answers").onclick = () => copy(r.answerString, "Respuestas copiadas");
     $("#btn-copy-summary").onclick = () => copy(buildSummary(), "Resumen copiado");
     $("#btn-restart").onclick = () => {
-      if (!confirm("Se borrará este intento. El historial se conserva.\n\n¿Continuar?")) return;
       window.Storage.clearAttempt(state.entry.id, state.entry.version);
-      location.reload();
+      openFromList(state.entry, "start");
     };
-    $("#btn-home").onclick = () => { location.reload(); };
+    $("#btn-home").onclick = () => go("completados");
   }
 
   function buildSummary() {

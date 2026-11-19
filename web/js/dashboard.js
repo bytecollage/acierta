@@ -1,5 +1,5 @@
 /* dashboard.js — evolución del estudiante y temas a reforzar.
-   Se alimenta del historial del estudiante (storage.js). Ver spec/07-dashboard.md */
+   Se dibuja en la pestaña «Mi progreso» de panel.html con el historial que le pasa app.js. Ver spec/07-dashboard.md */
 
 (function () {
   "use strict";
@@ -34,33 +34,41 @@
     return { letter, percentage: pct(best, row.total) };
   }
 
-  /* ----------------------------------------------------------------- init */
+  /* ---------------------------------------------------------------- render */
 
-  async function init() {
-    window.Auth.mount($("#account"));
-    window.Auth.onChange(() => location.reload());
-    await window.Storage.init();
-    history = window.Storage.getAllHistory();
+  let wired = false;
+
+  /** Pinta el dashboard con el historial dado. Lo llama app.js al abrir la pestaña
+   *  «Mi progreso» y cada vez que cambia el historial (sesión nueva, intento nuevo). */
+  function show(rows) {
+    history = rows.slice();
+    paintStorageMode();
 
     if (!history.length) {
       $("#empty").classList.remove("hidden");
       $("#content").classList.add("hidden");
-      if (window.Storage.getMode() === "guest") {
-        $("#empty-note").textContent = "Si ya hiciste exámenes, inicia sesión para ver tu historial.";
-      }
+      $("#empty-note").textContent = window.Storage.getMode() === "guest"
+        ? "Si ya hiciste exámenes, inicia sesión para ver tu historial." : "";
       return;
     }
     $("#empty").classList.add("hidden");
     $("#content").classList.remove("hidden");
 
+    // Un filtro que apunta a un examen que ya no está en el historial se reinicia.
+    if (filters.exam !== "*" && !history.some((h) => h.examId === filters.exam)) filters.exam = "*";
     buildFilters();
+    $("#f-exam").value = filters.exam;
+    $("#f-area").value = filters.area;
+    if ($("#f-area").value !== filters.area) { filters.area = "*"; $("#f-area").value = "*"; }
+    $("#f-repeats").checked = filters.includeRepeats;
     render();
 
-    $("#f-area").onchange = (e) => { filters.area = e.target.value; render(); };
-    $("#f-exam").onchange = (e) => { filters.exam = e.target.value; render(); };
-    $("#f-repeats").onchange = (e) => { filters.includeRepeats = e.target.checked; render(); };
-
-    paintStorageMode();
+    if (!wired) {
+      wired = true;
+      $("#f-area").onchange = (e) => { filters.area = e.target.value; render(); };
+      $("#f-exam").onchange = (e) => { filters.exam = e.target.value; render(); };
+      $("#f-repeats").onchange = (e) => { filters.includeRepeats = e.target.checked; render(); };
+    }
   }
 
   function paintStorageMode() {
@@ -278,8 +286,8 @@
         <td style="text-align:left">${esc(t.area)}</td>
         <td>${t.correct} / ${t.total}</td>
         <td>${t.pct}%</td>
-        <td>${t.total}</td>
-        <td>${t.trend}</td>
+        <td class="opt-col">${t.total}</td>
+        <td class="opt-col">${t.trend}</td>
         <td>${chip[t.confidence]}</td>
       </tr>`).join("")
       : `<tr><td colspan="7" class="muted">Ningún tema alcanza aún ${MIN_OBS_RECOMMEND} observaciones.</td></tr>`;
@@ -320,5 +328,5 @@
     return '<span title="estable">→</span>';
   }
 
-  document.addEventListener("DOMContentLoaded", init);
+  window.Dashboard = { show };
 })();

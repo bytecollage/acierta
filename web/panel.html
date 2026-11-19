@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1d4ed8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Exámenes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<title>Mis exámenes — Exámenes diagnósticos</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- ============================================================ barra fija -->
+<div class="topbar hidden" id="topbar">
+  <div class="topbar-inner">
+    <span class="progress-text" id="progress-text">Respondidas: 0 / 0</span>
+    <div class="progress-bar" id="progress-bar" role="progressbar"
+         aria-label="Progreso del examen" aria-valuemin="0" aria-valuenow="0" aria-valuemax="0">
+      <div id="progress-fill"></div>
+    </div>
+    <span class="timer" id="timer" aria-live="off" aria-label="Tiempo transcurrido">00:00</span>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- =============================================================== PANEL -->
+<div id="screen-panel">
+  <header class="panel-head">
+    <div class="account" id="account"></div>
+    <h1><a href="index.html" class="home-link">Exámenes diagnósticos</a></h1>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="Secciones">
+    <a role="tab" id="tab-examenes" href="#examenes" aria-controls="panel-examenes" aria-selected="true">Exámenes</a>
+    <a role="tab" id="tab-completados" href="#completados" aria-controls="panel-completados" aria-selected="false">Completados</a>
+    <a role="tab" id="tab-progreso" href="#progreso" aria-controls="panel-progreso" aria-selected="false">Mi progreso</a>
+  </nav>
+
+  <div class="alert hidden" id="account-note" role="status"></div>
+
+  <div class="alert warn hidden" id="storage-warning" role="alert">
+    No se pudo guardar el progreso en este navegador. Puedes hacer el examen, pero si
+    cierras la página se perderá.
+  </div>
+
+  <section id="panel-examenes" role="tabpanel" aria-labelledby="tab-examenes">
+    <div id="exam-list"></div>
+  </section>
+
+  <section id="panel-completados" role="tabpanel" aria-labelledby="tab-completados" class="hidden">
+    <div id="done-list"></div>
+  </section>
+
+  <section id="panel-progreso" role="tabpanel" aria-labelledby="tab-progreso" class="hidden">
+  <!-- ========================================================= sin datos -->
+  <div id="empty" class="card hidden">
+    <h2>Aún no hay intentos registrados</h2>
+    <p>Cuando termines tu primer examen, aquí verás tu evolución y los temas donde conviene
+       poner más atención.</p>
+    <p class="small muted" id="empty-note"></p>
+    <p><a class="btn primary" href="#examenes" data-goto="examenes">Hacer un examen</a></p>
+  </div>
+
+  <!-- ========================================================= contenido -->
+  <div id="content" class="hidden">
+
+    <div class="filters">
+      <label>Examen
+        <select id="f-exam" aria-label="Filtrar por examen"></select>
+      </label>
+      <label>Área
+        <select id="f-area" aria-label="Filtrar por área"></select>
+      </label>
+      <label class="switch">
+        <input type="checkbox" id="f-repeats">
+        Incluir repeticiones
+      </label>
+    </div>
+
+    <div class="alert warn hidden" id="repeat-warning">
+      Incluyendo repeticiones. Los intentos repetidos del mismo examen pueden reflejar
+      memorización además de aprendizaje.
+    </div>
+
+    <section class="card">
+      <div class="kpis" id="kpis"></div>
+    </section>
+
+    <section class="card">
+      <h2>Evolución del resultado</h2>
+      <div class="legend" id="evolution-legend"></div>
+      <div id="chart-evolution"></div>
+    </section>
+
+    <section class="card">
+      <h2>Rendimiento por área</h2>
+      <p class="small muted">Acumulado de todos los intentos que cumplen el filtro.</p>
+      <div id="chart-areas"></div>
+    </section>
+
+    <section class="card">
+      <h2>Temas a reforzar</h2>
+      <p class="small muted">
+        Los temas se agregan <strong>cruzando los dos exámenes</strong>: es la única forma de
+        reunir muestra suficiente. La columna <em>Confianza</em> indica cuánto te puedes fiar
+        del porcentaje según el número de preguntas vistas.
+      </p>
+
+      <div id="recommend"></div>
+
+      <div class="tbl-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Tema</th><th>Área</th><th>Aciertos</th><th>%</th>
+              <th class="opt-col">Observaciones</th><th class="opt-col">Tendencia</th><th>Confianza</th>
+            </tr>
+          </thead>
+          <tbody id="topics-body"></tbody>
+        </table>
+      </div>
+
+      <details style="margin-top:16px">
+        <summary>Temas con muestra insuficiente (<span id="topics-low-count">0</span>)</summary>
+        <p class="small muted">
+          Menos de 3 preguntas vistas. Un fallo aquí puede ser un descuido; no se usan para
+          recomendar estudio.
+        </p>
+        <div class="tbl-scroll">
+          <table>
+            <thead><tr><th>Tema</th><th>Área</th><th>Aciertos</th><th>%</th></tr></thead>
+            <tbody id="topics-low"></tbody>
+          </table>
+        </div>
+      </details>
+    </section>
+
+    <p class="small muted" id="storage-mode"></p>
+  </div>
+
+  </section>
+</div>
+
+<!-- ============================================================== EXAMEN -->
+<div id="screen-examen" class="hidden">
+  <header>
+    <button type="button" class="back-link" data-goto="examenes">← Mis exámenes</button>
+    <h1 id="exam-title"></h1>
+    <p class="lead small">Responde todas las preguntas y pulsa «Terminar examen» al final.</p>
+  </header>
+
+  <nav class="area-nav" id="area-nav" aria-label="Ir a un área"></nav>
+
+  <div class="alert hidden" id="exam-alert" role="alert" aria-live="assertive"></div>
+
+  <div id="questions"></div>
+
+  <div class="card">
+    <div class="btn-row">
+      <button class="primary" id="btn-terminar">Terminar examen</button>
+    </div>
+  </div>
+</div>
+
+<!-- ========================================================== RESULTADOS -->
+<div id="screen-resultados" class="hidden">
+  <header>
+    <button type="button" class="back-link" data-goto="completados">← Completados</button>
+    <h1>Resultado</h1>
+    <p class="lead" id="result-exam-title"></p>
+  </header>
+
+  <section class="card">
+    <div class="score" id="result-score"></div>
+    <div class="stats" id="result-stats"></div>
+    <p class="small muted" id="chance-note" style="text-align:center;margin-top:18px"></p>
+    <p class="small save-status" id="save-status" aria-live="polite"></p>
+    <div class="account center" id="result-account"></div>
+  </section>
+
+  <section class="card">
+    <h2>Resultado por área</h2>
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>Área</th><th>Aciertos</th><th>%</th><th></th></tr></thead>
+        <tbody id="area-results"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <details>
+    <summary>Detalle por tema</summary>
+    <p class="small muted">
+      La mayoría de los temas tiene una o dos preguntas. Un fallo aislado no indica
+      necesariamente una laguna: revisa la tendencia en
+      <a href="#progreso" data-goto="progreso">Mi progreso</a>.
+    </p>
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>Tema</th><th>Aciertos</th><th>%</th></tr></thead>
+        <tbody id="topic-results"></tbody>
+      </table>
+    </div>
+  </details>
+
+  <section class="card">
+    <h2>Cadena de respuestas</h2>
+    <p class="small muted">
+      El número inicial son los minutos; las letras, tus respuestas ordenadas por número de
+      pregunta.
+    </p>
+    <div class="answer-string" id="answer-string"></div>
+    <div class="btn-row">
+      <button id="btn-copy-answers">Copiar respuestas</button>
+      <button id="btn-copy-summary">Copiar resumen</button>
+    </div>
+    <p class="small muted" id="copy-status" aria-live="polite"></p>
+  </section>
+
+  <div class="btn-row">
+    <a class="btn primary" href="#progreso" data-goto="progreso">Ver mi progreso</a>
+    <button id="btn-home">Volver a mis exámenes</button>
+    <button id="btn-restart">Reiniciar examen</button>
+  </div>
+</div>
+
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/grading.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

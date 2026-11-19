@@ -52,8 +52,9 @@ La prioridad es que añadir exámenes nuevos no requiera tocar la lógica de la 
 
 ```text
 /
-├── index.html              Inicio, examen y resultados
-├── dashboard.html          Dashboard de progreso
+├── index.html              Bienvenida
+├── panel.html              Pestañas, examen y resultados
+├── dashboard.html          Redirección a panel.html#progreso
 ├── styles.css
 ├── js/
 │   ├── config.js           URL de la API y client ID de Google (públicos)

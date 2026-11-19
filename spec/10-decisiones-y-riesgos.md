@@ -207,6 +207,24 @@ solo sirve archivos estáticos, así que la API de `server.py` (D-09) deja de se
 
 ---
 
+### D-12 · Bienvenida + panel con pestañas, y uso en móvil — **ACORDADO**
+
+**Decisión.**
+
+- El título pasa a **«Exámenes diagnósticos»**, sin UADY ni EXANI.
+- `index.html` queda como bienvenida, con el cuadro de instrucciones y el botón
+  **CONTINUAR**.
+- `panel.html` reúne las pestañas EXÁMENES, COMPLETADOS y MI PROGRESO, más el examen y los
+  resultados. Navega por hash. Detalle en `03-pantallas-y-flujo.md`.
+- Se añaden ajustes para móvil y un manifiesto web (`manifest.webmanifest`, `icons/`) para
+  instalar la app en la pantalla de inicio.
+
+**Riesgo asumido.** No hay *service worker*, así que la app no funciona sin conexión. Se
+evita a propósito: una caché desactualizada podría servir exámenes o claves viejas. Los
+títulos de cada examen en los datos siguen diciendo «Diagnóstico UADY / EXANI-I — Nivel N».
+
+---
+
 ## Riesgos abiertos
 
 ### R-01 · La granularidad de `topic` no soporta el análisis por tema — **ABIERTO**
@@ -285,6 +303,7 @@ el examen tuviera valor sumativo, este diseño dejaría de servir y haría falta
 
 | Versión | Fecha | Cambio |
 |---|---|---|
+| 1.5 | 2026-11-19 | D-12: bienvenida + panel con pestañas (Exámenes, Completados, Mi progreso) y ajustes para móvil |
 | 1.4 | 2026-11-19 | D-11: app pública en GitHub Pages, historial en Google Sheets con inicio de sesión de Google |
 | 1.3 | 2026-10-21 | D-10: exámenes de nivel 6 a 10 (150 reactivos, `subarea`); guía oficial en `12-guia-oficial-exani-i.md` |
 | 1.2 | 2026-09-17 | D-09: el historial pasa de localStorage a data/historial.json con server.py |

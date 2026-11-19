@@ -1,19 +1,45 @@
 # 03 — Pantallas y flujo
 
-La aplicación tiene **cuatro pantallas**. Las tres primeras viven en `index.html` y se
-alternan mostrando/ocultando secciones. El dashboard vive en `dashboard.html`.
+> **Actualizado por D-12 (2026-11-19).** La bienvenida y el panel con pestañas sustituyen
+> a la pantalla de inicio con la lista de exámenes y al `dashboard.html` independiente. Este
+> apartado describe el flujo vigente; las secciones 1 a 4 se conservan como detalle de cada
+> pantalla, y donde contradigan esto, manda esto.
+
+| Página | Contenido |
+|---|---|
+| `index.html` | **Bienvenida**: título «Exámenes diagnósticos», inicio de sesión, cuadro «Antes de empezar» y botón **CONTINUAR** |
+| `panel.html` | **Panel** con tres pestañas, más las pantallas de examen y resultados |
+| `dashboard.html` | Solo redirige a `panel.html#progreso`, para no romper enlaces viejos |
+
+Pestañas del panel:
+
+| Pestaña | Muestra |
+|---|---|
+| **EXÁMENES** | Exámenes sin ningún intento terminado: *Comenzar*, o *Continuar* / *Comenzar de nuevo* si hay uno a medias |
+| **COMPLETADOS** | Exámenes con al menos un intento en el historial, el más reciente primero: último resultado, número de intentos, mejor resultado; *Ver resultados* y *Volver a intentarlo* (o *Continuar intento*) |
+| **MI PROGRESO** | El dashboard (`07-dashboard.md`) |
+
+**Navegación por hash**, para que el botón «atrás» del móvil funcione y cada vista tenga
+URL propia: `#examenes`, `#completados`, `#progreso`, `#examen/<id>`, `#resultados/<id>`.
+Salir del examen (atrás, «← Mis exámenes» o una pestaña) guarda el intento y detiene el
+cronómetro; queda para *Continuar*. Recargar `#examen/<id>` sin intento guardado lleva a
+EXÁMENES en lugar de crear uno.
 
 ```text
-┌─────────────┐  Comenzar   ┌─────────┐  Terminar   ┌────────────┐
-│   INICIO    │ ──────────▶ │  EXAMEN │ ──────────▶ │ RESULTADOS │
-│ instruccio- │             │         │  (solo si   │            │
-│ nes + lista │ ◀────────── │         │   está      │            │
-└─────────────┘  Volver     └─────────┘   completo) └────────────┘
-       │                                                   │
-       │                  ┌───────────┐                    │
-       └─────────────────▶│ DASHBOARD │◀───────────────────┘
-                          └───────────┘
+┌────────────┐ CONTINUAR ┌──────────────────────────────────┐
+│ BIENVENIDA │ ────────▶ │ PANEL                            │
+└────────────┘           │ [EXÁMENES][COMPLETADOS][PROGRESO]│
+                         └──────┬───────────────▲───────────┘
+                        Comenzar│               │atrás / Volver
+                         ┌──────▼───┐ Terminar ┌┴───────────┐
+                         │  EXAMEN  │ ───────▶ │ RESULTADOS │
+                         └──────────┘          └────────────┘
 ```
+
+**Móvil.** Pestañas fijas arriba al desplazarse, objetivos táctiles de 44 px o más, sin
+desplazamiento horizontal desde 320 px, áreas del examen en una fila deslizable, columnas
+secundarias de las tablas ocultas en pantallas estrechas, márgenes de *safe area* (iPhone)
+y manifiesto web con íconos para añadir la app a la pantalla de inicio.
 
 ---
 

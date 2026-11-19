@@ -1,4 +1,4 @@
-# Exámenes diagnósticos UADY / EXANI-I
+# Exámenes diagnósticos
 
 Aplicación web para aplicar exámenes diagnósticos, corregirlos y seguir la evolución del
 estudiante. Sitio estático sin dependencias; el historial de cada estudiante se guarda en
@@ -40,8 +40,11 @@ funciona en modo local y guarda el historial solo en el navegador.
 
 ```text
 web/
-├── index.html          Inicio, examen y resultados
-├── dashboard.html      Progreso del estudiante
+├── index.html          Bienvenida (instrucciones + CONTINUAR)
+├── panel.html          Pestañas Exámenes / Completados / Mi progreso, examen y resultados
+├── dashboard.html      Redirige a panel.html#progreso
+├── privacidad.html     Aviso de privacidad
+├── manifest.webmanifest, icons/   Instalación en la pantalla de inicio del móvil
 ├── styles.css
 ├── js/
 │   ├── config.js       URL de la API y client ID de Google
