@@ -35,7 +35,9 @@ teléfono real.
 | M-06 | Revisar las tres pestañas 📱 | Íconos sin contadores; Exámenes sin terminados; Completados con último resultado, intentos y mejor resultado; sin scroll horizontal a 320 px |
 | M-07 | Empezar un examen, responder 3 y pulsar «atrás» | Regresa a Exámenes; la fila queda resaltada y dice «3/N preguntas» |
 | M-08 | Continuar ese intento | Recupera las 3 respuestas y el tiempo acumulado |
-| M-09 | Ver resultados desde Completados y pulsar «atrás» | Regresa a Completados |
+| M-09 | Tocar una fila de Completados y pulsar «atrás» | Abre el resultado; «atrás» regresa a Completados |
+| M-09b | En Resultados, pulsar 👁 *Ver detalles* y luego ← | Muestra el examen corregido con las falladas en rojo; ← vuelve al resultado |
+| M-09c | Pulsar ↻ en la barra del examen | Diálogo de confirmación; *Cancelar* conserva las respuestas, *Comenzar de nuevo* deja 0/N y el cronómetro en cero |
 | M-10 | Recargar en `#completados` y en `#examen/<id>` sin intento | Se queda en Completados; la segunda lleva a Exámenes |
 
 ### Examen

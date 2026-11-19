@@ -125,6 +125,11 @@ button:disabled, .btn.disabled { opacity: .5; cursor: not-allowed; pointer-event
         box-shadow: var(--shadow); padding: 4px 6px; }
 .exam-row { display: flex; align-items: center; gap: 10px; padding: 10px 8px; border-radius: var(--radius-sm); }
 .exam-row + .exam-row { border-top: 1px solid var(--line); }
+/* La fila entera es el enlace: sin botones, con un chevron que indica que se abre. */
+a.exam-row { color: inherit; text-decoration: none; cursor: pointer; touch-action: manipulation; }
+a.exam-row:hover { background: var(--surface-2); }
+a.exam-row.is-active:hover { background: #e3edfd; }
+.row-chevron { color: var(--muted); width: 20px; height: 20px; }
 .exam-row.is-active { background: var(--accent-soft); border: 1px solid #bfd4f7; margin: 4px 0; }
 .exam-row.is-active + .exam-row { border-top-color: transparent; }
 .exam-info { flex: 1; min-width: 0; }
@@ -149,8 +154,10 @@ button:disabled, .btn.disabled { opacity: .5; cursor: not-allowed; pointer-event
 .appbar-inner { max-width: calc(860px - 2 * var(--gutter)); margin: 0 auto; height: var(--appbar-h);
                 display: flex; align-items: center; gap: 8px; }
 .appbar-inner > .icon-btn:first-child { margin-left: -10px; }
-.appbar-title { flex: 1; min-width: 0; margin: 0; font-size: var(--fs-bar); line-height: 1.2;
+/* El título ocupa solo su texto: el ↻ del examen va justo a su derecha. */
+.appbar-title { flex: 0 1 auto; min-width: 0; margin: 0; font-size: var(--fs-bar); line-height: 1.2;
                 white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.appbar-inner > .progress-text { margin-left: auto; }
 .progress-text { font-weight: 600; font-size: var(--fs-sm); white-space: nowrap; font-variant-numeric: tabular-nums; color: var(--muted); }
 /* El progreso del examen es una línea en el borde inferior de la barra: no le suma alto. */
 .progress-bar { position: absolute; left: 0; right: 0; bottom: -1px; height: 3px; background: transparent; }
@@ -187,6 +194,7 @@ button:disabled, .btn.disabled { opacity: .5; cursor: not-allowed; pointer-event
 }
 .stimulus-block .q { margin: 0 0 8px 12px; }
 .q.pending { border-color: var(--warn-line); background: var(--warn-bg); }
+.q.is-wrong { border-color: var(--bad-line); box-shadow: inset 3px 0 0 var(--bad-line); }
 /* La legend flota para que el navegador no la dibuje sobre el borde del fieldset. */
 .q legend { font-weight: 600; padding: 0; float: left; width: 100%; margin-bottom: 10px; }
 .q legend + * { clear: both; }
@@ -227,14 +235,14 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 }
 
 /* ------------------------------------------------------------ resultados */
-.score { text-align: center; padding: 4px 0; }
+.finish-bar { border-top: 1px solid var(--line); padding-top: var(--gap); margin-top: var(--gap);
+              display: flex; justify-content: center; }
+.result-head { display: flex; align-items: center; gap: 10px; }
 .card-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
 .card-head h2 { margin: 0; }
 /* Acción sin borde, como la ← de la barra: 44 px táctiles y el ícono alineado al borde
    del contenido; el margen negativo no pasa del espacio bajo el título. */
 .card-head .icon-btn { margin: -10px -11px -10px 0; }
-.score .big { font-size: 40px; font-weight: 700; line-height: 1.05; }
-.score .time { font-size: var(--fs-md); color: var(--muted); margin-top: 4px; }
 
 
 table { width: 100%; border-collapse: collapse; font-size: var(--fs-md); }
@@ -302,7 +310,11 @@ svg { display: block; width: 100%; overflow: visible; }
 .axis-text { fill: var(--muted); font-size: var(--fs-xs); }
 .ref-line { stroke: var(--warn-line); stroke-width: 1.5; stroke-dasharray: 5 4; }
 
-.filters { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; font-size: var(--fs-md); }
+/* Filtros: Examen y Área lado a lado (etiqueta arriba) y el interruptor debajo. */
+.filters { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;
+           font-size: var(--fs-md); }
+.filters .switch { grid-column: 1 / -1; }
+.filters select { width: 100%; }
 /* Flecha propia: la nativa queda pegada al borde y cambia según el navegador. */
 select {
   font: inherit; font-size: 16px; padding: 8px 40px 8px 12px; border-radius: var(--radius-sm);
@@ -310,7 +322,7 @@ select {
   -webkit-appearance: none; appearance: none; cursor: pointer;
   background: var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 12px center / 18px 18px;
 }
-.filters label:not(.switch) { display: inline-flex; align-items: center; gap: 8px; }
+.filters label:not(.switch) { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 .switch { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; }
 
 /* ------------------------------------------------------------ bienvenida */
@@ -323,7 +335,8 @@ select {
 /* El panel ocupa al menos todo el alto: el pie queda abajo aunque haya poco contenido. */
 body.app { display: flex; flex-direction: column; min-height: 100vh; min-height: 100dvh; }
 body.app .wrap { flex: 1 0 auto; width: 100%; }
-body.app[data-screen="panel"] .wrap { padding-bottom: var(--gap); }
+body.app[data-screen="panel"] .wrap,
+body.app[data-screen="reporte"] .wrap { padding-bottom: var(--gap); }
 
 /* Pie: misma línea, alto y márgenes que la barra fija de arriba, sin fondo. */
 .appfooter {
@@ -348,6 +361,14 @@ body.app[data-screen="panel"] .wrap { padding-bottom: var(--gap); }
 
 .empty-state { text-align: center; padding: 30px 20px; }
 
+
+/* --------------------------------------------------------------- diálogo */
+.dialog { border: 1px solid var(--line); border-radius: var(--radius); padding: var(--pad);
+          width: min(400px, calc(100% - 2 * var(--gutter))); box-shadow: 0 8px 30px rgba(17, 24, 39, .18);
+          color: var(--ink); background: var(--surface); }
+.dialog::backdrop { background: rgba(17, 24, 39, .35); }
+.dialog p { color: var(--muted); font-size: var(--fs-md); }
+.dialog-actions { display: flex; gap: 10px; justify-content: flex-end; flex-wrap: wrap; margin-top: 16px; }
 
 /* ----------------------------------------------------------------- carga */
 .spinner {
@@ -381,8 +402,6 @@ body.app[data-screen="panel"] .wrap { padding-bottom: var(--gap); }
   .btn.big { width: 100%; }
   .btn-row > .btn, .btn-row > button { flex: 1 1 140px; }
   .opt-col { display: none; }
-  .filters { flex-direction: column; align-items: stretch; }
-  .filters label:not(.switch) { display: flex; flex-direction: column; gap: 4px; }
   .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
   .kpi { padding: 10px 12px; }
   th, td { padding: 7px 6px; }
@@ -404,7 +423,6 @@ body.app[data-screen="panel"] .wrap { padding-bottom: var(--gap); }
   }
   .stimulus-block .q { margin: 0 6px 6px; }
   .area-block { margin-bottom: 20px; }
-  .score .big { font-size: 32px; }
   details { padding: 10px 12px; }
 }
 

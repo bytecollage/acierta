@@ -161,7 +161,10 @@ mostraba demasiado para leerlo de un vistazo.
   contenido): pestañas de ícono en el panel; ← y título en examen, resultados y reporte.
   En el examen el progreso es una línea en su borde inferior. Sin logo ni nombre en el
   panel; la cuenta va en un pie simétrico a la barra.
-- **Filas compactas** con el título sin «Diagnóstico» y acciones de ícono (▶ ↻ 👁).
+- **Filas compactas** con el título sin «Diagnóstico»; toda la fila es el enlace. Reintentar
+  va dentro: ↻ en la barra del examen (con confirmación) y en la tarjeta del resultado.
+- **Corrección visible:** *Ver detalles* en Resultados abre el examen corregido. Antes la
+  corrección se pintaba pero su pantalla nunca se mostraba tras terminar.
 - **Resultados mínimos:** puntaje, barras por área y cadena. Se quitaron el detalle por
   tema, el resumen copiable y la referencia de azar (ver D-02).
 - **Mi progreso de un vistazo:** puntuación /1000, puntos totales, una línea de avance,

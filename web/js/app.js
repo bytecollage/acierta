@@ -1,6 +1,7 @@
 /* app.js — panel de exámenes (pestañas), examen, corrección y resultados.
    Vive en panel.html. La navegación va por hash para que el botón «atrás» del móvil
-   funcione: #examenes, #completados, #progreso, #reporte, #examen/<id>, #resultados/<id>.
+   funcione: #examenes, #completados, #progreso, #reporte, #examen/<id>, #resultados/<id>,
+   #correccion/<id> (el examen resuelto, con las respuestas marcadas).
    Ver docs/funcionamiento.md §1–4 */
 
 (function () {
@@ -65,6 +66,41 @@
               data-id="${esc(entry.id)}" aria-label="${esc(full)}" title="${esc(label)}">${icon(name)}</button>`;
   }
 
+  const CHEVRON = '<svg class="ic row-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>';
+
+  /** Diálogo de confirmación con el estilo de la app. Devuelve true si se aceptó. */
+  function confirmDialog({ title, text, ok }) {
+    const dlg = $("#confirm-dialog");
+    $("#confirm-title").textContent = title;
+    $("#confirm-text").textContent = text;
+    $("#confirm-ok").textContent = ok;
+    dlg.returnValue = "";
+    return new Promise((resolve) => {
+      dlg.addEventListener("close", () => resolve(dlg.returnValue === "ok"), { once: true });
+      dlg.showModal();
+    });
+  }
+
+  const fmtShortDate = (iso) => {
+    // El año solo si no es el actual: ahorra una línea en el celular.
+    const d = new Date(iso);
+    return d.toLocaleDateString("es-MX", d.getFullYear() === new Date().getFullYear()
+      ? { day: "numeric", month: "short" } : { day: "numeric", month: "short", year: "numeric" });
+  };
+
+  /** Título y línea de datos de un resultado, iguales en Completados y en Resultados. */
+  function resultSummary(entry, rec, hist) {
+    const best = hist.length ? hist.reduce((a, b) => (b.percentage > a.percentage ? b : a)) : rec;
+    const meta = [
+      `${rec.score}/${rec.total}`,
+      rec.minutes ? `${rec.minutes} min` : "",
+      rec.completedAt ? fmtShortDate(rec.completedAt) : "",
+      hist.length > 1 ? `${hist.length} intentos · mejor ${best.percentage}%` : "",
+    ].filter(Boolean).join(" · ");
+    return `<h3>${esc(shortTitle(entry.title))} <span class="row-sep">·</span> <span class="row-pct">${rec.percentage}%</span></h3>
+      <div class="exam-meta">${meta}${rec.pending ? ` <span class="chip low">pendiente de subir</span>` : ""}</div>`;
+  }
+
   const miniBar = (n, total) =>
     `<div class="mini-bar" aria-hidden="true"><div style="width:${total ? (n / total) * 100 : 0}%"></div></div>`;
 
@@ -84,20 +120,24 @@
 
   function showScreen(name) {
     currentScreen = name;
+    // La corrección es la misma pantalla del examen, con las respuestas marcadas.
+    const screen = name === "correccion" ? "examen" : name;
     ["panel", "examen", "resultados", "reporte"].forEach((s) => {
-      $(`#screen-${s}`).classList.toggle("hidden", s !== name);
+      $(`#screen-${s}`).classList.toggle("hidden", s !== screen);
     });
     document.body.dataset.screen = name;
     $("#tabbar").classList.toggle("hidden", name !== "panel");
-    $("#appfooter").classList.toggle("hidden", name !== "panel");
+    $("#appfooter").classList.toggle("hidden", name !== "panel" && name !== "reporte");
     $("#topbar").classList.toggle("hidden", name === "panel");
-    ["#progress-bar", "#progress-text", "#timer"].forEach((sel) =>
+    ["#progress-bar", "#progress-text", "#timer", "#topbar-restart"].forEach((sel) =>
       $(sel).classList.toggle("hidden", name !== "examen"));
+    if (name === "correccion") $("#exam-alert").classList.add("hidden");
     // A dónde lleva la flecha ← de la barra fija en cada pantalla.
     const [goto, label] = {
       examen: ["examenes", "Volver a mis exámenes"],
       resultados: ["completados", "Volver a completados"],
       reporte: ["progreso", "Volver a mi progreso"],
+      correccion: [`resultados/${state.entry ? state.entry.id : ""}`, "Volver al resultado"],
     }[name] || ["examenes", "Volver a mis exámenes"];
     $("#topbar-back").dataset.goto = goto;
     $("#topbar-back").setAttribute("aria-label", label);
@@ -278,6 +318,7 @@
       ev.preventDefault();
       go(el.dataset.goto);
     });
+    $("#topbar-restart").onclick = restartExam;
     window.addEventListener("hashchange", route);
     window.addEventListener("resize", paintTopbarHeight, { passive: true });
     route();
@@ -337,19 +378,24 @@
     const [name, id] = location.hash.replace(/^#/, "").split("/");
     const entry = id ? state.catalog.find((e) => e.id === id) : null;
 
-    if ((name === "examen" || name === "resultados") && entry) {
-      const action = nextAction || (name === "resultados" ? "view" : "continue");
+    if ((name === "examen" || name === "resultados" || name === "correccion") && entry) {
+      const action = nextAction || (name === "examen" ? "continue" : "view");
       nextAction = null;
       const same = state.entry && state.entry.id === entry.id;
       if (same && name === "examen" && currentScreen === "examen" && action === "continue") return;
-      if (same && name === "resultados" && currentScreen === "resultados") return;
+      // Entre resultado y corrección del mismo examen no se recarga nada.
+      if (same && state.completed && (name === "resultados" || name === "correccion") &&
+          (currentScreen === "resultados" || currentScreen === "correccion")) {
+        if (currentScreen !== name) showScreen(name);
+        return;
+      }
       if (action === "continue" && name === "examen") {
         const saved = window.Storage.loadAttempt(entry.id, entry.version);
         // Recargar #examen/<id> sin intento guardado no inventa uno nuevo.
         if (!saved) { history.replaceState(null, "", "#examenes"); showTab("examenes"); return; }
       }
       leaveExam();
-      openExam(entry, action);
+      openExam(entry, action, name === "correccion" ? "correccion" : "resultados");
       return;
     }
 
@@ -425,30 +471,31 @@
       return;
     }
     host.innerHTML = items.map(({ entry: e, attempt }) => {
-      let meta, buttons, active = false;
-      // Un intento corregido sin historial es un resultado que aún no se ha subido.
+      // Toda la fila es el botón: comenzar, continuar o ver un resultado sin subir.
+      let meta, action, active = false;
       if (attempt && attempt.completed) {
+        // Un intento corregido sin historial es un resultado que aún no se ha subido.
         active = true;
+        action = "view";
         meta = `<div class="exam-meta">Resuelto · pendiente de guardar</div>`;
-        buttons = iconBtn("view", e, "eye", "Ver resultados", true);
       } else if (attempt) {
         active = true;
+        action = "continue";
         const n = Object.keys(attempt.selectedAnswers || {}).length;
         meta = `<div class="exam-meta">${n}/${e.questionCount} preguntas</div>${miniBar(n, e.questionCount)}`;
-        buttons = iconBtn("continue", e, "play", "Continuar", true) +
-                  iconBtn("restart", e, "restart", "Comenzar de nuevo");
       } else {
+        action = "start";
         const mins = e.estimatedMinutes ? ` · ~${e.estimatedMinutes} min` : "";
         meta = `<div class="exam-meta">${e.questionCount} preguntas${mins}</div>`;
-        buttons = iconBtn("start", e, "play", "Comenzar", true);
       }
-      return `<article class="exam-row${active ? " is-active" : ""}">
+      return `<a class="exam-row${active ? " is-active" : ""}" href="#examen/${esc(e.id)}"
+                 data-action="${action}" data-id="${esc(e.id)}">
         <div class="exam-info">
           <h3>${esc(shortTitle(e.title))}</h3>
           ${meta}
         </div>
-        <div class="exam-actions">${buttons}</div>
-      </article>`;
+        ${CHEVRON}
+      </a>`;
     }).join("");
     host.onclick = onCardAction;
   }
@@ -471,59 +518,50 @@
       .localeCompare(String(a.hist[a.hist.length - 1].completedAt)));
 
     host.innerHTML = items.map(({ entry: e, hist, attempt }) => {
-      const last = hist[hist.length - 1];
-      const best = hist.reduce((a, b) => (b.percentage > a.percentage ? b : a));
+      // Toda la fila es el botón: ver el resultado, o continuar un intento nuevo a medias.
       const retrying = attempt && !attempt.completed;
       const n = retrying ? Object.keys(attempt.selectedAnswers || {}).length : 0;
-      // El año solo si no es el actual: ahorra una línea en el celular.
-      const when = new Date(last.completedAt);
-      const date = when.toLocaleDateString("es-MX", when.getFullYear() === new Date().getFullYear()
-        ? { day: "numeric", month: "short" } : { day: "numeric", month: "short", year: "numeric" });
-      const meta = [
-        `${last.score}/${last.total}`,
-        last.minutes ? `${last.minutes} min` : "",
-        date,
-        hist.length > 1 ? `${hist.length} intentos · mejor ${best.percentage}%` : "",
-      ].filter(Boolean).join(" · ");
-      return `<article class="exam-row${retrying ? " is-active" : ""}">
+      return `<a class="exam-row${retrying ? " is-active" : ""}"
+                 href="#${retrying ? "examen" : "resultados"}/${esc(e.id)}"
+                 data-action="${retrying ? "continue" : "view"}" data-id="${esc(e.id)}">
         <div class="exam-info">
-          <h3>${esc(shortTitle(e.title))} <span class="row-sep">·</span> <span class="row-pct">${last.percentage}%</span></h3>
-          <div class="exam-meta">${meta}${last.pending ? ` <span class="chip low">pendiente de subir</span>` : ""}</div>
+          ${resultSummary(e, hist[hist.length - 1], hist)}
           ${retrying ? `<div class="exam-meta">Nuevo intento: ${n}/${e.questionCount} preguntas</div>${miniBar(n, e.questionCount)}` : ""}
         </div>
-        <div class="exam-actions">
-          ${iconBtn("view", e, "eye", "Ver resultados")}
-          ${retrying
-            ? iconBtn("continue", e, "play", "Continuar intento", true) + iconBtn("restart", e, "restart", "Comenzar de nuevo")
-            : iconBtn("restart", e, "restart", "Volver a intentarlo")}
-        </div>
-      </article>`;
+        ${CHEVRON}
+      </a>`;
     }).join("");
     host.onclick = onCardAction;
   }
 
   function onCardAction(ev) {
-    const btn = ev.target.closest("button[data-action]");
-    if (!btn) return;
-    const entry = state.catalog.find((x) => x.id === btn.dataset.id);
-    const action = btn.dataset.action;
-    if (action === "restart") {
-      const attempt = window.Storage.loadAttempt(entry.id, entry.version);
-      if (attempt && !attempt.completed &&
-          !confirm("Empezarás este examen desde cero y se perderán las respuestas del intento sin terminar. Los resultados anteriores se conservan.\n\n¿Continuar?")) return;
-      window.Storage.clearAttempt(entry.id, entry.version);
-      openFromList(entry, "start");
-      return;
-    }
+    const row = ev.target.closest("[data-action]");
+    if (!row) return;
+    ev.preventDefault();
+    const entry = state.catalog.find((x) => x.id === row.dataset.id);
+    const action = row.dataset.action;
     if (action === "view") {
       // Ver resultados muestra el último intento del historial, no un intento a medias.
       const attempt = window.Storage.loadAttempt(entry.id, entry.version);
-      nextAction = "view";
-      if (attempt && !attempt.completed) nextAction = "view-history";
+      nextAction = attempt && !attempt.completed ? "view-history" : "view";
       go(`resultados/${entry.id}`);
       return;
     }
     openFromList(entry, action);
+  }
+
+  /** ↻ de la barra del examen: empieza de cero tras confirmar, porque se pierde el avance. */
+  async function restartExam() {
+    const ok = await confirmDialog({
+      title: "¿Comenzar de nuevo?",
+      text: "Se borrarán las respuestas y el tiempo de este intento. Los resultados anteriores se conservan.",
+      ok: "Comenzar de nuevo",
+    });
+    if (!ok) return;
+    stopTimer();
+    window.Storage.clearAttempt(state.entry.id, state.entry.version);
+    $("#exam-alert").classList.add("hidden");
+    openExam(state.entry, "start");
   }
 
   /* -------------------------------------------------------------- examen */
@@ -567,7 +605,8 @@
     };
   }
 
-  async function openExam(entry, action) {
+  /** Abre un examen. Si está corregido, muestra `target`: «resultados» o «correccion». */
+  async function openExam(entry, action, target = "resultados") {
     busy("Cargando examen…");
     try {
       const data = await loadJSON(`data/${entry.questions}`);
@@ -614,8 +653,8 @@
         }, entry.code);
         paintCorrection();
         renderResults();
-        history.replaceState(null, "", `#resultados/${entry.id}`);
-        showScreen("resultados");
+        history.replaceState(null, "", `#${target}/${entry.id}`);
+        showScreen(target);
         return;
       }
 
@@ -655,8 +694,10 @@
         </section>`;
     }).join("");
 
-    $("#questions").addEventListener("change", onAnswerChange);
+    $("#questions").onchange = onAnswerChange;
     $("#btn-terminar").onclick = finishExam;
+    // Un examen recién abierto siempre se puede terminar, aunque antes se viera una corrección.
+    $("#finish-card").classList.remove("hidden");
   }
 
   const slug = (s) => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, "-");
@@ -790,7 +831,7 @@
   function paintCorrection() {
     state.result.perQuestion.forEach((r) => {
       const fs = $(`#q-${r.id}`);
-      fs.classList.add("corrected");
+      fs.classList.add("corrected", r.isCorrect ? "is-right" : "is-wrong");
       fs.classList.remove("pending");
       if (!$(".topic", fs)) {
         const t = document.createElement("div");
@@ -808,7 +849,7 @@
         else if (k === r.correct) { opt.classList.add("is-ok"); tag.textContent = "Respuesta correcta"; }
       });
     });
-    $("#btn-terminar").classList.add("hidden");
+    $("#finish-card").classList.add("hidden");
   }
 
   /* --------------------------------------------------------- resultados */
@@ -817,9 +858,17 @@
     const r = state.result;
     $("#topbar-title").textContent = shortTitle(state.exam.title);
 
-    $("#result-score").innerHTML = `
-      <div class="big">${r.score}/${r.total} · ${r.percentage}%</div>
-      <div class="time">${r.minutes} min</div>`;
+    // Mismos datos que la fila de Completados, con ↻ y «Ver detalles» a la derecha.
+    const hist = window.Storage.getHistory(state.entry.id);
+    const rec = hist.find((h) => h.completedAt === state.completedAt) ||
+      { score: r.score, total: r.total, percentage: r.percentage, minutes: r.minutes, completedAt: state.completedAt };
+    $("#result-head").innerHTML = `
+      <div class="exam-info">${resultSummary(state.entry, rec, hist)}</div>
+      <div class="exam-actions">
+        ${iconBtn("replay", state.entry, "restart", "Volver a intentarlo")}
+        ${iconBtn("review", state.entry, "eye", "Ver detalles", true)}
+      </div>`;
+    $("#result-head").onclick = onResultAction;
 
     $("#area-results").innerHTML = `<ul class="hbars">${state.exam.areas.map((a) => {
       const v = r.areaResults[a.name] || { correct: 0, total: 0 };
@@ -834,6 +883,22 @@
       `<span class="mins">${esc(a.code)}|${a.minutes}|</span>${a.letters}`;
 
     $("#btn-copy-answers").onclick = () => copy(r.answerString, "Cadena copiada");
+  }
+
+  async function onResultAction(ev) {
+    const btn = ev.target.closest("button[data-action]");
+    if (!btn) return;
+    const entry = state.entry;
+    if (btn.dataset.action === "review") { go(`correccion/${entry.id}`); return; }
+    // Un intento nuevo a medias se perdería: solo entonces se pide confirmación.
+    const attempt = window.Storage.loadAttempt(entry.id, entry.version);
+    if (attempt && !attempt.completed && !(await confirmDialog({
+      title: "¿Volver a intentarlo?",
+      text: "Tienes un intento sin terminar de este examen; se borrarán sus respuestas. Los resultados anteriores se conservan.",
+      ok: "Comenzar de nuevo",
+    }))) return;
+    window.Storage.clearAttempt(entry.id, entry.version);
+    openFromList(entry, "start");
   }
 
   async function copy(text, msg) {

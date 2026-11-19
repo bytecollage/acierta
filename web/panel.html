@@ -43,6 +43,10 @@
       <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
     </button>
     <h1 class="appbar-title" id="topbar-title"></h1>
+    <button type="button" class="icon-btn ghost" id="topbar-restart"
+            aria-label="Comenzar de nuevo" title="Comenzar de nuevo">
+      <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1L3.5 8.5"/><path d="M3.5 3.5v5h5"/></svg>
+    </button>
     <span class="progress-text" id="progress-text">0/0</span>
     <span class="timer" id="timer" aria-live="off" aria-label="Tiempo transcurrido">00:00</span>
   </div>
@@ -128,10 +132,9 @@
 
   <div id="questions"></div>
 
-  <div class="card">
-    <div class="btn-row">
-      <button class="primary" id="btn-terminar">Terminar examen</button>
-    </div>
+  <!-- Solo una línea separa el final del examen del botón. -->
+  <div class="finish-bar" id="finish-card">
+    <button class="primary" id="btn-terminar">Terminar examen</button>
   </div>
 </div>
 
@@ -207,15 +210,12 @@
       <p class="small muted" id="exam-breakdown"></p>
     </section>
 
-    <p class="small muted" id="storage-mode"></p>
   </div>
 </div>
 
 <!-- ========================================================== RESULTADOS -->
 <div id="screen-resultados" class="hidden">
-  <section class="card">
-    <div class="score" id="result-score"></div>
-  </section>
+  <section class="card result-head" id="result-head"></section>
 
   <section class="card">
     <h2>Resultado por área</h2>
@@ -241,6 +241,18 @@
     <div class="account" id="account"></div>
   </div>
 </footer>
+
+<!-- Confirmación propia (no confirm() del navegador), con el estilo de la app. -->
+<dialog class="dialog" id="confirm-dialog" aria-labelledby="confirm-title" aria-describedby="confirm-text">
+  <form method="dialog">
+    <h2 id="confirm-title"></h2>
+    <p id="confirm-text"></p>
+    <div class="dialog-actions">
+      <button value="cancel">Cancelar</button>
+      <button value="ok" class="primary" id="confirm-ok"></button>
+    </div>
+  </form>
+</dialog>
 
 <div class="busy hidden" id="busy" role="status" aria-live="assertive" aria-busy="false">
   <div class="busy-box">

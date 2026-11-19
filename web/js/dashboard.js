@@ -61,7 +61,6 @@
   function showReport(rows) {
     history = rows.slice();
     wire();
-    paintStorageMode();
 
     $("#report-empty").classList.toggle("hidden", history.length > 0);
     $("#report").classList.toggle("hidden", !history.length);
@@ -96,26 +95,15 @@
     }, { passive: true });
   }
 
-  function paintStorageMode() {
-    const modo = $("#storage-mode");
-    if (!modo) return;
-    const mode = window.Storage.getMode();
-    const pending = window.Storage.pendingCount();
-    modo.textContent =
-      mode === "local" ? "Historial guardado en este navegador." :
-      mode === "guest" ? "Sin sesión: solo ves los intentos guardados en este navegador. Inicia sesión para ver tu historial completo." :
-      pending ? `Historial de tu cuenta. ${pending} intento(s) pendiente(s) de subir desde este navegador.` :
-      "Historial guardado en tu cuenta.";
-  }
-
   function buildFilters() {
     const exams = [...new Map(history.map((h) => [h.examId, h.examTitle])).entries()];
-    $("#f-exam").innerHTML = `<option value="*">Todos los exámenes</option>` +
-      exams.map(([id, t]) => `<option value="${esc(id)}">${esc(t)}</option>`).join("");
+    // Textos cortos: los dos filtros caben lado a lado en el celular.
+    $("#f-exam").innerHTML = `<option value="*">Todos</option>` +
+      exams.map(([id, t]) => `<option value="${esc(id)}">${esc(shortTitle(t))}</option>`).join("");
 
     const areas = new Set();
     history.forEach((h) => Object.keys(h.areaResults || {}).forEach((a) => areas.add(a)));
-    $("#f-area").innerHTML = `<option value="*">Todas las áreas</option>` +
+    $("#f-area").innerHTML = `<option value="*">Todas</option>` +
       [...areas].map((a) => `<option value="${esc(a)}">${esc(a)}</option>`).join("");
   }
 

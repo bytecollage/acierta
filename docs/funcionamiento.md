@@ -41,8 +41,8 @@ Qué hace Acierta y por qué se comporta así. Las razones de fondo están en
 
 | Pestaña | Muestra |
 |---|---|
-| **EXÁMENES** | Exámenes sin ningún intento terminado: ▶ *Comenzar*, o ▶ *Continuar* / ↻ *Comenzar de nuevo* si hay uno a medias |
-| **COMPLETADOS** | Exámenes con al menos un intento terminado, el más reciente primero: último resultado, intentos, mejor resultado. 👁 *Ver resultados* y ↻ *Volver a intentarlo* (o ▶ *Continuar intento*) |
+| **EXÁMENES** | Exámenes sin ningún intento terminado. Tocar la fila comienza el examen, o lo continúa si hay uno a medias |
+| **COMPLETADOS** | Exámenes con al menos un intento terminado, el más reciente primero: último resultado, intentos, mejor resultado. Tocar la fila abre el resultado (o continúa un intento nuevo a medias) |
 | **MI PROGRESO** | Resumen de un vistazo y acceso a la pantalla **Reporte detallado** (§5) |
 
 **Barra fija.** Todas las pantallas tienen la misma barra arriba: blanca, de 56 px de alto,
@@ -62,7 +62,7 @@ mayúsculas, cifra y nota.
 
 Las pestañas son íconos (con su nombre para lectores de pantalla y en el `title`), sin
 contadores. El nombre del estudiante y *Cerrar sesión* (o el botón de Google, sin sesión)
-van en el pie del panel, espejo de la barra fija: solo una línea superior de ancho
+van en el pie del panel y del Reporte detallado, espejo de la barra fija: solo una línea superior de ancho
 completo, sin fondo, a 56 px del borde inferior. Con poco contenido el pie queda al fondo
 de la pantalla; con mucho, al final de la página.
 
@@ -70,11 +70,12 @@ de la pantalla; con mucho, al final de la página.
 «Diagnóstico» (`Examen N1E02`) y, debajo y más pequeño, `150 preguntas · ~255 min`. En
 Completados el porcentaje va justo después del título (`Examen N1E01 · 83%`) y debajo `aciertos · minutos · fecha` (el año
 solo si no es el actual). Un intento a medias resalta la fila con fondo y muestra
-`97/150 preguntas` con una barra fina. Las acciones son botones de solo ícono con la
-etiqueta completa en `aria-label` (`Continuar Examen N1E02`).
+`97/150 preguntas` con una barra fina. Las filas no tienen botones: toda la fila es el
+enlace, con un chevron › a la derecha. Reintentar o comenzar de nuevo se hace dentro: ↻ en
+la barra del examen o en la tarjeta del resultado.
 
 **Navegación por hash.** Cada vista tiene su URL: `#examenes`, `#completados`,
-`#progreso`, `#reporte`, `#examen/<id>`, `#resultados/<id>`. El botón «atrás» del celular regresa del
+`#progreso`, `#reporte`, `#examen/<id>`, `#resultados/<id>`, `#correccion/<id>`. El botón «atrás» del celular regresa del
 examen a las pestañas. Salir del examen (atrás, la flecha ← de la barra fija o una pestaña) guarda el
 intento y detiene el cronómetro. Recargar `#examen/<id>` sin intento guardado lleva a
 EXÁMENES en lugar de crear uno.
@@ -90,7 +91,8 @@ guardando tu resultado…» al terminar.
 Todas las preguntas en una sola página, agrupadas por área en el orden de `exam.areas`.
 
 - **Barra fija** arriba, siempre visible: ← (volver a mis exámenes), nombre del examen,
-  `42/150` y cronómetro. El progreso es una línea fina en el borde inferior de la barra,
+  ↻ justo a su derecha, `42/150` y cronómetro. ↻ *Comenzar de nuevo* pide confirmación en
+  un diálogo propio, porque se pierden las respuestas y el tiempo del intento. El progreso es una línea fina en el borde inferior de la barra,
   así que la barra mide lo mismo que en las demás pantallas. No hay encabezado ni navegación
   por áreas: se empieza directamente en la primera pregunta.
 - **Cada pregunta** es un `fieldset` con el enunciado en la `legend` y tres opciones de
@@ -123,8 +125,9 @@ corrige nada y el intento queda intacto.
 | Incorrecta seleccionada | Rojo suave + `Tu respuesta` |
 | Correcta no seleccionada | Verde suave + `Respuesta correcta` |
 
-Toda señal de color lleva texto. Tras corregir se muestra el tema de cada pregunta y se
-deshabilitan todas las opciones.
+Toda señal de color lleva texto. Tras corregir se muestra el tema de cada pregunta, las
+preguntas falladas llevan además el borde rojo y se deshabilitan todas las opciones. Se
+ve desde *Ver detalles* en Resultados.
 
 ---
 
@@ -170,10 +173,15 @@ aceptándolas, y al ver esos resultados la cadena se muestra ya en el formato nu
 ## 4. Resultados
 
 Pantalla mínima, con la misma barra fija del examen (sin progreso ni cronómetro); ←
-vuelve a Completados. No muestra la sesión ni botones al final: reintentar se hace desde
-Completados.
+vuelve a Completados. No muestra la sesión ni botones al final.
 
-- **Global**, en dos líneas: `125/150 · 83%` y debajo `72 min`.
+- **Resumen**, con los mismos datos y formato que la fila de Completados
+  (`Examen N1E01 · 83%` y debajo `125/150 · 72 min · 18 nov`), alineado a la izquierda, y
+  dos botones de ícono a la derecha:
+  - ↻ *Volver a intentarlo*: empieza un intento nuevo. Solo pide confirmación si hay un
+    intento a medias de ese examen, porque se perdería.
+  - 👁 *Ver detalles*: abre la **corrección** (`#correccion/<id>`), el examen completo con
+    las respuestas marcadas (§2.2); ← vuelve al resultado.
 - **Por área**, en el orden del examen, con barras que llevan el texto encima.
 - **Cadena de respuestas** con un botón de ícono para copiarla junto al título.
 
@@ -196,7 +204,8 @@ pestaña. Usa la barra fija con ← para volver a Mi progreso.
 | Rendimiento por área | Acumulado de todos los intentos, de peor a mejor; barras con el nombre y `% · aciertos/total` encima |
 
 El resumen usa todo el historial, sin filtros. El **Reporte detallado** tiene los filtros
-(examen, área, repeticiones) y contiene:
+(Examen y Área lado a lado, con «Todos» / «Todas» y los exámenes sin «Diagnóstico», para
+que quepan sin saltos de línea; el interruptor de repeticiones debajo) y contiene:
 
 | Sección | Contenido |
 |---|---|
