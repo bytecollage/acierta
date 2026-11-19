@@ -24,10 +24,13 @@
    * Evolución del porcentaje por examen.
    * series: [{ label, color, points: [{x: Date, y: %, filled: bool, title}] }]
    * refLines: [{ y, label }]
+   * opts: { height, yMin (piso del eje Y, 0 por defecto), labelLast (rotula el último punto) }
+   * Se dibuja al ancho real del contenedor para que el texto conserve su tamaño en el celular.
    */
   function lineChart(host, series, refLines, opts = {}) {
-    const W = 760, H = opts.height || 280;
-    const L = 40, R = 14, T = 14, B = 42;
+    const W = Math.round(host.getBoundingClientRect().width) || 760, H = opts.height || 260;
+    const L = 40, R = 14, T = opts.labelLast ? 24 : 14, B = 30;
+    const yMin = opts.yMin || 0;
     const s = svgRoot(W, H);
 
     const all = series.flatMap((se) => se.points);
@@ -37,16 +40,19 @@
     const spanX = maxX - minX || 1;
 
     const x = (d) => L + ((+d - minX) / spanX) * (W - L - R);
-    const y = (v) => (H - B) - (v / 100) * (H - B - T);
+    const y = (v) => (H - B) - ((v - yMin) / (100 - yMin)) * (H - B - T);
 
-    [0, 25, 50, 75, 100].forEach((v) => {
+    const step = 100 - yMin <= 50 ? 10 : 25;
+    const ticks = [];
+    for (let v = 100; v >= yMin; v -= step) ticks.push(v);
+    ticks.forEach((v) => {
       s.appendChild(el("line", { x1: L, x2: W - R, y1: y(v), y2: y(v), class: "grid-line" }));
       const t = el("text", { x: L - 8, y: y(v) + 4, class: "axis-text", "text-anchor": "end" });
       t.textContent = `${v}%`;
       s.appendChild(t);
     });
 
-    (refLines || []).forEach((r) => {
+    (refLines || []).filter((r) => r.y >= yMin).forEach((r) => {
       s.appendChild(el("line", { x1: L, x2: W - R, y1: y(r.y), y2: y(r.y), class: "ref-line" }));
       const t = el("text", { x: W - R, y: y(r.y) - 6, class: "axis-text", "text-anchor": "end" });
       t.textContent = r.label;
@@ -55,7 +61,7 @@
 
     // eje X: primera y última fecha
     [[minX, "start"], [maxX, "end"]].forEach(([v, anchor]) => {
-      const t = el("text", { x: x(new Date(v)), y: H - 14, class: "axis-text", "text-anchor": anchor });
+      const t = el("text", { x: x(new Date(v)), y: H - 8, class: "axis-text", "text-anchor": anchor });
       t.textContent = new Date(v).toLocaleDateString("es-MX", { day: "numeric", month: "short" });
       s.appendChild(t);
     });
@@ -81,37 +87,14 @@
         c.appendChild(title);
         s.appendChild(c);
       });
-    });
-
-    host.appendChild(s);
-  }
-
-  /**
-   * Barras horizontales (rendimiento por área).
-   * rows: [{ label, value, detail }]
-   */
-  function barsH(host, rows, opts = {}) {
-    const rowH = 30, W = 760, H = rows.length * rowH + 14;
-    const L = opts.labelWidth || 190, R = 52;
-    const s = svgRoot(W, H);
-
-    rows.forEach((r, i) => {
-      const cy = i * rowH + 18;
-      const t = el("text", { x: 0, y: cy + 4, class: "axis-text" });
-      t.textContent = r.label;
-      s.appendChild(t);
-
-      s.appendChild(el("rect", {
-        x: L, y: cy - 8, width: W - L - R, height: 16, rx: 8, fill: "#e5e7eb",
-      }));
-      s.appendChild(el("rect", {
-        x: L, y: cy - 8, width: Math.max((W - L - R) * (r.value / 100), 2), height: 16, rx: 8,
-        fill: opts.color || "#1d4ed8",
-      }));
-
-      const v = el("text", { x: W, y: cy + 4, class: "axis-text", "text-anchor": "end" });
-      v.textContent = r.detail || `${r.value}%`;
-      s.appendChild(v);
+      if (opts.labelLast && pts.length) {
+        // Arriba del punto, salvo que la línea llegue bajando: entonces debajo, para no taparla.
+        const p = pts[pts.length - 1], prev = pts[pts.length - 2];
+        const below = prev && prev.y > p.y;
+        const t = el("text", { x: x(p.x), y: y(p.y) + (below ? 22 : -11), class: "point-label", "text-anchor": "end" });
+        t.textContent = `${p.y}%`;
+        s.appendChild(t);
+      }
     });
 
     host.appendChild(s);
@@ -129,5 +112,5 @@
     host.appendChild(d);
   }
 
-  window.Charts = { lineChart, barsH, dataTable, PALETTE };
+  window.Charts = { lineChart, dataTable, PALETTE };
 })();

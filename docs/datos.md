@@ -25,6 +25,7 @@ cambiar; la app muestra siempre el del catálogo.
 [
   {
     "id": "diagnostico-6",
+    "code": "N1E01",
     "title": "Examen Diagnóstico N1E01",
     "version": "2.0",
     "questionCount": 150,
@@ -38,6 +39,7 @@ cambiar; la app muestra siempre el del catálogo.
 | Campo | Obligatorio | Notas |
 |---|---|---|
 | `id` | sí | Único y estable |
+| `code` | sí | Código corto y único (`N1E01`), solo A–Z y 0–9; encabeza la cadena de respuestas |
 | `title` | sí | Se muestra en las pestañas y en Mi progreso |
 | `version` | sí | Igual a la del examen y la clave |
 | `questionCount` | sí | Igual al número real de preguntas |
@@ -101,7 +103,8 @@ Se carga solo al pulsar *Terminar*.
 cada push. Ante cualquier fallo, la app se detiene con un mensaje que dice el archivo, la
 pregunta y el problema.
 
-**Catálogo:** array no vacío, `id` únicos, campos obligatorios presentes.
+**Catálogo:** array no vacío, `id` y `code` únicos, campos obligatorios presentes, `code`
+solo con A–Z y 0–9.
 
 **Examen:**
 
@@ -155,7 +158,7 @@ va siempre primero. El generador:
   y repartida dentro de cada área (semilla fija `1000 + nivel`, así que es reproducible);
 - evalúa las comprobaciones numéricas de cada pregunta;
 - informa en qué porcentaje la correcta es la opción más larga (se mantuvo entre 23 % y 35 %);
-- escribe los JSON, actualiza el catálogo y pone el título con el código N1E0n.
+- escribe los JSON, actualiza el catálogo (con `code`) y pone el título con el código N1E0n.
 
 Proporción de áreas de un examen de 150: PC 28 · CL 28 · RI 28 · PM 38 · Inglés 28 (la
 escala oficial de 160, redondeada; ver [guia-exani-i.md](guia-exani-i.md)).
@@ -176,7 +179,7 @@ Lo que se envía a la API al terminar y lo que guarda la hoja:
 | `attemptNumber`, `isFirstAttempt` | Los recalcula el servidor; Mi progreso separa primeros intentos de repeticiones |
 | `score`, `total`, `percentage`, `correctCount`, `incorrectCount` | Resultado |
 | `minutes`, `activeMs`, `elapsedWallMs` | Tiempo; permite detectar intentos partidos |
-| `answers` | Cadena `<minutos><LETRAS>`; con ella y la clave se reconstruye la corrección |
+| `answers` | Cadena `<código>\|<minutos>\|<LETRAS>` (los intentos anteriores al 2026-11-19 usan `<minutos><LETRAS>`); con ella y la clave se reconstruye la corrección |
 | `areaResults`, `topicResults` | Aciertos por área y por tema |
 | `topicAreas` | Tema → área, para filtrar sin cargar los exámenes |
 | `keyDistribution` | A/B/C de la clave, para la referencia de azar |

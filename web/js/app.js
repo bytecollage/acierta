@@ -1,12 +1,12 @@
 /* app.js — panel de exámenes (pestañas), examen, corrección y resultados.
    Vive en panel.html. La navegación va por hash para que el botón «atrás» del móvil
-   funcione: #examenes, #completados, #progreso, #examen/<id>, #resultados/<id>.
+   funcione: #examenes, #completados, #progreso, #reporte, #examen/<id>, #resultados/<id>.
    Ver docs/funcionamiento.md §1–4 */
 
 (function () {
   "use strict";
 
-  const { DataError, validateCatalog, validateExam, validateAnswerKey, grade } = window.Grading;
+  const { DataError, validateCatalog, validateExam, validateAnswerKey, grade, parseAnswerString } = window.Grading;
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 
@@ -48,6 +48,26 @@
     return `${nums.slice(0, -1).join(", ")} y ${nums[nums.length - 1]}`;
   }
 
+  /** Título sin la palabra «Diagnóstico»: «Examen Diagnóstico N1E02» → «Examen N1E02». */
+  const shortTitle = (t) => String(t).replace(/\s*Diagn[oó]stico\b/i, "");
+
+  const ICONS = {
+    play: '<path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/>',
+    restart: '<path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1L3.5 8.5"/><path d="M3.5 3.5v5h5"/>',
+    eye: '<path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
+  };
+  const icon = (name) => `<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">${ICONS[name]}</svg>`;
+
+  /** Botón de solo ícono; la etiqueta va en aria-label y en el title. */
+  function iconBtn(action, entry, name, label, primary) {
+    const full = `${label} ${shortTitle(entry.title)}`;
+    return `<button type="button" class="icon-btn${primary ? " primary" : ""}" data-action="${action}"
+              data-id="${esc(entry.id)}" aria-label="${esc(full)}" title="${esc(label)}">${icon(name)}</button>`;
+  }
+
+  const miniBar = (n, total) =>
+    `<div class="mini-bar" aria-hidden="true"><div style="width:${total ? (n / total) * 100 : 0}%"></div></div>`;
+
   function toast(msg) {
     const el = document.createElement("div");
     el.className = "toast";
@@ -64,11 +84,34 @@
 
   function showScreen(name) {
     currentScreen = name;
-    ["panel", "examen", "resultados"].forEach((s) => {
+    ["panel", "examen", "resultados", "reporte"].forEach((s) => {
       $(`#screen-${s}`).classList.toggle("hidden", s !== name);
     });
-    $("#topbar").classList.toggle("hidden", name !== "examen");
+    document.body.dataset.screen = name;
+    $("#tabbar").classList.toggle("hidden", name !== "panel");
+    $("#appfooter").classList.toggle("hidden", name !== "panel");
+    $("#topbar").classList.toggle("hidden", name === "panel");
+    ["#progress-bar", "#progress-text", "#timer"].forEach((sel) =>
+      $(sel).classList.toggle("hidden", name !== "examen"));
+    // A dónde lleva la flecha ← de la barra fija en cada pantalla.
+    const [goto, label] = {
+      examen: ["examenes", "Volver a mis exámenes"],
+      resultados: ["completados", "Volver a completados"],
+      reporte: ["progreso", "Volver a mi progreso"],
+    }[name] || ["examenes", "Volver a mis exámenes"];
+    $("#topbar-back").dataset.goto = goto;
+    $("#topbar-back").setAttribute("aria-label", label);
+    $("#topbar-back").title = label;
+    if (name === "reporte") $("#topbar-title").textContent = "Reporte detallado";
+    paintTopbarHeight();
     window.scrollTo(0, 0);
+  }
+
+  /** Los textos de lectura se pegan justo debajo de la barra fija, que cambia de alto. */
+  function paintTopbarHeight() {
+    const bar = $("#topbar");
+    document.documentElement.style.setProperty("--topbar-h",
+      bar.classList.contains("hidden") ? "0px" : `${bar.offsetHeight}px`);
   }
 
   function fatal(err) {
@@ -212,13 +255,12 @@
     window.Storage.onUpdate(() => {
       paintSync();
       if (currentScreen !== "examen") renderPanel();
-      if (currentScreen === "resultados") paintSaveStatus();
+      if (currentScreen === "reporte") showReport();
     });
     // Sesión vencida: Google puede renovarla sin interacción si el navegador lo permite.
     if (window.Auth.getSession() && !window.Auth.getToken()) window.Auth.refresh();
 
     window.Auth.mount($("#account"));
-    window.Auth.mount($("#result-account"));
     window.Auth.onChange(async () => {
       // Al entrar o salir cambia de quién es el historial. Durante un examen no se
       // repinta nada: el intento en curso es local y no depende de la sesión.
@@ -227,7 +269,7 @@
       try { await window.Storage.init(); } finally { busy(null); }
       paintSync();
       renderPanel();
-      if (currentScreen === "resultados") paintSaveStatus();
+      if (currentScreen === "reporte") showReport();
     });
 
     document.addEventListener("click", (ev) => {
@@ -237,6 +279,7 @@
       go(el.dataset.goto);
     });
     window.addEventListener("hashchange", route);
+    window.addEventListener("resize", paintTopbarHeight, { passive: true });
     route();
 
     ["pointerdown", "keydown", "scroll", "pointermove"].forEach((ev) =>
@@ -311,7 +354,21 @@
     }
 
     leaveExam();
+    if (name === "reporte") { showReport(); return; }
     showTab(TABS.includes(name) ? name : "examenes");
+  }
+
+  /** El historial con el título actual del catálogo: los registros guardan el que tenía el
+   *  examen al hacerse, y un cambio de nombre no debe dejar el historial con dos nombres. */
+  function historyWithTitles() {
+    const titles = new Map(state.catalog.map((e) => [e.id, e.title]));
+    return window.Storage.getAllHistory().map((r) => ({ ...r, examTitle: titles.get(r.examId) || r.examTitle }));
+  }
+
+  function showReport() {
+    // Primero se muestra la pantalla: las gráficas miden el ancho disponible al dibujarse.
+    if (currentScreen !== "reporte") showScreen("reporte");
+    window.Dashboard.showReport(historyWithTitles());
   }
 
   function showTab(tab) {
@@ -322,8 +379,9 @@
       $(`#tab-${t}`).classList.toggle("active", on);
       $(`#panel-${t}`).classList.toggle("hidden", !on);
     });
-    renderPanel();
+    // Primero se muestra el panel: las gráficas miden el ancho disponible al dibujarse.
     showScreen("panel");
+    renderPanel();
   }
 
   function paintAccountNote() {
@@ -339,20 +397,6 @@
     note.classList.toggle("hidden", !note.textContent);
   }
 
-  /** Dice dónde quedó el último intento: en la cuenta o pendiente en este navegador. */
-  function paintSaveStatus() {
-    const el = $("#save-status");
-    if (!el || !state.entry) return;
-    const mode = window.Storage.getMode();
-    const rec = window.Storage.getHistory(state.entry.id)
-      .find((r) => r.completedAt === state.completedAt);
-    if (mode === "local") { el.textContent = "Resultado guardado en este navegador."; return; }
-    if (rec && !rec.pending) { el.textContent = "Resultado guardado en tu cuenta."; return; }
-    el.textContent = mode === "guest"
-      ? "Resultado guardado en este navegador. Inicia sesión para subirlo a tu cuenta."
-      : "Resultado guardado en este navegador; se subirá a tu cuenta cuando haya conexión.";
-  }
-
   /* --------------------------------------------------------------- panel */
 
   function renderPanel() {
@@ -364,21 +408,14 @@
       (h.length ? done : pending).push({ entry: e, hist: h, attempt: window.Storage.loadAttempt(e.id, e.version) });
     });
 
-    $("#tab-examenes").dataset.count = pending.length;
-    $("#tab-completados").dataset.count = done.length;
-
     renderExamList(pending);
     renderDoneList(done);
-    if (currentTab === "progreso") {
-      // El título se toma del catálogo: los registros guardan el que tenía el examen al
-      // hacerse, y un cambio de nombre no debe dejar el historial con dos nombres.
-      const titles = new Map(state.catalog.map((e) => [e.id, e.title]));
-      window.Dashboard.show(hist.map((r) => ({ ...r, examTitle: titles.get(r.examId) || r.examTitle })));
-    }
+    if (currentTab === "progreso" && currentScreen === "panel") window.Dashboard.show(historyWithTitles());
   }
 
   function renderExamList(items) {
     const host = $("#exam-list");
+    host.classList.toggle("list", items.length > 0);
     if (!items.length) {
       host.innerHTML = `<div class="card empty-state">
           <h2>¡Completaste todos los exámenes!</h2>
@@ -388,25 +425,29 @@
       return;
     }
     host.innerHTML = items.map(({ entry: e, attempt }) => {
-      let badge = "", buttons;
+      let meta, buttons, active = false;
       // Un intento corregido sin historial es un resultado que aún no se ha subido.
       if (attempt && attempt.completed) {
-        badge = `<span class="badge done">Resuelto · pendiente de guardar</span>`;
-        buttons = `<button class="primary" data-action="view" data-id="${esc(e.id)}">Ver resultados</button>`;
+        active = true;
+        meta = `<div class="exam-meta">Resuelto · pendiente de guardar</div>`;
+        buttons = iconBtn("view", e, "eye", "Ver resultados", true);
       } else if (attempt) {
+        active = true;
         const n = Object.keys(attempt.selectedAnswers || {}).length;
-        badge = `<span class="badge">Sin terminar · ${n} de ${e.questionCount} respondidas</span>`;
-        buttons = `<button class="primary" data-action="continue" data-id="${esc(e.id)}">Continuar</button>
-                   <button data-action="restart" data-id="${esc(e.id)}">Comenzar de nuevo</button>`;
+        meta = `<div class="exam-meta">${n}/${e.questionCount} preguntas</div>${miniBar(n, e.questionCount)}`;
+        buttons = iconBtn("continue", e, "play", "Continuar", true) +
+                  iconBtn("restart", e, "restart", "Comenzar de nuevo");
       } else {
-        buttons = `<button class="primary" data-action="start" data-id="${esc(e.id)}">Comenzar</button>`;
+        const mins = e.estimatedMinutes ? ` · ~${e.estimatedMinutes} min` : "";
+        meta = `<div class="exam-meta">${e.questionCount} preguntas${mins}</div>`;
+        buttons = iconBtn("start", e, "play", "Comenzar", true);
       }
-      const mins = e.estimatedMinutes ? ` · ~${e.estimatedMinutes} min` : "";
-      return `<article class="exam-card">
-        <h3>${esc(e.title)}</h3>
-        <div class="exam-meta">${e.questionCount} preguntas${mins}</div>
-        ${badge}
-        <div class="btn-row">${buttons}</div>
+      return `<article class="exam-row${active ? " is-active" : ""}">
+        <div class="exam-info">
+          <h3>${esc(shortTitle(e.title))}</h3>
+          ${meta}
+        </div>
+        <div class="exam-actions">${buttons}</div>
       </article>`;
     }).join("");
     host.onclick = onCardAction;
@@ -414,6 +455,7 @@
 
   function renderDoneList(items) {
     const host = $("#done-list");
+    host.classList.toggle("list", items.length > 0);
     if (!items.length) {
       host.innerHTML = `<div class="card empty-state">
           <h2>Aún no has completado ningún examen</h2>
@@ -433,25 +475,27 @@
       const best = hist.reduce((a, b) => (b.percentage > a.percentage ? b : a));
       const retrying = attempt && !attempt.completed;
       const n = retrying ? Object.keys(attempt.selectedAnswers || {}).length : 0;
-      const date = new Date(last.completedAt).toLocaleDateString("es-MX",
-        { day: "numeric", month: "short", year: "numeric" });
-      return `<article class="exam-card">
-        <h3>${esc(e.title)}</h3>
-        <div class="result-line">
-          <span class="result-big">${last.percentage}%</span>
-          <span class="muted">${last.score}/${last.total}${last.minutes ? ` · ${last.minutes} min` : ""} · ${date}</span>
+      // El año solo si no es el actual: ahorra una línea en el celular.
+      const when = new Date(last.completedAt);
+      const date = when.toLocaleDateString("es-MX", when.getFullYear() === new Date().getFullYear()
+        ? { day: "numeric", month: "short" } : { day: "numeric", month: "short", year: "numeric" });
+      const meta = [
+        `${last.score}/${last.total}`,
+        last.minutes ? `${last.minutes} min` : "",
+        date,
+        hist.length > 1 ? `${hist.length} intentos · mejor ${best.percentage}%` : "",
+      ].filter(Boolean).join(" · ");
+      return `<article class="exam-row${retrying ? " is-active" : ""}">
+        <div class="exam-info">
+          <h3>${esc(shortTitle(e.title))} <span class="row-sep">·</span> <span class="row-pct">${last.percentage}%</span></h3>
+          <div class="exam-meta">${meta}${last.pending ? ` <span class="chip low">pendiente de subir</span>` : ""}</div>
+          ${retrying ? `<div class="exam-meta">Nuevo intento: ${n}/${e.questionCount} preguntas</div>${miniBar(n, e.questionCount)}` : ""}
         </div>
-        <div class="exam-meta">
-          ${hist.length} intento${hist.length > 1 ? "s" : ""}
-          ${hist.length > 1 ? ` · mejor: ${best.percentage}%` : ""}
-          ${last.pending ? ` · <span class="chip low">pendiente de subir</span>` : ""}
-        </div>
-        ${retrying ? `<span class="badge">Nuevo intento sin terminar · ${n} de ${e.questionCount}</span>` : ""}
-        <div class="btn-row">
-          <button class="primary" data-action="view" data-id="${esc(e.id)}">Ver resultados</button>
+        <div class="exam-actions">
+          ${iconBtn("view", e, "eye", "Ver resultados")}
           ${retrying
-            ? `<button data-action="continue" data-id="${esc(e.id)}">Continuar intento</button>`
-            : `<button data-action="restart" data-id="${esc(e.id)}">Volver a intentarlo</button>`}
+            ? iconBtn("continue", e, "play", "Continuar intento", true) + iconBtn("restart", e, "restart", "Comenzar de nuevo")
+            : iconBtn("restart", e, "restart", "Volver a intentarlo")}
         </div>
       </article>`;
     }).join("");
@@ -492,10 +536,10 @@
     const hist = window.Storage.getHistory(entry.id);
     if (!hist.length) return null;
     const rec = hist[hist.length - 1];
-    const m = String(rec.answers || "").match(/^(\d+)([ABC]+)$/);
-    if (!m) return null;
+    const parsed = parseAnswerString(rec.answers);
+    if (!parsed) return null;
 
-    const letters = m[2];
+    const letters = parsed.letters;
     const orden = [...questions].sort((a, b) => a.id - b.id);
     if (letters.length !== orden.length) {
       console.warn(`[app] la cadena del historial trae ${letters.length} respuestas ` +
@@ -505,7 +549,7 @@
 
     const selectedAnswers = {};
     orden.forEach((q, i) => { selectedAnswers[q.id] = letters[i]; });
-    const activeMs = rec.activeMs != null ? rec.activeMs : Number(m[1]) * 60000;
+    const activeMs = rec.activeMs != null ? rec.activeMs : parsed.minutes * 60000;
 
     return {
       examId: entry.id,
@@ -567,7 +611,7 @@
         state.result = grade(exam, questions, state.selectedAnswers, keyMap, {
           activeMs: state.activeMs,
           elapsedWallMs: wallMs,
-        });
+        }, entry.code);
         paintCorrection();
         renderResults();
         history.replaceState(null, "", `#resultados/${entry.id}`);
@@ -586,11 +630,8 @@
   }
 
   function renderExam() {
-    $("#exam-title").textContent = state.exam.title;
+    $("#topbar-title").textContent = shortTitle(state.exam.title);
     const byStimulus = new Map(state.stimuli.map((s) => [s.id, s]));
-
-    $("#area-nav").innerHTML = state.exam.areas.map((a) =>
-      `<a href="#area-${esc(slug(a.name))}" data-area="${esc(a.name)}">${esc(a.name)}</a>`).join("");
 
     $("#questions").innerHTML = state.exam.areas.map((area) => {
       const qs = state.questions.filter((q) => q.area === area.name).sort((a, b) => a.id - b.id);
@@ -608,7 +649,7 @@
       }
       return `<section class="area-block" id="area-${esc(slug(area.name))}">
           <div class="area-head">
-            <h2>${esc(area.name)} <span class="count">· ${qs.length} preguntas</span></h2>
+            <h2>${esc(area.name)} <span class="count">· ${qs.length}</span></h2>
           </div>
           ${chunks.join("")}
         </section>`;
@@ -667,18 +708,11 @@
   function renderProgress() {
     const done = state.questions.filter((q) => state.selectedAnswers[q.id]).length;
     const total = state.questions.length;
-    $("#progress-text").textContent = `Respondidas: ${done} / ${total}`;
+    $("#progress-text").textContent = `${done}/${total}`;
     $("#progress-fill").style.width = `${(done / total) * 100}%`;
     const bar = $("#progress-bar");
     bar.setAttribute("aria-valuenow", String(done));
     bar.setAttribute("aria-valuemax", String(total));
-
-    $$("#area-nav a").forEach((a) => {
-      const qs = state.questions.filter((q) => q.area === a.dataset.area);
-      const pend = qs.filter((q) => !state.selectedAnswers[q.id]).length;
-      a.classList.toggle("done", pend === 0);
-      a.textContent = pend === 0 ? a.dataset.area : `${a.dataset.area} (${pend})`;
-    });
   }
 
   /* ----------------------------------------------------------- terminar */
@@ -715,7 +749,7 @@
       const keyMap = validateAnswerKey(key, state.exam, state.questions);
       const elapsedWallMs = Date.now() - new Date(state.startedAt).getTime();
       state.result = grade(state.exam, state.questions, state.selectedAnswers, keyMap,
-        { activeMs: state.activeMs, elapsedWallMs });
+        { activeMs: state.activeMs, elapsedWallMs }, state.entry.code);
       state.completed = true;
       state.completedAt = new Date().toISOString();
 
@@ -781,87 +815,25 @@
 
   function renderResults() {
     const r = state.result;
-    $("#result-exam-title").textContent = state.exam.title;
-    paintSaveStatus();
+    $("#topbar-title").textContent = shortTitle(state.exam.title);
 
     $("#result-score").innerHTML = `
-      <div class="big">${r.score} / ${r.total}</div>
-      <div class="pct">${r.percentage}%</div>
-      <div class="time">Tiempo: ${r.minutes} min</div>`;
+      <div class="big">${r.score}/${r.total} · ${r.percentage}%</div>
+      <div class="time">${r.minutes} min</div>`;
 
-    $("#result-stats").innerHTML = `
-      <div class="stat"><div class="v">${r.correctCount}</div><div class="l">Correctas</div></div>
-      <div class="stat"><div class="v">${r.incorrectCount}</div><div class="l">Incorrectas</div></div>
-      <div class="stat"><div class="v">${r.percentage}%</div><div class="l">Porcentaje</div></div>`;
-
-    $("#chance-note").innerHTML =
-      `Referencia: responder al azar produciría ~33%. En este examen, responder siempre
-       «${r.chance.letter}» produce ${r.chance.percentage}%.`;
-
-    $("#area-results").innerHTML = state.exam.areas.map((a) => {
+    $("#area-results").innerHTML = `<ul class="hbars">${state.exam.areas.map((a) => {
       const v = r.areaResults[a.name] || { correct: 0, total: 0 };
       const pct = v.total ? Math.round((v.correct / v.total) * 100) : 0;
-      return `<tr><td>${esc(a.name)}</td><td>${v.correct} / ${v.total}</td><td>${pct}%</td>
-        <td style="width:110px"><div class="bar"><div style="width:${pct}%"></div></div></td></tr>`;
-    }).join("");
+      return `<li class="hbar"><div class="hbar-fill" style="width:${pct}%"></div>
+        <span class="hbar-label">${esc(a.name)}</span>
+        <span class="hbar-value">${pct}% · ${v.correct}/${v.total}</span></li>`;
+    }).join("")}</ul>`;
 
-    const topics = Object.entries(r.topicResults).map(([t, v]) => ({
-      topic: t, ...v, pct: Math.round((v.correct / v.total) * 100),
-    })).sort((a, b) => (a.pct - b.pct) || (b.total - a.total) || a.topic.localeCompare(b.topic));
+    const a = parseAnswerString(r.answerString);
+    $("#answer-string").innerHTML =
+      `<span class="mins">${esc(a.code)}|${a.minutes}|</span>${a.letters}`;
 
-    $("#topic-results").innerHTML = topics.map((t) => `
-      <tr>
-        <td>${esc(t.topic)} ${t.total < 2 ? '<span class="chip low">muestra mínima</span>' : ""}</td>
-        <td>${t.correct} / ${t.total}</td>
-        <td>${t.pct}%</td>
-      </tr>`).join("");
-
-    const m = r.answerString.match(/^(\d+)([ABC]+)$/);
-    $("#answer-string").innerHTML = `<span class="mins">${m[1]}</span>${m[2]}`;
-
-    $("#btn-copy-answers").onclick = () => copy(r.answerString, "Respuestas copiadas");
-    $("#btn-copy-summary").onclick = () => copy(buildSummary(), "Resumen copiado");
-    $("#btn-restart").onclick = () => {
-      window.Storage.clearAttempt(state.entry.id, state.entry.version);
-      openFromList(state.entry, "start");
-    };
-    $("#btn-home").onclick = () => go("completados");
-  }
-
-  function buildSummary() {
-    const r = state.result;
-    const areas = state.exam.areas.map((a) => {
-      const v = r.areaResults[a.name];
-      return `${a.name}: ${v.correct}/${v.total} (${Math.round((v.correct / v.total) * 100)}%)`;
-    }).join("\n");
-    const failed = Object.entries(r.topicResults)
-      .filter(([, v]) => v.correct < v.total)
-      .sort((a, b) => (a[1].correct / a[1].total) - (b[1].correct / b[1].total))
-      .map(([t, v]) => `${t}: ${v.correct}/${v.total}`).join("\n");
-    const d = r.keyDistribution;
-    return [
-      `Examen: ${state.exam.title}`,
-      `Versión: ${state.exam.version}`,
-      `Fecha: ${state.completedAt.slice(0, 10)}`,
-      `Tiempo: ${r.minutes} min (activo) / ${Math.round(r.elapsedWallMs / 60000)} min (reloj)`,
-      "",
-      `Resultado: ${r.score}/${r.total} (${r.percentage}%)`,
-      "",
-      `Cadena: ${r.answerString}`,
-      "",
-      "Áreas:", areas,
-      "",
-      "Temas fallados:", failed || "(ninguno)",
-      // La nota solo aplica a claves desbalanceadas (N0E01 y N0E02). En una clave
-      // repartida en tercios, marcar siempre la misma letra da ~33% y no hay nada que advertir.
-      ...(r.chance.percentage > 40 ? [
-        "",
-        "Nota para el análisis: la clave de este examen no está balanceada",
-        `(A=${d.A}, B=${d.B}, C=${d.C} de ${r.total}). La línea base de azar no es 33%:`,
-        `responder siempre «${r.chance.letter}» produce ${r.chance.percentage}%.`,
-        "Considerarlo al interpretar el resultado.",
-      ] : []),
-    ].join("\n");
+    $("#btn-copy-answers").onclick = () => copy(r.answerString, "Cadena copiada");
   }
 
   async function copy(text, msg) {
@@ -875,7 +847,6 @@
       ta.remove();
     }
     toast(msg);
-    $("#copy-status").textContent = msg;
   }
 
   /* --------------------------------------------- colapsar texto en móvil */

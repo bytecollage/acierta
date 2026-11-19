@@ -18,6 +18,7 @@
   /* ------------------------------------------------------------ utilidades */
 
   const pct = (c, t) => (t ? Math.round((c / t) * 100) : 0);
+  const shortTitle = (t) => String(t).replace(/\s*Diagn[oó]stico\b/i, "");
   const fmtDate = (iso) => new Date(iso).toLocaleDateString("es-MX",
     { day: "numeric", month: "short", year: "numeric" });
 
@@ -38,11 +39,11 @@
 
   let wired = false;
 
-  /** Pinta el dashboard con el historial dado. Lo llama app.js al abrir la pestaña
-   *  «Mi progreso» y cada vez que cambia el historial (sesión nueva, intento nuevo). */
+  /** Resumen de la pestaña «Mi progreso». Lo llama app.js al abrir la pestaña y cada vez
+   *  que cambia el historial (sesión nueva, intento nuevo). */
   function show(rows) {
     history = rows.slice();
-    paintStorageMode();
+    wire();
 
     if (!history.length) {
       $("#empty").classList.remove("hidden");
@@ -53,6 +54,18 @@
     }
     $("#empty").classList.add("hidden");
     $("#content").classList.remove("hidden");
+    render();
+  }
+
+  /** Pantalla «Reporte detallado» (#reporte), con sus filtros. */
+  function showReport(rows) {
+    history = rows.slice();
+    wire();
+    paintStorageMode();
+
+    $("#report-empty").classList.toggle("hidden", history.length > 0);
+    $("#report").classList.toggle("hidden", !history.length);
+    if (!history.length) return;
 
     // Un filtro que apunta a un examen que ya no está en el historial se reinicia.
     if (filters.exam !== "*" && !history.some((h) => h.examId === filters.exam)) filters.exam = "*";
@@ -61,14 +74,26 @@
     $("#f-area").value = filters.area;
     if ($("#f-area").value !== filters.area) { filters.area = "*"; $("#f-area").value = "*"; }
     $("#f-repeats").checked = filters.includeRepeats;
-    render();
+    renderReport();
+  }
 
-    if (!wired) {
-      wired = true;
-      $("#f-area").onchange = (e) => { filters.area = e.target.value; render(); };
-      $("#f-exam").onchange = (e) => { filters.exam = e.target.value; render(); };
-      $("#f-repeats").onchange = (e) => { filters.includeRepeats = e.target.checked; render(); };
-    }
+  function wire() {
+    if (wired) return;
+    wired = true;
+    $("#f-area").onchange = (e) => { filters.area = e.target.value; renderReport(); };
+    $("#f-exam").onchange = (e) => { filters.exam = e.target.value; renderReport(); };
+    $("#f-repeats").onchange = (e) => { filters.includeRepeats = e.target.checked; renderReport(); };
+    // Las gráficas se dibujan al ancho real: al cambiarlo se vuelven a dibujar.
+    const visible = (el) => el && el.offsetParent !== null;
+    let t = null;
+    window.addEventListener("resize", () => {
+      clearTimeout(t);
+      t = setTimeout(() => {
+        if (!history.length) return;
+        if (visible($("#content"))) render();
+        if (visible($("#report"))) renderReport();
+      }, 150);
+    }, { passive: true });
   }
 
   function paintStorageMode() {
@@ -98,12 +123,59 @@
     return history.filter((h) => filters.exam === "*" || h.examId === filters.exam);
   }
 
+  /** Resumen: todo el historial, sin filtros. El reporte detallado sí se filtra. */
   function render() {
+    renderScores(history);
+    renderProgressLine(history);
+    renderKpis(history);
+    renderAreas(history);
+  }
+
+  function renderReport() {
     const rows = selected();
-    renderKpis(rows);
-    renderEvolution(rows);
-    renderAreas(rows);
     renderTopics(rows);
+    renderEvolution(rows);
+    renderBreakdown(rows);
+  }
+
+  /* ------------------------------------------------------------- puntajes */
+
+  /** Puntuación sobre 1000 (promedio de los porcentajes) y puntos totales (aciertos sumados). */
+  function renderScores(rows) {
+    const avg = rows.reduce((a, r) => a + (r.total ? r.score / r.total : 0), 0) / rows.length;
+    const points = rows.reduce((a, r) => a + (r.score || 0), 0);
+    $("#scores").innerHTML = `
+      <div class="kpi accent">
+        <div class="l">Puntuación</div>
+        <div class="v">${Math.round(avg * 1000)}<span class="of">/1000</span></div>
+        <div class="s">Promedio de tus exámenes</div>
+      </div>
+      <div class="kpi accent">
+        <div class="l">Puntos totales</div>
+        <div class="v">${points.toLocaleString("es-MX")}</div>
+        <div class="s">Aciertos sumados</div>
+      </div>`;
+  }
+
+  /** Una sola línea con todos los intentos en orden de fecha. */
+  function renderProgressLine(rows) {
+    const host = $("#chart-evolution");
+    host.innerHTML = "";
+    if (rows.length < 2) {
+      host.innerHTML = `<p class="small muted">Haz al menos dos exámenes para ver tu avance.</p>`;
+      return;
+    }
+    const min = Math.min(...rows.map((r) => r.percentage));
+    window.Charts.lineChart(host, [{
+      label: "Resultado",
+      color: window.Charts.PALETTE[0],
+      points: rows.map((r) => ({
+        x: new Date(r.completedAt),
+        y: r.percentage,
+        filled: true,
+        title: `${shortTitle(r.examTitle)}\n${fmtDate(r.completedAt)}\n${r.score}/${r.total} (${r.percentage}%)`,
+      })),
+    }], [], { height: 190, yMin: Math.max(0, Math.floor((min - 10) / 10) * 10), labelLast: true });
   }
 
   /* ------------------------------------------------------------------ kpis */
@@ -126,20 +198,18 @@
       ? Math.round(comparable.reduce((a, r) => a + r.minutes, 0) / comparable.length) : null;
     const excluded = rows.length - comparable.length;
 
-    const desglose = [...byExam.entries()]
-      .map(([, rs]) => `${rs[0].examTitle.replace(/^Examen Diagnóstico\s*/, "")}: ${rs.length}`)
-      .join(" · ");
 
     $("#kpis").innerHTML = `
       <div class="kpi">
         <div class="l">Exámenes completados</div>
         <div class="v">${rows.length}</div>
-        <div class="s">${esc(desglose)}</div>
+        <div class="s">${rows.length === byExam.size ? "Sin repeticiones"
+          : `${rows.length - byExam.size} repetición(es)`}</div>
       </div>
       <div class="kpi">
         <div class="l">Mejor resultado</div>
         <div class="v">${best.percentage}%</div>
-        <div class="s">${esc(best.examTitle)} · ${fmtDate(best.completedAt)}</div>
+        <div class="s">${esc(shortTitle(best.examTitle))} · ${fmtDate(best.completedAt)}</div>
       </div>
       <div class="kpi">
         <div class="l">Último resultado</div>
@@ -154,10 +224,18 @@
       </div>`;
   }
 
+  function renderBreakdown(rows) {
+    const byExam = new Map();
+    rows.forEach((r) => byExam.set(r.examId, [...(byExam.get(r.examId) || []), r]));
+    $("#exam-breakdown").textContent = [...byExam.values()]
+      .map((rs) => `${shortTitle(rs[0].examTitle)}: ${rs.length} intento${rs.length > 1 ? "s" : ""}`)
+      .join(" · ");
+  }
+
   /* ------------------------------------------------------------- evolución */
 
   function renderEvolution(rows) {
-    const host = $("#chart-evolution");
+    const host = $("#chart-exams");
     host.innerHTML = "";
 
     if (rows.length < 2) {
@@ -178,7 +256,7 @@
     byExam.forEach((rs, examId) => {
       const color = window.Charts.PALETTE[i % window.Charts.PALETTE.length];
       series.push({
-        label: rs[0].examTitle,
+        label: shortTitle(rs[0].examTitle),
         color,
         points: rs.map((r) => ({
           x: new Date(r.completedAt),
@@ -189,8 +267,9 @@
         })),
       });
       const ch = chanceOf(rs[0]);
-      if (ch && !refs.some((x) => x.y === ch.percentage)) {
-        refs.push({ y: ch.percentage, label: `${ch.percentage}% · responder siempre la misma letra` });
+      // Líneas a menos de 4 puntos se encimarían: basta con una.
+      if (ch && !refs.some((x) => Math.abs(x.y - ch.percentage) < 4)) {
+        refs.push({ y: ch.percentage, label: `${ch.percentage}% · siempre la misma letra` });
       }
       i += 1;
     });
@@ -204,7 +283,7 @@
       host,
       ["Fecha", "Examen", "Resultado", "%", "Tiempo", "Intento"],
       rows.map((r) => [
-        fmtDate(r.completedAt), esc(r.examTitle), `${r.score}/${r.total}`,
+        fmtDate(r.completedAt), esc(shortTitle(r.examTitle)), `${r.score}/${r.total}`,
         `${r.percentage}%`, `${r.minutes} min`,
         r.isFirstAttempt === false ? `#${r.attemptNumber} (repetición)` : `#${r.attemptNumber}`,
       ]),
@@ -214,14 +293,12 @@
 
   /* ------------------------------------------------------------------ áreas */
 
+  /** Barras en HTML con el texto encima: se leen igual en el celular que en escritorio. */
   function renderAreas(rows) {
     const host = $("#chart-areas");
-    host.innerHTML = "";
-
     const acc = {};
     rows.forEach((r) => {
       Object.entries(r.areaResults || {}).forEach(([a, v]) => {
-        if (filters.area !== "*" && a !== filters.area) return;
         if (!acc[a]) acc[a] = { correct: 0, total: 0 };
         acc[a].correct += v.correct;
         acc[a].total += v.total;
@@ -232,11 +309,12 @@
       .map(([label, v]) => ({ label, value: pct(v.correct, v.total), detail: `${v.correct}/${v.total}` }))
       .sort((a, b) => a.value - b.value);
 
-    if (!data.length) { host.innerHTML = `<p class="muted small">Sin datos para este filtro.</p>`; return; }
-
-    window.Charts.barsH(host, data);
-    window.Charts.dataTable(host, ["Área", "Aciertos", "%"],
-      data.map((d) => [esc(d.label), d.detail, `${d.value}%`]), "Ver datos de la gráfica");
+    host.innerHTML = data.length
+      ? `<ul class="hbars">${data.map((d) => `
+          <li class="hbar"><div class="hbar-fill" style="width:${d.value}%"></div>
+            <span class="hbar-label">${esc(d.label)}</span>
+            <span class="hbar-value">${d.value}% · ${d.detail}</span></li>`).join("")}</ul>`
+      : `<p class="muted small">Sin datos.</p>`;
   }
 
   /* ------------------------------------------------------------------ temas */
@@ -328,5 +406,5 @@
     return '<span title="estable">→</span>';
   }
 
-  window.Dashboard = { show };
+  window.Dashboard = { show, showReport };
 })();

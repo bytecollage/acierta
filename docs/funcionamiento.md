@@ -27,11 +27,11 @@ Qué hace Acierta y por qué se comporta así. Las razones de fondo están en
 | `panel.html` | **Panel** con tres pestañas, más las pantallas de examen y resultados |
 
 ```text
-┌────────────┐ CONTINUAR ┌──────────────────────────────────┐
-│ BIENVENIDA │ ────────▶ │ PANEL                            │
-└────────────┘           │ [EXÁMENES][COMPLETADOS][PROGRESO]│
-                         └──────┬───────────────▲───────────┘
-                        Comenzar│               │atrás / Volver
+┌────────────┐ CONTINUAR ┌──────────────────────────────────┐ Reporte  ┌─────────┐
+│ BIENVENIDA │ ────────▶ │ PANEL                            │ ───────▶ │ REPORTE │
+└────────────┘           │ [EXÁMENES][COMPLETADOS][PROGRESO]│ ◀─────── └─────────┘
+                         └──────┬───────────────▲───────────┘   ←
+                        Comenzar│      atrás / ←│
                          ┌──────▼───┐ Terminar ┌┴───────────┐
                          │  EXAMEN  │ ───────▶ │ RESULTADOS │
                          └──────────┘          └────────────┘
@@ -41,15 +41,41 @@ Qué hace Acierta y por qué se comporta así. Las razones de fondo están en
 
 | Pestaña | Muestra |
 |---|---|
-| **EXÁMENES** | Exámenes sin ningún intento terminado: *Comenzar*, o *Continuar* / *Comenzar de nuevo* si hay uno a medias |
-| **COMPLETADOS** | Exámenes con al menos un intento terminado, el más reciente primero: último resultado, intentos, mejor resultado. *Ver resultados* y *Volver a intentarlo* (o *Continuar intento*) |
-| **MI PROGRESO** | Evolución y temas a reforzar (§5) |
+| **EXÁMENES** | Exámenes sin ningún intento terminado: ▶ *Comenzar*, o ▶ *Continuar* / ↻ *Comenzar de nuevo* si hay uno a medias |
+| **COMPLETADOS** | Exámenes con al menos un intento terminado, el más reciente primero: último resultado, intentos, mejor resultado. 👁 *Ver resultados* y ↻ *Volver a intentarlo* (o ▶ *Continuar intento*) |
+| **MI PROGRESO** | Resumen de un vistazo y acceso a la pantalla **Reporte detallado** (§5) |
 
-Cada pestaña muestra cuántos exámenes contiene.
+**Barra fija.** Todas las pantallas tienen la misma barra arriba: blanca, de 56 px de alto,
+con borde inferior y con los mismos márgenes laterales que el contenido (18 px en
+escritorio, 10 px en el celular), que empieza 12–16 px debajo. En el panel la barra son
+las tres pestañas; en las demás pantallas, ← y el título. El panel no muestra logo ni
+nombre de la app.
+
+**Estilo homogéneo.** Tamaños de letra, radios, separaciones y rellenos salen de
+variables en `styles.css` (`--fs-xs` 12 · `--fs-sm` 13 · `--fs-md` 14 · `--fs-title` 17 ·
+`--fs-bar` 18 · `--fs-stat` 26/22; `--radius` 10 para tarjetas y `--radius-sm` 8 para lo
+que va dentro; `--gap` 16/12 entre tarjetas; `--pad` de tarjeta). Todo título de tarjeta
+o de área usa el mismo `h2` (17 px, 10 px debajo), con subtítulo gris opcional en la misma
+línea y acción de ícono opcional a la derecha. Las tarjetas de datos (puntuación, puntos,
+completados, mejor y último resultado, tiempo medio) comparten estructura: etiqueta en
+mayúsculas, cifra y nota.
+
+Las pestañas son íconos (con su nombre para lectores de pantalla y en el `title`), sin
+contadores. El nombre del estudiante y *Cerrar sesión* (o el botón de Google, sin sesión)
+van en el pie del panel, espejo de la barra fija: solo una línea superior de ancho
+completo, sin fondo, a 56 px del borde inferior. Con poco contenido el pie queda al fondo
+de la pantalla; con mucho, al final de la página.
+
+**Filas de examen.** Cada examen ocupa una fila compacta: el título sin la palabra
+«Diagnóstico» (`Examen N1E02`) y, debajo y más pequeño, `150 preguntas · ~255 min`. En
+Completados el porcentaje va justo después del título (`Examen N1E01 · 83%`) y debajo `aciertos · minutos · fecha` (el año
+solo si no es el actual). Un intento a medias resalta la fila con fondo y muestra
+`97/150 preguntas` con una barra fina. Las acciones son botones de solo ícono con la
+etiqueta completa en `aria-label` (`Continuar Examen N1E02`).
 
 **Navegación por hash.** Cada vista tiene su URL: `#examenes`, `#completados`,
-`#progreso`, `#examen/<id>`, `#resultados/<id>`. El botón «atrás» del celular regresa del
-examen a las pestañas. Salir del examen (atrás, «← Mis exámenes» o una pestaña) guarda el
+`#progreso`, `#reporte`, `#examen/<id>`, `#resultados/<id>`. El botón «atrás» del celular regresa del
+examen a las pestañas. Salir del examen (atrás, la flecha ← de la barra fija o una pestaña) guarda el
 intento y detiene el cronómetro. Recargar `#examen/<id>` sin intento guardado lleva a
 EXÁMENES en lugar de crear uno.
 
@@ -63,9 +89,10 @@ guardando tu resultado…» al terminar.
 
 Todas las preguntas en una sola página, agrupadas por área en el orden de `exam.areas`.
 
-- **Barra fija** con `Respondidas: 42 / 150`, barra de progreso y cronómetro.
-- **Navegación por áreas** con las pendientes de cada una, por ejemplo
-  `Pensamiento matemático (3)`.
+- **Barra fija** arriba, siempre visible: ← (volver a mis exámenes), nombre del examen,
+  `42/150` y cronómetro. El progreso es una línea fina en el borde inferior de la barra,
+  así que la barra mide lo mismo que en las demás pantallas. No hay encabezado ni navegación
+  por áreas: se empieza directamente en la primera pregunta.
 - **Cada pregunta** es un `fieldset` con el enunciado en la `legend` y tres opciones de
   radio con su `label`.
 - **El tema no se muestra durante el examen** y ni siquiera está en el DOM: funcionaría
@@ -123,32 +150,32 @@ intento se hizo a trozos y no cuenta para el tiempo medio.
 ### 3.2 Cadena
 
 ```text
-35AABCCBABBA
-│ └────────── una letra por pregunta, ordenadas por id
-└──────────── minutos activos, redondeados; mínimo 1
+N0E01|35|AABCCBABBA
+│     │  └── una letra por pregunta, ordenadas por id
+│     └───── minutos activos, redondeados; mínimo 1
+└─────────── código del examen (`code` en exams.json)
 ```
 
-Sin separadores, en mayúsculas, siempre con `questionCount` letras y ordenada por `id`,
-nunca por orden visual. Se lee con `/^(\d+)([ABC]+)$/`. La cadena basta para reconstruir
-la corrección completa junto con `answers.json`.
+Tres partes separadas por `|`, en mayúsculas, siempre con `questionCount` letras y
+ordenada por `id`, nunca por orden visual. Se lee con `/^([A-Z0-9]+)\|(\d+)\|([ABC]+)$/`
+(`Grading.parseAnswerString`). La cadena basta para reconstruir la corrección completa
+junto con `answers.json`.
+
+**Formato anterior.** Los intentos guardados antes del 2026-11-19 tienen la cadena sin
+código ni separadores (`35AABCCBABBA`). No se migran: la app y el Apps Script siguen
+aceptándolas, y al ver esos resultados la cadena se muestra ya en el formato nuevo.
 
 ---
 
 ## 4. Resultados
 
-- **Global:** aciertos, porcentaje, correctas, incorrectas y tiempo.
-- **Referencia de azar:** «responder al azar produciría ~33 %; en este examen, responder
-  siempre "A" produce 49 %». En N0E01 y N0E02 la clave está desbalanceada y esta línea es
-  la que evita leer un 49 % como «casi la mitad bien».
-- **Por área**, en el orden del examen, con barra.
-- **Por tema**, en una sección cerrada por defecto: conteo absoluto, aviso de muestra
-  mínima cuando hay una sola pregunta y orden con los fallados primero. Abre con una nota:
-  un fallo aislado no indica una laguna.
-- **Cadena** con botones *Copiar respuestas* y *Copiar resumen*. El resumen está pensado
-  para pegarlo a un asistente de IA: examen, fecha, tiempos, resultado, áreas y temas
-  fallados. Si la clave está desbalanceada, añade una nota que lo explica.
-- **Dónde quedó guardado:** «en tu cuenta», o «en este navegador» con la opción de iniciar
-  sesión para subirlo.
+Pantalla mínima, con la misma barra fija del examen (sin progreso ni cronómetro); ←
+vuelve a Completados. No muestra la sesión ni botones al final: reintentar se hace desde
+Completados.
+
+- **Global**, en dos líneas: `125/150 · 83%` y debajo `72 min`.
+- **Por área**, en el orden del examen, con barras que llevan el texto encima.
+- **Cadena de respuestas** con un botón de ícono para copiarla junto al título.
 
 ---
 
@@ -157,12 +184,25 @@ la corrección completa junto con `answers.json`.
 Responde dos preguntas, sin esconder las limitaciones de los datos: **¿estoy mejorando?** y
 **¿qué temas estudio?**
 
+A primera vista, lo que se entiende en unos segundos; el resto, en la pantalla
+**Reporte detallado** (`#reporte`), a la que se entra desde una tarjeta al final de la
+pestaña. Usa la barra fija con ← para volver a Mi progreso.
+
 | Sección | Contenido |
 |---|---|
-| Resumen | Exámenes completados, mejor resultado, último resultado y su cambio frente al anterior del mismo examen, tiempo medio de intentos comparables |
-| Evolución | Una línea por examen; punto relleno para el primer intento y hueco para repeticiones; línea punteada en la referencia de azar de cada examen. Con un solo intento, en su lugar se pide hacer al menos dos |
-| Rendimiento por área | Acumulado de los intentos del filtro |
+| Puntajes | **Puntuación /1000**: promedio de `score/total` de todos los intentos × 1000. **Puntos totales**: suma de aciertos de todos los intentos |
+| Tu avance | Una sola línea con el % de cada intento en orden de fecha. El eje Y empieza 10 puntos por debajo del peor resultado (en múltiplos de 10) para que el cambio se vea; las marcas del eje lo indican. Rotula el último resultado. Con un solo intento, se pide hacer al menos dos |
+| Tarjetas | Exámenes completados (y repeticiones), mejor resultado, último resultado y su cambio frente al anterior del mismo examen, tiempo medio de intentos comparables |
+| Rendimiento por área | Acumulado de todos los intentos, de peor a mejor; barras con el nombre y `% · aciertos/total` encima |
+
+El resumen usa todo el historial, sin filtros. El **Reporte detallado** tiene los filtros
+(examen, área, repeticiones) y contiene:
+
+| Sección | Contenido |
+|---|---|
 | Temas a reforzar | Tabla agregada **cruzando exámenes**: aciertos, %, observaciones, tendencia (↑ → ↓, con 6 o más observaciones) y confianza (alta ≥ 6, media 3–5, baja < 3) |
+| Evolución por examen | Una línea por examen; punto relleno para el primer intento y hueco para repeticiones; línea punteada en la referencia de azar de cada examen (una sola si dos quedan a menos de 4 puntos) |
+| Exámenes hechos | Intentos por examen |
 
 Reglas de los temas:
 
@@ -173,9 +213,12 @@ Reglas de los temas:
 - Por defecto se usan **solo primeros intentos**: repetir un examen mide en parte memoria.
   El interruptor *Incluir repeticiones* las suma y muestra un aviso.
 
-Filtros por examen y por área. Cada gráfica tiene una tabla equivalente en *Ver datos de la
-gráfica*. Los títulos de examen se toman del catálogo, así que un cambio de nombre no deja
-el historial con dos nombres.
+Las gráficas SVG se dibujan al ancho real del contenedor, así que el texto conserva su tamaño
+en el celular; la de evolución por examen tiene una tabla equivalente en *Ver datos de la
+gráfica*. Las barras por área son HTML con el dato escrito, así que no la necesitan.
+
+Los títulos de examen se toman del catálogo, así que un cambio de nombre no deja el
+historial con dos nombres.
 
 ---
 
@@ -192,9 +235,13 @@ el historial con dos nombres.
 
 **En el celular**
 
-- Pestañas fijas arriba al desplazarse; objetivos táctiles de 44 px o más.
-- Sin desplazamiento horizontal (probado a 375 px de ancho).
-- Áreas del examen en una fila deslizable; textos de lectura que se pueden ocultar.
+- Barra fija del mismo alto en todas las pantallas (pestañas de ícono en el panel); objetivos táctiles de 44 px o más,
+  también en los botones de ícono.
+- Sin desplazamiento horizontal (probado a 300 y 375 px de ancho). La `legend` de cada
+  pregunta flota para no dibujarse sobre el borde de su tarjeta, y los `fieldset` admiten
+  encogerse (`min-width: 0`).
+- Barra fija del examen con la salida siempre a mano; textos de lectura que se pueden
+  ocultar; márgenes y rellenos reducidos para ganar espacio.
 - Columnas secundarias de las tablas ocultas en pantallas estrechas.
 - Márgenes de *safe area* para el notch del iPhone; selectores sin zoom en iOS.
 - Manifiesto e íconos para instalarla en la pantalla de inicio. No funciona sin conexión

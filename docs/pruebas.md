@@ -24,16 +24,16 @@ teléfono real.
 |---|---|---|
 | M-01 | Abrir la bienvenida y pulsar CONTINUAR | El panel aparece sin página en blanco; con caché, al instante y con «Actualizando tu historial…» |
 | M-02 | Abrir el panel sin caché (navegador limpio, con sesión) | «Cargando tus exámenes…» y luego las pestañas con datos |
-| M-03 | Iniciar y cerrar sesión desde el panel | Cambia el historial mostrado; al cerrar sesión se borra la caché |
-| M-04 | Terminar un examen sin sesión y luego iniciar sesión | El resultado dice «guardado en este navegador» y después pasa a «guardado en tu cuenta» |
+| M-03 | Iniciar y cerrar sesión desde el pie del panel | Cambia el historial mostrado; al cerrar sesión se borra la caché |
+| M-04 | Terminar un examen sin sesión y luego iniciar sesión | En Completados aparece «pendiente de subir» y desaparece al subirse |
 | M-05 | Simular un script que no carga | «No se pudo cargar la aplicación…» con **Reintentar** |
 
 ### Panel y navegación 📱
 
 | # | Prueba | Esperado |
 |---|---|---|
-| M-06 | Revisar las tres pestañas | Contadores correctos; Exámenes sin terminados; Completados con último resultado, intentos y mejor resultado |
-| M-07 | Empezar un examen, responder 3 y pulsar «atrás» | Regresa a Exámenes; la tarjeta dice «Sin terminar · 3 de N» |
+| M-06 | Revisar las tres pestañas 📱 | Íconos sin contadores; Exámenes sin terminados; Completados con último resultado, intentos y mejor resultado; sin scroll horizontal a 320 px |
+| M-07 | Empezar un examen, responder 3 y pulsar «atrás» | Regresa a Exámenes; la fila queda resaltada y dice «3/N preguntas» |
 | M-08 | Continuar ese intento | Recupera las 3 respuestas y el tiempo acumulado |
 | M-09 | Ver resultados desde Completados y pulsar «atrás» | Regresa a Completados |
 | M-10 | Recargar en `#completados` y en `#examen/<id>` sin intento | Se queda en Completados; la segunda lleva a Exámenes |
@@ -43,7 +43,7 @@ teléfono real.
 | # | Prueba | Esperado |
 |---|---|---|
 | M-11 | Responder todo menos la 10 y terminar | No se carga `answers.json` (pestaña de red); `Falta 1 pregunta: 10`; foco en la 10; el cronómetro sigue |
-| M-12 | Responder todo y terminar | Corrección, resultados y cadena con `questionCount` letras precedidas de los minutos |
+| M-12 | Responder todo y terminar | Corrección, resultados y cadena `<código>\|<minutos>\|<letras>` con `questionCount` letras |
 | M-13 | Elegir a propósito una incorrecta | Roja con «Tu respuesta» y la correcta verde con «Respuesta correcta»; se distinguen en escala de grises |
 | M-14 | Intentar cambiar una respuesta ya corregida | Opciones deshabilitadas |
 | M-15 | Bloque de lectura 📱 | El texto aparece una vez y se puede ocultar en el celular; cada pregunta lo referencia con `aria-describedby` |
@@ -56,17 +56,17 @@ teléfono real.
 | M-17 | Cambiar de pestaña 3 minutos | El cronómetro no avanzó |
 | M-18 | No tocar nada 7 minutos | Se pausa a los 5 y se reanuda al interactuar |
 | M-19 | Responder en desorden | La cadena sigue el orden de `id` |
-| M-20 | «Copiar resumen» en N1E01 y en N0E01 | Solo N0E01 incluye la nota de clave desbalanceada |
+| M-20 | Copiar la cadena desde resultados | Copia `N1E01\|72\|ABC…` y muestra «Cadena copiada»; un resultado antiguo (cadena sin código) también se muestra con código |
 
 ### Mi progreso
 
 | # | Prueba | Esperado |
 |---|---|---|
 | M-21 | Sin historial | Estado vacío explicativo, sin gráficas vacías |
-| M-22 | Con un solo intento | Métricas sin gráfica de evolución, con la nota de que hacen falta dos |
+| M-22 | Con un solo intento | Puntajes y tarjetas sin gráfica de avance, con la nota de que hacen falta dos |
 | M-23 | Repetir un examen | Punto hueco en la gráfica; no entra en temas a reforzar salvo con *Incluir repeticiones*, que muestra el aviso |
 | M-24 | Temas con una sola pregunta | Van a «muestra insuficiente», nunca a «Recomendado estudiar» |
-| M-25 | Cada gráfica | Tiene su tabla en *Ver datos de la gráfica* |
+| M-25 | Gráficas en el celular 📱 | Texto legible (mismo tamaño que en escritorio); la evolución por examen tiene su tabla en *Ver datos de la gráfica* |
 
 ### Errores en los datos
 

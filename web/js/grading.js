@@ -23,12 +23,16 @@
     const ids = catalog.map((x) => x && x.id);
     if (new Set(ids).size !== ids.length) e.push("Hay ids de examen duplicados.");
     catalog.forEach((x, i) => {
-      ["id", "title", "version", "questionCount", "questions", "answers"].forEach((k) => {
+      ["id", "code", "title", "version", "questionCount", "questions", "answers"].forEach((k) => {
         if (x[k] === undefined || x[k] === null || x[k] === "") {
           e.push(`Entrada ${i}: falta el campo "${k}".`);
         }
       });
+      // El código encabeza la cadena de respuestas: sin «|» ni minúsculas.
+      if (x.code && !/^[A-Z0-9]{1,20}$/.test(x.code)) e.push(`Entrada ${i}: code "${x.code}" no es válido (A–Z, 0–9).`);
     });
+    const codes = catalog.map((x) => x && x.code);
+    if (new Set(codes).size !== codes.length) e.push("Hay códigos de examen duplicados.");
     if (e.length) throw new DataError("exams.json no es válido.", e.join("\n"));
     return catalog;
   }
@@ -138,19 +142,32 @@
 
   /* ---------------------------------------------------------- corregir */
 
-  function buildAnswerString(questions, selected, minutes) {
+  /** Cadena `<código>|<minutos>|<LETRAS>`, por ejemplo `N1E01|72|ABCA…`. */
+  function buildAnswerString(code, questions, selected, minutes) {
     const letters = [...questions]
       .sort((a, b) => a.id - b.id)
       .map((q) => selected[q.id])
       .join("");
-    const str = `${minutes}${letters}`;
-    if (!/^\d+[ABC]+$/.test(str) || letters.length !== questions.length) {
+    const str = `${code}|${minutes}|${letters}`;
+    if (!parseAnswerString(str) || letters.length !== questions.length) {
       throw new DataError(
         "Error interno al construir la cadena de respuestas.",
         `Longitud ${letters.length}, se esperaban ${questions.length}.`
       );
     }
     return str;
+  }
+
+  /** Lee una cadena de respuestas. Acepta también el formato anterior `<minutos><LETRAS>`
+   *  (sin código), que es el de los intentos guardados antes del 2026-11-19.
+   *  Devuelve { code, minutes, letters } (code = null en el formato anterior) o null. */
+  function parseAnswerString(str) {
+    const s = String(str || "");
+    let m = s.match(/^([A-Z0-9]{1,20})\|(\d+)\|([ABC]+)$/);
+    if (m) return { code: m[1], minutes: Number(m[2]), letters: m[3] };
+    m = s.match(/^(\d+)([ABC]+)$/);
+    if (m) return { code: null, minutes: Number(m[1]), letters: m[2] };
+    return null;
   }
 
   function keyDistribution(keyMap) {
@@ -166,7 +183,7 @@
     return { letter, percentage: Math.round((best / total) * 100) };
   }
 
-  function grade(exam, questions, selected, keyMap, timing) {
+  function grade(exam, questions, selected, keyMap, timing, code) {
     const perQuestion = [...questions].sort((a, b) => a.id - b.id).map((q) => {
       const correct = keyMap.get(q.id);
       const sel = selected[q.id];
@@ -203,7 +220,7 @@
       minutes,
       activeMs: timing.activeMs,
       elapsedWallMs: timing.elapsedWallMs,
-      answerString: buildAnswerString(questions, selected, minutes),
+      answerString: buildAnswerString(code, questions, selected, minutes),
       keyDistribution: dist,
       chance: chanceBaseline(dist, total),
       areaResults,
@@ -215,6 +232,6 @@
 
   window.Grading = {
     DataError, validateCatalog, validateExam, validateAnswerKey,
-    grade, buildAnswerString, chanceBaseline,
+    grade, buildAnswerString, parseAnswerString, chanceBaseline,
   };
 })();

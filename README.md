@@ -19,7 +19,7 @@ decidir qué estudiar.
 - **10 exámenes**: N0E01–N0E05 (80–100 preguntas) y N1E01–N1E05 (150 preguntas, con la
   proporción oficial de áreas).
 - **Sin límite de tiempo**, pero el tiempo activo se mide y forma parte del resultado.
-- **Mi progreso**: evolución por examen y por área, y temas a reforzar con muestra suficiente.
+- **Mi progreso**: puntuación sobre 1000, puntos totales, avance y áreas de un vistazo; reporte detallado con evolución por examen y temas a reforzar.
 - **Cuenta de Google** para guardar el historial y verlo desde cualquier dispositivo.
 - **Funciona en el celular** y se puede instalar en la pantalla de inicio.
 

@@ -105,6 +105,11 @@ assert.deepEqual(six.map((r) => [r.completedAt.slice(0, 10), r.attemptNumber, r.
 const bad = (rec) => post({ action: 'create', idToken: 'tok-yander', record: rec }).code;
 assert.equal(bad({ ...base, examId: '../x' }), 'bad_request');
 assert.equal(bad({ ...base, answers: '72ACD' }), 'bad_request');
+assert.equal(bad({ ...base, answers: 'N1E01|72|ACD' }), 'bad_request');
+assert.equal(bad({ ...base, answers: 'n1e01|72|ABC' }), 'bad_request');
+assert.equal(bad({ ...base, answers: 'N1E01|ABC' }), 'bad_request');
+c = post({ action: 'create', idToken: 'tok-yander', record: { ...base, completedAt: '2026-11-22T10:00:00.000Z', answers: 'N1E01|72|' + 'ABC'.repeat(50) } });
+assert.equal(c.saved.answers, 'N1E01|72|' + 'ABC'.repeat(50));
 assert.equal(bad({ ...base, score: 200 }), 'bad_request');
 assert.equal(bad({ ...base, topicResults: 'x' }), 'bad_request');
 assert.equal(bad({ ...base, completedAt: 'nope' }), 'bad_request');

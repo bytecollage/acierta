@@ -18,7 +18,8 @@ que dentro de seis meses se entienda.
 | D-09 | Historial en `data/historial.json` con `server.py` | **Sustituida por D-11** |
 | D-10 | Exámenes N1 con la estructura oficial | Vigente |
 | D-11 | App pública en GitHub Pages, historial en Google Sheets, inicio de sesión con Google | Vigente |
-| D-12 | Bienvenida + panel con pestañas; uso en celular; nombre e ícono | Vigente |
+| D-12 | Bienvenida + panel con pestañas; uso en celular; nombre e ícono | Vigente (interfaz revisada en D-13) |
+| D-13 | Interfaz compacta para celular; Mi progreso de un vistazo; cadena con código | Vigente |
 
 ---
 
@@ -40,9 +41,10 @@ enunciado).
 misma letra da **49 %**. En Redacción indirecta e Inglés, la C nunca es correcta; en N0E02
 la correcta es la opción más larga la mitad de las veces.
 
-**Decisión.** No rebalancear esos dos exámenes. A cambio, el sesgo se hace visible en tres
-lugares: la referencia de azar en los resultados, la línea punteada en la gráfica de
-evolución y una nota en el resumen copiable (solo cuando la clave está desbalanceada).
+**Decisión.** No rebalancear esos dos exámenes. A cambio, el sesgo se hace visible en la línea
+punteada de la gráfica de evolución por examen (pantalla Reporte detallado). Hasta
+el 2026-11-19 también aparecía en la pantalla de resultados y en un resumen copiable; se
+quitaron al simplificar esa pantalla.
 Sin ellas, un 48 % se lee como «casi la mitad» cuando equivale a marcar siempre la misma
 letra. N0E03 en adelante tienen la clave repartida.
 
@@ -145,6 +147,33 @@ archivos estáticos.
 - **Nombres de examen:** «Examen Diagnóstico N<nivel>E<examen>». El `id` no cambia; los
   títulos de la hoja se migraron una vez desde el `id`.
 
+## D-13 · Interfaz compacta, Mi progreso de un vistazo y cadena con código
+
+**Problema.** En el celular había elementos cortados y scroll horizontal (una pestaña más
+ancha que su columna; la `legend` de cada pregunta dibujada sobre el borde de su tarjeta),
+las tarjetas ocupaban mucho, salir del examen obligaba a subir hasta arriba y Mi progreso
+mostraba demasiado para leerlo de un vistazo.
+
+**Decisión.**
+
+- **Una barra fija igual en todas las pantallas** (56 px, mismos márgenes que el
+  contenido): pestañas de ícono en el panel; ← y título en examen, resultados y reporte.
+  En el examen el progreso es una línea en su borde inferior. Sin logo ni nombre en el
+  panel; la cuenta va en un pie simétrico a la barra.
+- **Filas compactas** con el título sin «Diagnóstico» y acciones de ícono (▶ ↻ 👁).
+- **Resultados mínimos:** puntaje, barras por área y cadena. Se quitaron el detalle por
+  tema, el resumen copiable y la referencia de azar (ver D-02).
+- **Mi progreso de un vistazo:** puntuación /1000, puntos totales, una línea de avance,
+  tarjetas de datos y barras por área. Lo demás va a la pantalla *Reporte detallado*.
+- **Estilo con variables** (tamaños, radios, separaciones) para que todo sea homogéneo.
+- **Cadena `<código>|<minutos>|<LETRAS>`:** identifica el examen sin depender de dónde se
+  pegue. El código es el campo `code` del catálogo, no se deduce del título. Los intentos
+  anteriores no se migran: app y Apps Script aceptan los dos formatos.
+
+**Consecuencia.** El Apps Script debe publicarse (nueva versión de la implementación)
+antes o junto con la web; mientras tanto, los resultados con el formato nuevo se rechazan y
+quedan en la cola local hasta que el servidor los acepte.
+
 ---
 
 ## Riesgos abiertos
@@ -215,6 +244,7 @@ mano.
 
 | Fecha | Cambio |
 |---|---|
+| 2026-11-19 | Interfaz compacta para celular, barra fija común, Mi progreso de un vistazo con Reporte detallado aparte y cadena con código del examen (D-13) |
 | 2026-11-19 | Documentación consolidada en `docs/`; `app_idea/` pasa a `docs/app_idea/` como archivo histórico. Repo transferido a `bytecollage/acierta` |
 | 2026-11-19 | Nombre Acierta e ícono; carga anticipada y caché del historial; exámenes nombrados por código (D-12) |
 | 2026-11-19 | Bienvenida + panel con pestañas y ajustes para celular (D-12) |

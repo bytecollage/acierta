@@ -35,9 +35,9 @@ necesita un servicio externo es el historial de intentos de cada estudiante.
 | `js/auth.js` | Inicio de sesión con Google Identity Services; guarda el ID token y el nombre |
 | `js/storage.js` | Historial (API + cola + caché) e intento en curso |
 | `js/grading.js` | Validación de datos y corrección. Sin DOM: también lo usa `validate.js` |
-| `js/app.js` | Panel, examen, cronómetro, corrección y resultados |
-| `js/dashboard.js` | «Mi progreso» |
-| `js/charts.js` | Gráficas SVG propias, cada una con su tabla equivalente |
+| `js/app.js` | Panel, barra fija, examen, cronómetro, corrección y resultados |
+| `js/dashboard.js` | Resumen de «Mi progreso» y pantalla «Reporte detallado» |
+| `js/charts.js` | Gráficas de línea SVG propias, dibujadas al ancho real; tabla equivalente opcional |
 | `manifest.webmanifest`, `icons/` | Instalación en la pantalla de inicio del celular |
 
 ---
@@ -97,7 +97,7 @@ encabezados a mano.
 | `attemptNumber`, `isFirstAttempt` | Calculados por el servidor |
 | `score`, `total`, `percentage`, `correctCount`, `incorrectCount` | Resultado |
 | `minutes`, `activeMs`, `elapsedWallMs` | Tiempo activo y de reloj |
-| `answers` | Cadena `<minutos><LETRAS>` |
+| `answers` | Cadena `<código>\|<minutos>\|<LETRAS>`; también acepta el formato anterior `<minutos><LETRAS>` |
 | `keyDistribution`, `areaResults`, `topicResults`, `topicAreas` | JSON |
 | `createdAt` | Fecha de escritura |
 

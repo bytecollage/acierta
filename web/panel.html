@@ -14,33 +14,49 @@
 <title>Mis exámenes · Acierta</title>
 <link rel="stylesheet" href="styles.css?v=__BUILD__">
 </head>
-<body class="is-loading">
-<!-- ============================================================ barra fija -->
-<div class="topbar hidden" id="topbar">
-  <div class="topbar-inner">
-    <span class="progress-text" id="progress-text">Respondidas: 0 / 0</span>
-    <div class="progress-bar" id="progress-bar" role="progressbar"
-         aria-label="Progreso del examen" aria-valuemin="0" aria-valuenow="0" aria-valuemax="0">
-      <div id="progress-fill"></div>
-    </div>
+<body class="app is-loading">
+<!-- ======================================================== barras fijas -->
+<!-- Misma barra en todas las pantallas: pestañas en el panel; ← y título en las demás. -->
+<header class="appbar" id="tabbar">
+  <div class="appbar-inner">
+    <nav class="tabs" role="tablist" aria-label="Secciones">
+      <a role="tab" id="tab-examenes" href="#examenes" aria-controls="panel-examenes" aria-selected="true" title="Exámenes">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>
+        <span class="sr-only">Exámenes</span>
+      </a>
+      <a role="tab" id="tab-completados" href="#completados" aria-controls="panel-completados" aria-selected="false" title="Completados">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.8 2.8L16.5 9.5"/></svg>
+        <span class="sr-only">Completados</span>
+      </a>
+      <a role="tab" id="tab-progreso" href="#progreso" aria-controls="panel-progreso" aria-selected="false" title="Mi progreso">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>
+        <span class="sr-only">Mi progreso</span>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<header class="appbar hidden" id="topbar">
+  <div class="appbar-inner">
+    <button type="button" class="icon-btn ghost" id="topbar-back" data-goto="examenes"
+            aria-label="Volver a mis exámenes" title="Volver a mis exámenes">
+      <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    </button>
+    <h1 class="appbar-title" id="topbar-title"></h1>
+    <span class="progress-text" id="progress-text">0/0</span>
     <span class="timer" id="timer" aria-live="off" aria-label="Tiempo transcurrido">00:00</span>
   </div>
-</div>
+  <div class="progress-bar" id="progress-bar" role="progressbar"
+       aria-label="Preguntas respondidas" aria-valuemin="0" aria-valuenow="0" aria-valuemax="0">
+    <div id="progress-fill"></div>
+  </div>
+</header>
 
 <div class="wrap">
 
 <!-- =============================================================== PANEL -->
 <div id="screen-panel">
-  <header class="panel-head">
-    <div class="account" id="account"></div>
-    <h1><a href="index.html" class="home-link"><img src="icons/icon.svg" alt="" width="30" height="30">Acierta</a></h1>
-  </header>
-
-  <nav class="tabs" role="tablist" aria-label="Secciones">
-    <a role="tab" id="tab-examenes" href="#examenes" aria-controls="panel-examenes" aria-selected="true">Exámenes</a>
-    <a role="tab" id="tab-completados" href="#completados" aria-controls="panel-completados" aria-selected="false">Completados</a>
-    <a role="tab" id="tab-progreso" href="#progreso" aria-controls="panel-progreso" aria-selected="false">Mi progreso</a>
-  </nav>
+  <h1 class="sr-only">Acierta</h1>
 
   <div class="loading" id="panel-loading" role="status" aria-live="polite">
     <span class="spinner" aria-hidden="true"></span>
@@ -59,11 +75,11 @@
   </div>
 
   <section id="panel-examenes" role="tabpanel" aria-labelledby="tab-examenes">
-    <div id="exam-list"></div>
+    <div id="exam-list" class="list"></div>
   </section>
 
   <section id="panel-completados" role="tabpanel" aria-labelledby="tab-completados" class="hidden">
-    <div id="done-list"></div>
+    <div id="done-list" class="list"></div>
   </section>
 
   <section id="panel-progreso" role="tabpanel" aria-labelledby="tab-progreso" class="hidden">
@@ -79,7 +95,53 @@
   <!-- ========================================================= contenido -->
   <div id="content" class="hidden">
 
-    <div class="filters">
+    <section class="card">
+      <div class="kpis scores" id="scores"></div>
+      <h2>Tu avance <span class="sub">· % de aciertos por fecha</span></h2>
+      <div id="chart-evolution"></div>
+    </section>
+
+    <section class="card">
+      <div class="kpis" id="kpis"></div>
+    </section>
+
+    <section class="card">
+      <h2>Rendimiento por área</h2>
+      <div id="chart-areas"></div>
+    </section>
+
+    <a class="card nav-card" href="#reporte">
+      <span>
+        <strong>Reporte detallado</strong>
+        <span class="small muted">Temas a reforzar y evolución por examen</span>
+      </span>
+      <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+
+  </section>
+</div>
+
+<!-- ============================================================== EXAMEN -->
+<div id="screen-examen" class="hidden">
+  <div class="alert hidden" id="exam-alert" role="alert" aria-live="assertive"></div>
+
+  <div id="questions"></div>
+
+  <div class="card">
+    <div class="btn-row">
+      <button class="primary" id="btn-terminar">Terminar examen</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================= REPORTE -->
+<div id="screen-reporte" class="hidden">
+  <div id="report-empty" class="card hidden">
+    <p>Aún no hay intentos registrados.</p>
+  </div>
+  <div id="report">
+    <div class="card filters">
       <label>Examen
         <select id="f-exam" aria-label="Filtrar por examen"></select>
       </label>
@@ -98,25 +160,9 @@
     </div>
 
     <section class="card">
-      <div class="kpis" id="kpis"></div>
-    </section>
-
-    <section class="card">
-      <h2>Evolución del resultado</h2>
-      <div class="legend" id="evolution-legend"></div>
-      <div id="chart-evolution"></div>
-    </section>
-
-    <section class="card">
-      <h2>Rendimiento por área</h2>
-      <p class="small muted">Acumulado de todos los intentos que cumplen el filtro.</p>
-      <div id="chart-areas"></div>
-    </section>
-
-    <section class="card">
       <h2>Temas a reforzar</h2>
       <p class="small muted">
-        Los temas se agregan <strong>cruzando los dos exámenes</strong>: es la única forma de
+        Los temas se agregan <strong>cruzando los exámenes</strong>: es la única forma de
         reunir muestra suficiente. La columna <em>Confianza</em> indica cuánto te puedes fiar
         del porcentaje según el número de preguntas vistas.
       </p>
@@ -150,96 +196,51 @@
       </details>
     </section>
 
+    <section class="card">
+      <h2>Evolución por examen</h2>
+      <div class="legend" id="evolution-legend"></div>
+      <div id="chart-exams"></div>
+    </section>
+
+    <section class="card">
+      <h2>Exámenes hechos</h2>
+      <p class="small muted" id="exam-breakdown"></p>
+    </section>
+
     <p class="small muted" id="storage-mode"></p>
-  </div>
-
-  </section>
-</div>
-
-<!-- ============================================================== EXAMEN -->
-<div id="screen-examen" class="hidden">
-  <header>
-    <button type="button" class="back-link" data-goto="examenes">← Mis exámenes</button>
-    <h1 id="exam-title"></h1>
-    <p class="lead small">Responde todas las preguntas y pulsa «Terminar examen» al final.</p>
-  </header>
-
-  <nav class="area-nav" id="area-nav" aria-label="Ir a un área"></nav>
-
-  <div class="alert hidden" id="exam-alert" role="alert" aria-live="assertive"></div>
-
-  <div id="questions"></div>
-
-  <div class="card">
-    <div class="btn-row">
-      <button class="primary" id="btn-terminar">Terminar examen</button>
-    </div>
   </div>
 </div>
 
 <!-- ========================================================== RESULTADOS -->
 <div id="screen-resultados" class="hidden">
-  <header>
-    <button type="button" class="back-link" data-goto="completados">← Completados</button>
-    <h1>Resultado</h1>
-    <p class="lead" id="result-exam-title"></p>
-  </header>
-
   <section class="card">
     <div class="score" id="result-score"></div>
-    <div class="stats" id="result-stats"></div>
-    <p class="small muted" id="chance-note" style="text-align:center;margin-top:18px"></p>
-    <p class="small save-status" id="save-status" aria-live="polite"></p>
-    <div class="account center" id="result-account"></div>
   </section>
 
   <section class="card">
     <h2>Resultado por área</h2>
-    <div class="tbl-scroll">
-      <table>
-        <thead><tr><th>Área</th><th>Aciertos</th><th>%</th><th></th></tr></thead>
-        <tbody id="area-results"></tbody>
-      </table>
-    </div>
+    <div id="area-results"></div>
   </section>
-
-  <details>
-    <summary>Detalle por tema</summary>
-    <p class="small muted">
-      La mayoría de los temas tiene una o dos preguntas. Un fallo aislado no indica
-      necesariamente una laguna: revisa la tendencia en
-      <a href="#progreso" data-goto="progreso">Mi progreso</a>.
-    </p>
-    <div class="tbl-scroll">
-      <table>
-        <thead><tr><th>Tema</th><th>Aciertos</th><th>%</th></tr></thead>
-        <tbody id="topic-results"></tbody>
-      </table>
-    </div>
-  </details>
 
   <section class="card">
-    <h2>Cadena de respuestas</h2>
-    <p class="small muted">
-      El número inicial son los minutos; las letras, tus respuestas ordenadas por número de
-      pregunta.
-    </p>
-    <div class="answer-string" id="answer-string"></div>
-    <div class="btn-row">
-      <button id="btn-copy-answers">Copiar respuestas</button>
-      <button id="btn-copy-summary">Copiar resumen</button>
+    <div class="card-head">
+      <h2>Cadena de respuestas</h2>
+      <button type="button" class="icon-btn ghost" id="btn-copy-answers" aria-label="Copiar cadena" title="Copiar cadena">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg>
+      </button>
     </div>
-    <p class="small muted" id="copy-status" aria-live="polite"></p>
+    <div class="answer-string" id="answer-string"></div>
   </section>
+</div>
 
-  <div class="btn-row">
-    <a class="btn primary" href="#progreso" data-goto="progreso">Ver mi progreso</a>
-    <button id="btn-home">Volver a mis exámenes</button>
-    <button id="btn-restart">Reiniciar examen</button>
+</div>
+
+<!-- Pie del panel: espejo de la barra fija, al final de la página y solo con la línea. -->
+<footer class="appfooter" id="appfooter">
+  <div class="appfooter-inner">
+    <div class="account" id="account"></div>
   </div>
-</div>
-
-</div>
+</footer>
 
 <div class="busy hidden" id="busy" role="status" aria-live="assertive" aria-busy="false">
   <div class="busy-box">

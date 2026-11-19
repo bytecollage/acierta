@@ -1,6 +1,7 @@
 [
   {
     "id": "diagnostico-1",
+    "code": "N0E01",
     "title": "Examen Diagnóstico N0E01",
     "version": "2.0",
     "questionCount": 80,
@@ -10,6 +11,7 @@
   },
   {
     "id": "diagnostico-2",
+    "code": "N0E02",
     "title": "Examen Diagnóstico N0E02",
     "version": "2.0",
     "questionCount": 100,
@@ -19,6 +21,7 @@
   },
   {
     "id": "diagnostico-3",
+    "code": "N0E03",
     "title": "Examen Diagnóstico N0E03",
     "version": "2.0",
     "questionCount": 100,
@@ -28,6 +31,7 @@
   },
   {
     "id": "diagnostico-4",
+    "code": "N0E04",
     "title": "Examen Diagnóstico N0E04",
     "version": "2.0",
     "questionCount": 100,
@@ -37,6 +41,7 @@
   },
   {
     "id": "diagnostico-5",
+    "code": "N0E05",
     "title": "Examen Diagnóstico N0E05",
     "version": "2.0",
     "questionCount": 100,
@@ -46,6 +51,7 @@
   },
   {
     "id": "diagnostico-6",
+    "code": "N1E01",
     "title": "Examen Diagnóstico N1E01",
     "version": "2.0",
     "questionCount": 150,
@@ -55,6 +61,7 @@
   },
   {
     "id": "diagnostico-7",
+    "code": "N1E02",
     "title": "Examen Diagnóstico N1E02",
     "version": "2.0",
     "questionCount": 150,
@@ -64,6 +71,7 @@
   },
   {
     "id": "diagnostico-8",
+    "code": "N1E03",
     "title": "Examen Diagnóstico N1E03",
     "version": "2.0",
     "questionCount": 150,
@@ -73,6 +81,7 @@
   },
   {
     "id": "diagnostico-9",
+    "code": "N1E04",
     "title": "Examen Diagnóstico N1E04",
     "version": "2.0",
     "questionCount": 150,
@@ -82,6 +91,7 @@
   },
   {
     "id": "diagnostico-10",
+    "code": "N1E05",
     "title": "Examen Diagnóstico N1E05",
     "version": "2.0",
     "questionCount": 150,

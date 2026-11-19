@@ -219,8 +219,9 @@ function sanitizeRecord(r) {
     throw new ApiError('bad_request', 'puntaje inconsistente');
   }
 
+  // `<código>|<minutos>|<LETRAS>`; se acepta el formato anterior `<minutos><LETRAS>`.
   out.answers = str(r.answers, 1100);
-  if (!/^\d+[ABC]{1,1000}$/.test(out.answers)) throw new ApiError('bad_request', 'answers inválido');
+  if (!/^(?:[A-Z0-9]{1,20}\|\d+\||\d+)[ABC]{1,1000}$/.test(out.answers)) throw new ApiError('bad_request', 'answers inválido');
 
   JSON_FIELDS.forEach((k) => {
     const v = r[k];
