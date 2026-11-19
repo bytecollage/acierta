@@ -9,7 +9,7 @@ Sin dependencias: solo la librería estándar.
     python3 server.py --host 0.0.0.0  # accesible desde la red local
 
 En producción la app se sirve desde GitHub Pages y el historial vive en Google Sheets
-(ver apps-script/ y spec/08-persistencia.md). Este servidor solo sirve archivos y
+(ver docs/arquitectura.md). Este servidor solo sirve archivos y
 desactiva la caché de data/ para ver los cambios al instante.
 
 El inicio de sesión con Google solo funciona en orígenes autorizados en el client ID

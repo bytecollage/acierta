@@ -1,5 +1,5 @@
 /* charts.js — gráficas en SVG puro, sin dependencias.
-   Toda gráfica tiene una tabla equivalente al lado (spec/07-dashboard.md, 8). */
+   Toda gráfica tiene una tabla equivalente al lado (docs/funcionamiento.md §5). */
 
 (function () {
   "use strict";

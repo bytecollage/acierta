@@ -2,7 +2,7 @@
 __pycache__/
 *.pyc
 
-# Secretos del Apps Script (pepper y clave de administración). Ver apps-script/README.md
+# Secretos del Apps Script (pepper y clave de administración). Ver docs/arquitectura.md §3.2
 apps-script/Config.gs
 
 # El historial vive en Google Sheets. Las copias locales no se publican.

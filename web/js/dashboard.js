@@ -1,5 +1,5 @@
 /* dashboard.js — evolución del estudiante y temas a reforzar.
-   Se dibuja en la pestaña «Mi progreso» de panel.html con el historial que le pasa app.js. Ver spec/07-dashboard.md */
+   Se dibuja en la pestaña «Mi progreso» de panel.html con el historial que le pasa app.js. Ver docs/funcionamiento.md §5 */
 
 (function () {
   "use strict";

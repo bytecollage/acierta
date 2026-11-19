@@ -1,6 +1,6 @@
 // Valida todo el catálogo con la misma lógica que la aplicación (web/js/grading.js).
 const fs = require("fs"), path = require("path"), vm = require("vm");
-const WEB = path.join(__dirname, "..", "..", "web");
+const WEB = path.join(__dirname, "..", "web");
 const ctx = { window: {}, console };
 vm.createContext(ctx);
 vm.runInContext(fs.readFileSync(path.join(WEB, "js/grading.js"), "utf8"), ctx);

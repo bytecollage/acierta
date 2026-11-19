@@ -1,6 +1,6 @@
 /* grading.js — validación de datos, corrección y construcción de resultados.
    Sin efectos secundarios ni DOM: entra JSON, sale resultado.
-   Ver spec/02-modelo-de-datos.md (sección 5) y spec/06-resultados.md */
+   Ver docs/datos.md §5 y docs/funcionamiento.md §4 */
 
 (function () {
   "use strict";

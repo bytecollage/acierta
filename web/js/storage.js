@@ -18,7 +18,7 @@
  * actualiza en segundo plano (init({ stale: true })). La caché se borra al cerrar
  * sesión.
  *
- * No hay borrado: la API no lo permite. Ver spec/08-persistencia.md
+ * No hay borrado: la API no lo permite. Ver docs/arquitectura.md §4
  */
 
 (function () {

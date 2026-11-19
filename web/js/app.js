@@ -1,7 +1,7 @@
 /* app.js — panel de exámenes (pestañas), examen, corrección y resultados.
    Vive en panel.html. La navegación va por hash para que el botón «atrás» del móvil
    funcione: #examenes, #completados, #progreso, #examen/<id>, #resultados/<id>.
-   Ver spec/03-pantallas-y-flujo.md, 04-examen-y-correccion.md, 05-tiempo-y-cadena.md */
+   Ver docs/funcionamiento.md §1–4 */
 
 (function () {
   "use strict";
@@ -852,11 +852,15 @@
       "Áreas:", areas,
       "",
       "Temas fallados:", failed || "(ninguno)",
-      "",
-      "Nota para el análisis: la clave de este examen no está balanceada",
-      `(A=${d.A}, B=${d.B}, C=${d.C} de ${r.total}). La línea base de azar no es 33%:`,
-      `responder siempre «${r.chance.letter}» produce ${r.chance.percentage}%.`,
-      "Considerarlo al interpretar el resultado.",
+      // La nota solo aplica a claves desbalanceadas (N0E01 y N0E02). En una clave
+      // repartida en tercios, marcar siempre la misma letra da ~33% y no hay nada que advertir.
+      ...(r.chance.percentage > 40 ? [
+        "",
+        "Nota para el análisis: la clave de este examen no está balanceada",
+        `(A=${d.A}, B=${d.B}, C=${d.C} de ${r.total}). La línea base de azar no es 33%:`,
+        `responder siempre «${r.chance.letter}» produce ${r.chance.percentage}%.`,
+        "Considerarlo al interpretar el resultado.",
+      ] : []),
     ].join("\n");
   }
 

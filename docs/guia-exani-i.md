@@ -1,7 +1,7 @@
-# 12 — Guía oficial del EXANI-I (Ceneval)
+# Guía oficial del EXANI-I (Ceneval)
 
-Resumen de la guía oficial, para que los exámenes que se diseñen aquí reproduzcan la
-estructura real. Fuente principal: **Ceneval, *Guía para el sustentante. Nuevo EXANI-I*,
+Resumen de la guía oficial, para que los exámenes de Acierta reproduzcan la estructura
+real. Fuente principal: **Ceneval, *Guía para el sustentante. Nuevo EXANI-I*,
 septiembre de 2021** (24 páginas; copia local en `~/Downloads/1_Guia-EXANI-I_sm.pdf`).
 
 Revisado el 21 de octubre de 2026. **No se encontró una guía del sustentante más reciente.**
@@ -21,7 +21,7 @@ convocatoria conviene confirmar la estructura vigente en [ceneval.edu.mx](https:
 | Duración | **4 h 30 min** (≈ 1,7 min por reactivo) | Se mide, no se limita |
 | Calculadora y dispositivos | **Prohibidos** | Los cálculos deben poder hacerse a mano |
 | Modalidades | Papel, en línea, «Examen desde casa» | — |
-| Inglés | Nivel **A2** del MCER, **no cuenta** para el puntaje global | Se muestra como un área más |
+| Inglés | Nivel **A2** del MCER, **no cuenta** para el puntaje global | Se suma como un área más (R-05) |
 
 ## 2. Estructura por área
 
@@ -122,10 +122,10 @@ pudiendo usar:
 
 1. **Proporción de áreas.** Un examen de 150 reactivos que imite la guía queda en
    PC 28 · CL 28 · RI 28 · PM 38 · Inglés 28 (escala 150/160 redondeada).
-2. **`subarea`.** Las subáreas oficiales (§2.1–2.5) son el nivel intermedio que R-01 pedía
-   (`10-decisiones-y-riesgos.md`). Los exámenes nuevos las usan.
+2. **`subarea`.** Las subáreas oficiales (§2.1–2.5) son el nivel intermedio que pide R-01
+   ([decisiones.md](decisiones.md)). Los exámenes N1 las usan.
 3. **Distractores con error típico.** Igual que el ejemplo de matemáticas de la guía, cada
    opción incorrecta debe corresponder a un error plausible, no a un disparate.
 4. **Sin calculadora.** Los números deben poder operarse a mano.
 5. **Inglés.** No cuenta en el puntaje oficial. Conviene leer por separado el resultado
-   de las cuatro áreas que sí califican.
+   de las cuatro áreas que sí califican (R-05 en [decisiones.md](decisiones.md)).

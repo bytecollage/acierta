@@ -3,7 +3,7 @@
  *
  * Se publica como Aplicación web (Ejecutar como: Yo · Acceso: Cualquier usuario).
  * La configuración (client ID, pepper, clave de administración) vive en Config.gs,
- * que NO se versiona. Ver apps-script/README.md y spec/08-persistencia.md.
+ * que NO se versiona. Ver docs/arquitectura.md §2–3.
  *
  * Acciones (todas por POST, cuerpo JSON enviado como text/plain para evitar el
  * preflight CORS):

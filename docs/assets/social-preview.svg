@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640">
+  <rect width="1280" height="640" fill="#f4faf6"/>
+  <rect x="0" y="600" width="1280" height="40" fill="#16a34a"/>
+  <g transform="translate(150 170) scale(3)">
+    <rect width="100" height="100" rx="22" fill="#eafaf0" stroke="#cfe9d8" stroke-width="1"/>
+    <circle cx="24" cy="50" r="12" fill="none" stroke="#14532d" stroke-width="4"/>
+    <circle cx="50" cy="50" r="15" fill="#16a34a"/>
+    <polyline points="43,50.5 48.5,56 58,44.5" fill="none" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="76" cy="50" r="12" fill="none" stroke="#14532d" stroke-width="4"/>
+    <line x1="14" y1="78" x2="86" y2="78" stroke="#14532d" stroke-opacity=".25" stroke-width="4" stroke-linecap="round"/>
+    <line x1="14" y1="22" x2="62" y2="22" stroke="#14532d" stroke-opacity=".25" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  <text x="530" y="300" font-family="Arial" font-size="120" font-weight="bold" fill="#111827">Acierta</text>
+  <text x="534" y="370" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="40" fill="#374151">Exámenes diagnósticos tipo EXANI-I</text>
+  <text x="534" y="425" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="30" fill="#6b7280">bytecollage.github.io/acierta</text>
+</svg>
