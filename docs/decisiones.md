@@ -134,7 +134,8 @@ archivos estáticos.
 
 ## D-12 · Bienvenida, panel y celular
 
-- `index.html` es la bienvenida, con las instrucciones y **CONTINUAR**. `panel.html` reúne
+- `index.html` es la bienvenida, con las instrucciones y **CONTINUAR**, y es siempre la
+  página inicial (`start_url` del manifiesto). Desde D-13 no tiene inicio de sesión. `panel.html` reúne
   las pestañas, el examen y los resultados, y navega por hash para que el botón «atrás»
   del celular funcione.
 - **Sin *service worker*:** la app no funciona sin conexión. Es a propósito: una caché

@@ -3,7 +3,7 @@
   "short_name": "Acierta",
   "description": "Practica, mide tu nivel y descubre qué temas conviene reforzar.",
   "lang": "es",
-  "start_url": "./panel.html",
+  "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "any",

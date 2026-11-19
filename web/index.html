@@ -15,35 +15,33 @@
 <link rel="stylesheet" href="styles.css?v=__BUILD__">
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <div class="account" id="account"></div>
-    <div class="brand">
-      <img src="icons/icon.svg" alt="" width="56" height="56">
-      <div>
-        <h1>Acierta</h1>
-        <p class="brand-sub">Exámenes diagnósticos</p>
-      </div>
-    </div>
-    <p class="lead">Practica, mide tu nivel y descubre qué temas conviene reforzar.</p>
-  </header>
+<!-- Misma barra que el panel; aquí con el ícono y el nombre de la app. -->
+<header class="appbar">
+  <div class="appbar-inner">
+    <img class="appbar-logo" src="icons/icon.svg" alt="" width="32" height="32">
+    <h1 class="appbar-title">Acierta</h1>
+  </div>
+</header>
 
+<div class="wrap">
   <section class="card instructions">
     <h2>Antes de empezar</h2>
     <ul>
-      <li>Este es un examen <strong>diagnóstico</strong>: sirve para detectar qué estudiar.
-          No se aprueba ni se reprueba.</li>
-      <li>Debes responder <strong>todas</strong> las preguntas. No podrás terminar si dejas
-          alguna en blanco.</li>
-      <li>Cada pregunta tiene <strong>tres opciones</strong> y solo una es correcta.</li>
+      <li>Acierta es una aplicación de exámenes <strong>diagnósticos</strong>: te ayuda a
+          detectar qué temas necesitas estudiar, y en ella no se aprueba ni se reprueba.</li>
+      <li>Al realizar un examen debes responder <strong>todas</strong> las preguntas, porque
+          no podrás terminarlo si dejas alguna en blanco. Cada pregunta tiene
+          <strong>tres opciones</strong> y solo una de ellas es correcta.</li>
       <li><strong>No hay límite de tiempo</strong>, pero el tiempo se mide y forma parte de
-          tu resultado. El cronómetro se pausa solo si dejas de usar la página.</li>
-      <li>Tu progreso <strong>se guarda automáticamente</strong>: puedes cerrar y continuar
-          más tarde en este mismo navegador. Los resultados terminados se guardan en tu
-          cuenta si iniciaste sesión con Google.</li>
-      <li>Al terminar verás la corrección pregunta por pregunta, tu resultado por área y
-          por tema, y una cadena de respuestas que puedes copiar.</li>
-      <li>Para que el diagnóstico sea útil, hazlo de una sentada y sin consultar material.</li>
+          tu resultado. El cronómetro se pausa automáticamente cuando dejas de usar la
+          página.</li>
+      <li>Para que el diagnóstico sea útil, haz cada examen de una sentada y sin consultar
+          material. Al terminar verás tu resultado y tu desempeño en cada área.</li>
+      <li>Mientras más exámenes hagas, más preciso será tu diagnóstico, porque los temas a
+          reforzar se calculan reuniendo las preguntas de todos tus exámenes.</li>
+      <li>Tu progreso se guarda automáticamente, así que puedes cerrar la página y continuar
+          más tarde en este mismo navegador. Si inicias sesión con Google, tus resultados se
+          guardan en tu cuenta y puedes verlos desde cualquier dispositivo.</li>
     </ul>
   </section>
 
@@ -59,12 +57,10 @@
 <script src="js/storage.js?v=__BUILD__"></script>
 <script>
   // Carga anticipada: mientras se leen las instrucciones se trae el catálogo y el
-  // historial. El historial queda en caché y el panel lo pinta al instante.
-  window.Auth.mount(document.getElementById("account"));
+  // historial. El historial queda en caché y el panel lo pinta al instante. El inicio de
+  // sesión (y su renovación) está en el panel: aquí no se muestra nada de Google.
   fetch("data/exams.json", { cache: "no-cache" }).catch(() => {});
   window.Storage.init();
-  window.Auth.onChange(() => window.Storage.init());
-  if (window.Auth.getSession() && !window.Auth.getToken()) window.Auth.refresh();
 </script>
 </body>
 </html>

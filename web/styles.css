@@ -67,7 +67,7 @@ h3 { font-size: 16px; margin: 0 0 8px; }
 p { margin: 0 0 12px; }
 a { color: var(--accent); }
 
-.lead { color: var(--muted); margin-bottom: 22px; }
+.lead { color: var(--muted); margin-bottom: var(--gap); }
 
 .card {
   background: var(--surface);
@@ -317,10 +317,7 @@ select {
 .cta { display: flex; justify-content: center; margin: 26px 0 22px; }
 .btn.big { font-size: 17px; letter-spacing: .06em; padding: 14px 40px; min-height: 52px; min-width: 220px; }
 .center-text { text-align: center; }
-.brand { display: flex; align-items: center; gap: 14px; margin-bottom: 10px; }
-.brand img { flex: none; border-radius: 13px; box-shadow: var(--shadow); }
-.brand h1 { margin: 0; line-height: 1.05; }
-.brand-sub { margin: 2px 0 0; color: var(--muted); font-weight: 600; font-size: 15px; }
+.appbar-logo { flex: none; border-radius: var(--radius-sm); }
 
 /* ----------------------------------------------------------------- panel */
 /* El panel ocupa al menos todo el alto: el pie queda abajo aunque haya poco contenido. */

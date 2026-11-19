@@ -23,8 +23,8 @@ Qué hace Acierta y por qué se comporta así. Las razones de fondo están en
 
 | Página | Contenido |
 |---|---|
-| `index.html` | **Bienvenida**: nombre e ícono, inicio de sesión, cuadro «Antes de empezar» y botón **CONTINUAR** |
-| `panel.html` | **Panel** con tres pestañas, más las pantallas de examen y resultados |
+| `index.html` | **Bienvenida**, siempre la página inicial (también al abrir la app instalada): barra con ícono y nombre, cuadro «Antes de empezar» y botón **CONTINUAR**. Sin inicio de sesión |
+| `panel.html` | **Panel** con tres pestañas, más las pantallas de examen, resultados y reporte. El inicio de sesión está en su pie |
 
 ```text
 ┌────────────┐ CONTINUAR ┌──────────────────────────────────┐ Reporte  ┌─────────┐

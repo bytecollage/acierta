@@ -390,7 +390,7 @@
     const mode = window.Storage.getMode();
     const err = window.Storage.getLastError();
     note.textContent =
-      mode === "guest" ? "Inicia sesión para guardar tus resultados en tu cuenta y verlos desde cualquier dispositivo." :
+      mode === "guest" ? "Inicia sesión al final de la página para guardar tus resultados en tu cuenta y verlos desde cualquier dispositivo." :
       mode === "remote" && err ? `No se pudo conectar con el servidor (${err.message}). Tus resultados nuevos se guardan en este navegador y se subirán después.` :
       "";
     note.className = mode === "remote" && err ? "alert warn" : "alert info";

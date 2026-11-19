@@ -29,7 +29,7 @@ necesita un servicio externo es el historial de intentos de cada estudiante.
 | Archivo | Función |
 |---|---|
 | `index.html` | Bienvenida. Precarga el catálogo y el historial mientras se leen las instrucciones |
-| `panel.html` | Pestañas, examen y resultados. Navega por hash (`#examenes`, `#examen/<id>`…) |
+| `panel.html` | Pestañas, examen, resultados y reporte. Navega por hash (`#examenes`, `#examen/<id>`…) |
 | `privacidad.html` | Aviso de privacidad, enlazado desde la pantalla de inicio de sesión de Google |
 | `js/config.js` | URL `/exec` de la API y client ID de OAuth. **Públicos por diseño** |
 | `js/auth.js` | Inicio de sesión con Google Identity Services; guarda el ID token y el nombre |
@@ -148,7 +148,8 @@ al iniciar sesión. Los intentos anónimos se suben a la primera cuenta que inic
 los que tienen dueño, solo a la suya. Un intento sale de la cola únicamente cuando el
 servidor confirma que lo guardó.
 
-**Carga anticipada.** La bienvenida lee el historial y lo deja en `exani.cache`. El panel
+**Carga anticipada.** Si la sesión sigue vigente, la bienvenida lee el historial y lo deja
+en `exani.cache` (no muestra nada de Google: renovar una sesión vencida lo hace el panel). El panel
 se pinta al instante con esa caché y la actualiza en segundo plano («Actualizando tu
 historial…»). Sin caché, muestra «Cargando tus exámenes…» hasta que responde el servidor.
 Si un script no llega o la carga pasa de 20 s, ofrece **Reintentar**.
