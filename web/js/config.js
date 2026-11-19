@@ -9,5 +9,5 @@
  */
 window.ExaniConfig = {
   API_URL: "",
-  GOOGLE_CLIENT_ID: "",
+  GOOGLE_CLIENT_ID: "1003482871641-isci83hfo0jiaoh1tksuuc4v2fpl2ti9.apps.googleusercontent.com",
 };
