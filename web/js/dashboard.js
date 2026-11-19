@@ -127,7 +127,7 @@
     const excluded = rows.length - comparable.length;
 
     const desglose = [...byExam.entries()]
-      .map(([, rs]) => `${rs[0].examTitle.replace(/^Diagnóstico.*—\s*/, "")}: ${rs.length}`)
+      .map(([, rs]) => `${rs[0].examTitle.replace(/^Examen Diagnóstico\s*/, "")}: ${rs.length}`)
       .join(" · ");
 
     $("#kpis").innerHTML = `

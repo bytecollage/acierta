@@ -220,8 +220,14 @@ solo sirve archivos estáticos, así que la API de `server.py` (D-09) deja de se
   instalar la app en la pantalla de inicio.
 
 **Riesgo asumido.** No hay *service worker*, así que la app no funciona sin conexión. Se
-evita a propósito: una caché desactualizada podría servir exámenes o claves viejas. Los
-títulos de cada examen en los datos siguen diciendo «Diagnóstico UADY / EXANI-I — Nivel N».
+evita a propósito: una caché desactualizada podría servir exámenes o claves viejas.
+
+**Nombres de examen (2026-11-19).** Los exámenes se nombran «Examen Diagnóstico N<n>E<ee>»
+(nivel y número de examen): los diagnósticos 1–5 son N0E01–N0E05 y los 6–10, N1E01–N1E05.
+El `id` (`diagnostico-N`) no cambia, porque identifica los intentos en la hoja y en
+`localStorage`. Los títulos de la hoja se migraron una vez desde el `examId`, y el dashboard
+muestra siempre el título del catálogo, así que un cambio de nombre futuro no necesita
+migración.
 
 ---
 

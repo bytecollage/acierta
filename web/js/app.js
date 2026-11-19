@@ -335,7 +335,12 @@
 
     renderExamList(pending);
     renderDoneList(done);
-    if (currentTab === "progreso") window.Dashboard.show(hist);
+    if (currentTab === "progreso") {
+      // El título se toma del catálogo: los registros guardan el que tenía el examen al
+      // hacerse, y un cambio de nombre no debe dejar el historial con dos nombres.
+      const titles = new Map(state.catalog.map((e) => [e.id, e.title]));
+      window.Dashboard.show(hist.map((r) => ({ ...r, examTitle: titles.get(r.examId) || r.examTitle })));
+    }
   }
 
   function renderExamList(items) {

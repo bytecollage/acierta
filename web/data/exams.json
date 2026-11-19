@@ -1,7 +1,7 @@
 [
   {
     "id": "diagnostico-1",
-    "title": "Diagnóstico UADY / EXANI-I — Nivel 1",
+    "title": "Examen Diagnóstico N0E01",
     "version": "2.0",
     "questionCount": 80,
     "estimatedMinutes": 60,
@@ -10,7 +10,7 @@
   },
   {
     "id": "diagnostico-2",
-    "title": "Diagnóstico UADY / EXANI-I — Nivel 2",
+    "title": "Examen Diagnóstico N0E02",
     "version": "2.0",
     "questionCount": 100,
     "estimatedMinutes": 75,
@@ -19,7 +19,7 @@
   },
   {
     "id": "diagnostico-3",
-    "title": "Diagnóstico UADY / EXANI-I — Nivel 3",
+    "title": "Examen Diagnóstico N0E03",
     "version": "2.0",
     "questionCount": 100,
     "estimatedMinutes": 75,
@@ -28,7 +28,7 @@
   },
   {
     "id": "diagnostico-4",
-    "title": "Diagnóstico UADY / EXANI-I — Nivel 4",
+    "title": "Examen Diagnóstico N0E04",
     "version": "2.0",
     "questionCount": 100,
     "estimatedMinutes": 75,
@@ -37,7 +37,7 @@
   },
   {
     "id": "diagnostico-5",
-    "title": "Diagnóstico UADY / EXANI-I — Nivel 5",
+    "title": "Examen Diagnóstico N0E05",
     "version": "2.0",
     "questionCount": 100,
     "estimatedMinutes": 75,
@@ -46,7 +46,7 @@
   },
   {
     "id": "diagnostico-6",
-    "title": "Diagnóstico UADY / EXANI-I — Nivel 6",
+    "title": "Examen Diagnóstico N1E01",
     "version": "2.0",
     "questionCount": 150,
     "estimatedMinutes": 255,
@@ -55,7 +55,7 @@
   },
   {
     "id": "diagnostico-7",
-    "title": "Diagnóstico UADY / EXANI-I — Nivel 7",
+    "title": "Examen Diagnóstico N1E02",
     "version": "2.0",
     "questionCount": 150,
     "estimatedMinutes": 255,
@@ -64,7 +64,7 @@
   },
   {
     "id": "diagnostico-8",
-    "title": "Diagnóstico UADY / EXANI-I — Nivel 8",
+    "title": "Examen Diagnóstico N1E03",
     "version": "2.0",
     "questionCount": 150,
     "estimatedMinutes": 255,
@@ -73,7 +73,7 @@
   },
   {
     "id": "diagnostico-9",
-    "title": "Diagnóstico UADY / EXANI-I — Nivel 9",
+    "title": "Examen Diagnóstico N1E04",
     "version": "2.0",
     "questionCount": 150,
     "estimatedMinutes": 255,
@@ -82,7 +82,7 @@
   },
   {
     "id": "diagnostico-10",
-    "title": "Diagnóstico UADY / EXANI-I — Nivel 10",
+    "title": "Examen Diagnóstico N1E05",
     "version": "2.0",
     "questionCount": 150,
     "estimatedMinutes": 255,

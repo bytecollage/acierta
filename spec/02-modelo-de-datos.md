@@ -18,7 +18,7 @@ pintar el selector, **sin descargar los exámenes completos**.
 [
   {
     "id": "diagnostico-1",
-    "title": "Diagnóstico UADY / EXANI-I — Nivel 1",
+    "title": "Examen Diagnóstico N0E01",
     "version": "2.0",
     "questionCount": 80,
     "estimatedMinutes": 60,
@@ -53,7 +53,7 @@ la validación de arranque (sección 5) DEBE comprobar que coinciden con el arch
 {
   "exam": {
     "id": "diagnostico-1",
-    "title": "Diagnóstico UADY / EXANI-I — Nivel 1",
+    "title": "Examen Diagnóstico N0E01",
     "version": "2.0",
     "questionCount": 80,
     "areas": [

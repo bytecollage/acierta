@@ -121,7 +121,8 @@ def main():
     areas, start = [], 1
     for a in TARGET:
         areas.append({"name": a, "start": start, "end": start + TARGET[a] - 1}); start += TARGET[a]
-    title = f"Diagnóstico UADY / EXANI-I — Nivel {level}"
+    # Código N<nivel>E<examen>: los diagnósticos 1–5 son N0E01–N0E05 y los 6–10, N1E01–N1E05.
+    title = f"Examen Diagnóstico N{(level - 1) // 5}E{(level - 1) % 5 + 1:02d}"
     qdoc = {"exam": {"id": exam_id, "title": title, "version": "2.0",
                      "questionCount": len(questions), "areas": areas},
             "stimuli": stimuli, "questions": questions}
