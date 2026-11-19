@@ -298,7 +298,8 @@
     // Sesión vencida: Google puede renovarla sin interacción si el navegador lo permite.
     if (window.Auth.getSession() && !window.Auth.getToken()) window.Auth.refresh();
 
-    window.Auth.mount($("#account"));
+    window.Auth.mount($("#account"), "account");
+    window.Auth.mount($("#signin"), "signin");
     window.Auth.onChange(async () => {
       // Al entrar o salir cambia de quién es el historial. Durante un examen no se
       // repinta nada: el intento en curso es local y no depende de la sesión.
@@ -436,12 +437,13 @@
     if (!note) return;
     const mode = window.Storage.getMode();
     const err = window.Storage.getLastError();
-    note.textContent =
-      mode === "guest" ? "Inicia sesión al final de la página para guardar tus resultados en tu cuenta y verlos desde cualquier dispositivo." :
+    const text =
+      mode === "guest" ? "Inicia sesión para guardar tus resultados en tu cuenta y verlos desde cualquier dispositivo." :
       mode === "remote" && err ? `No se pudo conectar con el servidor (${err.message}). Tus resultados nuevos se guardan en este navegador y se subirán después.` :
       "";
+    $("#account-note-text").textContent = text;
     note.className = mode === "remote" && err ? "alert warn" : "alert info";
-    note.classList.toggle("hidden", !note.textContent);
+    note.classList.toggle("hidden", !text);
   }
 
   /* --------------------------------------------------------------- panel */

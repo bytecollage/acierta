@@ -71,7 +71,11 @@
     <span class="spinner small" aria-hidden="true"></span> Actualizando tu historial…
   </p>
 
-  <div class="alert hidden" id="account-note" role="status"></div>
+  <!-- Sin sesión: aviso con el botón de Google. Con sesión desaparece y la cuenta va al pie. -->
+  <div class="alert hidden" id="account-note" role="status">
+    <p id="account-note-text"></p>
+    <div id="signin"></div>
+  </div>
 
   <div class="alert warn hidden" id="storage-warning" role="alert">
     No se pudo guardar el progreso en este navegador. Puedes hacer el examen, pero si

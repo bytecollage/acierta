@@ -226,6 +226,9 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 .alert.warn { background: var(--warn-bg); border: 1px solid var(--warn-line); color: var(--warn-ink); }
 .alert.error { background: var(--bad-bg); border: 1px solid var(--bad-line); color: var(--bad-ink); }
 .alert.info { background: var(--accent-soft); border: 1px solid #bfd4f7; color: #1e3a8a; }
+#account-note { display: flex; align-items: center; justify-content: space-between; gap: 10px 12px; flex-wrap: wrap; }
+#account-note p { margin: 0; flex: 1 1 220px; }
+#signin:empty { display: none; }
 .alert pre { white-space: pre-wrap; font-size: var(--fs-sm); margin: 8px 0 0; }
 
 .toast {
@@ -345,6 +348,8 @@ body.app[data-screen="reporte"] .wrap { padding-bottom: var(--gap); }
 }
 .appfooter-inner { max-width: calc(860px - 2 * var(--gutter)); margin: 0 auto; height: var(--appbar-h);
                    display: flex; align-items: center; justify-content: center; }
+/* Sin sesión el pie no tiene nada que mostrar: el botón de Google está en el aviso de arriba. */
+.appfooter:has(.account:empty) { display: none; }
 .appfooter .account { margin: 0; min-height: 0; flex-wrap: nowrap; min-width: 0; }
 .appfooter .account-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .appfooter .link-btn { white-space: nowrap; flex: none; }

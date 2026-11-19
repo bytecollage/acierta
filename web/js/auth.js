@@ -104,12 +104,16 @@
     listeners.forEach((fn) => fn(null));
   }
 
-  /** Pinta el estado de la cuenta (botón de Google o nombre + salir) en un contenedor. */
-  async function mount(el) {
+  /** Pinta el estado de la cuenta en un contenedor. `part` elige qué se pinta:
+   *  "signin"  → solo el botón de Google, mientras no haya sesión vigente;
+   *  "account" → solo nombre + «Cerrar sesión», con sesión vigente;
+   *  sin `part` → lo que corresponda (botón o nombre + salir). */
+  async function mount(el, part) {
     if (!el || !enabled) return;
     const paint = async () => {
       el.innerHTML = "";
-      if (session) {
+      const active = !!session && !!getToken();
+      if (session && part !== "signin" && (part !== "account" || active)) {
         const who = document.createElement("span");
         who.className = "account-name";
         who.textContent = session.name;
@@ -119,18 +123,14 @@
         out.textContent = "Cerrar sesión";
         out.onclick = signOut;
         el.append(who, out);
-        if (!getToken()) {
-          const btn = document.createElement("div");
-          el.append(btn);
-          if (await loadGis()) {
-            window.google.accounts.id.renderButton(btn, { type: "standard", size: "small", text: "continue_with" });
-          }
-        }
-      } else {
+      }
+      if (!active && part !== "account") {
         const btn = document.createElement("div");
         el.append(btn);
         if (await loadGis()) {
-          window.google.accounts.id.renderButton(btn, { type: "standard", size: "medium", text: "signin_with" });
+          window.google.accounts.id.renderButton(btn, session
+            ? { type: "standard", size: part === "signin" ? "medium" : "small", text: "continue_with" }
+            : { type: "standard", size: "medium", text: "signin_with" });
         }
       }
     };

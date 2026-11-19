@@ -61,10 +61,12 @@ completados, mejor y último resultado, tiempo medio) comparten estructura: etiq
 mayúsculas, cifra y nota.
 
 Las pestañas son íconos (con su nombre para lectores de pantalla y en el `title`), sin
-contadores. El nombre del estudiante y *Cerrar sesión* (o el botón de Google, sin sesión)
-van en el pie del panel y del Reporte detallado, espejo de la barra fija: solo una línea superior de ancho
-completo, sin fondo, a 56 px del borde inferior. Con poco contenido el pie queda al fondo
-de la pantalla; con mucho, al final de la página.
+contadores. **Cuenta.** Sin sesión, arriba del panel aparece el aviso «Inicia sesión para guardar tus
+resultados en tu cuenta y verlos desde cualquier dispositivo.» con el botón de Google, y no
+hay pie. Con sesión el aviso desaparece y el nombre del estudiante y *Cerrar sesión* van en
+el pie del panel y del Reporte detallado, espejo de la barra fija: solo una línea superior
+de ancho completo, sin fondo, a 56 px del borde inferior. Con poco contenido el pie queda al
+fondo de la pantalla; con mucho, al final de la página.
 
 **Filas de examen.** Cada examen ocupa una fila compacta: el título (`Examen N1E02`) y, debajo y más pequeño, `150 preguntas · ~255 min`. En
 Completados el porcentaje va justo después del título (`Examen N1E01 · 83%`) y debajo `aciertos · minutos · fecha` (el año

@@ -24,7 +24,7 @@ teléfono real.
 |---|---|---|
 | M-01 | Abrir la bienvenida y pulsar CONTINUAR | El panel aparece sin página en blanco; con caché, al instante y con «Actualizando tu historial…» |
 | M-02 | Abrir el panel sin caché (navegador limpio, con sesión) | «Cargando tus exámenes…» y luego las pestañas con datos |
-| M-03 | Iniciar y cerrar sesión desde el pie del panel | Cambia el historial mostrado; al cerrar sesión se borra la caché |
+| M-03 | Iniciar sesión desde el aviso de arriba y cerrarla desde el pie del panel | Cambia el historial mostrado; al cerrar sesión se borra la caché |
 | M-04 | Terminar un examen sin sesión y luego iniciar sesión | En Completados aparece «pendiente de subir» y desaparece al subirse |
 | M-05 | Simular un script que no carga | «No se pudo cargar la aplicación…» con **Reintentar** |
 
