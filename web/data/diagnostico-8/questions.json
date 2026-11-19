@@ -1,0 +1,1923 @@
+{
+  "exam": {
+    "id": "diagnostico-8",
+    "title": "Diagnóstico UADY / EXANI-I — Nivel 8",
+    "version": "2.0",
+    "questionCount": 150,
+    "areas": [
+      {
+        "name": "Pensamiento científico",
+        "start": 1,
+        "end": 28
+      },
+      {
+        "name": "Comprensión lectora",
+        "start": 29,
+        "end": 56
+      },
+      {
+        "name": "Redacción indirecta",
+        "start": 57,
+        "end": 84
+      },
+      {
+        "name": "Pensamiento matemático",
+        "start": 85,
+        "end": 122
+      },
+      {
+        "name": "Inglés",
+        "start": 123,
+        "end": 150
+      }
+    ]
+  },
+  "stimuli": [
+    {
+      "id": "cl-1",
+      "area": "Comprensión lectora",
+      "instruction": "Lee el texto (ámbito de estudio):",
+      "text": "Islas de calor urbanas\n\nEn una tarde de verano, el centro de una gran ciudad puede estar entre 3 y 7 °C más caliente que las zonas rurales cercanas. Este fenómeno, llamado isla de calor urbana, se debe a que el asfalto, el concreto y los techos oscuros absorben la radiación solar durante el día y la liberan lentamente por la noche. A ello se suman el calor que expulsan los motores y los aparatos de aire acondicionado, y la escasez de vegetación, que en el campo enfría el ambiente al evaporar agua.\n\nLas consecuencias no son solo una cuestión de comodidad. Durante las olas de calor, las noches calurosas impiden que el cuerpo se recupere, lo que aumenta las hospitalizaciones de adultos mayores. Además, el mayor uso de aire acondicionado eleva el consumo eléctrico y, si la electricidad proviene de combustibles fósiles, también las emisiones que calientan el planeta: un círculo vicioso.\n\nLas soluciones conocidas son relativamente sencillas: plantar árboles en las calles, pintar los techos de colores claros y crear parques que funcionen como «pulmones frescos». El problema es que suelen aplicarse primero en los barrios con más recursos. Un estudio en varias ciudades encontró que las colonias de menores ingresos tenían, en promedio, menos árboles y temperaturas superficiales más altas. El calor, concluyen los autores, también se reparte de forma desigual."
+    },
+    {
+      "id": "cl-2",
+      "area": "Comprensión lectora",
+      "instruction": "Lee el texto (ámbito de estudio):",
+      "text": "El cero: una idea que tardó siglos en llegar\n\nHoy escribimos el cero sin pensarlo, pero durante gran parte de la historia muchas culturas calcularon sin él. Los romanos, por ejemplo, no tenían un símbolo para «nada», y su sistema de numeración hacía muy difícil multiplicar o dividir.\n\nAl menos dos civilizaciones desarrollaron el cero de forma independiente. Los mayas lo usaban en su calendario hacia el siglo IV de nuestra era y lo representaban, entre otras formas, con un caracol. En la India, hacia el siglo VII, el matemático Brahmagupta no solo lo empleó para marcar posiciones vacías, sino que estableció reglas para operar con él como un número más: sumar cero a una cantidad la deja igual; multiplicar por cero da cero.\n\nDesde la India, el cero pasó a los matemáticos de lengua árabe y, a través de ellos, a Europa, donde se difundió a partir del siglo XIII. Su adopción no fue inmediata: en algunas ciudades se prohibió usar las nuevas cifras en documentos comerciales, porque era fácil convertir un 0 en 6 o en 9 y alterar las cuentas."
+    },
+    {
+      "id": "cl-3",
+      "area": "Comprensión lectora",
+      "instruction": "Lee el texto (ámbito literario):",
+      "text": "Las llaves\n\nCuando mi padre se fue a la ciudad a trabajar, dejó en el clavo de la cocina su llavero: la llave de la casa, la del taller y una pequeña, oxidada, que nadie sabía qué abría. Mi madre lo limpiaba cada sábado, como si él fuera a volver el domingo.\n\nPasaron tres años. Yo aprendí a usar la llave del taller; mi hermano, a reparar la bomba del agua. Mi madre dejó de esperar llamadas los viernes, aunque nunca dejó de limpiar el llavero.\n\nEl día que cumplí quince, mi madre lo descolgó y me lo dio.\n\n—Ya va siendo hora de que alguien sepa qué abre la pequeña —me dijo.\n\nProbé en todas las cerraduras de la casa. No abrió ninguna. Esa noche, mientras la miraba, entendí que mi madre no me estaba pidiendo que encontrara una puerta. Me estaba pidiendo que dejara de buscarla."
+    },
+    {
+      "id": "cl-4",
+      "area": "Comprensión lectora",
+      "instruction": "Lee el poema (ámbito literario):",
+      "text": "Ciudad\n\nLa ciudad despierta antes que nosotros.\nBosteza en los camiones,\nse lava la cara en los charcos\ny se pone un traje de humo\npara ir a trabajar.\n\nNadie le pregunta si está cansada.\nNosotros tampoco: vamos dentro de ella,\napurados, mirando el reloj,\ncomo pasajeros que no saben\nque el camión también respira."
+    },
+    {
+      "id": "cl-5",
+      "area": "Comprensión lectora",
+      "instruction": "Lee el texto (ámbito de participación social):",
+      "text": "Sistema de Bicicletas Públicas — Condiciones de uso\n\n1. Pueden registrarse personas de 16 años o más. Los menores de 18 deben presentar una carta de autorización firmada por su madre, padre o tutor.\n2. La membresía anual cuesta $480 e incluye viajes ilimitados de hasta 45 minutos. Por cada 30 minutos adicionales o fracción se cobrará un cargo de $20.\n3. La bicicleta debe devolverse en cualquier cicloestación del sistema, correctamente anclada. Mientras no se ancle, el usuario seguirá siendo responsable de ella.\n4. En caso de robo, el usuario deberá presentar la denuncia ante el Ministerio Público en un plazo de 24 horas. De lo contrario, se le cobrará el valor de la bicicleta.\n5. Está prohibido llevar a otra persona en la bicicleta y circular por las banquetas. Tres faltas a estas reglas en un año provocan la cancelación de la membresía, sin reembolso."
+    },
+    {
+      "id": "en-1",
+      "area": "Inglés",
+      "instruction": "Read the advertisement:",
+      "text": "SUMMER CAMP ASSISTANTS WANTED\n\nLakeside Adventure Camp is looking for young assistants to help our team during July.\n\nRequirements:\n• Be at least 16 years old by July 1.\n• Be able to swim (you will need to pass a short swimming test).\n• Speak English and Spanish. A third language is a plus, but not necessary.\n\nDuties: helping instructors with sports and craft activities, serving lunch, and keeping the camp clean. Assistants will not be responsible for children's safety in the lake; this is the job of our certified lifeguards.\n\nSchedule: Monday to Friday, 8:00 a.m. to 2:00 p.m. Assistants who work all four weeks will receive a bonus of $1,000 at the end of the month.\n\nHow to apply: bring a short letter explaining why you want to work with children to the camp office before June 10. Selected candidates will be invited to an interview."
+    },
+    {
+      "id": "en-2",
+      "area": "Inglés",
+      "instruction": "Read the text:",
+      "text": "Is homework really necessary?\n\nSome schools around the world have reduced or even eliminated homework for younger students. Supporters of this decision argue that children need time to play, rest and be with their families, and that long hours of homework can cause stress without improving learning.\n\nResearch, however, suggests that the answer depends on age. For students in primary school, the connection between homework and better grades is weak. For secondary students, a moderate amount of homework, about one to two hours a day, is linked to better results. More than that does not seem to help, and it may even have negative effects on sleep and motivation.\n\nThe quality of the task also matters. Copying definitions from a book is not the same as solving a problem or reading a story and discussing it the next day. Many teachers now prefer short, meaningful tasks that students can do on their own and that prepare them for the next class. In other words, the question is not only how much homework, but what kind."
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "area": "Pensamiento científico",
+      "subarea": "Identificación de variables, conceptos y procesos",
+      "topic": "Célula",
+      "text": "Una célula del páncreas fabrica grandes cantidades de enzimas, que son proteínas, para enviarlas fuera de ella. ¿Qué organelos esperarías encontrar en abundancia?",
+      "options": {
+        "A": "Lisosomas y pared celular",
+        "B": "Ribosomas y retículo endoplásmico rugoso",
+        "C": "Vacuolas grandes y cloroplastos abundantes"
+      }
+    },
+    {
+      "id": 2,
+      "area": "Pensamiento científico",
+      "subarea": "Identificación de variables, conceptos y procesos",
+      "topic": "Célula",
+      "text": "Un glóbulo rojo colocado en agua destilada se hincha y puede romperse. ¿Qué proceso lo explica?",
+      "options": {
+        "A": "El agua entra por ósmosis hacia el interior, donde hay más solutos",
+        "B": "Las sales salen de la célula por difusión y su volumen aumenta",
+        "C": "La membrana fabrica agua al contacto con el medio"
+      }
+    },
+    {
+      "id": 3,
+      "area": "Pensamiento científico",
+      "subarea": "Identificación de variables, conceptos y procesos",
+      "topic": "Genética y evolución",
+      "text": "El daltonismo es un rasgo recesivo ligado al cromosoma X. Una mujer portadora (XᴰXᵈ) y un hombre sin daltonismo (XᴰY) tienen un hijo varón. ¿Qué probabilidad hay de que sea daltónico?",
+      "options": {
+        "A": "1/4",
+        "B": "0",
+        "C": "1/2"
+      }
+    },
+    {
+      "id": 4,
+      "area": "Pensamiento científico",
+      "subarea": "Identificación de variables, conceptos y procesos",
+      "topic": "Genética y evolución",
+      "text": "¿Qué condición es indispensable para que actúe la selección natural en una población?",
+      "options": {
+        "A": "Que el ambiente permanezca siempre constante",
+        "B": "Que los individuos se esfuercen por adaptarse",
+        "C": "Que exista variación heredable entre los individuos"
+      }
+    },
+    {
+      "id": 5,
+      "area": "Pensamiento científico",
+      "subarea": "Identificación de variables, conceptos y procesos",
+      "topic": "Biomoléculas y nutrición",
+      "text": "¿Qué le ocurre a una enzima humana si la temperatura sube muy por encima de los 37 °C?",
+      "options": {
+        "A": "Se desnaturaliza y pierde su función",
+        "B": "Se transforma en un carbohidrato",
+        "C": "Trabaja cada vez más rápido, sin límite"
+      }
+    },
+    {
+      "id": 6,
+      "area": "Pensamiento científico",
+      "subarea": "Identificación de variables, conceptos y procesos",
+      "topic": "Átomo y enlaces",
+      "text": "El carbono-12 y el carbono-14 son isótopos. ¿En qué se diferencian sus átomos?",
+      "options": {
+        "A": "En el número de electrones del átomo neutro",
+        "B": "En el número de protones",
+        "C": "En el número de neutrones"
+      }
+    },
+    {
+      "id": 7,
+      "area": "Pensamiento científico",
+      "subarea": "Identificación de variables, conceptos y procesos",
+      "topic": "Átomo y enlaces",
+      "text": "El magnesio (metal del grupo 2) reacciona con el oxígeno (no metal del grupo 16). ¿Qué compuesto y tipo de enlace se forman?",
+      "options": {
+        "A": "Mg₂O, con enlace metálico",
+        "B": "MgO₂, con enlace covalente",
+        "C": "MgO, con enlace iónico"
+      }
+    },
+    {
+      "id": 8,
+      "area": "Pensamiento científico",
+      "subarea": "Identificación de variables, conceptos y procesos",
+      "topic": "Materia y estados",
+      "text": "Al mezclar 50 mL de agua con 50 mL de alcohol, el volumen total es un poco menor que 100 mL. ¿Qué indica este resultado?",
+      "options": {
+        "A": "Que entre las partículas hay espacios que se ocupan al mezclarse",
+        "B": "Que se forma un compuesto sólido en el fondo",
+        "C": "Que parte de la masa de los líquidos desaparece al combinarse entre sí"
+      }
+    },
+    {
+      "id": 9,
+      "area": "Pensamiento científico",
+      "subarea": "Identificación de variables, conceptos y procesos",
+      "topic": "Fuerzas y movimiento",
+      "text": "Un barco de acero flota, aunque el acero es más denso que el agua. ¿Por qué?",
+      "options": {
+        "A": "Porque el agua salada no ejerce peso sobre el casco",
+        "B": "Porque su forma hueca desplaza un volumen de agua cuyo peso iguala al del barco",
+        "C": "Porque el acero se vuelve menos denso tras estar mucho tiempo en contacto con el mar"
+      }
+    },
+    {
+      "id": 10,
+      "area": "Pensamiento científico",
+      "subarea": "Identificación de variables, conceptos y procesos",
+      "topic": "Fuerzas y movimiento",
+      "text": "Sobre un carrito de 2 kg actúa una fuerza neta de 6 N. ¿Cuál es su aceleración?",
+      "options": {
+        "A": "8 m/s²",
+        "B": "12 m/s²",
+        "C": "3 m/s²"
+      }
+    },
+    {
+      "id": 11,
+      "area": "Pensamiento científico",
+      "subarea": "Relación con procesos y consecuencias en la sociedad",
+      "topic": "Cuerpo humano y salud",
+      "text": "Durante el ejercicio intenso aumentan la frecuencia respiratoria y la cardiaca. ¿Cuál es la razón principal?",
+      "options": {
+        "A": "Llevar más oxígeno a los músculos y retirar más dióxido de carbono",
+        "B": "Enfriar los pulmones y el corazón, que se calientan con el movimiento intenso",
+        "C": "Producir de inmediato más glóbulos rojos"
+      }
+    },
+    {
+      "id": 12,
+      "area": "Pensamiento científico",
+      "subarea": "Relación con procesos y consecuencias en la sociedad",
+      "topic": "Química cotidiana",
+      "text": "En países fríos se esparce sal sobre las carreteras congeladas. ¿Por qué funciona?",
+      "options": {
+        "A": "Porque hace que el hielo se evapore directamente",
+        "B": "Porque, disuelta en el agua, baja su punto de congelación",
+        "C": "Porque calienta el hielo mediante una reacción química"
+      }
+    },
+    {
+      "id": 13,
+      "area": "Pensamiento científico",
+      "subarea": "Relación con procesos y consecuencias en la sociedad",
+      "topic": "Biotecnología",
+      "text": "Las pruebas genéticas permiten detectar el riesgo de algunas enfermedades hereditarias. ¿Qué implicación social genera más debate?",
+      "options": {
+        "A": "Que las pruebas modifican el ADN de quien se las hace",
+        "B": "Que eliminan las enfermedades hereditarias de la población",
+        "C": "El posible uso de esa información para discriminar a las personas"
+      }
+    },
+    {
+      "id": 14,
+      "area": "Pensamiento científico",
+      "subarea": "Relación con procesos y consecuencias en la sociedad",
+      "topic": "Ecología",
+      "text": "El exceso de fertilizantes nitrogenados que llega a un lago provoca…",
+      "options": {
+        "A": "un aumento del oxígeno disuelto y, con él, de la población de peces del lago",
+        "B": "que el agua se vuelva más transparente y fría",
+        "C": "un crecimiento excesivo de algas y la disminución del oxígeno del agua"
+      }
+    },
+    {
+      "id": 15,
+      "area": "Pensamiento científico",
+      "subarea": "Relación con procesos y consecuencias en la sociedad",
+      "topic": "Electricidad",
+      "text": "¿Por qué las líneas de transmisión transportan la electricidad a voltajes muy altos?",
+      "options": {
+        "A": "Para reducir la energía que se pierde como calor en los cables",
+        "B": "Porque los aparatos domésticos funcionan con alto voltaje",
+        "C": "Para que la electricidad viaje más rápido que la luz"
+      }
+    },
+    {
+      "id": 16,
+      "area": "Pensamiento científico",
+      "subarea": "Relación con procesos y consecuencias en la sociedad",
+      "topic": "Cuerpo humano y salud",
+      "text": "Una persona con anemia por falta de hierro se cansa con facilidad. ¿Por qué?",
+      "options": {
+        "A": "Porque su corazón deja de bombear sangre durante unos segundos cuando hace esfuerzo",
+        "B": "Porque sus pulmones no pueden inhalar aire suficiente",
+        "C": "Porque su sangre transporta menos oxígeno al tener menos hemoglobina"
+      }
+    },
+    {
+      "id": 17,
+      "area": "Pensamiento científico",
+      "subarea": "Relación con procesos y consecuencias en la sociedad",
+      "topic": "Energía",
+      "text": "Si la electricidad de una región se obtiene sobre todo quemando carbón, ¿qué desventaja tienen ahí los autos eléctricos?",
+      "options": {
+        "A": "No pueden recargarse con electricidad generada a partir de carbón",
+        "B": "Sus emisiones se trasladan, en parte, a las centrales eléctricas",
+        "C": "Emiten por el escape más gases que un auto de gasolina"
+      }
+    },
+    {
+      "id": 18,
+      "area": "Pensamiento científico",
+      "subarea": "Relación con procesos y consecuencias en la sociedad",
+      "topic": "Ecología",
+      "text": "La pesca excesiva de tiburones en una costa provocó un aumento de rayas y una disminución de almejas. ¿Qué lo explica?",
+      "options": {
+        "A": "Sin su depredador, las rayas aumentaron y consumieron más almejas",
+        "B": "Las rayas y las almejas compiten por la luz del sol",
+        "C": "Los tiburones protegían a las almejas de las corrientes frías"
+      }
+    },
+    {
+      "id": 19,
+      "area": "Pensamiento científico",
+      "subarea": "Relación con procesos y consecuencias en la sociedad",
+      "topic": "Química cotidiana",
+      "text": "Una manzana partida se oscurece, pero tarda más si se le pone jugo de limón. ¿Por qué?",
+      "options": {
+        "A": "Porque el medio ácido frena la oxidación causada por enzimas de la fruta",
+        "B": "Porque el limón le aporta oxígeno a la manzana",
+        "C": "Porque el azúcar del limón forma una capa que impide que la fruta pierda agua"
+      }
+    },
+    {
+      "id": 20,
+      "area": "Pensamiento científico",
+      "subarea": "Interpretación y argumentación desde evidencias",
+      "topic": "Biomoléculas y nutrición",
+      "text": "Un refresco original tiene 40 g de azúcar por botella. Su versión ligera anuncia «50 % menos azúcar». Si 1 g de azúcar aporta 4 kcal, ¿cuántas kilocalorías de azúcar aporta la versión ligera?",
+      "options": {
+        "A": "80 kcal",
+        "B": "20 kcal",
+        "C": "160 kcal"
+      }
+    },
+    {
+      "id": 21,
+      "area": "Pensamiento científico",
+      "subarea": "Interpretación y argumentación desde evidencias",
+      "topic": "Energía",
+      "text": "Un motor recibe 500 J de energía eléctrica y produce 400 J de trabajo mecánico. ¿Cuál es su eficiencia?",
+      "options": {
+        "A": "20 %",
+        "B": "80 %",
+        "C": "125 %"
+      }
+    },
+    {
+      "id": 22,
+      "area": "Pensamiento científico",
+      "subarea": "Interpretación y argumentación desde evidencias",
+      "topic": "Energía",
+      "text": "Un taladro recibe 500 J de energía eléctrica y solo 400 J se convierten en trabajo mecánico. ¿Qué ocurrió con los 100 J restantes?",
+      "options": {
+        "A": "Se convirtieron en masa del motor",
+        "B": "Se transformaron sobre todo en calor y sonido",
+        "C": "Se destruyeron dentro del taladro por la fricción de sus piezas"
+      }
+    },
+    {
+      "id": 23,
+      "area": "Pensamiento científico",
+      "subarea": "Interpretación y argumentación desde evidencias",
+      "topic": "Electricidad",
+      "text": "Por un resistor de 20 Ω circula una corriente de 0.5 A. ¿Qué voltaje tiene aplicado?",
+      "options": {
+        "A": "20.5 V",
+        "B": "40 V",
+        "C": "10 V"
+      }
+    },
+    {
+      "id": 24,
+      "area": "Pensamiento científico",
+      "subarea": "Interpretación y argumentación desde evidencias",
+      "topic": "Electricidad",
+      "text": "Un foco de 60 W se sustituye por uno de 15 W que ilumina igual. Si se usa 4 horas diarias durante 30 días, ¿cuánta energía se ahorra en el mes?",
+      "options": {
+        "A": "7.2 kWh",
+        "B": "5.4 kWh",
+        "C": "1.8 kWh"
+      }
+    },
+    {
+      "id": 25,
+      "area": "Pensamiento científico",
+      "subarea": "Interpretación y argumentación desde evidencias",
+      "topic": "Ecología",
+      "text": "Durante años se registraron las poblaciones de liebres y linces de una región: cuando aumentan las liebres, poco después aumentan los linces, y luego las liebres disminuyen. ¿Qué relación muestran estos datos?",
+      "options": {
+        "A": "Competencia: ambas especies consumen el mismo alimento",
+        "B": "Depredador y presa: los linces dependen de las liebres",
+        "C": "Mutualismo: ambos se benefician de la relación"
+      }
+    },
+    {
+      "id": 26,
+      "area": "Pensamiento científico",
+      "subarea": "Interpretación y argumentación desde evidencias",
+      "topic": "Correlación y causalidad",
+      "text": "Un estudio encuentra que en los meses con más ventas de helado hay más ahogamientos. ¿Qué conclusión es más razonable?",
+      "options": {
+        "A": "Ambos aumentan por un tercer factor, como el calor",
+        "B": "Comer helado provoca ahogamientos",
+        "C": "Los ahogamientos hacen que aumente la venta de helado"
+      }
+    },
+    {
+      "id": 27,
+      "area": "Pensamiento científico",
+      "subarea": "Interpretación y argumentación desde evidencias",
+      "topic": "Diseño experimental",
+      "text": "Para probar un fertilizante, se aplicó a 30 plantas y se compararon con 30 sin él. Las tratadas crecieron 15 % más, pero eran las que estaban junto a la ventana. ¿Qué problema tiene el experimento?",
+      "options": {
+        "A": "Treinta plantas por grupo son demasiadas",
+        "B": "No se midió cuánto fertilizante absorbió cada planta por la raíz",
+        "C": "La luz es una variable no controlada que pudo causar la diferencia"
+      }
+    },
+    {
+      "id": 28,
+      "area": "Pensamiento científico",
+      "subarea": "Interpretación y argumentación desde evidencias",
+      "topic": "Calor y temperatura",
+      "text": "En la gráfica de temperatura contra tiempo de un trozo de hielo que se calienta desde −10 °C hasta convertirse en vapor aparecen dos tramos horizontales. ¿Qué representan?",
+      "options": {
+        "A": "La fusión y la ebullición, cuando la temperatura no cambia",
+        "B": "Los periodos en que el agua perdió calor hacia el ambiente",
+        "C": "Los momentos en que se apagó la fuente de calor"
+      }
+    },
+    {
+      "id": 29,
+      "area": "Comprensión lectora",
+      "subarea": "Identificación de información",
+      "topic": "Dato explícito",
+      "stimulusId": "cl-1",
+      "text": "Según el texto, ¿por qué las zonas rurales son más frescas?",
+      "options": {
+        "A": "Porque reciben menos radiación solar al estar lejos del centro",
+        "B": "Porque su vegetación enfría el ambiente al evaporar agua",
+        "C": "Porque en ellas no se usan aparatos eléctricos"
+      }
+    },
+    {
+      "id": 30,
+      "area": "Comprensión lectora",
+      "subarea": "Interpretación",
+      "topic": "Relación causa-efecto",
+      "stimulusId": "cl-1",
+      "text": "¿Por qué el texto habla de un «círculo vicioso»?",
+      "options": {
+        "A": "Porque los árboles mueren por el calor y dan menos sombra",
+        "B": "Porque el calor aumenta el uso de aire acondicionado, que a su vez contribuye a más calentamiento",
+        "C": "Porque el asfalto se calienta durante el día y se enfría durante la noche, una y otra vez"
+      }
+    },
+    {
+      "id": 31,
+      "area": "Comprensión lectora",
+      "subarea": "Interpretación",
+      "topic": "Inferencia",
+      "stimulusId": "cl-1",
+      "text": "De acuerdo con el texto, ¿quiénes serían los más afectados por una ola de calor en la ciudad?",
+      "options": {
+        "A": "Los adultos mayores de colonias con pocos árboles",
+        "B": "Los habitantes de barrios con muchos parques",
+        "C": "Los jóvenes que viven en zonas rurales"
+      }
+    },
+    {
+      "id": 32,
+      "area": "Comprensión lectora",
+      "subarea": "Interpretación",
+      "topic": "Idea principal",
+      "stimulusId": "cl-1",
+      "text": "¿Qué idea desarrolla el último párrafo?",
+      "options": {
+        "A": "Plantar árboles es la única solución eficaz",
+        "B": "Las colonias de menores ingresos consumen más electricidad",
+        "C": "Las soluciones existen, pero se aplican de manera desigual"
+      }
+    },
+    {
+      "id": 33,
+      "area": "Comprensión lectora",
+      "subarea": "Evaluación de la forma y el contenido",
+      "topic": "Lenguaje figurado",
+      "stimulusId": "cl-1",
+      "text": "¿Qué efecto tiene la frase final «El calor también se reparte de forma desigual»?",
+      "options": {
+        "A": "Relaciona un fenómeno físico con un problema de justicia social",
+        "B": "Exagera la diferencia de temperatura entre colonias para alarmar al lector",
+        "C": "Contradice los datos del estudio citado"
+      }
+    },
+    {
+      "id": 34,
+      "area": "Comprensión lectora",
+      "subarea": "Evaluación de la forma y el contenido",
+      "topic": "Uso de evidencias",
+      "stimulusId": "cl-1",
+      "text": "¿Qué tipo de evidencia respalda que el calor afecta más a las colonias de menores ingresos?",
+      "options": {
+        "A": "El caso de una sola colonia",
+        "B": "Un estudio comparativo realizado en varias ciudades",
+        "C": "La experiencia personal del autor en su propia colonia"
+      }
+    },
+    {
+      "id": 35,
+      "area": "Comprensión lectora",
+      "subarea": "Identificación de información",
+      "topic": "Dato explícito",
+      "stimulusId": "cl-2",
+      "text": "Según el texto, ¿qué aportó Brahmagupta?",
+      "options": {
+        "A": "La difusión del cero en Europa",
+        "B": "El símbolo del caracol para representar el cero",
+        "C": "Reglas para operar con el cero como un número"
+      }
+    },
+    {
+      "id": 36,
+      "area": "Comprensión lectora",
+      "subarea": "Interpretación",
+      "topic": "Secuencia",
+      "stimulusId": "cl-2",
+      "text": "¿Qué recorrido siguió el cero hasta llegar a Europa?",
+      "options": {
+        "A": "India, matemáticos de lengua árabe, Europa",
+        "B": "Mayas, matemáticos de lengua árabe, Europa",
+        "C": "Roma, India, Europa"
+      }
+    },
+    {
+      "id": 37,
+      "area": "Comprensión lectora",
+      "subarea": "Interpretación",
+      "topic": "Inferencia",
+      "stimulusId": "cl-2",
+      "text": "¿Qué significa que mayas e indios desarrollaran el cero «de forma independiente»?",
+      "options": {
+        "A": "Que ambas lo tomaron de los romanos",
+        "B": "Que cada civilización lo creó sin influencia de la otra",
+        "C": "Que ambas lo usaron únicamente para registrar fechas de su calendario"
+      }
+    },
+    {
+      "id": 38,
+      "area": "Comprensión lectora",
+      "subarea": "Evaluación de la forma y el contenido",
+      "topic": "Propósito de un dato",
+      "stimulusId": "cl-2",
+      "text": "¿Para qué menciona el autor que en algunas ciudades se prohibieron las nuevas cifras?",
+      "options": {
+        "A": "Para explicar por qué los romanos no lo usaban",
+        "B": "Para demostrar que el cero no servía para el comercio",
+        "C": "Para mostrar que su adopción encontró resistencias prácticas"
+      }
+    },
+    {
+      "id": 39,
+      "area": "Comprensión lectora",
+      "subarea": "Evaluación de la forma y el contenido",
+      "topic": "Estructura del texto",
+      "stimulusId": "cl-2",
+      "text": "¿Qué organización predomina en el texto?",
+      "options": {
+        "A": "Una comparación de ventajas y desventajas",
+        "B": "La descripción de un procedimiento matemático",
+        "C": "Un recorrido histórico de una idea"
+      }
+    },
+    {
+      "id": 40,
+      "area": "Comprensión lectora",
+      "subarea": "Identificación de información",
+      "topic": "Dato explícito",
+      "stimulusId": "cl-3",
+      "text": "¿Qué llaves tenía el llavero del padre?",
+      "options": {
+        "A": "La de la casa, la del taller y una pequeña oxidada",
+        "B": "Solo la de la casa y la del taller",
+        "C": "La de la casa, la del coche y la del taller"
+      }
+    },
+    {
+      "id": 41,
+      "area": "Comprensión lectora",
+      "subarea": "Interpretación",
+      "topic": "Interpretación de personajes",
+      "stimulusId": "cl-3",
+      "text": "¿Qué sugiere que la madre limpiara el llavero cada sábado?",
+      "options": {
+        "A": "Que conservaba la esperanza de que el padre regresara",
+        "B": "Que pensaba vender las herramientas y las llaves del taller",
+        "C": "Que le molestaba ver óxido en la cocina"
+      }
+    },
+    {
+      "id": 42,
+      "area": "Comprensión lectora",
+      "subarea": "Interpretación",
+      "topic": "Inferencia",
+      "stimulusId": "cl-3",
+      "text": "¿Qué cambio muestra el segundo párrafo?",
+      "options": {
+        "A": "Que la madre se mudó a la ciudad",
+        "B": "Que el padre volvió a casa después de tres años",
+        "C": "Que la familia aprendió a arreglárselas sin el padre"
+      }
+    },
+    {
+      "id": 43,
+      "area": "Comprensión lectora",
+      "subarea": "Interpretación",
+      "topic": "Símbolo",
+      "stimulusId": "cl-3",
+      "text": "¿Qué representa la llave pequeña que no abre ninguna cerradura?",
+      "options": {
+        "A": "La espera de algo que no va a ocurrir",
+        "B": "El trabajo del padre en el taller",
+        "C": "Un objeto valioso escondido en la casa"
+      }
+    },
+    {
+      "id": 44,
+      "area": "Comprensión lectora",
+      "subarea": "Interpretación",
+      "topic": "Interpretación del final",
+      "stimulusId": "cl-3",
+      "text": "¿Qué comprende el narrador al final del cuento?",
+      "options": {
+        "A": "Que debía ir a buscar a su padre a la ciudad",
+        "B": "Que su madre le pedía aceptar la ausencia del padre",
+        "C": "Que la llave abría una puerta del taller"
+      }
+    },
+    {
+      "id": 45,
+      "area": "Comprensión lectora",
+      "subarea": "Evaluación de la forma y el contenido",
+      "topic": "Recursos narrativos",
+      "stimulusId": "cl-3",
+      "text": "¿Por qué el cuento no explica directamente qué pasó con el padre?",
+      "options": {
+        "A": "Para que el lector infiera la ausencia a partir de los detalles",
+        "B": "Porque el tema principal del cuento es el trabajo en el taller familiar",
+        "C": "Porque el narrador nunca conoció a su padre"
+      }
+    },
+    {
+      "id": 46,
+      "area": "Comprensión lectora",
+      "subarea": "Identificación de información",
+      "topic": "Dato explícito",
+      "stimulusId": "cl-4",
+      "text": "Según el poema, ¿cómo van los habitantes de la ciudad?",
+      "options": {
+        "A": "Despiertos antes que la ciudad",
+        "B": "Apurados, mirando el reloj",
+        "C": "Preguntándole a la ciudad si está cansada"
+      }
+    },
+    {
+      "id": 47,
+      "area": "Comprensión lectora",
+      "subarea": "Interpretación",
+      "topic": "Lenguaje figurado",
+      "stimulusId": "cl-4",
+      "text": "¿Qué recurso predomina en el verso «se lava la cara en los charcos»?",
+      "options": {
+        "A": "La comparación",
+        "B": "La personificación",
+        "C": "La enumeración"
+      }
+    },
+    {
+      "id": 48,
+      "area": "Comprensión lectora",
+      "subarea": "Interpretación",
+      "topic": "Lenguaje figurado",
+      "stimulusId": "cl-4",
+      "text": "¿Qué sugiere la imagen «un traje de humo»?",
+      "options": {
+        "A": "La ropa elegante de quienes trabajan",
+        "B": "Un incendio en el centro de la ciudad",
+        "C": "La contaminación que cubre la ciudad"
+      }
+    },
+    {
+      "id": 49,
+      "area": "Comprensión lectora",
+      "subarea": "Interpretación",
+      "topic": "Tema",
+      "stimulusId": "cl-4",
+      "text": "¿Qué idea central transmite el poema?",
+      "options": {
+        "A": "La contaminación urbana proviene sobre todo de los camiones",
+        "B": "La puntualidad es lo más importante para quienes viven y trabajan en la ciudad",
+        "C": "La ciudad es como un ser vivo, agotado e ignorado por quienes la habitan"
+      }
+    },
+    {
+      "id": 50,
+      "area": "Comprensión lectora",
+      "subarea": "Evaluación de la forma y el contenido",
+      "topic": "Recursos del texto",
+      "stimulusId": "cl-4",
+      "text": "¿Qué efecto tiene la comparación final con «pasajeros que no saben / que el camión también respira»?",
+      "options": {
+        "A": "Explica el funcionamiento mecánico de los camiones",
+        "B": "Introduce una crítica a los choferes que manejan sin cuidar sus camiones",
+        "C": "Subraya la indiferencia de las personas hacia lo que las sostiene"
+      }
+    },
+    {
+      "id": 51,
+      "area": "Comprensión lectora",
+      "subarea": "Identificación de información",
+      "topic": "Dato explícito",
+      "stimulusId": "cl-5",
+      "text": "¿Qué deben presentar los usuarios de 16 y 17 años para registrarse?",
+      "options": {
+        "A": "Una identificación oficial con fotografía y un comprobante de domicilio",
+        "B": "Una carta de autorización firmada por su madre, padre o tutor",
+        "C": "Una denuncia ante el Ministerio Público"
+      }
+    },
+    {
+      "id": 52,
+      "area": "Comprensión lectora",
+      "subarea": "Interpretación",
+      "topic": "Aplicación de reglas",
+      "stimulusId": "cl-5",
+      "text": "Mariana usó una bicicleta durante 1 hora y 20 minutos en un solo viaje. ¿Cuánto se le cobrará, además de la membresía?",
+      "options": {
+        "A": "$0",
+        "B": "$40",
+        "C": "$20"
+      }
+    },
+    {
+      "id": 53,
+      "area": "Comprensión lectora",
+      "subarea": "Interpretación",
+      "topic": "Aplicación de reglas",
+      "stimulusId": "cl-5",
+      "text": "Un usuario deja la bicicleta junto a la cicloestación, sin anclarla, y alguien se la lleva. ¿Qué establece el reglamento?",
+      "options": {
+        "A": "Que el usuario sigue siendo responsable de la bicicleta",
+        "B": "Que basta con avisar al día siguiente",
+        "C": "Que el sistema asume la pérdida porque la bicicleta estaba en la cicloestación"
+      }
+    },
+    {
+      "id": 54,
+      "area": "Comprensión lectora",
+      "subarea": "Interpretación",
+      "topic": "Inferencia",
+      "stimulusId": "cl-5",
+      "text": "¿Para qué se exige presentar la denuncia en un plazo de 24 horas?",
+      "options": {
+        "A": "Para cancelar la membresía del usuario",
+        "B": "Para comprobar que la bicicleta realmente fue robada",
+        "C": "Para que el Ministerio Público entregue otra bicicleta"
+      }
+    },
+    {
+      "id": 55,
+      "area": "Comprensión lectora",
+      "subarea": "Evaluación de la forma y el contenido",
+      "topic": "Propósito del texto",
+      "stimulusId": "cl-5",
+      "text": "¿Qué función cumple principalmente este texto?",
+      "options": {
+        "A": "Promover la bicicleta como un transporte saludable",
+        "B": "Informar dónde se ubican las cicloestaciones y cuánto cuesta cada viaje",
+        "C": "Establecer los derechos, obligaciones y sanciones de los usuarios"
+      }
+    },
+    {
+      "id": 56,
+      "area": "Comprensión lectora",
+      "subarea": "Evaluación de la forma y el contenido",
+      "topic": "Lenguaje",
+      "stimulusId": "cl-5",
+      "text": "¿Por qué el texto usa formas como «deberá», «está prohibido» y «se cobrará»?",
+      "options": {
+        "A": "Porque narra hechos ocurridos a usuarios del sistema en el pasado",
+        "B": "Porque busca expresar las emociones del autor",
+        "C": "Porque es un texto normativo que expresa obligaciones"
+      }
+    },
+    {
+      "id": 57,
+      "area": "Redacción indirecta",
+      "subarea": "Ortográfica",
+      "topic": "Acentuación diacrítica",
+      "text": "¿Qué oración cumple todas las normas de acentuación?",
+      "options": {
+        "A": "Aún no sé si él vendrá, aun cuando se lo pedí.",
+        "B": "Aun no sé si el vendrá, aún cuando se lo pedí.",
+        "C": "Aún no se si él vendrá, aun cuando se lo pedí."
+      }
+    },
+    {
+      "id": 58,
+      "area": "Redacción indirecta",
+      "subarea": "Ortográfica",
+      "topic": "Acentuación",
+      "text": "Selecciona la oración escrita correctamente.",
+      "options": {
+        "A": "Pregúntale cuándo llega y con quién viene.",
+        "B": "Preguntale cuándo llega y con quién viene.",
+        "C": "Pregúntale cuando llega y con quien viene."
+      }
+    },
+    {
+      "id": 59,
+      "area": "Redacción indirecta",
+      "subarea": "Ortográfica",
+      "topic": "Grafías",
+      "text": "¿Qué serie NO tiene errores ortográficos?",
+      "options": {
+        "A": "absorber, absorción, exhibir",
+        "B": "absorver, absorción, exibir",
+        "C": "absorber, absorsión, exhibir"
+      }
+    },
+    {
+      "id": 60,
+      "area": "Redacción indirecta",
+      "subarea": "Ortográfica",
+      "topic": "Puntuación",
+      "text": "Selecciona la oración con la puntuación correcta.",
+      "options": {
+        "A": "Los resultados, sin embargo no fueron concluyentes.",
+        "B": "Los resultados, sin embargo, no fueron concluyentes.",
+        "C": "Los resultados sin embargo, no fueron concluyentes."
+      }
+    },
+    {
+      "id": 61,
+      "area": "Redacción indirecta",
+      "subarea": "Ortográfica",
+      "topic": "Puntuación",
+      "text": "¿En qué opción se usa correctamente el punto y coma?",
+      "options": {
+        "A": "Unos llegaron; en autobús otros, en tren.",
+        "B": "Unos; llegaron en autobús, otros en tren.",
+        "C": "Unos llegaron en autobús; otros, en tren."
+      }
+    },
+    {
+      "id": 62,
+      "area": "Redacción indirecta",
+      "subarea": "Ortográfica",
+      "topic": "Abreviaturas y símbolos",
+      "text": "¿Qué opción es correcta en un texto formal?",
+      "options": {
+        "A": "El evento será el 15 de Septiembre a las 18:00 hrs.",
+        "B": "El evento será el 15 de septiembre a las 18:00 Hrs.",
+        "C": "El evento será el 15 de septiembre a las 18:00 h."
+      }
+    },
+    {
+      "id": 63,
+      "area": "Redacción indirecta",
+      "subarea": "Ortográfica",
+      "topic": "Homófonos",
+      "text": "Completa: «Vamos ___ qué dice el maestro; debe ___ una explicación».",
+      "options": {
+        "A": "a ver / haber",
+        "B": "a ver / a ver",
+        "C": "haber / a ver"
+      }
+    },
+    {
+      "id": 64,
+      "area": "Redacción indirecta",
+      "subarea": "Ortográfica",
+      "topic": "Homófonos",
+      "text": "¿Qué oración está escrita correctamente?",
+      "options": {
+        "A": "El director tuvo que revelar el secreto antes de la votación.",
+        "B": "El director tuvo que rebelar el secreto antes de la botación.",
+        "C": "El director tubo que rebelar el secreto antes de la votación."
+      }
+    },
+    {
+      "id": 65,
+      "area": "Redacción indirecta",
+      "subarea": "Ortográfica",
+      "topic": "Puntuación",
+      "text": "¿Cuál es la forma correcta de iniciar una carta?",
+      "options": {
+        "A": "Querido Luis; / te escribo para contarte…",
+        "B": "Querido Luis: / Te escribo para contarte…",
+        "C": "Querido Luis, / Te escribo para contarte…"
+      }
+    },
+    {
+      "id": 66,
+      "area": "Redacción indirecta",
+      "subarea": "Gramatical y semántica",
+      "topic": "Concordancia",
+      "text": "¿Qué oración tiene concordancia correcta?",
+      "options": {
+        "A": "Me preocupan el resultado del examen.",
+        "B": "Me preocupa los resultados del examen.",
+        "C": "Me preocupan los resultados del examen."
+      }
+    },
+    {
+      "id": 67,
+      "area": "Redacción indirecta",
+      "subarea": "Gramatical y semántica",
+      "topic": "Verbos impersonales",
+      "text": "Selecciona la oración correcta.",
+      "options": {
+        "A": "Hicieron dos años que no lo veo.",
+        "B": "Hace dos años que no lo veo.",
+        "C": "Hacen dos años que no lo veo."
+      }
+    },
+    {
+      "id": 68,
+      "area": "Redacción indirecta",
+      "subarea": "Gramatical y semántica",
+      "topic": "Queísmo y dequeísmo",
+      "text": "¿Qué oración es correcta?",
+      "options": {
+        "A": "Me alegro de que hayas venido.",
+        "B": "Me alegro que hayas venido.",
+        "C": "Me alegra de que hayas venido."
+      }
+    },
+    {
+      "id": 69,
+      "area": "Redacción indirecta",
+      "subarea": "Gramatical y semántica",
+      "topic": "Pronombres",
+      "text": "¿Qué oración es correcta?",
+      "options": {
+        "A": "A María le dieron un premio.",
+        "B": "A María la dieron un premio.",
+        "C": "A María lo dieron un premio."
+      }
+    },
+    {
+      "id": 70,
+      "area": "Redacción indirecta",
+      "subarea": "Gramatical y semántica",
+      "topic": "Gerundio",
+      "text": "¿Qué oración es correcta?",
+      "options": {
+        "A": "Recibimos una caja que contenía libros.",
+        "B": "Recibimos ayer una caja, conteniendo libros.",
+        "C": "Recibimos una caja conteniendo libros."
+      }
+    },
+    {
+      "id": 71,
+      "area": "Redacción indirecta",
+      "subarea": "Gramatical y semántica",
+      "topic": "Estilo indirecto",
+      "text": "Ana dijo: «Mañana iré al museo». ¿Cuál es la forma correcta en estilo indirecto, contada una semana después?",
+      "options": {
+        "A": "Ana dijo que al día siguiente había ido al museo.",
+        "B": "Ana dijo que al día siguiente iría al museo.",
+        "C": "Ana dijo que al día siguiente fue al museo."
+      }
+    },
+    {
+      "id": 72,
+      "area": "Redacción indirecta",
+      "subarea": "Gramatical y semántica",
+      "topic": "Ambigüedad",
+      "text": "¿Qué oración NO es ambigua?",
+      "options": {
+        "A": "El perro de mi vecina, que es muy grande, ladra toda la noche.",
+        "B": "El perro de mi vecina que es muy grande ladra toda la noche.",
+        "C": "Mi vecina tiene un perro muy grande que ladra toda la noche."
+      }
+    },
+    {
+      "id": 73,
+      "area": "Redacción indirecta",
+      "subarea": "Gramatical y semántica",
+      "topic": "Queísmo y dequeísmo",
+      "text": "Selecciona la oración correcta.",
+      "options": {
+        "A": "Insistió de que lo acompañáramos.",
+        "B": "Insistió en que lo acompañáramos.",
+        "C": "Insistió que lo acompañáramos."
+      }
+    },
+    {
+      "id": 74,
+      "area": "Redacción indirecta",
+      "subarea": "Gramatical y semántica",
+      "topic": "Comparativos y superlativos",
+      "text": "¿Qué oración es correcta?",
+      "options": {
+        "A": "Esta es la solución óptima.",
+        "B": "Esta es la solución más óptima.",
+        "C": "Esta es la solución muy óptima."
+      }
+    },
+    {
+      "id": 75,
+      "area": "Redacción indirecta",
+      "subarea": "Gramatical y semántica",
+      "topic": "Tiempos verbales",
+      "text": "Completa: «Si ___ la convocatoria, ya te ___ inscrito».",
+      "options": {
+        "A": "habrías leído / hubieras",
+        "B": "hubieras leído / habrías",
+        "C": "leíste / habrías"
+      }
+    },
+    {
+      "id": 76,
+      "area": "Redacción indirecta",
+      "subarea": "Comunicativa",
+      "topic": "Registro",
+      "text": "¿Qué oración es más adecuada para un ensayo escolar?",
+      "options": {
+        "A": "Es súper obvio que la gente come un montón de azúcar.",
+        "B": "Yo siento que el azúcar está por todos lados, la neta.",
+        "C": "Los datos sugieren que el consumo de azúcar ha aumentado en la última década."
+      }
+    },
+    {
+      "id": 77,
+      "area": "Redacción indirecta",
+      "subarea": "Comunicativa",
+      "topic": "Orden lógico",
+      "text": "Ordena el párrafo argumentativo: 1) No obstante, algunos señalan que el uniforme limita la expresión personal. 2) El uso del uniforme escolar tiene más ventajas que desventajas. 3) Por lo tanto, conviene mantenerlo con opciones que permitan cierta personalización. 4) Por ejemplo, reduce la presión económica por la ropa de moda.",
+      "options": {
+        "A": "2, 4, 1, 3",
+        "B": "2, 1, 4, 3",
+        "C": "4, 2, 3, 1"
+      }
+    },
+    {
+      "id": 78,
+      "area": "Redacción indirecta",
+      "subarea": "Comunicativa",
+      "topic": "Conectores",
+      "text": "Completa: «La planta no recibió luz durante una semana; ___, sus hojas se pusieron amarillas».",
+      "options": {
+        "A": "en consecuencia",
+        "B": "a pesar de ello",
+        "C": "puesto que"
+      }
+    },
+    {
+      "id": 79,
+      "area": "Redacción indirecta",
+      "subarea": "Comunicativa",
+      "topic": "Cohesión",
+      "text": "¿Qué opción mejora la cohesión de «El Popocatépetl emitió ceniza. El Popocatépetl está a 70 km de la capital»?",
+      "options": {
+        "A": "El Popocatépetl emitió ceniza. Está el Popocatépetl a 70 km de la capital.",
+        "B": "El Popocatépetl, que está a 70 km de la capital, emitió ceniza.",
+        "C": "Emitió ceniza el volcán, y el volcán está a 70 km de la capital."
+      }
+    },
+    {
+      "id": 80,
+      "area": "Redacción indirecta",
+      "subarea": "Comunicativa",
+      "topic": "Resumen",
+      "text": "¿Qué oración resume mejor el párrafo? «Las bibliotecas públicas ofrecen internet gratuito, talleres para niños, cursos para adultos mayores y espacios para estudiar. En muchas comunidades son el único lugar con estos servicios».",
+      "options": {
+        "A": "Los adultos mayores toman cursos de internet en las bibliotecas.",
+        "B": "Las bibliotecas públicas se dedican únicamente a prestar libros.",
+        "C": "Las bibliotecas públicas ofrecen servicios que en muchas comunidades no hay en otro lugar."
+      }
+    },
+    {
+      "id": 81,
+      "area": "Redacción indirecta",
+      "subarea": "Comunicativa",
+      "topic": "Precisión léxica",
+      "text": "Elige la palabra adecuada: «El médico le ___ una dieta baja en sodio».",
+      "options": {
+        "A": "describió",
+        "B": "proscribió",
+        "C": "prescribió"
+      }
+    },
+    {
+      "id": 82,
+      "area": "Redacción indirecta",
+      "subarea": "Comunicativa",
+      "topic": "Propósito y audiencia",
+      "text": "Un alumno escribe un aviso para el periódico mural, dirigido a sus compañeros, sobre una colecta. ¿Qué opción es más adecuada?",
+      "options": {
+        "A": "Se informa que la colecta, cuya fecha no sabemos, es muy importante.",
+        "B": "Habrá una colecta de algo; luego les decimos dónde y cuándo.",
+        "C": "¡Participa! Trae útiles escolares en buen estado al salón 3.° B antes del viernes 20."
+      }
+    },
+    {
+      "id": 83,
+      "area": "Redacción indirecta",
+      "subarea": "Comunicativa",
+      "topic": "Concisión",
+      "text": "¿Qué oración NO contiene una redundancia?",
+      "options": {
+        "A": "Los asistentes subieron arriba, al auditorio.",
+        "B": "Los asistentes salieron del auditorio.",
+        "C": "Los asistentes salieron afuera del auditorio."
+      }
+    },
+    {
+      "id": 84,
+      "area": "Redacción indirecta",
+      "subarea": "Comunicativa",
+      "topic": "Paráfrasis",
+      "text": "¿Qué oración significa lo mismo que «El proyecto no se aprobó porque faltaba presupuesto»?",
+      "options": {
+        "A": "Faltó presupuesto porque el proyecto no se aprobó.",
+        "B": "El proyecto se aprobó pese a la falta de presupuesto.",
+        "C": "La falta de presupuesto impidió aprobar el proyecto."
+      }
+    },
+    {
+      "id": 85,
+      "area": "Pensamiento matemático",
+      "subarea": "Comprensión de lo matemático",
+      "topic": "Fracciones",
+      "text": "¿Cuál es el resultado de (1/2 + 1/3) ÷ (1 − 1/6)?",
+      "options": {
+        "A": "25/36",
+        "B": "1",
+        "C": "5/36"
+      }
+    },
+    {
+      "id": 86,
+      "area": "Pensamiento matemático",
+      "subarea": "Comprensión de lo matemático",
+      "topic": "Porcentajes",
+      "text": "Un artículo de $1 250 tiene 12 % de descuento y, al precio con descuento, se le suma 16 % de IVA. ¿Cuál es el precio final?",
+      "options": {
+        "A": "$1 276",
+        "B": "$1 250",
+        "C": "$1 300"
+      }
+    },
+    {
+      "id": 87,
+      "area": "Pensamiento matemático",
+      "subarea": "Comprensión de lo matemático",
+      "topic": "Porcentajes",
+      "text": "La población de un pueblo pasó de 2 500 a 3 100 habitantes. ¿En qué porcentaje aumentó?",
+      "options": {
+        "A": "6 %",
+        "B": "19.4 %",
+        "C": "24 %"
+      }
+    },
+    {
+      "id": 88,
+      "area": "Pensamiento matemático",
+      "subarea": "Comprensión de lo matemático",
+      "topic": "Proporcionalidad",
+      "text": "Cuatro impresoras iguales imprimen 1 200 hojas en 30 minutos. ¿Cuántas hojas imprimen 6 impresoras en 45 minutos?",
+      "options": {
+        "A": "2 700",
+        "B": "1 800",
+        "C": "2 400"
+      }
+    },
+    {
+      "id": 89,
+      "area": "Pensamiento matemático",
+      "subarea": "Comprensión de lo matemático",
+      "topic": "Proporcionalidad",
+      "text": "Un viaje a 80 km/h dura 3 horas. ¿Cuánto dura el mismo viaje a 120 km/h?",
+      "options": {
+        "A": "4.5 h",
+        "B": "2 h",
+        "C": "2.5 h"
+      }
+    },
+    {
+      "id": 90,
+      "area": "Pensamiento matemático",
+      "subarea": "Comprensión de lo matemático",
+      "topic": "Leyes de los exponentes",
+      "text": "Simplifica (2x³y)² · 3xy⁴.",
+      "options": {
+        "A": "12x⁶y⁸",
+        "B": "12x⁷y⁶",
+        "C": "6x⁷y⁶"
+      }
+    },
+    {
+      "id": 91,
+      "area": "Pensamiento matemático",
+      "subarea": "Comprensión de lo matemático",
+      "topic": "Raíces",
+      "text": "¿Cuánto es √12 + √27?",
+      "options": {
+        "A": "√39",
+        "B": "6√3",
+        "C": "5√3"
+      }
+    },
+    {
+      "id": 92,
+      "area": "Pensamiento matemático",
+      "subarea": "Comprensión de lo matemático",
+      "topic": "Notación científica",
+      "text": "El Sol está a unos 1.5 × 10⁸ km de la Tierra y la luz viaja a unos 3 × 10⁵ km/s. ¿Cuánto tarda aproximadamente la luz del Sol en llegar a la Tierra?",
+      "options": {
+        "A": "500 s",
+        "B": "5 000 s",
+        "C": "50 s"
+      }
+    },
+    {
+      "id": 93,
+      "area": "Pensamiento matemático",
+      "subarea": "Comprensión de lo matemático",
+      "topic": "Jerarquía de operaciones",
+      "text": "¿Cuánto vale −2² + (−2)² − 2³?",
+      "options": {
+        "A": "−16",
+        "B": "0",
+        "C": "−8"
+      }
+    },
+    {
+      "id": 94,
+      "area": "Pensamiento matemático",
+      "subarea": "Comprensión de lo matemático",
+      "topic": "Estimación",
+      "text": "Un terreno de 19.8 m × 31.2 m se vende a $2 950 por metro cuadrado. ¿Cuál es su precio aproximado?",
+      "options": {
+        "A": "180 000 pesos",
+        "B": "1.8 millones de pesos",
+        "C": "18 millones de pesos"
+      }
+    },
+    {
+      "id": 95,
+      "area": "Pensamiento matemático",
+      "subarea": "Comprensión de lo matemático",
+      "topic": "Ecuaciones lineales",
+      "text": "Resuelve (x + 2)/3 − (x − 1)/2 = 1.",
+      "options": {
+        "A": "x = −5",
+        "B": "x = 13",
+        "C": "x = 1"
+      }
+    },
+    {
+      "id": 96,
+      "area": "Pensamiento matemático",
+      "subarea": "Comprensión de lo matemático",
+      "topic": "Desigualdades",
+      "text": "¿Qué valores de x cumplen 3 − 2x > 11?",
+      "options": {
+        "A": "x > −4",
+        "B": "x < −4",
+        "C": "x < 4"
+      }
+    },
+    {
+      "id": 97,
+      "area": "Pensamiento matemático",
+      "subarea": "Comprensión de lo matemático",
+      "topic": "Productos notables",
+      "text": "¿A qué es igual (2x − 5)²?",
+      "options": {
+        "A": "4x² − 25",
+        "B": "4x² − 20x + 25",
+        "C": "4x² − 10x + 25"
+      }
+    },
+    {
+      "id": 98,
+      "area": "Pensamiento matemático",
+      "subarea": "Comprensión de lo matemático",
+      "topic": "Factorización",
+      "text": "¿Cuál es la factorización de 2x² + 7x + 3?",
+      "options": {
+        "A": "(2x + 7)(x + 3)",
+        "B": "(2x + 1)(x + 3)",
+        "C": "(2x + 3)(x + 1)"
+      }
+    },
+    {
+      "id": 99,
+      "area": "Pensamiento matemático",
+      "subarea": "Comprensión de lo matemático",
+      "topic": "Ecuaciones cuadráticas",
+      "text": "¿Cuáles son las soluciones de x² − 6x + 7 = 0?",
+      "options": {
+        "A": "x = 3 ± √7",
+        "B": "x = −3 ± √2",
+        "C": "x = 3 ± √2"
+      }
+    },
+    {
+      "id": 100,
+      "area": "Pensamiento matemático",
+      "subarea": "Comprensión de lo matemático",
+      "topic": "Ecuaciones cuadráticas",
+      "text": "¿Cuántas soluciones reales tiene x² + 4x + 5 = 0?",
+      "options": {
+        "A": "Ninguna",
+        "B": "Una",
+        "C": "Dos"
+      }
+    },
+    {
+      "id": 101,
+      "area": "Pensamiento matemático",
+      "subarea": "Comprensión de lo matemático",
+      "topic": "Sistemas de ecuaciones",
+      "text": "Si 2x + y = 11 y x − y = 1, ¿cuánto vale x · y?",
+      "options": {
+        "A": "12",
+        "B": "4",
+        "C": "7"
+      }
+    },
+    {
+      "id": 102,
+      "area": "Pensamiento matemático",
+      "subarea": "Comprensión de lo matemático",
+      "topic": "Ángulos",
+      "text": "Dos rectas paralelas son cortadas por una transversal. Un ángulo mide 3x + 10 y su alterno interno mide 5x − 30. ¿Cuánto mide ese ángulo?",
+      "options": {
+        "A": "110°",
+        "B": "70°",
+        "C": "20°"
+      }
+    },
+    {
+      "id": 103,
+      "area": "Pensamiento matemático",
+      "subarea": "Comprensión de lo matemático",
+      "topic": "Semejanza",
+      "text": "A la misma hora, un poste proyecta una sombra de 6 m y una persona de 1.6 m proyecta una de 1.2 m. ¿Cuánto mide el poste?",
+      "options": {
+        "A": "8 m",
+        "B": "7.2 m",
+        "C": "4.5 m"
+      }
+    },
+    {
+      "id": 104,
+      "area": "Pensamiento matemático",
+      "subarea": "Comprensión de lo matemático",
+      "topic": "Trigonometría",
+      "text": "En un triángulo rectángulo, el cateto opuesto a un ángulo agudo mide 5 y la hipotenusa 13. ¿Cuánto vale el coseno de ese ángulo?",
+      "options": {
+        "A": "5/12",
+        "B": "5/13",
+        "C": "12/13"
+      }
+    },
+    {
+      "id": 105,
+      "area": "Pensamiento matemático",
+      "subarea": "Comprensión de lo matemático",
+      "topic": "Áreas y perímetros",
+      "text": "En un cuadrado de 10 cm de lado se inscribe un círculo. Con π ≈ 3.14, ¿cuál es el área del cuadrado que queda fuera del círculo?",
+      "options": {
+        "A": "21.5 cm²",
+        "B": "68.6 cm²",
+        "C": "78.5 cm²"
+      }
+    },
+    {
+      "id": 106,
+      "area": "Pensamiento matemático",
+      "subarea": "Comprensión de lo matemático",
+      "topic": "Volumen",
+      "text": "¿Cuál es el volumen de un cono de 6 cm de radio y 10 cm de altura? Usa π ≈ 3.14.",
+      "options": {
+        "A": "188.4 cm³",
+        "B": "1 130.4 cm³",
+        "C": "376.8 cm³"
+      }
+    },
+    {
+      "id": 107,
+      "area": "Pensamiento matemático",
+      "subarea": "Comprensión de lo matemático",
+      "topic": "Estadística",
+      "text": "Dos grupos tienen la misma media, 8. En el grupo A todas las calificaciones están entre 7.5 y 8.5; en el B, entre 5 y 10. ¿Qué puede afirmarse?",
+      "options": {
+        "A": "El grupo A tiene mejor rendimiento",
+        "B": "El grupo B tiene mayor dispersión",
+        "C": "El grupo B tiene necesariamente mayor mediana"
+      }
+    },
+    {
+      "id": 108,
+      "area": "Pensamiento matemático",
+      "subarea": "Desarrollo de usos",
+      "topic": "Ecuaciones cuadráticas",
+      "text": "El largo de un terreno rectangular mide 4 m más que su ancho, y su área es de 96 m². ¿Cuánto mide el ancho?",
+      "options": {
+        "A": "24 m",
+        "B": "8 m",
+        "C": "12 m"
+      }
+    },
+    {
+      "id": 109,
+      "area": "Pensamiento matemático",
+      "subarea": "Desarrollo de usos",
+      "topic": "Sistemas de ecuaciones",
+      "text": "Un teatro vendió 50 entradas: las de estudiante a $60 y las generales a $90. Si recaudó $3 600, ¿cuántas entradas de estudiante vendió?",
+      "options": {
+        "A": "40",
+        "B": "30",
+        "C": "20"
+      }
+    },
+    {
+      "id": 110,
+      "area": "Pensamiento matemático",
+      "subarea": "Desarrollo de usos",
+      "topic": "Funciones cuadráticas",
+      "text": "La altura de una pelota lanzada hacia arriba es h = −5t² + 20t (h en metros y t en segundos). ¿Cuál es su altura máxima?",
+      "options": {
+        "A": "15 m",
+        "B": "40 m",
+        "C": "20 m"
+      }
+    },
+    {
+      "id": 111,
+      "area": "Pensamiento matemático",
+      "subarea": "Desarrollo de usos",
+      "topic": "Funciones cuadráticas",
+      "text": "Si la altura de una pelota es h = −5t² + 20t (h en metros y t en segundos), ¿después de cuántos segundos vuelve al suelo?",
+      "options": {
+        "A": "4 s",
+        "B": "20 s",
+        "C": "2 s"
+      }
+    },
+    {
+      "id": 112,
+      "area": "Pensamiento matemático",
+      "subarea": "Desarrollo de usos",
+      "topic": "Lenguaje algebraico",
+      "text": "Si n es un número entero, ¿qué expresión representa siempre un número impar?",
+      "options": {
+        "A": "3n",
+        "B": "2n + 1",
+        "C": "n + 1"
+      }
+    },
+    {
+      "id": 113,
+      "area": "Pensamiento matemático",
+      "subarea": "Desarrollo de usos",
+      "topic": "Sucesiones",
+      "text": "Con cerillos se forman cuadrados en fila: la figura 1 usa 4 cerillos, la figura 2 usa 7 y la figura 3 usa 10. ¿Qué expresión da el número de cerillos de la figura n?",
+      "options": {
+        "A": "3n + 1",
+        "B": "4n",
+        "C": "n + 3"
+      }
+    },
+    {
+      "id": 114,
+      "area": "Pensamiento matemático",
+      "subarea": "Desarrollo de usos",
+      "topic": "Probabilidad",
+      "text": "En un grupo de 30 alumnos, 18 juegan futbol, 12 juegan básquetbol y 5 juegan ambos. Si se elige un alumno al azar, ¿cuál es la probabilidad de que no juegue ninguno de los dos?",
+      "options": {
+        "A": "0",
+        "B": "1/30",
+        "C": "1/6"
+      }
+    },
+    {
+      "id": 115,
+      "area": "Pensamiento matemático",
+      "subarea": "Desarrollo de usos",
+      "topic": "Probabilidad",
+      "text": "Se lanzan un dado y una moneda. ¿Cuál es la probabilidad de obtener un número par y águila?",
+      "options": {
+        "A": "1/4",
+        "B": "1/12",
+        "C": "1/2"
+      }
+    },
+    {
+      "id": 116,
+      "area": "Pensamiento matemático",
+      "subarea": "Desarrollo de usos",
+      "topic": "Conteo",
+      "text": "¿De cuántas formas distintas pueden ocupar 5 corredores los tres primeros lugares de una carrera?",
+      "options": {
+        "A": "60",
+        "B": "10",
+        "C": "125"
+      }
+    },
+    {
+      "id": 117,
+      "area": "Pensamiento matemático",
+      "subarea": "Desarrollo de usos",
+      "topic": "Estadística",
+      "text": "La media de cinco números es 12. Al agregar un sexto número, la media sube a 13. ¿Cuál es ese número?",
+      "options": {
+        "A": "13",
+        "B": "18",
+        "C": "14"
+      }
+    },
+    {
+      "id": 118,
+      "area": "Pensamiento matemático",
+      "subarea": "Desarrollo de usos",
+      "topic": "Porcentajes",
+      "text": "Se invierten $10 000 al 10 % anual con interés compuesto. ¿Cuánto habrá al terminar el segundo año?",
+      "options": {
+        "A": "$12 000",
+        "B": "$11 000",
+        "C": "$12 100"
+      }
+    },
+    {
+      "id": 119,
+      "area": "Pensamiento matemático",
+      "subarea": "Desarrollo de usos",
+      "topic": "Funciones lineales",
+      "text": "El plan A cobra $200 fijos más $1 por minuto; el plan B cobra $5 por minuto sin cuota fija. ¿Cuándo resulta más barato el plan A?",
+      "options": {
+        "A": "A partir de más de 40 minutos",
+        "B": "Con menos de 50 minutos",
+        "C": "A partir de más de 50 minutos"
+      }
+    },
+    {
+      "id": 120,
+      "area": "Pensamiento matemático",
+      "subarea": "Desarrollo de usos",
+      "topic": "Áreas y perímetros",
+      "text": "Si el radio de un círculo aumenta 50 %, ¿en qué porcentaje aumenta su área?",
+      "options": {
+        "A": "100 %",
+        "B": "50 %",
+        "C": "125 %"
+      }
+    },
+    {
+      "id": 121,
+      "area": "Pensamiento matemático",
+      "subarea": "Desarrollo de usos",
+      "topic": "Sucesiones",
+      "text": "En una sucesión, cada término es el triple del anterior: 2, 6, 18, … ¿Cuál es el sexto término?",
+      "options": {
+        "A": "486",
+        "B": "162",
+        "C": "36"
+      }
+    },
+    {
+      "id": 122,
+      "area": "Pensamiento matemático",
+      "subarea": "Desarrollo de usos",
+      "topic": "Velocidad",
+      "text": "Un tren recorre 245 km en 2 horas 20 minutos. ¿Cuál es su velocidad media?",
+      "options": {
+        "A": "111 km/h",
+        "B": "122.5 km/h",
+        "C": "105 km/h"
+      }
+    },
+    {
+      "id": 123,
+      "area": "Inglés",
+      "subarea": "Comprensión lectora",
+      "topic": "Reading for orientation",
+      "stimulusId": "en-1",
+      "text": "Who is this advertisement for?",
+      "options": {
+        "A": "Certified lifeguards",
+        "B": "Children who want to attend the camp",
+        "C": "Young people who want to work at a camp"
+      }
+    },
+    {
+      "id": 124,
+      "area": "Inglés",
+      "subarea": "Comprensión lectora",
+      "topic": "Reading for information",
+      "stimulusId": "en-1",
+      "text": "Which person CANNOT apply?",
+      "options": {
+        "A": "A 15-year-old who will turn 16 in August",
+        "B": "A 16-year-old who speaks only English and Spanish",
+        "C": "A 17-year-old who speaks English, Spanish and French"
+      }
+    },
+    {
+      "id": 125,
+      "area": "Inglés",
+      "subarea": "Comprensión lectora",
+      "topic": "Reading for information",
+      "stimulusId": "en-1",
+      "text": "What will assistants NOT have to do?",
+      "options": {
+        "A": "Help with craft activities",
+        "B": "Watch the children in the lake",
+        "C": "Serve lunch"
+      }
+    },
+    {
+      "id": 126,
+      "area": "Inglés",
+      "subarea": "Comprensión lectora",
+      "topic": "Reading for information",
+      "stimulusId": "en-1",
+      "text": "How can an assistant get the bonus?",
+      "options": {
+        "A": "By passing the swimming test",
+        "B": "By speaking a third language",
+        "C": "By working all four weeks of July"
+      }
+    },
+    {
+      "id": 127,
+      "area": "Inglés",
+      "subarea": "Comprensión lectora",
+      "topic": "Reading for information",
+      "stimulusId": "en-1",
+      "text": "What is the first step to apply?",
+      "options": {
+        "A": "To go to an interview at the camp with a parent",
+        "B": "To take a swimming test",
+        "C": "To bring a letter to the camp office before June 10"
+      }
+    },
+    {
+      "id": 128,
+      "area": "Inglés",
+      "subarea": "Comprensión lectora",
+      "topic": "Vocabulary in context",
+      "stimulusId": "en-1",
+      "text": "«A third language is a plus» means that a third language is…",
+      "options": {
+        "A": "required for all assistants",
+        "B": "an advantage, but not a requirement",
+        "C": "not useful at the camp"
+      }
+    },
+    {
+      "id": 129,
+      "area": "Inglés",
+      "subarea": "Comprensión lectora",
+      "topic": "Reading for information",
+      "stimulusId": "en-1",
+      "text": "How many hours a week do assistants work?",
+      "options": {
+        "A": "30",
+        "B": "6",
+        "C": "40"
+      }
+    },
+    {
+      "id": 130,
+      "area": "Inglés",
+      "subarea": "Comprensión lectora",
+      "topic": "Reading for argument",
+      "stimulusId": "en-2",
+      "text": "What do supporters of eliminating homework argue?",
+      "options": {
+        "A": "That teachers have no time to check homework",
+        "B": "That children need time to play and rest",
+        "C": "That homework always improves grades"
+      }
+    },
+    {
+      "id": 131,
+      "area": "Inglés",
+      "subarea": "Comprensión lectora",
+      "topic": "Reading for information",
+      "stimulusId": "en-2",
+      "text": "According to research, for which students is homework more useful?",
+      "options": {
+        "A": "Students of all ages equally",
+        "B": "Primary students",
+        "C": "Secondary students"
+      }
+    },
+    {
+      "id": 132,
+      "area": "Inglés",
+      "subarea": "Comprensión lectora",
+      "topic": "Reading for information",
+      "stimulusId": "en-2",
+      "text": "What happens with more than two hours of homework a day?",
+      "options": {
+        "A": "It is necessary to get good grades",
+        "B": "It doubles students' results in most subjects",
+        "C": "It doesn't seem to help and can affect sleep and motivation"
+      }
+    },
+    {
+      "id": 133,
+      "area": "Inglés",
+      "subarea": "Comprensión lectora",
+      "topic": "Reading for information",
+      "stimulusId": "en-2",
+      "text": "Which is an example of a meaningful task, according to the text?",
+      "options": {
+        "A": "Doing four hours of exercises",
+        "B": "Reading a story and discussing it the next day",
+        "C": "Copying long definitions from a textbook"
+      }
+    },
+    {
+      "id": 134,
+      "area": "Inglés",
+      "subarea": "Comprensión lectora",
+      "topic": "Writer's opinion",
+      "stimulusId": "en-2",
+      "text": "What is the writer's main conclusion?",
+      "options": {
+        "A": "Homework should be banned in all schools",
+        "B": "The type of homework matters as much as the amount",
+        "C": "Students should do more homework every day"
+      }
+    },
+    {
+      "id": 135,
+      "area": "Inglés",
+      "subarea": "Comprensión lectora",
+      "topic": "Connectors",
+      "stimulusId": "en-2",
+      "text": "The expression «In other words» introduces…",
+      "options": {
+        "A": "a reformulation of the previous idea",
+        "B": "a contrast with the previous idea",
+        "C": "an example of the previous idea"
+      }
+    },
+    {
+      "id": 136,
+      "area": "Inglés",
+      "subarea": "Comprensión lectora",
+      "topic": "Vocabulary in context",
+      "stimulusId": "en-2",
+      "text": "In paragraph 2, the word «moderate» is closest in meaning to…",
+      "options": {
+        "A": "unnecessary",
+        "B": "not too much",
+        "C": "very large"
+      }
+    },
+    {
+      "id": 137,
+      "area": "Inglés",
+      "subarea": "Redacción indirecta",
+      "topic": "Present perfect",
+      "text": "Complete: «We ___ to Oaxaca three times, but we ___ there last year.»",
+      "options": {
+        "A": "went … haven't been",
+        "B": "have gone … don't go",
+        "C": "have been … didn't go"
+      }
+    },
+    {
+      "id": 138,
+      "area": "Inglés",
+      "subarea": "Redacción indirecta",
+      "topic": "Past perfect",
+      "text": "Complete: «When we arrived at the cinema, the movie ___.»",
+      "options": {
+        "A": "already starts",
+        "B": "had already started",
+        "C": "has already started"
+      }
+    },
+    {
+      "id": 139,
+      "area": "Inglés",
+      "subarea": "Redacción indirecta",
+      "topic": "Conditionals",
+      "text": "Complete: «If I ___ more time, I would learn to play the guitar.»",
+      "options": {
+        "A": "had",
+        "B": "would have",
+        "C": "have"
+      }
+    },
+    {
+      "id": 140,
+      "area": "Inglés",
+      "subarea": "Redacción indirecta",
+      "topic": "Passive voice",
+      "text": "Complete: «The bridge ___ in 1950.»",
+      "options": {
+        "A": "was built",
+        "B": "built",
+        "C": "is building"
+      }
+    },
+    {
+      "id": 141,
+      "area": "Inglés",
+      "subarea": "Redacción indirecta",
+      "topic": "Reported speech",
+      "text": "She said, «I am tired.» → «She said that she ___ tired.»",
+      "options": {
+        "A": "was",
+        "B": "were",
+        "C": "is being"
+      }
+    },
+    {
+      "id": 142,
+      "area": "Inglés",
+      "subarea": "Redacción indirecta",
+      "topic": "Relative pronouns",
+      "text": "Complete: «That's the house ___ my grandparents lived.»",
+      "options": {
+        "A": "which",
+        "B": "where",
+        "C": "who"
+      }
+    },
+    {
+      "id": 143,
+      "area": "Inglés",
+      "subarea": "Redacción indirecta",
+      "topic": "Modals",
+      "text": "Complete: «He ___ be at home; his car is outside.»",
+      "options": {
+        "A": "shouldn't",
+        "B": "can't",
+        "C": "must"
+      }
+    },
+    {
+      "id": 144,
+      "area": "Inglés",
+      "subarea": "Redacción indirecta",
+      "topic": "Phrasal verbs",
+      "text": "Complete: «Please ___ the lights when you leave the room.»",
+      "options": {
+        "A": "turn off",
+        "B": "turn up",
+        "C": "turn into"
+      }
+    },
+    {
+      "id": 145,
+      "area": "Inglés",
+      "subarea": "Redacción indirecta",
+      "topic": "Gerunds and infinitives",
+      "text": "Complete: «They decided ___ the trip because of the storm.»",
+      "options": {
+        "A": "cancelling",
+        "B": "cancel to",
+        "C": "to cancel"
+      }
+    },
+    {
+      "id": 146,
+      "area": "Inglés",
+      "subarea": "Redacción indirecta",
+      "topic": "Comparatives",
+      "text": "Complete: «My brother is not ___ tall ___ my father.»",
+      "options": {
+        "A": "as … as",
+        "B": "so … than",
+        "C": "more … as"
+      }
+    },
+    {
+      "id": 147,
+      "area": "Inglés",
+      "subarea": "Redacción indirecta",
+      "topic": "Connectors",
+      "text": "Complete: «___ it was raining, they played the match.»",
+      "options": {
+        "A": "Because",
+        "B": "Although",
+        "C": "Despite"
+      }
+    },
+    {
+      "id": 148,
+      "area": "Inglés",
+      "subarea": "Redacción indirecta",
+      "topic": "Question tags",
+      "text": "Complete: «You are coming to the party, ___?»",
+      "options": {
+        "A": "isn't it",
+        "B": "aren't you",
+        "C": "don't you"
+      }
+    },
+    {
+      "id": 149,
+      "area": "Inglés",
+      "subarea": "Redacción indirecta",
+      "topic": "Coherence",
+      "text": "Choose the sentence that best continues: «Many cities are building bike lanes. ___»",
+      "options": {
+        "A": "The telephone was also invented in the nineteenth century.",
+        "B": "As a result, more people are cycling to work.",
+        "C": "My favorite color is blue."
+      }
+    },
+    {
+      "id": 150,
+      "area": "Inglés",
+      "subarea": "Redacción indirecta",
+      "topic": "Reports and essays",
+      "text": "Which sentence is most appropriate for a formal report?",
+      "options": {
+        "A": "The results indicate that 65% of students prefer online classes.",
+        "B": "I guess online classes are kind of cool.",
+        "C": "Like, most kids totally love online classes."
+      }
+    }
+  ]
+}

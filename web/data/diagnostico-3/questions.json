@@ -1,0 +1,1186 @@
+{
+  "exam": {
+    "id": "diagnostico-3",
+    "title": "Diagnóstico UADY / EXANI-I — Nivel 3",
+    "version": "2.0",
+    "questionCount": 100,
+    "areas": [
+      {
+        "name": "Pensamiento científico",
+        "start": 1,
+        "end": 18
+      },
+      {
+        "name": "Comprensión lectora",
+        "start": 19,
+        "end": 36
+      },
+      {
+        "name": "Redacción indirecta",
+        "start": 37,
+        "end": 54
+      },
+      {
+        "name": "Pensamiento matemático",
+        "start": 55,
+        "end": 79
+      },
+      {
+        "name": "Inglés",
+        "start": 80,
+        "end": 100
+      }
+    ]
+  },
+  "stimuli": [
+    {
+      "id": "d3-lectura-1",
+      "area": "Comprensión lectora",
+      "instruction": "Lee el texto «El huerto escolar»:",
+      "text": "En una secundaria se instaló un pequeño huerto en un terreno que antes estaba sin uso. El proyecto comenzó como una actividad de ciencias para comparar el crecimiento de plantas bajo distintas condiciones de riego. Con el tiempo, estudiantes de otras asignaturas se incorporaron: en matemáticas registraron y representaron los datos; en español elaboraron bitácoras y carteles; y en formación cívica discutieron cómo distribuir la cosecha.\n\nAl final del semestre, el huerto produjo menos alimentos de los esperados, pero los docentes decidieron mantenerlo. Argumentaron que el valor del proyecto no dependía únicamente de la cantidad cosechada, pues había permitido que los estudiantes formularan preguntas, trabajaran en equipo y aplicaran conocimientos de varias materias a una situación concreta."
+    },
+    {
+      "id": "d3-lectura-2",
+      "area": "Comprensión lectora",
+      "instruction": "Lee el texto «Bibliotecas y silencio»:",
+      "text": "Durante mucho tiempo, la imagen de una biblioteca estuvo asociada casi exclusivamente con el silencio y la lectura individual. Sin embargo, muchas bibliotecas públicas han incorporado salas para trabajo colaborativo, talleres, clubes de lectura y espacios con recursos digitales. Este cambio no significa que el estudio silencioso haya dejado de ser importante. Más bien, responde a la idea de que una biblioteca puede atender distintas formas de aprender y de acceder a la información.\n\nEl reto consiste en organizar los espacios para que las actividades no se estorben entre sí. Algunas bibliotecas separan físicamente las zonas silenciosas de las áreas de conversación; otras establecen horarios o normas específicas. Así, la transformación de estos lugares no implica abandonar su función tradicional, sino ampliarla."
+    },
+    {
+      "id": "d3-lectura-3",
+      "area": "Comprensión lectora",
+      "instruction": "Lee el texto «Islas de calor urbanas»:",
+      "text": "En las ciudades, algunas zonas pueden registrar temperaturas más altas que las áreas rurales cercanas. Este fenómeno, conocido como isla de calor urbana, se relaciona con varios factores. El asfalto y el concreto absorben energía durante el día y la liberan lentamente; además, la escasez de vegetación reduce la sombra y la evaporación que podrían refrescar el ambiente.\n\nPlantar árboles puede ayudar, pero no constituye una solución única. La elección de materiales para techos y pavimentos, el diseño de los edificios y la disponibilidad de espacios verdes también influyen. Por ello, los especialistas suelen proponer combinaciones de medidas adaptadas a las características de cada ciudad."
+    },
+    {
+      "id": "en-3-1",
+      "area": "Inglés",
+      "instruction": "Read the text:",
+      "text": "Kevin usually walks to school because he lives nearby. On Wednesdays, his father drives him because Kevin carries a large sports bag. Classes begin at 8:15 a.m. After school, Kevin often studies at the library for an hour. On Fridays, he plays soccer with his friends before going home."
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "area": "Pensamiento científico",
+      "topic": "Método científico y diseño experimental",
+      "text": "¿Qué característica hace que una hipótesis científica sea comprobable?",
+      "options": {
+        "A": "Que permita obtener evidencia que pueda apoyarla o refutarla",
+        "B": "Que sea aceptada por la mayoría",
+        "C": "Que explique cualquier resultado posible"
+      }
+    },
+    {
+      "id": 2,
+      "area": "Pensamiento científico",
+      "topic": "Método científico y diseño experimental",
+      "text": "Dos grupos de semillas reciben distinta cantidad de fertilizante. Ambos deben recibir la misma cantidad de agua principalmente para...",
+      "options": {
+        "A": "convertir el agua en variable independiente",
+        "B": "controlar una variable que podría afectar el resultado",
+        "C": "aumentar el tamaño de la muestra"
+      }
+    },
+    {
+      "id": 3,
+      "area": "Pensamiento científico",
+      "topic": "Método científico y diseño experimental",
+      "text": "Si varios ensayos repetidos bajo las mismas condiciones producen resultados semejantes, aumenta principalmente...",
+      "options": {
+        "A": "la confiabilidad de la evidencia",
+        "B": "la cantidad de variables independientes",
+        "C": "la certeza de que no existe ningún error"
+      }
+    },
+    {
+      "id": 4,
+      "area": "Pensamiento científico",
+      "topic": "Datos, medición y evidencia",
+      "text": "Un termómetro marca 25 °C antes y 31 °C después de calentar una muestra. ¿Cuál fue el cambio de temperatura?",
+      "options": {
+        "A": "56 °C",
+        "B": "6 °C",
+        "C": "0.81 °C"
+      }
+    },
+    {
+      "id": 5,
+      "area": "Pensamiento científico",
+      "topic": "Datos, medición y evidencia",
+      "text": "Si al aumentar una variable también aumenta otra de manera regular, los datos muestran una relación...",
+      "options": {
+        "A": "inversa",
+        "B": "directa",
+        "C": "sin asociación"
+      }
+    },
+    {
+      "id": 6,
+      "area": "Pensamiento científico",
+      "topic": "Materia y reacciones",
+      "text": "El derretimiento del hielo es un cambio físico porque...",
+      "options": {
+        "A": "se forma una nueva sustancia",
+        "B": "desaparecen las moléculas de agua",
+        "C": "la sustancia sigue siendo agua"
+      }
+    },
+    {
+      "id": 7,
+      "area": "Pensamiento científico",
+      "topic": "Átomos, mezclas y propiedades",
+      "text": "Dos átomos del mismo elemento tienen necesariamente el mismo número de...",
+      "options": {
+        "A": "protones",
+        "B": "neutrones",
+        "C": "electrones en cualquier condición"
+      }
+    },
+    {
+      "id": 8,
+      "area": "Pensamiento científico",
+      "topic": "Materia y reacciones",
+      "text": "En una reacción química realizada en un sistema cerrado, la masa total antes y después se conserva. Esto ejemplifica la ley de...",
+      "options": {
+        "A": "gravitación universal",
+        "B": "acción y reacción",
+        "C": "conservación de la masa"
+      }
+    },
+    {
+      "id": 9,
+      "area": "Pensamiento científico",
+      "topic": "Átomos, mezclas y propiedades",
+      "text": "Una disolución con pH 3 se clasifica como...",
+      "options": {
+        "A": "neutra",
+        "B": "ácida",
+        "C": "básica"
+      }
+    },
+    {
+      "id": 10,
+      "area": "Pensamiento científico",
+      "topic": "Movimiento y fuerzas",
+      "text": "Si la fuerza neta sobre un objeto es cero, el objeto puede...",
+      "options": {
+        "A": "permanecer en reposo o moverse con velocidad constante",
+        "B": "solamente permanecer en reposo",
+        "C": "acelerar necesariamente"
+      }
+    },
+    {
+      "id": 11,
+      "area": "Pensamiento científico",
+      "topic": "Energía y calor",
+      "text": "Al levantar un libro desde el piso hasta una repisa aumenta principalmente su energía...",
+      "options": {
+        "A": "cinética",
+        "B": "química",
+        "C": "potencial gravitatoria"
+      }
+    },
+    {
+      "id": 12,
+      "area": "Pensamiento científico",
+      "topic": "Energía y calor",
+      "text": "Al poner en contacto un objeto caliente con uno frío, la energía térmica fluye espontáneamente...",
+      "options": {
+        "A": "del más caliente al más frío",
+        "B": "en ambos sentidos con igual transferencia neta",
+        "C": "del más frío al más caliente"
+      }
+    },
+    {
+      "id": 13,
+      "area": "Pensamiento científico",
+      "topic": "Energía y calor",
+      "text": "Dos focos están conectados en serie. Si uno se funde y abre el circuito, el otro normalmente...",
+      "options": {
+        "A": "permanece igual porque tiene su propia trayectoria",
+        "B": "brilla más necesariamente",
+        "C": "también se apaga"
+      }
+    },
+    {
+      "id": 14,
+      "area": "Pensamiento científico",
+      "topic": "Energía y calor",
+      "text": "El sonido necesita un medio material para propagarse. Por ello no puede propagarse a través de...",
+      "options": {
+        "A": "un vacío ideal",
+        "B": "el agua",
+        "C": "el acero"
+      }
+    },
+    {
+      "id": 15,
+      "area": "Pensamiento científico",
+      "topic": "Célula y metabolismo",
+      "text": "La función principal de la membrana celular es...",
+      "options": {
+        "A": "producir toda la energía luminosa",
+        "B": "regular el intercambio de sustancias con el entorno",
+        "C": "almacenar exclusivamente agua"
+      }
+    },
+    {
+      "id": 16,
+      "area": "Pensamiento científico",
+      "topic": "Célula y metabolismo",
+      "text": "Durante la fotosíntesis, las plantas utilizan energía luminosa para producir materia orgánica a partir principalmente de...",
+      "options": {
+        "A": "oxígeno y glucosa",
+        "B": "nitrógeno y minerales únicamente",
+        "C": "dióxido de carbono y agua"
+      }
+    },
+    {
+      "id": 17,
+      "area": "Pensamiento científico",
+      "topic": "Célula y metabolismo",
+      "text": "La respiración celular permite a las células...",
+      "options": {
+        "A": "eliminar todo el oxígeno del organismo",
+        "B": "obtener energía utilizable a partir de nutrientes",
+        "C": "crear materia de la nada"
+      }
+    },
+    {
+      "id": 18,
+      "area": "Pensamiento científico",
+      "topic": "Genética y evolución",
+      "text": "Un gen puede describirse como...",
+      "options": {
+        "A": "un segmento de ADN con información hereditaria",
+        "B": "un órgano del sistema circulatorio",
+        "C": "una célula reproductora completa"
+      }
+    },
+    {
+      "id": 19,
+      "area": "Comprensión lectora",
+      "topic": "Idea principal y tema",
+      "text": "¿Cuál es la idea principal del texto?",
+      "options": {
+        "A": "El huerto fracasó porque produjo pocos alimentos.",
+        "B": "La asignatura de matemáticas sustituyó a ciencias.",
+        "C": "El huerto se convirtió en un proyecto interdisciplinario valioso más allá de su producción de alimentos."
+      },
+      "stimulusId": "d3-lectura-1"
+    },
+    {
+      "id": 20,
+      "area": "Comprensión lectora",
+      "topic": "Información explícita",
+      "text": "¿Para qué comenzó originalmente el huerto?",
+      "options": {
+        "A": "Para vender alimentos a la comunidad.",
+        "B": "Para enseñar únicamente redacción.",
+        "C": "Para comparar el crecimiento de plantas con distintas condiciones de riego."
+      },
+      "stimulusId": "d3-lectura-1"
+    },
+    {
+      "id": 21,
+      "area": "Comprensión lectora",
+      "topic": "Inferencia",
+      "text": "¿Por qué los docentes mantuvieron el proyecto pese a la baja cosecha?",
+      "options": {
+        "A": "Porque ya no podían utilizar el terreno para otra cosa.",
+        "B": "Porque la cosecha había superado todas las expectativas.",
+        "C": "Porque observaron aprendizajes que no se reducían a la producción agrícola."
+      },
+      "stimulusId": "d3-lectura-1"
+    },
+    {
+      "id": 22,
+      "area": "Comprensión lectora",
+      "topic": "Relación y estructura de ideas",
+      "text": "La expresión «Con el tiempo» introduce...",
+      "options": {
+        "A": "una contradicción con la primera oración",
+        "B": "una evolución del proyecto",
+        "C": "una causa química"
+      },
+      "stimulusId": "d3-lectura-1"
+    },
+    {
+      "id": 23,
+      "area": "Comprensión lectora",
+      "topic": "Conclusión y evaluación",
+      "text": "¿Qué evidencia apoyaría mejor la afirmación de los docentes?",
+      "options": {
+        "A": "Registros que muestren mejoras en colaboración y aplicación de conocimientos.",
+        "B": "El precio de verduras en otro estado.",
+        "C": "Una fotografía del terreno antes del huerto."
+      },
+      "stimulusId": "d3-lectura-1"
+    },
+    {
+      "id": 24,
+      "area": "Comprensión lectora",
+      "topic": "Propósito y tono del autor",
+      "text": "El propósito principal del segundo párrafo es...",
+      "options": {
+        "A": "explicar por qué el proyecto se consideró útil a pesar de un resultado limitado.",
+        "B": "detallar instrucciones para sembrar.",
+        "C": "criticar a los estudiantes por cosechar poco."
+      },
+      "stimulusId": "d3-lectura-1"
+    },
+    {
+      "id": 25,
+      "area": "Comprensión lectora",
+      "topic": "Idea principal y tema",
+      "text": "¿Qué sostiene principalmente el texto?",
+      "options": {
+        "A": "Las bibliotecas pueden ampliar sus funciones sin eliminar los espacios de estudio silencioso.",
+        "B": "El silencio ya no tiene ninguna utilidad para estudiar.",
+        "C": "Las bibliotecas deberían sustituir los libros por computadoras."
+      },
+      "stimulusId": "d3-lectura-2"
+    },
+    {
+      "id": 26,
+      "area": "Comprensión lectora",
+      "topic": "Información explícita",
+      "text": "¿Qué actividad menciona el texto como incorporación reciente?",
+      "options": {
+        "A": "Venta de libros usados como función principal.",
+        "B": "Talleres y trabajo colaborativo.",
+        "C": "Competencias deportivas obligatorias."
+      },
+      "stimulusId": "d3-lectura-2"
+    },
+    {
+      "id": 27,
+      "area": "Comprensión lectora",
+      "topic": "Inferencia",
+      "text": "¿Qué problema puede surgir al diversificar las actividades de una biblioteca?",
+      "options": {
+        "A": "Que los usuarios dejen de necesitar información.",
+        "B": "Que unas actividades interfieran con otras.",
+        "C": "Que desaparezca necesariamente todo material impreso."
+      },
+      "stimulusId": "d3-lectura-2"
+    },
+    {
+      "id": 28,
+      "area": "Comprensión lectora",
+      "topic": "Vocabulario en contexto",
+      "text": "En el texto, «ampliarla» se refiere a ampliar...",
+      "options": {
+        "A": "la función de la biblioteca",
+        "B": "la cantidad de silencio",
+        "C": "la duración de cada libro"
+      },
+      "stimulusId": "d3-lectura-2"
+    },
+    {
+      "id": 29,
+      "area": "Comprensión lectora",
+      "topic": "Relación y estructura de ideas",
+      "text": "El segundo párrafo presenta principalmente...",
+      "options": {
+        "A": "una definición de libro digital.",
+        "B": "una historia ficticia sobre bibliotecarios.",
+        "C": "formas de resolver un reto derivado del cambio descrito."
+      },
+      "stimulusId": "d3-lectura-2"
+    },
+    {
+      "id": 30,
+      "area": "Comprensión lectora",
+      "topic": "Conclusión y evaluación",
+      "text": "¿Qué medida es más congruente con la postura del autor?",
+      "options": {
+        "A": "Eliminar todas las mesas individuales.",
+        "B": "Prohibir toda interacción entre usuarios.",
+        "C": "Crear una zona de conversación separada de una zona silenciosa."
+      },
+      "stimulusId": "d3-lectura-2"
+    },
+    {
+      "id": 31,
+      "area": "Comprensión lectora",
+      "topic": "Información explícita",
+      "text": "Según el texto, ¿qué materiales contribuyen a almacenar calor?",
+      "options": {
+        "A": "La madera húmeda y el algodón.",
+        "B": "El asfalto y el concreto.",
+        "C": "El vidrio y el papel exclusivamente."
+      },
+      "stimulusId": "d3-lectura-3"
+    },
+    {
+      "id": 32,
+      "area": "Comprensión lectora",
+      "topic": "Relación y estructura de ideas",
+      "text": "¿Por qué la escasez de vegetación puede elevar la temperatura urbana?",
+      "options": {
+        "A": "Porque reduce la sombra y la evaporación que refrescan el ambiente.",
+        "B": "Porque transforma el oxígeno en concreto.",
+        "C": "Porque aumenta directamente la distancia entre la Tierra y el Sol."
+      },
+      "stimulusId": "d3-lectura-3"
+    },
+    {
+      "id": 33,
+      "area": "Comprensión lectora",
+      "topic": "Idea principal y tema",
+      "text": "¿Cuál resume mejor el texto?",
+      "options": {
+        "A": "Todas las ciudades presentan exactamente las mismas condiciones térmicas.",
+        "B": "La isla de calor tiene varias causas y requiere combinar medidas según cada ciudad.",
+        "C": "Plantar árboles elimina por sí solo cualquier aumento de temperatura."
+      },
+      "stimulusId": "d3-lectura-3"
+    },
+    {
+      "id": 34,
+      "area": "Comprensión lectora",
+      "topic": "Inferencia",
+      "text": "¿Por qué el autor dice que plantar árboles no es una «solución única»?",
+      "options": {
+        "A": "Porque otros elementos urbanos también influyen en la temperatura.",
+        "B": "Porque las ciudades no pueden tener espacios verdes.",
+        "C": "Porque los árboles siempre aumentan la temperatura."
+      },
+      "stimulusId": "d3-lectura-3"
+    },
+    {
+      "id": 35,
+      "area": "Comprensión lectora",
+      "topic": "Relación y estructura de ideas",
+      "text": "La expresión «Por ello» introduce...",
+      "options": {
+        "A": "una oposición total al párrafo anterior.",
+        "B": "un ejemplo sin relación.",
+        "C": "una consecuencia de los factores mencionados."
+      },
+      "stimulusId": "d3-lectura-3"
+    },
+    {
+      "id": 36,
+      "area": "Comprensión lectora",
+      "topic": "Conclusión y evaluación",
+      "text": "¿Qué estudio sería más útil para diseñar medidas locales?",
+      "options": {
+        "A": "Medir la temperatura de una sola habitación una vez.",
+        "B": "Contar únicamente el número de habitantes del país.",
+        "C": "Mapear temperaturas, vegetación y tipos de superficie en distintos barrios."
+      },
+      "stimulusId": "d3-lectura-3"
+    },
+    {
+      "id": 37,
+      "area": "Redacción indirecta",
+      "topic": "Concordancia",
+      "text": "Selecciona la opción adecuada: «La serie de conferencias ___ mañana».",
+      "options": {
+        "A": "comienza",
+        "B": "comenzaron ellas",
+        "C": "comienzan"
+      }
+    },
+    {
+      "id": 38,
+      "area": "Redacción indirecta",
+      "topic": "Puntuación",
+      "text": "¿Cuál opción usa correctamente los dos puntos?",
+      "options": {
+        "A": "Trajo tres cosas: agua, fruta y pan.",
+        "B": "Trajo tres: cosas, agua fruta y pan.",
+        "C": "Trajo: tres cosas agua, fruta y pan."
+      }
+    },
+    {
+      "id": 39,
+      "area": "Redacción indirecta",
+      "topic": "Acentuación y ortografía",
+      "text": "Selecciona la opción correcta.",
+      "options": {
+        "A": "Tambien llegaron despues del mediodía.",
+        "B": "También llegaron despúes del mediodia.",
+        "C": "También llegaron después del mediodía."
+      }
+    },
+    {
+      "id": 40,
+      "area": "Redacción indirecta",
+      "topic": "Acentuación y ortografía",
+      "text": "Selecciona la oración correctamente escrita.",
+      "options": {
+        "A": "El investigador octuvo resultados favorables.",
+        "B": "El investigador obtuvo resultados faborables.",
+        "C": "El investigador obtuvo resultados favorables."
+      }
+    },
+    {
+      "id": 41,
+      "area": "Redacción indirecta",
+      "topic": "Cohesión y conectores",
+      "text": "Elige el conector que introduce contraste: «El método es rápido; ___, no es suficientemente preciso».",
+      "options": {
+        "A": "por consiguiente",
+        "B": "no obstante",
+        "C": "además"
+      }
+    },
+    {
+      "id": 42,
+      "area": "Redacción indirecta",
+      "topic": "Cohesión y conectores",
+      "text": "Completa: «Los árboles reducen la temperatura urbana. ___ también proporcionan sombra».",
+      "options": {
+        "A": "Por el contrario,",
+        "B": "Además,",
+        "C": "En cambio,"
+      }
+    },
+    {
+      "id": 43,
+      "area": "Redacción indirecta",
+      "topic": "Registro y adecuación",
+      "text": "¿Cuál frase es adecuada para un informe académico?",
+      "options": {
+        "A": "Está súper claro que una cosa va con la otra.",
+        "B": "Los resultados sugieren una relación entre ambas variables.",
+        "C": "Obvio, los datos dicen lo mismo."
+      }
+    },
+    {
+      "id": 44,
+      "area": "Redacción indirecta",
+      "topic": "Claridad y concisión",
+      "text": "Completa con la palabra más precisa: «La medida busca ___ el consumo de agua».",
+      "options": {
+        "A": "hacer",
+        "B": "poner",
+        "C": "reducir"
+      }
+    },
+    {
+      "id": 45,
+      "area": "Redacción indirecta",
+      "topic": "Claridad y concisión",
+      "text": "¿Cuál versión es más concisa sin perder significado?",
+      "options": {
+        "A": "El comité tuvo una reunión con el propósito de proceder a evaluar la propuesta.",
+        "B": "El comité realizó el acto de reunirse para poder hacer la evaluación de la propuesta.",
+        "C": "El comité se reunió para evaluar la propuesta."
+      }
+    },
+    {
+      "id": 46,
+      "area": "Redacción indirecta",
+      "topic": "Coherencia y organización",
+      "text": "¿Qué oración funciona mejor como inicio de un párrafo sobre reciclaje?",
+      "options": {
+        "A": "El reciclaje permite reincorporar ciertos materiales a procesos productivos.",
+        "B": "Finalmente, esas fueron las consecuencias.",
+        "C": "Por esta razón, también."
+      }
+    },
+    {
+      "id": 47,
+      "area": "Redacción indirecta",
+      "topic": "Registro y adecuación",
+      "text": "Una receta de cocina pertenece principalmente a un texto...",
+      "options": {
+        "A": "narrativo literario",
+        "B": "instructivo",
+        "C": "argumentativo"
+      }
+    },
+    {
+      "id": 48,
+      "area": "Redacción indirecta",
+      "topic": "Registro y adecuación",
+      "text": "Para una campaña dirigida a estudiantes sobre ahorro de agua, ¿qué enunciado es más pertinente?",
+      "options": {
+        "A": "Cierra la llave mientras te cepillas y reduce el desperdicio diario.",
+        "B": "El agua presenta enlaces covalentes polares.",
+        "C": "La hidrología es una disciplina con una historia extensa."
+      }
+    },
+    {
+      "id": 49,
+      "area": "Redacción indirecta",
+      "topic": "Sintaxis y uso verbal",
+      "text": "¿Cuál opción evita ambigüedad?",
+      "options": {
+        "A": "Informó el profesor a los alumnos de él que sería ese día.",
+        "B": "El profesor les dijo a ellos sobre eso que sería el lunes.",
+        "C": "El profesor informó a los alumnos que el examen sería el lunes."
+      }
+    },
+    {
+      "id": 50,
+      "area": "Redacción indirecta",
+      "topic": "Sintaxis y uso verbal",
+      "text": "Elige la forma verbal adecuada: «Cuando llegues, ___ el mensaje».",
+      "options": {
+        "A": "envíame",
+        "B": "enviarías ayer",
+        "C": "enviabas"
+      }
+    },
+    {
+      "id": 51,
+      "area": "Redacción indirecta",
+      "topic": "Acentuación y ortografía",
+      "text": "Selecciona la opción con uso correcto de mayúsculas.",
+      "options": {
+        "A": "La Universidad autónoma De Yucatán está en Mérida.",
+        "B": "La universidad Autónoma de yucatán está en mérida.",
+        "C": "La Universidad Autónoma de Yucatán está en Mérida."
+      }
+    },
+    {
+      "id": 52,
+      "area": "Redacción indirecta",
+      "topic": "Acentuación y ortografía",
+      "text": "¿Cuál expresión es más adecuada en un reporte formal?",
+      "options": {
+        "A": "La muestra tuvo 25 personas y así.",
+        "B": "La muestra estuvo integrada por 25 participantes.",
+        "C": "La muestra estuvo integrada por veinticinco participantes aprox. más o menos."
+      }
+    },
+    {
+      "id": 53,
+      "area": "Redacción indirecta",
+      "topic": "Claridad y concisión",
+      "text": "En «La medida fue temporal», un antónimo adecuado de «temporal» es...",
+      "options": {
+        "A": "permanente",
+        "B": "provisional",
+        "C": "breve"
+      }
+    },
+    {
+      "id": 54,
+      "area": "Redacción indirecta",
+      "topic": "Claridad y concisión",
+      "text": "Selecciona la opción mejor escrita.",
+      "options": {
+        "A": "Después de revisar los datos, el equipo corrigió el informe y lo envió al comité.",
+        "B": "Después de revisar los dato el equipo, corrigió el informe y lo envio al comité.",
+        "C": "Despues de revisar los datos el equipo corrigieron el informe, y lo envió al comite."
+      }
+    },
+    {
+      "id": 55,
+      "area": "Pensamiento matemático",
+      "topic": "Aritmética y números",
+      "text": "¿Cuál es el resultado de 48 + 36 ÷ 6?",
+      "options": {
+        "A": "84",
+        "B": "54",
+        "C": "14"
+      }
+    },
+    {
+      "id": 56,
+      "area": "Pensamiento matemático",
+      "topic": "Proporcionalidad y razones",
+      "text": "Si 4 cuadernos cuestan $76, ¿cuánto cuestan 7 al mismo precio unitario?",
+      "options": {
+        "A": "$152",
+        "B": "$133",
+        "C": "$121"
+      }
+    },
+    {
+      "id": 57,
+      "area": "Pensamiento matemático",
+      "topic": "Proporcionalidad y razones",
+      "text": "En una mezcla la razón agua:jugo es 3:2. Si hay 12 L de agua, ¿cuántos litros de jugo hay?",
+      "options": {
+        "A": "6 L",
+        "B": "8 L",
+        "C": "18 L"
+      }
+    },
+    {
+      "id": 58,
+      "area": "Pensamiento matemático",
+      "topic": "Fracciones y porcentajes",
+      "text": "Un precio pasa de $500 a $575. ¿Qué porcentaje aumentó?",
+      "options": {
+        "A": "15%",
+        "B": "75%",
+        "C": "13%"
+      }
+    },
+    {
+      "id": 59,
+      "area": "Pensamiento matemático",
+      "topic": "Álgebra y ecuaciones",
+      "text": "Si 2x + 3 = x + 11, entonces x = ...",
+      "options": {
+        "A": "14",
+        "B": "8",
+        "C": "5"
+      }
+    },
+    {
+      "id": 60,
+      "area": "Pensamiento matemático",
+      "topic": "Geometría y medición",
+      "text": "¿Cuál es el perímetro de un rectángulo de 8 cm por 5 cm?",
+      "options": {
+        "A": "13 cm",
+        "B": "26 cm",
+        "C": "40 cm"
+      }
+    },
+    {
+      "id": 61,
+      "area": "Pensamiento matemático",
+      "topic": "Geometría y medición",
+      "text": "El punto medio entre (2,4) y (6,8) es...",
+      "options": {
+        "A": "(4,6)",
+        "B": "(8,12)",
+        "C": "(2,2)"
+      }
+    },
+    {
+      "id": 62,
+      "area": "Pensamiento matemático",
+      "topic": "Estadística",
+      "text": "La media de 4, 6, 8 y 10 es...",
+      "options": {
+        "A": "7",
+        "B": "6",
+        "C": "8"
+      }
+    },
+    {
+      "id": 63,
+      "area": "Pensamiento matemático",
+      "topic": "Probabilidad",
+      "text": "En una caja hay 10 fichas, 4 verdes. ¿Cuántas no son verdes?",
+      "options": {
+        "A": "4",
+        "B": "6",
+        "C": "14"
+      }
+    },
+    {
+      "id": 64,
+      "area": "Pensamiento matemático",
+      "topic": "Estadística",
+      "text": "Si una gráfica muestra ventas de 20, 30 y 50 unidades en tres meses, el aumento del primero al tercero es...",
+      "options": {
+        "A": "150% del tercer mes",
+        "B": "30 unidades",
+        "C": "70 unidades"
+      }
+    },
+    {
+      "id": 65,
+      "area": "Pensamiento matemático",
+      "topic": "Funciones y cambio",
+      "text": "Si una tabla cumple x:1,2,3 y y:4,7,10, el cambio de y por cada aumento de 1 en x es...",
+      "options": {
+        "A": "4",
+        "B": "7",
+        "C": "3"
+      }
+    },
+    {
+      "id": 66,
+      "area": "Pensamiento matemático",
+      "topic": "Álgebra y ecuaciones",
+      "text": "Una cisterna contiene 900 L y pierde 25 L por hora. Después de h horas contiene...",
+      "options": {
+        "A": "900-25h",
+        "B": "900+25h",
+        "C": "25(900-h)"
+      }
+    },
+    {
+      "id": 67,
+      "area": "Pensamiento matemático",
+      "topic": "Álgebra y ecuaciones",
+      "text": "Resuelve: 2x ≤ 10.",
+      "options": {
+        "A": "x ≤ 8",
+        "B": "x ≥ 5",
+        "C": "x ≤ 5"
+      }
+    },
+    {
+      "id": 68,
+      "area": "Pensamiento matemático",
+      "topic": "Sucesiones y patrones",
+      "text": "En la secuencia 5, 9, 13, 17, ... el siguiente término es...",
+      "options": {
+        "A": "21",
+        "B": "22",
+        "C": "20"
+      }
+    },
+    {
+      "id": 69,
+      "area": "Pensamiento matemático",
+      "topic": "Aritmética y números",
+      "text": "2.5 metros equivalen a...",
+      "options": {
+        "A": "250 cm",
+        "B": "2500 cm",
+        "C": "25 cm"
+      }
+    },
+    {
+      "id": 70,
+      "area": "Pensamiento matemático",
+      "topic": "Fracciones y porcentajes",
+      "text": "¿Cuál es 15% de 240?",
+      "options": {
+        "A": "40",
+        "B": "24",
+        "C": "36"
+      }
+    },
+    {
+      "id": 71,
+      "area": "Pensamiento matemático",
+      "topic": "Proporcionalidad y razones",
+      "text": "Una receta para 4 personas usa 300 g de arroz. ¿Cuánto se necesita para 10 personas?",
+      "options": {
+        "A": "600 g",
+        "B": "750 g",
+        "C": "1200 g"
+      }
+    },
+    {
+      "id": 72,
+      "area": "Pensamiento matemático",
+      "topic": "Álgebra y ecuaciones",
+      "text": "Simplifica (x³)(x²).",
+      "options": {
+        "A": "x⁶",
+        "B": "x⁵",
+        "C": "2x⁵"
+      }
+    },
+    {
+      "id": 73,
+      "area": "Pensamiento matemático",
+      "topic": "Geometría y medición",
+      "text": "Dos figuras con la misma forma pero distinto tamaño son...",
+      "options": {
+        "A": "perpendiculares",
+        "B": "congruentes necesariamente",
+        "C": "semejantes"
+      }
+    },
+    {
+      "id": 74,
+      "area": "Pensamiento matemático",
+      "topic": "Geometría y medición",
+      "text": "La distancia horizontal entre (-2,3) y (5,3) es...",
+      "options": {
+        "A": "7",
+        "B": "5",
+        "C": "3"
+      }
+    },
+    {
+      "id": 75,
+      "area": "Pensamiento matemático",
+      "topic": "Estadística",
+      "text": "La mediana de 2, 4, 7, 9, 12 es...",
+      "options": {
+        "A": "7",
+        "B": "6.8",
+        "C": "9"
+      }
+    },
+    {
+      "id": 76,
+      "area": "Pensamiento matemático",
+      "topic": "Probabilidad",
+      "text": "Al lanzar una moneda equilibrada, la probabilidad de obtener cara es...",
+      "options": {
+        "A": "1/3",
+        "B": "1",
+        "C": "1/2"
+      }
+    },
+    {
+      "id": 77,
+      "area": "Pensamiento matemático",
+      "topic": "Estadística",
+      "text": "Una gráfica de barras es especialmente útil para comparar...",
+      "options": {
+        "A": "cantidades entre categorías",
+        "B": "ángulos de un triángulo sin datos",
+        "C": "la trayectoria continua de un objeto en el espacio"
+      }
+    },
+    {
+      "id": 78,
+      "area": "Pensamiento matemático",
+      "topic": "Funciones y cambio",
+      "text": "¿Cuál relación es proporcional directa?",
+      "options": {
+        "A": "y=4/x",
+        "B": "y=4x",
+        "C": "y=4x+2"
+      }
+    },
+    {
+      "id": 79,
+      "area": "Pensamiento matemático",
+      "topic": "Álgebra y ecuaciones",
+      "text": "Tres números consecutivos suman 36. El número central es...",
+      "options": {
+        "A": "13",
+        "B": "12",
+        "C": "11"
+      }
+    },
+    {
+      "id": 80,
+      "area": "Inglés",
+      "topic": "Reading comprehension",
+      "text": "How does Kevin usually go to school?",
+      "options": {
+        "A": "He walks.",
+        "B": "His father drives him every day.",
+        "C": "He takes the train."
+      },
+      "stimulusId": "en-3-1"
+    },
+    {
+      "id": 81,
+      "area": "Inglés",
+      "topic": "Reading comprehension",
+      "text": "What happens on Wednesdays?",
+      "options": {
+        "A": "Kevin stays home.",
+        "B": "Classes begin later.",
+        "C": "His father drives him to school."
+      },
+      "stimulusId": "en-3-1"
+    },
+    {
+      "id": 82,
+      "area": "Inglés",
+      "topic": "Reading comprehension",
+      "text": "What time do classes begin?",
+      "options": {
+        "A": "At 7:45 a.m.",
+        "B": "At 8:15 a.m.",
+        "C": "At 9:00 a.m."
+      },
+      "stimulusId": "en-3-1"
+    },
+    {
+      "id": 83,
+      "area": "Inglés",
+      "topic": "Reading comprehension",
+      "text": "Where does Kevin often study after school?",
+      "options": {
+        "A": "At the sports center.",
+        "B": "At the library.",
+        "C": "At a café."
+      },
+      "stimulusId": "en-3-1"
+    },
+    {
+      "id": 84,
+      "area": "Inglés",
+      "topic": "Reading comprehension",
+      "text": "What does Kevin do on Fridays before going home?",
+      "options": {
+        "A": "He plays soccer.",
+        "B": "He studies for three hours.",
+        "C": "He visits his grandmother."
+      },
+      "stimulusId": "en-3-1"
+    },
+    {
+      "id": 85,
+      "area": "Inglés",
+      "topic": "Modal verbs",
+      "text": "Complete: «Can you ___ me with this box?»",
+      "options": {
+        "A": "helps",
+        "B": "help",
+        "C": "helped to"
+      }
+    },
+    {
+      "id": 86,
+      "area": "Inglés",
+      "topic": "Vocabulary in context",
+      "text": "Choose the best invitation.",
+      "options": {
+        "A": "Do you coming party yesterday?",
+        "B": "Would you like to come to my party?",
+        "C": "You like come my party?"
+      }
+    },
+    {
+      "id": 87,
+      "area": "Inglés",
+      "topic": "Vocabulary in context",
+      "text": "Choose the grammatically correct sentence about a student's daily trip to school.",
+      "options": {
+        "A": "My brother going school by bus.",
+        "B": "My brother go to school by bus.",
+        "C": "My brother goes to school by bus."
+      }
+    },
+    {
+      "id": 88,
+      "area": "Inglés",
+      "topic": "Vocabulary in context",
+      "text": "Complete: «My birthday is ___ July.»",
+      "options": {
+        "A": "on",
+        "B": "in",
+        "C": "at"
+      }
+    },
+    {
+      "id": 89,
+      "area": "Inglés",
+      "topic": "There is / are and prepositions",
+      "text": "Complete: «We arrived ___ the airport at noon.»",
+      "options": {
+        "A": "to at",
+        "B": "on",
+        "C": "at"
+      }
+    },
+    {
+      "id": 90,
+      "area": "Inglés",
+      "topic": "Reading comprehension",
+      "text": "Read: «Mia is looking for her keys. She thinks they are in her backpack.» What is Mia looking for?",
+      "options": {
+        "A": "A new phone",
+        "B": "Her backpack",
+        "C": "Her keys"
+      }
+    },
+    {
+      "id": 91,
+      "area": "Inglés",
+      "topic": "Questions and word order",
+      "text": "Complete: «How often ___ you exercise?»",
+      "options": {
+        "A": "are do",
+        "B": "does",
+        "C": "do"
+      }
+    },
+    {
+      "id": 92,
+      "area": "Inglés",
+      "topic": "Reading comprehension",
+      "text": "Read: «The weather was rainy in the morning, but the sun came out after lunch.» What happened after lunch?",
+      "options": {
+        "A": "It became darker because of rain",
+        "B": "It started to snow",
+        "C": "It became sunny"
+      }
+    },
+    {
+      "id": 93,
+      "area": "Inglés",
+      "topic": "Present simple and continuous",
+      "text": "Choose the correct option: «Please be quiet. The baby ___.»",
+      "options": {
+        "A": "is sleeping",
+        "B": "sleep every now",
+        "C": "are sleeping"
+      }
+    },
+    {
+      "id": 94,
+      "area": "Inglés",
+      "topic": "Reading comprehension",
+      "text": "Read: «Emma studied for the test, so she went to bed later than usual.» Why did Emma go to bed late?",
+      "options": {
+        "A": "She woke up early",
+        "B": "She was watching a movie",
+        "C": "She was studying"
+      }
+    },
+    {
+      "id": 95,
+      "area": "Inglés",
+      "topic": "Comparatives",
+      "text": "Complete: «This book is ___ interesting than that one.»",
+      "options": {
+        "A": "most",
+        "B": "more",
+        "C": "many"
+      }
+    },
+    {
+      "id": 96,
+      "area": "Inglés",
+      "topic": "Reading comprehension",
+      "text": "Read: «You can borrow three books for two weeks. Please return them on time.» How many books can you borrow?",
+      "options": {
+        "A": "Five",
+        "B": "Two",
+        "C": "Three"
+      }
+    },
+    {
+      "id": 97,
+      "area": "Inglés",
+      "topic": "Vocabulary in context",
+      "text": "Choose the grammatically correct sentence about a family's pets.",
+      "options": {
+        "A": "My parents have two dogs.",
+        "B": "My parents having two dog.",
+        "C": "My parents has two dogs."
+      }
+    },
+    {
+      "id": 98,
+      "area": "Inglés",
+      "topic": "Reading comprehension",
+      "text": "Read: «Tom usually plays soccer on Saturday, but this week he is visiting his grandmother.» What is Tom doing this week?",
+      "options": {
+        "A": "Visiting his grandmother",
+        "B": "Going to school on Saturday",
+        "C": "Playing soccer as usual"
+      }
+    },
+    {
+      "id": 99,
+      "area": "Inglés",
+      "topic": "Vocabulary in context",
+      "text": "Choose the best question.",
+      "options": {
+        "A": "Where does you live?",
+        "B": "Where you live?",
+        "C": "Where do you live?"
+      }
+    },
+    {
+      "id": 100,
+      "area": "Inglés",
+      "topic": "Reading comprehension",
+      "text": "Read: «Daniel works in a bakery. He starts at 6 a.m. and makes bread and cakes.» Where does Daniel work?",
+      "options": {
+        "A": "In a hospital",
+        "B": "In a library",
+        "C": "In a bakery"
+      }
+    }
+  ]
+}

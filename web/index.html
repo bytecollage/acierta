@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exámenes diagnósticos UADY / EXANI-I</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ============================================================ barra fija -->
+<div class="topbar hidden" id="topbar">
+  <div class="topbar-inner">
+    <span class="progress-text" id="progress-text">Respondidas: 0 / 0</span>
+    <div class="progress-bar" id="progress-bar" role="progressbar"
+         aria-label="Progreso del examen" aria-valuemin="0" aria-valuenow="0" aria-valuemax="0">
+      <div id="progress-fill"></div>
+    </div>
+    <span class="timer" id="timer" aria-live="off" aria-label="Tiempo transcurrido">00:00</span>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ============================================================== INICIO -->
+<div id="screen-inicio">
+  <header>
+    <div class="account" id="account"></div>
+    <h1>Exámenes diagnósticos UADY / EXANI-I</h1>
+    <p class="lead">Practica, mide tu nivel y descubre qué temas conviene reforzar.</p>
+  </header>
+
+  <div class="alert hidden" id="account-note" role="status"></div>
+
+  <div class="alert warn hidden" id="storage-warning" role="alert">
+    No se pudo guardar el progreso en este navegador. Puedes hacer el examen, pero si
+    cierras la página se perderá.
+  </div>
+
+  <section class="card instructions">
+    <h2>Antes de empezar</h2>
+    <ul>
+      <li>Este es un examen <strong>diagnóstico</strong>: sirve para detectar qué estudiar.
+          No se aprueba ni se reprueba.</li>
+      <li>Debes responder <strong>todas</strong> las preguntas. No podrás terminar si dejas
+          alguna en blanco.</li>
+      <li>Cada pregunta tiene <strong>tres opciones</strong> y solo una es correcta.</li>
+      <li><strong>No hay límite de tiempo</strong>, pero el tiempo se mide y forma parte de
+          tu resultado. El cronómetro se pausa solo si dejas de usar la página.</li>
+      <li>Tu progreso <strong>se guarda automáticamente</strong>: puedes cerrar y continuar
+          más tarde en este mismo navegador. Los resultados terminados se guardan en tu
+          cuenta si iniciaste sesión con Google.</li>
+      <li>Al terminar verás la corrección pregunta por pregunta, tu resultado por área y
+          por tema, y una cadena de respuestas que puedes copiar.</li>
+      <li>Para que el diagnóstico sea útil, hazlo de una sentada y sin consultar material.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Elige un examen</h2>
+    <div id="exam-list"></div>
+  </section>
+
+  <p><a href="dashboard.html" id="dashboard-link" class="btn">Ver mi progreso</a></p>
+</div>
+
+<!-- ============================================================== EXAMEN -->
+<div id="screen-examen" class="hidden">
+  <header>
+    <h1 id="exam-title"></h1>
+    <p class="lead small">Responde todas las preguntas y pulsa «Terminar examen» al final.</p>
+  </header>
+
+  <nav class="area-nav" id="area-nav" aria-label="Ir a un área"></nav>
+
+  <div class="alert hidden" id="exam-alert" role="alert" aria-live="assertive"></div>
+
+  <div id="questions"></div>
+
+  <div class="card">
+    <div class="btn-row">
+      <button class="primary" id="btn-terminar">Terminar examen</button>
+    </div>
+  </div>
+</div>
+
+<!-- ========================================================== RESULTADOS -->
+<div id="screen-resultados" class="hidden">
+  <header>
+    <h1>Resultado</h1>
+    <p class="lead" id="result-exam-title"></p>
+  </header>
+
+  <section class="card">
+    <div class="score" id="result-score"></div>
+    <div class="stats" id="result-stats"></div>
+    <p class="small muted" id="chance-note" style="text-align:center;margin-top:18px"></p>
+    <p class="small save-status" id="save-status" aria-live="polite"></p>
+    <div class="account center" id="result-account"></div>
+  </section>
+
+  <section class="card">
+    <h2>Resultado por área</h2>
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>Área</th><th>Aciertos</th><th>%</th><th></th></tr></thead>
+        <tbody id="area-results"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <details>
+    <summary>Detalle por tema</summary>
+    <p class="small muted">
+      La mayoría de los temas tiene una o dos preguntas. Un fallo aislado no indica
+      necesariamente una laguna: revisa la tendencia en el
+      <a href="dashboard.html">dashboard</a>.
+    </p>
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>Tema</th><th>Aciertos</th><th>%</th></tr></thead>
+        <tbody id="topic-results"></tbody>
+      </table>
+    </div>
+  </details>
+
+  <section class="card">
+    <h2>Cadena de respuestas</h2>
+    <p class="small muted">
+      El número inicial son los minutos; las letras, tus respuestas ordenadas por número de
+      pregunta.
+    </p>
+    <div class="answer-string" id="answer-string"></div>
+    <div class="btn-row">
+      <button id="btn-copy-answers">Copiar respuestas</button>
+      <button id="btn-copy-summary">Copiar resumen</button>
+    </div>
+    <p class="small muted" id="copy-status" aria-live="polite"></p>
+  </section>
+
+  <div class="btn-row">
+    <a class="btn primary" href="dashboard.html">Ver mi progreso</a>
+    <button id="btn-home">Volver al inicio</button>
+    <button id="btn-restart">Reiniciar examen</button>
+  </div>
+</div>
+
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/grading.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

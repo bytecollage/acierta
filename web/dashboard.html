@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mi progreso — Exámenes diagnósticos</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap wide">
+
+  <header>
+    <div class="account" id="account"></div>
+    <h1>Mi progreso</h1>
+    <p class="lead">Evolución de tus resultados y temas que conviene reforzar.</p>
+  </header>
+
+  <!-- ========================================================= sin datos -->
+  <div id="empty" class="card hidden">
+    <h2>Aún no hay intentos registrados</h2>
+    <p>Cuando termines tu primer examen, aquí verás tu evolución y los temas donde conviene
+       poner más atención.</p>
+    <p class="small muted" id="empty-note"></p>
+    <p><a class="btn primary" href="index.html">Hacer un examen</a></p>
+  </div>
+
+  <!-- ========================================================= contenido -->
+  <div id="content" class="hidden">
+
+    <div class="filters">
+      <label>Examen
+        <select id="f-exam" aria-label="Filtrar por examen"></select>
+      </label>
+      <label>Área
+        <select id="f-area" aria-label="Filtrar por área"></select>
+      </label>
+      <label class="switch">
+        <input type="checkbox" id="f-repeats">
+        Incluir repeticiones
+      </label>
+    </div>
+
+    <div class="alert warn hidden" id="repeat-warning">
+      Incluyendo repeticiones. Los intentos repetidos del mismo examen pueden reflejar
+      memorización además de aprendizaje.
+    </div>
+
+    <section class="card">
+      <div class="kpis" id="kpis"></div>
+    </section>
+
+    <section class="card">
+      <h2>Evolución del resultado</h2>
+      <div class="legend" id="evolution-legend"></div>
+      <div id="chart-evolution"></div>
+    </section>
+
+    <section class="card">
+      <h2>Rendimiento por área</h2>
+      <p class="small muted">Acumulado de todos los intentos que cumplen el filtro.</p>
+      <div id="chart-areas"></div>
+    </section>
+
+    <section class="card">
+      <h2>Temas a reforzar</h2>
+      <p class="small muted">
+        Los temas se agregan <strong>cruzando los dos exámenes</strong>: es la única forma de
+        reunir muestra suficiente. La columna <em>Confianza</em> indica cuánto te puedes fiar
+        del porcentaje según el número de preguntas vistas.
+      </p>
+
+      <div id="recommend"></div>
+
+      <div class="tbl-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Tema</th><th>Área</th><th>Aciertos</th><th>%</th>
+              <th>Observaciones</th><th>Tendencia</th><th>Confianza</th>
+            </tr>
+          </thead>
+          <tbody id="topics-body"></tbody>
+        </table>
+      </div>
+
+      <details style="margin-top:16px">
+        <summary>Temas con muestra insuficiente (<span id="topics-low-count">0</span>)</summary>
+        <p class="small muted">
+          Menos de 3 preguntas vistas. Un fallo aquí puede ser un descuido; no se usan para
+          recomendar estudio.
+        </p>
+        <div class="tbl-scroll">
+          <table>
+            <thead><tr><th>Tema</th><th>Área</th><th>Aciertos</th><th>%</th></tr></thead>
+            <tbody id="topics-low"></tbody>
+          </table>
+        </div>
+      </details>
+    </section>
+
+    <p class="small muted" id="storage-mode"></p>
+
+    <div class="btn-row">
+      <a class="btn primary" href="index.html">Hacer otro examen</a>
+    </div>
+
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

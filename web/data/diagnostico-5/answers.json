@@ -1,0 +1,406 @@
+{
+  "examId": "diagnostico-5",
+  "version": "2.0",
+  "answers": [
+    {
+      "id": 1,
+      "correctAnswer": "B"
+    },
+    {
+      "id": 2,
+      "correctAnswer": "C"
+    },
+    {
+      "id": 3,
+      "correctAnswer": "B"
+    },
+    {
+      "id": 4,
+      "correctAnswer": "B"
+    },
+    {
+      "id": 5,
+      "correctAnswer": "A"
+    },
+    {
+      "id": 6,
+      "correctAnswer": "A"
+    },
+    {
+      "id": 7,
+      "correctAnswer": "B"
+    },
+    {
+      "id": 8,
+      "correctAnswer": "A"
+    },
+    {
+      "id": 9,
+      "correctAnswer": "A"
+    },
+    {
+      "id": 10,
+      "correctAnswer": "B"
+    },
+    {
+      "id": 11,
+      "correctAnswer": "B"
+    },
+    {
+      "id": 12,
+      "correctAnswer": "A"
+    },
+    {
+      "id": 13,
+      "correctAnswer": "A"
+    },
+    {
+      "id": 14,
+      "correctAnswer": "A"
+    },
+    {
+      "id": 15,
+      "correctAnswer": "C"
+    },
+    {
+      "id": 16,
+      "correctAnswer": "C"
+    },
+    {
+      "id": 17,
+      "correctAnswer": "B"
+    },
+    {
+      "id": 18,
+      "correctAnswer": "B"
+    },
+    {
+      "id": 19,
+      "correctAnswer": "B"
+    },
+    {
+      "id": 20,
+      "correctAnswer": "C"
+    },
+    {
+      "id": 21,
+      "correctAnswer": "A"
+    },
+    {
+      "id": 22,
+      "correctAnswer": "B"
+    },
+    {
+      "id": 23,
+      "correctAnswer": "B"
+    },
+    {
+      "id": 24,
+      "correctAnswer": "C"
+    },
+    {
+      "id": 25,
+      "correctAnswer": "B"
+    },
+    {
+      "id": 26,
+      "correctAnswer": "A"
+    },
+    {
+      "id": 27,
+      "correctAnswer": "B"
+    },
+    {
+      "id": 28,
+      "correctAnswer": "C"
+    },
+    {
+      "id": 29,
+      "correctAnswer": "B"
+    },
+    {
+      "id": 30,
+      "correctAnswer": "A"
+    },
+    {
+      "id": 31,
+      "correctAnswer": "A"
+    },
+    {
+      "id": 32,
+      "correctAnswer": "C"
+    },
+    {
+      "id": 33,
+      "correctAnswer": "C"
+    },
+    {
+      "id": 34,
+      "correctAnswer": "A"
+    },
+    {
+      "id": 35,
+      "correctAnswer": "B"
+    },
+    {
+      "id": 36,
+      "correctAnswer": "A"
+    },
+    {
+      "id": 37,
+      "correctAnswer": "B"
+    },
+    {
+      "id": 38,
+      "correctAnswer": "C"
+    },
+    {
+      "id": 39,
+      "correctAnswer": "C"
+    },
+    {
+      "id": 40,
+      "correctAnswer": "A"
+    },
+    {
+      "id": 41,
+      "correctAnswer": "A"
+    },
+    {
+      "id": 42,
+      "correctAnswer": "C"
+    },
+    {
+      "id": 43,
+      "correctAnswer": "C"
+    },
+    {
+      "id": 44,
+      "correctAnswer": "B"
+    },
+    {
+      "id": 45,
+      "correctAnswer": "B"
+    },
+    {
+      "id": 46,
+      "correctAnswer": "C"
+    },
+    {
+      "id": 47,
+      "correctAnswer": "B"
+    },
+    {
+      "id": 48,
+      "correctAnswer": "C"
+    },
+    {
+      "id": 49,
+      "correctAnswer": "C"
+    },
+    {
+      "id": 50,
+      "correctAnswer": "A"
+    },
+    {
+      "id": 51,
+      "correctAnswer": "C"
+    },
+    {
+      "id": 52,
+      "correctAnswer": "A"
+    },
+    {
+      "id": 53,
+      "correctAnswer": "A"
+    },
+    {
+      "id": 54,
+      "correctAnswer": "A"
+    },
+    {
+      "id": 55,
+      "correctAnswer": "A"
+    },
+    {
+      "id": 56,
+      "correctAnswer": "C"
+    },
+    {
+      "id": 57,
+      "correctAnswer": "A"
+    },
+    {
+      "id": 58,
+      "correctAnswer": "A"
+    },
+    {
+      "id": 59,
+      "correctAnswer": "C"
+    },
+    {
+      "id": 60,
+      "correctAnswer": "C"
+    },
+    {
+      "id": 61,
+      "correctAnswer": "B"
+    },
+    {
+      "id": 62,
+      "correctAnswer": "A"
+    },
+    {
+      "id": 63,
+      "correctAnswer": "A"
+    },
+    {
+      "id": 64,
+      "correctAnswer": "C"
+    },
+    {
+      "id": 65,
+      "correctAnswer": "A"
+    },
+    {
+      "id": 66,
+      "correctAnswer": "C"
+    },
+    {
+      "id": 67,
+      "correctAnswer": "B"
+    },
+    {
+      "id": 68,
+      "correctAnswer": "B"
+    },
+    {
+      "id": 69,
+      "correctAnswer": "C"
+    },
+    {
+      "id": 70,
+      "correctAnswer": "B"
+    },
+    {
+      "id": 71,
+      "correctAnswer": "A"
+    },
+    {
+      "id": 72,
+      "correctAnswer": "C"
+    },
+    {
+      "id": 73,
+      "correctAnswer": "A"
+    },
+    {
+      "id": 74,
+      "correctAnswer": "C"
+    },
+    {
+      "id": 75,
+      "correctAnswer": "B"
+    },
+    {
+      "id": 76,
+      "correctAnswer": "C"
+    },
+    {
+      "id": 77,
+      "correctAnswer": "A"
+    },
+    {
+      "id": 78,
+      "correctAnswer": "B"
+    },
+    {
+      "id": 79,
+      "correctAnswer": "C"
+    },
+    {
+      "id": 80,
+      "correctAnswer": "C"
+    },
+    {
+      "id": 81,
+      "correctAnswer": "A"
+    },
+    {
+      "id": 82,
+      "correctAnswer": "C"
+    },
+    {
+      "id": 83,
+      "correctAnswer": "B"
+    },
+    {
+      "id": 84,
+      "correctAnswer": "A"
+    },
+    {
+      "id": 85,
+      "correctAnswer": "C"
+    },
+    {
+      "id": 86,
+      "correctAnswer": "B"
+    },
+    {
+      "id": 87,
+      "correctAnswer": "C"
+    },
+    {
+      "id": 88,
+      "correctAnswer": "B"
+    },
+    {
+      "id": 89,
+      "correctAnswer": "C"
+    },
+    {
+      "id": 90,
+      "correctAnswer": "C"
+    },
+    {
+      "id": 91,
+      "correctAnswer": "B"
+    },
+    {
+      "id": 92,
+      "correctAnswer": "B"
+    },
+    {
+      "id": 93,
+      "correctAnswer": "A"
+    },
+    {
+      "id": 94,
+      "correctAnswer": "A"
+    },
+    {
+      "id": 95,
+      "correctAnswer": "C"
+    },
+    {
+      "id": 96,
+      "correctAnswer": "A"
+    },
+    {
+      "id": 97,
+      "correctAnswer": "B"
+    },
+    {
+      "id": 98,
+      "correctAnswer": "A"
+    },
+    {
+      "id": 99,
+      "correctAnswer": "B"
+    },
+    {
+      "id": 100,
+      "correctAnswer": "B"
+    }
+  ]
+}

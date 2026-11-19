@@ -1,0 +1,1192 @@
+{
+  "exam": {
+    "id": "diagnostico-2",
+    "title": "Diagnóstico UADY / EXANI-I — Nivel 2",
+    "version": "2.0",
+    "questionCount": 100,
+    "areas": [
+      {
+        "name": "Pensamiento científico",
+        "start": 1,
+        "end": 20
+      },
+      {
+        "name": "Comprensión lectora",
+        "start": 21,
+        "end": 40
+      },
+      {
+        "name": "Redacción indirecta",
+        "start": 41,
+        "end": 60
+      },
+      {
+        "name": "Pensamiento matemático",
+        "start": 61,
+        "end": 85
+      },
+      {
+        "name": "Inglés",
+        "start": 86,
+        "end": 100
+      }
+    ]
+  },
+  "stimuli": [
+    {
+      "id": "cl-1",
+      "area": "Comprensión lectora",
+      "instruction": "Lee el texto:",
+      "text": "Durante décadas, muchas ciudades ampliaron avenidas con la intención de reducir la congestión vehicular. Sin embargo, en algunos casos, el aumento de capacidad atrajo nuevos viajes en automóvil y el tráfico volvió a niveles similares después de cierto tiempo. Este fenómeno se conoce como demanda inducida. No significa que toda ampliación sea inútil, sino que sus efectos dependen del contexto urbano y de las alternativas de transporte disponibles."
+    },
+    {
+      "id": "cl-2",
+      "area": "Comprensión lectora",
+      "instruction": "Lee el texto:",
+      "text": "El sueño no es un periodo de inactividad absoluta. Durante ciertas fases, el cerebro reorganiza información adquirida durante el día y consolida algunos recuerdos. Dormir poco de manera ocasional puede producir cansancio, pero la privación frecuente de sueño también puede afectar la atención, el aprendizaje y el estado de ánimo. Por ello, estudiar hasta muy tarde antes de un examen no siempre ofrece la ventaja que parece."
+    },
+    {
+      "id": "cl-3",
+      "area": "Comprensión lectora",
+      "instruction": "Lee el texto:",
+      "text": "La inteligencia artificial generativa puede producir textos, imágenes y código a partir de instrucciones. Su utilidad depende, sin embargo, de la calidad de los datos, del diseño del sistema y del modo en que las personas revisan sus resultados. Un modelo puede generar respuestas convincentes que contienen errores. Por eso, en contextos académicos y profesionales, verificar la información sigue siendo una tarea esencial."
+    },
+    {
+      "id": "cl-4",
+      "area": "Comprensión lectora",
+      "instruction": "Lee el texto:",
+      "text": "En algunos ecosistemas, la desaparición de una sola especie puede producir efectos en cadena. Si desaparece un depredador, por ejemplo, ciertas poblaciones de herbívoros pueden aumentar y consumir más vegetación. A su vez, esto puede modificar el hábitat de otras especies. Por eso, la biodiversidad no depende únicamente del número de especies, sino también de las relaciones entre ellas."
+    },
+    {
+      "id": "en-1",
+      "area": "Inglés",
+      "instruction": "Read the text:",
+      "text": "Lucy wanted to improve her English, so she started listening to podcasts every morning. At first, she understood only a few words. After several months, she noticed that she could follow entire conversations more easily."
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "area": "Pensamiento científico",
+      "topic": "Diseño experimental",
+      "text": "Un estudiante investiga si la cantidad de fertilizante afecta el crecimiento de plantas de frijol. Utiliza macetas iguales, la misma cantidad de agua y luz, y diferentes cantidades de fertilizante.\n\n¿Cuál es la variable dependiente?",
+      "options": {
+        "A": "Cantidad de fertilizante",
+        "B": "Crecimiento de la planta",
+        "C": "Cantidad de agua"
+      }
+    },
+    {
+      "id": 2,
+      "area": "Pensamiento científico",
+      "topic": "Representación de datos",
+      "text": "En un experimento, cuatro grupos de semillas reciben 0, 2, 4 y 6 horas de luz diaria. Después de 10 días se mide su altura promedio.\n\n¿Cuál sería la mejor forma de representar los resultados?",
+      "options": {
+        "A": "Gráfica con horas de luz en el eje x y altura en el eje y",
+        "B": "Una lista de nombres de las semillas",
+        "C": "Un mapa conceptual sin valores numéricos"
+      }
+    },
+    {
+      "id": 3,
+      "area": "Pensamiento científico",
+      "topic": "Cambios físicos y químicos",
+      "text": "Una sustancia cambia de sólido a líquido sin alterar su composición química. Este proceso es:",
+      "options": {
+        "A": "una reacción química",
+        "B": "un cambio físico",
+        "C": "una combustión"
+      }
+    },
+    {
+      "id": 4,
+      "area": "Pensamiento científico",
+      "topic": "Dinámica",
+      "text": "Un objeto de 2 kg recibe una fuerza neta constante de 10 N. ¿Cuál es su aceleración?",
+      "options": {
+        "A": "5 m/s²",
+        "B": "10 m/s²",
+        "C": "20 m/s²"
+      }
+    },
+    {
+      "id": 5,
+      "area": "Pensamiento científico",
+      "topic": "Velocidad media",
+      "text": "El auto A recorre 120 km en 2 h y el auto B recorre 150 km en 3 h. ¿Cuál tiene mayor rapidez media?",
+      "options": {
+        "A": "Auto A",
+        "B": "Auto B",
+        "C": "Ambos tienen la misma"
+      }
+    },
+    {
+      "id": 6,
+      "area": "Pensamiento científico",
+      "topic": "Conservación de energía",
+      "text": "Si una bombilla convierte energía eléctrica principalmente en luz y calor, entonces la energía total:",
+      "options": {
+        "A": "desaparece parcialmente",
+        "B": "se transforma pero se conserva",
+        "C": "aumenta dentro de la bombilla"
+      }
+    },
+    {
+      "id": 7,
+      "area": "Pensamiento científico",
+      "topic": "Mezclas",
+      "text": "¿Cuál ejemplo corresponde a una mezcla homogénea?",
+      "options": {
+        "A": "Agua con sal completamente disuelta",
+        "B": "Arena con piedras",
+        "C": "Aceite y agua separados"
+      }
+    },
+    {
+      "id": 8,
+      "area": "Pensamiento científico",
+      "topic": "Ácidos y bases",
+      "text": "Una solución con pH 9 es:",
+      "options": {
+        "A": "ácida",
+        "B": "neutra",
+        "C": "básica"
+      }
+    },
+    {
+      "id": 9,
+      "area": "Pensamiento científico",
+      "topic": "Estructura atómica",
+      "text": "¿Qué partícula subatómica determina principalmente la identidad de un elemento químico?",
+      "options": {
+        "A": "Protón",
+        "B": "Neutrón",
+        "C": "Electrón de valencia únicamente"
+      }
+    },
+    {
+      "id": 10,
+      "area": "Pensamiento científico",
+      "topic": "Conservación de la masa",
+      "text": "En una reacción química balanceada, la masa total de los reactivos es igual a la masa total de los productos. Esto ejemplifica la ley de:",
+      "options": {
+        "A": "conservación de la masa",
+        "B": "gravitación universal",
+        "C": "acción y reacción"
+      }
+    },
+    {
+      "id": 11,
+      "area": "Pensamiento científico",
+      "topic": "Biología celular",
+      "text": "Una célula muscular necesita gran cantidad de energía. ¿Qué organelo esperas encontrar en abundancia?",
+      "options": {
+        "A": "Mitocondrias",
+        "B": "Ribosomas únicamente",
+        "C": "Lisosomas exclusivamente"
+      }
+    },
+    {
+      "id": 12,
+      "area": "Pensamiento científico",
+      "topic": "Selección natural",
+      "text": "¿Cuál afirmación describe mejor la selección natural?",
+      "options": {
+        "A": "Los organismos cambian voluntariamente para sobrevivir",
+        "B": "Los individuos con rasgos favorables tienden a dejar más descendencia",
+        "C": "Todos los individuos de una especie sobreviven por igual"
+      }
+    },
+    {
+      "id": 13,
+      "area": "Pensamiento científico",
+      "topic": "Evolución y resistencia",
+      "text": "En una población de bacterias, algunas poseen una mutación que les permite resistir un antibiótico. Después de usarlo repetidamente, aumenta la proporción de bacterias resistentes.\n\n¿Cuál explicación es más adecuada?",
+      "options": {
+        "A": "El antibiótico produjo intencionalmente la mutación",
+        "B": "Las bacterias resistentes sobrevivieron y se reprodujeron más",
+        "C": "Las bacterias sensibles aprendieron a resistir"
+      }
+    },
+    {
+      "id": 14,
+      "area": "Pensamiento científico",
+      "topic": "Sistema circulatorio",
+      "text": "¿Cuál estructura transporta principalmente oxígeno en la sangre?",
+      "options": {
+        "A": "Glóbulos rojos",
+        "B": "Plaquetas",
+        "C": "Neuronas"
+      }
+    },
+    {
+      "id": 15,
+      "area": "Pensamiento científico",
+      "topic": "Ecología",
+      "text": "Si aumenta mucho la población de depredadores en un ecosistema, ¿qué efecto inicial es más probable sobre la población de presas?",
+      "options": {
+        "A": "Disminución",
+        "B": "Aumento inmediato",
+        "C": "Ningún cambio posible"
+      }
+    },
+    {
+      "id": 16,
+      "area": "Pensamiento científico",
+      "topic": "Método científico",
+      "text": "Un estudiante observa que una planta crece mejor con luz azul que con luz verde. Para fortalecer la conclusión debería:",
+      "options": {
+        "A": "repetir el experimento varias veces",
+        "B": "usar una sola planta",
+        "C": "cambiar simultáneamente agua, tierra y temperatura"
+      }
+    },
+    {
+      "id": 17,
+      "area": "Pensamiento científico",
+      "topic": "Densidad",
+      "text": "La densidad de un material se calcula como masa/volumen. Un objeto tiene masa de 240 g y volumen de 80 cm³. Su densidad es:",
+      "options": {
+        "A": "2 g/cm³",
+        "B": "3 g/cm³",
+        "C": "4 g/cm³"
+      }
+    },
+    {
+      "id": 18,
+      "area": "Pensamiento científico",
+      "topic": "Densidad y flotación",
+      "text": "Si un cuerpo flota en agua, su densidad promedio es generalmente:",
+      "options": {
+        "A": "mayor que la del agua",
+        "B": "menor que la del agua",
+        "C": "exactamente cero"
+      }
+    },
+    {
+      "id": 19,
+      "area": "Pensamiento científico",
+      "topic": "Transferencia de calor",
+      "text": "Una persona toca una cuchara metálica y una de madera que han estado horas en la misma habitación. El metal se siente más frío porque:",
+      "options": {
+        "A": "está realmente a menor temperatura",
+        "B": "conduce el calor de la mano más rápidamente",
+        "C": "produce frío de forma activa"
+      }
+    },
+    {
+      "id": 20,
+      "area": "Pensamiento científico",
+      "topic": "Pensamiento científico",
+      "text": "¿Qué afirmación es más científica?",
+      "options": {
+        "A": "“Este remedio funciona porque siempre lo ha dicho mi familia”",
+        "B": "“Este remedio podría funcionar; habría que comprobarlo con evidencia controlada”",
+        "C": "“Si muchas personas lo creen, debe ser verdadero”"
+      }
+    },
+    {
+      "id": 21,
+      "area": "Comprensión lectora",
+      "topic": "Idea principal",
+      "stimulusId": "cl-1",
+      "text": "¿Cuál es la idea principal?",
+      "options": {
+        "A": "Ampliar avenidas siempre elimina el tráfico",
+        "B": "Aumentar capacidad vial puede generar más viajes y no resolver permanentemente la congestión",
+        "C": "Las ciudades deben prohibir los automóviles"
+      }
+    },
+    {
+      "id": 22,
+      "area": "Comprensión lectora",
+      "topic": "Vocabulario en contexto",
+      "stimulusId": "cl-1",
+      "text": "Según el texto anterior, “demanda inducida” se refiere a:",
+      "options": {
+        "A": "la disminución automática del uso del automóvil",
+        "B": "el aumento de viajes provocado por mayor capacidad vial",
+        "C": "la eliminación del transporte público"
+      }
+    },
+    {
+      "id": 23,
+      "area": "Comprensión lectora",
+      "topic": "Matiz del autor",
+      "stimulusId": "cl-1",
+      "text": "¿Qué matiz introduce el autor al final del texto?",
+      "options": {
+        "A": "Que toda ampliación vial fracasa",
+        "B": "Que los efectos dependen del contexto",
+        "C": "Que la congestión nunca cambia"
+      }
+    },
+    {
+      "id": 24,
+      "area": "Comprensión lectora",
+      "topic": "Información no respaldada",
+      "stimulusId": "cl-1",
+      "text": "¿Cuál afirmación NO está respaldada por el texto?",
+      "options": {
+        "A": "Algunas ampliaciones atraen nuevos viajes",
+        "B": "El tráfico puede regresar a niveles similares",
+        "C": "Toda obra vial es necesariamente perjudicial"
+      }
+    },
+    {
+      "id": 25,
+      "area": "Comprensión lectora",
+      "topic": "Propósito del autor",
+      "stimulusId": "cl-1",
+      "text": "El propósito principal del texto es:",
+      "options": {
+        "A": "explicar un fenómeno urbano",
+        "B": "promover una marca de automóviles",
+        "C": "narrar una experiencia personal"
+      }
+    },
+    {
+      "id": 26,
+      "area": "Comprensión lectora",
+      "topic": "Idea principal",
+      "stimulusId": "cl-2",
+      "text": "¿Qué idea resume mejor el texto?",
+      "options": {
+        "A": "Dormir interfiere con el aprendizaje",
+        "B": "El sueño participa en procesos importantes para memoria y atención",
+        "C": "Estudiar de noche siempre mejora el desempeño"
+      }
+    },
+    {
+      "id": 27,
+      "area": "Comprensión lectora",
+      "topic": "Información explícita",
+      "stimulusId": "cl-2",
+      "text": "Según el texto, dormir poco ocasionalmente puede provocar:",
+      "options": {
+        "A": "cansancio",
+        "B": "mejora inmediata de la memoria",
+        "C": "eliminación del estrés"
+      }
+    },
+    {
+      "id": 28,
+      "area": "Comprensión lectora",
+      "topic": "Relación de ideas",
+      "stimulusId": "cl-2",
+      "text": "¿Qué relación establece el texto entre sueño y aprendizaje?",
+      "options": {
+        "A": "El sueño puede contribuir a consolidar recuerdos",
+        "B": "El sueño elimina conocimientos recién adquiridos",
+        "C": "No existe relación entre ambos"
+      }
+    },
+    {
+      "id": 29,
+      "area": "Comprensión lectora",
+      "topic": "Inferencia",
+      "stimulusId": "cl-2",
+      "text": "¿Qué puede inferirse sobre estudiar hasta muy tarde?",
+      "options": {
+        "A": "Siempre es la mejor estrategia",
+        "B": "Puede perjudicar el rendimiento si reduce demasiado el sueño",
+        "C": "Garantiza recordar más información"
+      }
+    },
+    {
+      "id": 30,
+      "area": "Comprensión lectora",
+      "topic": "Tono",
+      "stimulusId": "cl-2",
+      "text": "El tono del texto es principalmente:",
+      "options": {
+        "A": "informativo y explicativo",
+        "B": "publicitario",
+        "C": "humorístico"
+      }
+    },
+    {
+      "id": 31,
+      "area": "Comprensión lectora",
+      "topic": "Tesis central",
+      "stimulusId": "cl-3",
+      "text": "¿Cuál es la tesis central?",
+      "options": {
+        "A": "La IA generativa es infalible",
+        "B": "La IA generativa puede ser útil, pero sus resultados requieren revisión",
+        "C": "La IA generativa solo sirve para producir imágenes"
+      }
+    },
+    {
+      "id": 32,
+      "area": "Comprensión lectora",
+      "topic": "Información explícita",
+      "stimulusId": "cl-3",
+      "text": "¿Qué riesgo menciona explícitamente el texto?",
+      "options": {
+        "A": "Que un modelo produzca información convincente pero incorrecta",
+        "B": "Que los modelos no puedan generar texto",
+        "C": "Que la IA siempre rechace las instrucciones"
+      }
+    },
+    {
+      "id": 33,
+      "area": "Comprensión lectora",
+      "topic": "Inferencia",
+      "stimulusId": "cl-3",
+      "text": "¿Cuál acción recomienda implícitamente el texto?",
+      "options": {
+        "A": "Aceptar cualquier respuesta generada",
+        "B": "Verificar la información obtenida",
+        "C": "Evitar completamente la tecnología"
+      }
+    },
+    {
+      "id": 34,
+      "area": "Comprensión lectora",
+      "topic": "Vocabulario en contexto",
+      "stimulusId": "cl-3",
+      "text": "La palabra “convincente” se usa para indicar que una respuesta puede:",
+      "options": {
+        "A": "parecer correcta aunque no lo sea",
+        "B": "ser necesariamente falsa",
+        "C": "carecer de sentido"
+      }
+    },
+    {
+      "id": 35,
+      "area": "Comprensión lectora",
+      "topic": "Título",
+      "stimulusId": "cl-3",
+      "text": "¿Cuál sería el mejor título?",
+      "options": {
+        "A": "“IA generativa: utilidad y necesidad de verificación”",
+        "B": "“Cómo eliminar todos los errores humanos”",
+        "C": "“Por qué las computadoras nunca se equivocan”"
+      }
+    },
+    {
+      "id": 36,
+      "area": "Comprensión lectora",
+      "topic": "Idea principal",
+      "stimulusId": "cl-4",
+      "text": "¿Qué idea enfatiza el texto?",
+      "options": {
+        "A": "Todas las especies cumplen exactamente la misma función",
+        "B": "Las relaciones entre especies pueden generar efectos en cadena",
+        "C": "Los herbívoros siempre destruyen los ecosistemas"
+      }
+    },
+    {
+      "id": 37,
+      "area": "Comprensión lectora",
+      "topic": "Información explícita",
+      "stimulusId": "cl-4",
+      "text": "Si desaparece un depredador, el texto indica que inicialmente podría:",
+      "options": {
+        "A": "aumentar la población de algunos herbívoros",
+        "B": "aumentar inmediatamente la vegetación",
+        "C": "desaparecer toda forma de vida"
+      }
+    },
+    {
+      "id": 38,
+      "area": "Comprensión lectora",
+      "topic": "Vocabulario en contexto",
+      "stimulusId": "cl-4",
+      "text": "¿Qué significa “efectos en cadena” en este contexto?",
+      "options": {
+        "A": "Cambios sucesivos que afectan a distintos componentes del ecosistema",
+        "B": "Únicamente cambios climáticos",
+        "C": "Procesos sin relación entre sí"
+      }
+    },
+    {
+      "id": 39,
+      "area": "Comprensión lectora",
+      "topic": "Conclusión",
+      "stimulusId": "cl-4",
+      "text": "¿Cuál afirmación es compatible con el texto?",
+      "options": {
+        "A": "La biodiversidad depende también de las interacciones ecológicas",
+        "B": "Solo importa contar cuántas especies existen",
+        "C": "La desaparición de una especie nunca afecta a otras"
+      }
+    },
+    {
+      "id": 40,
+      "area": "Comprensión lectora",
+      "topic": "Función del ejemplo",
+      "stimulusId": "cl-4",
+      "text": "El autor utiliza el ejemplo del depredador principalmente para:",
+      "options": {
+        "A": "ilustrar una relación ecológica compleja",
+        "B": "demostrar que todos los depredadores deben eliminarse",
+        "C": "explicar cómo se fabrica una cadena alimentaria"
+      }
+    },
+    {
+      "id": 41,
+      "area": "Redacción indirecta",
+      "topic": "Conectores y estructura",
+      "text": "Selecciona la opción mejor redactada:",
+      "options": {
+        "A": "Debido a que llovió, el partido fue suspendido.",
+        "B": "Debido que llovió, el partido fue suspendido.",
+        "C": "Debido a que llovió el partido, fue suspendido."
+      }
+    },
+    {
+      "id": 42,
+      "area": "Redacción indirecta",
+      "topic": "Puntuación",
+      "text": "Selecciona la oración con puntuación correcta:",
+      "options": {
+        "A": "María compró pan, leche, huevos y fruta.",
+        "B": "María compró, pan leche huevos, y fruta.",
+        "C": "María compró pan leche huevos y, fruta."
+      }
+    },
+    {
+      "id": 43,
+      "area": "Redacción indirecta",
+      "topic": "Ambigüedad",
+      "text": "¿Cuál opción evita ambigüedad?",
+      "options": {
+        "A": "Carlos habló con Pedro cuando estaba preocupado.",
+        "B": "Carlos, que estaba preocupado, habló con Pedro.",
+        "C": "Carlos habló con Pedro cuando estaba preocupado él."
+      }
+    },
+    {
+      "id": 44,
+      "area": "Redacción indirecta",
+      "topic": "Conectores",
+      "text": "“El medicamento redujo los síntomas; ________, no eliminó la causa de la enfermedad.”",
+      "options": {
+        "A": "sin embargo",
+        "B": "por lo tanto",
+        "C": "además de que"
+      }
+    },
+    {
+      "id": 45,
+      "area": "Redacción indirecta",
+      "topic": "Registro académico",
+      "text": "¿Cuál opción es más adecuada para un texto académico?",
+      "options": {
+        "A": "Los resultados estuvieron padrísimos.",
+        "B": "Los resultados fueron estadísticamente consistentes.",
+        "C": "Los resultados estuvieron súper bien."
+      }
+    },
+    {
+      "id": 46,
+      "area": "Redacción indirecta",
+      "topic": "Por qué / porque / porqué",
+      "text": "Selecciona la opción correcta:",
+      "options": {
+        "A": "No sé por qué llegaste tarde.",
+        "B": "No sé porque llegaste tarde.",
+        "C": "No se porqué llegaste tarde."
+      }
+    },
+    {
+      "id": 47,
+      "area": "Redacción indirecta",
+      "topic": "Concordancia",
+      "text": "Elige la oración con concordancia correcta:",
+      "options": {
+        "A": "El grupo de estudiantes presentó sus proyectos.",
+        "B": "El grupo de estudiantes presentaron su proyecto obligatoriamente.",
+        "C": "El grupo de estudiante presentaron sus proyectos."
+      }
+    },
+    {
+      "id": 48,
+      "area": "Redacción indirecta",
+      "topic": "Aun / aún",
+      "text": "¿Cuál opción usa correctamente “aun/aún”?",
+      "options": {
+        "A": "Aún no termina el examen.",
+        "B": "Aun no termina el exámen.",
+        "C": "Aún no termina él examen."
+      }
+    },
+    {
+      "id": 49,
+      "area": "Redacción indirecta",
+      "topic": "Concisión",
+      "text": "Selecciona la opción más concisa:",
+      "options": {
+        "A": "En este momento actual estamos iniciando ahora la actividad.",
+        "B": "Ahora iniciamos la actividad.",
+        "C": "En la actualidad presente iniciamos ahora mismo la actividad."
+      }
+    },
+    {
+      "id": 50,
+      "area": "Redacción indirecta",
+      "topic": "Punto y coma",
+      "text": "¿Cuál oración usa correctamente el punto y coma?",
+      "options": {
+        "A": "El experimento terminó; los datos fueron analizados después.",
+        "B": "El experimento; terminó los datos fueron analizados después.",
+        "C": "El experimento terminó los datos; fueron analizados después."
+      }
+    },
+    {
+      "id": 51,
+      "area": "Redacción indirecta",
+      "topic": "Verbo haber",
+      "text": "Selecciona la opción correcta:",
+      "options": {
+        "A": "Había muchas personas esperando.",
+        "B": "Habían muchas personas esperando.",
+        "C": "Hubieron muchas personas esperando."
+      }
+    },
+    {
+      "id": 52,
+      "area": "Redacción indirecta",
+      "topic": "Claridad",
+      "text": "¿Cuál versión es más clara?",
+      "options": {
+        "A": "El profesor entregó el examen al alumno que estaba corregido.",
+        "B": "El profesor entregó al alumno el examen corregido.",
+        "C": "El profesor que estaba corregido entregó el examen al alumno."
+      }
+    },
+    {
+      "id": 53,
+      "area": "Redacción indirecta",
+      "topic": "Acentuación",
+      "text": "Selecciona la oración correctamente acentuada:",
+      "options": {
+        "A": "Él explicó cuál era la solución.",
+        "B": "El explicó cual era la solución.",
+        "C": "Él explico cuál era la solucion."
+      }
+    },
+    {
+      "id": 54,
+      "area": "Redacción indirecta",
+      "topic": "Sino / si no",
+      "text": "¿Cuál opción emplea correctamente “sino/si no”?",
+      "options": {
+        "A": "No fue Juan, sino Pedro.",
+        "B": "No fue Juan, si no Pedro.",
+        "C": "No fue Juan sino, Pedro."
+      }
+    },
+    {
+      "id": 55,
+      "area": "Redacción indirecta",
+      "topic": "Conectores",
+      "text": "“La evidencia era limitada; ________, los investigadores evitaron formular conclusiones definitivas.”",
+      "options": {
+        "A": "por ello",
+        "B": "sin embargo",
+        "C": "por ejemplo"
+      }
+    },
+    {
+      "id": 56,
+      "area": "Redacción indirecta",
+      "topic": "Cohesión",
+      "text": "¿Cuál oración tiene mejor cohesión?",
+      "options": {
+        "A": "El equipo realizó tres pruebas. Los resultados fueron similares. Por ello, repitió el procedimiento.",
+        "B": "El equipo realizó tres pruebas. Sin embargo los resultados fueron similares por eso aunque repitió.",
+        "C": "El equipo tres pruebas realizó y similares resultados."
+      }
+    },
+    {
+      "id": 57,
+      "area": "Redacción indirecta",
+      "topic": "Concordancia",
+      "text": "Selecciona la opción correcta:",
+      "options": {
+        "A": "Se requieren dos documentos para completar el trámite.",
+        "B": "Se requiere dos documentos para completar el trámite.",
+        "C": "Se requieren dos documento para completar el trámite."
+      }
+    },
+    {
+      "id": 58,
+      "area": "Redacción indirecta",
+      "topic": "Deber / deber de",
+      "text": "¿Cuál oración expresa correctamente una obligación?",
+      "options": {
+        "A": "Debes estudiar si quieres mejorar.",
+        "B": "Debes de estudiar obligatoriamente si quieres mejorar.",
+        "C": "Debes estudiar de que quieres mejorar."
+      }
+    },
+    {
+      "id": 59,
+      "area": "Redacción indirecta",
+      "topic": "Redundancia",
+      "text": "¿Cuál opción elimina la redundancia de “Subió arriba rápidamente”?",
+      "options": {
+        "A": "Subió rápidamente.",
+        "B": "Subió arriba hacia arriba rápidamente.",
+        "C": "Ascendió arriba rápidamente."
+      }
+    },
+    {
+      "id": 60,
+      "area": "Redacción indirecta",
+      "topic": "Estructura sintáctica",
+      "text": "Selecciona la opción con mejor estructura:",
+      "options": {
+        "A": "Aunque estaba cansado, terminó el proyecto.",
+        "B": "Aunque estaba cansado, pero terminó el proyecto.",
+        "C": "Aunque cansado estaba terminó, el proyecto."
+      }
+    },
+    {
+      "id": 61,
+      "area": "Pensamiento matemático",
+      "topic": "Ecuaciones lineales",
+      "text": "Resuelve: 4x - 7 = 2x + 9",
+      "options": {
+        "A": "6",
+        "B": "8",
+        "C": "10"
+      }
+    },
+    {
+      "id": 62,
+      "area": "Pensamiento matemático",
+      "topic": "Ecuaciones lineales",
+      "text": "Si 3(x - 2) = 2x + 5, entonces x vale:",
+      "options": {
+        "A": "7",
+        "B": "9",
+        "C": "11"
+      }
+    },
+    {
+      "id": 63,
+      "area": "Pensamiento matemático",
+      "topic": "Álgebra",
+      "text": "Simplifica: 2(3x - 4) - (x + 5)",
+      "options": {
+        "A": "5x - 13",
+        "B": "5x - 3",
+        "C": "7x - 9"
+      }
+    },
+    {
+      "id": 64,
+      "area": "Pensamiento matemático",
+      "topic": "Sustitución algebraica",
+      "text": "Si x/4 = 6, ¿cuánto vale 3x - 2?",
+      "options": {
+        "A": "64",
+        "B": "70",
+        "C": "72"
+      }
+    },
+    {
+      "id": 65,
+      "area": "Pensamiento matemático",
+      "topic": "Porcentajes sucesivos",
+      "text": "Un producto aumenta 20% y después disminuye 20%. Si originalmente costaba $1,000, ¿cuál es el precio final?",
+      "options": {
+        "A": "$960",
+        "B": "$1,000",
+        "C": "$1,040"
+      }
+    },
+    {
+      "id": 66,
+      "area": "Pensamiento matemático",
+      "topic": "Porcentajes",
+      "text": "Un tanque contiene 40% de su capacidad. Después se agregan 90 L y queda al 70%. ¿Cuál es la capacidad total?",
+      "options": {
+        "A": "250 L",
+        "B": "300 L",
+        "C": "350 L"
+      }
+    },
+    {
+      "id": 67,
+      "area": "Pensamiento matemático",
+      "topic": "Proporcionalidad",
+      "text": "Una receta para 6 personas usa 450 g de harina. ¿Cuánta harina se necesita para 14 personas manteniendo la proporción?",
+      "options": {
+        "A": "900 g",
+        "B": "1,050 g",
+        "C": "1,200 g"
+      }
+    },
+    {
+      "id": 68,
+      "area": "Pensamiento matemático",
+      "topic": "Movimiento",
+      "text": "Una distancia se recorre a 60 km/h durante 1.5 h y luego a 90 km/h durante 2 h. ¿Cuál es la distancia total?",
+      "options": {
+        "A": "240 km",
+        "B": "270 km",
+        "C": "300 km"
+      }
+    },
+    {
+      "id": 69,
+      "area": "Pensamiento matemático",
+      "topic": "Promedio",
+      "text": "El promedio de cinco números es 18. Si cuatro son 12, 16, 20 y 22, ¿cuál es el quinto?",
+      "options": {
+        "A": "18",
+        "B": "20",
+        "C": "22"
+      }
+    },
+    {
+      "id": 70,
+      "area": "Pensamiento matemático",
+      "topic": "Mediana",
+      "text": "La mediana de 4, 7, 9, 12, 15, 18, 21 es:",
+      "options": {
+        "A": "9",
+        "B": "12",
+        "C": "15"
+      }
+    },
+    {
+      "id": 71,
+      "area": "Pensamiento matemático",
+      "topic": "Probabilidad",
+      "text": "En una bolsa hay 5 bolas rojas, 3 verdes y 2 azules. ¿Cuál es la probabilidad de extraer una bola que NO sea roja?",
+      "options": {
+        "A": "1/2",
+        "B": "2/5",
+        "C": "3/5"
+      }
+    },
+    {
+      "id": 72,
+      "area": "Pensamiento matemático",
+      "topic": "Probabilidad",
+      "text": "Al lanzar dos monedas justas, ¿cuál es la probabilidad de obtener exactamente una cara?",
+      "options": {
+        "A": "1/4",
+        "B": "1/2",
+        "C": "3/4"
+      }
+    },
+    {
+      "id": 73,
+      "area": "Pensamiento matemático",
+      "topic": "Geometría",
+      "text": "Un rectángulo tiene área de 96 cm² y ancho de 8 cm. ¿Cuál es su perímetro?",
+      "options": {
+        "A": "32 cm",
+        "B": "40 cm",
+        "C": "48 cm"
+      }
+    },
+    {
+      "id": 74,
+      "area": "Pensamiento matemático",
+      "topic": "Teorema de Pitágoras",
+      "text": "Un triángulo rectángulo tiene catetos de 6 cm y 8 cm. La hipotenusa mide:",
+      "options": {
+        "A": "10 cm",
+        "B": "12 cm",
+        "C": "14 cm"
+      }
+    },
+    {
+      "id": 75,
+      "area": "Pensamiento matemático",
+      "topic": "Geometría",
+      "text": "El área de un círculo de radio 5 cm es:",
+      "options": {
+        "A": "10π cm²",
+        "B": "25π cm²",
+        "C": "50π cm²"
+      }
+    },
+    {
+      "id": 76,
+      "area": "Pensamiento matemático",
+      "topic": "Volumen",
+      "text": "Un cubo tiene arista de 4 cm. ¿Cuál es su volumen?",
+      "options": {
+        "A": "16 cm³",
+        "B": "48 cm³",
+        "C": "64 cm³"
+      }
+    },
+    {
+      "id": 77,
+      "area": "Pensamiento matemático",
+      "topic": "Funciones lineales",
+      "text": "Si y = 3x - 2, ¿qué valor de x produce y = 13?",
+      "options": {
+        "A": "3",
+        "B": "5",
+        "C": "7"
+      }
+    },
+    {
+      "id": 78,
+      "area": "Pensamiento matemático",
+      "topic": "Funciones lineales",
+      "text": "¿Cuál expresión representa una recta con pendiente 2 e intersección en y igual a -3?",
+      "options": {
+        "A": "y = 2x - 3",
+        "B": "y = -3x + 2",
+        "C": "y = 2x + 3"
+      }
+    },
+    {
+      "id": 79,
+      "area": "Pensamiento matemático",
+      "topic": "Sucesiones",
+      "text": "La secuencia 5, 9, 13, 17, ... es aritmética. ¿Cuál es el término 10?",
+      "options": {
+        "A": "37",
+        "B": "41",
+        "C": "45"
+      }
+    },
+    {
+      "id": 80,
+      "area": "Pensamiento matemático",
+      "topic": "Potencias",
+      "text": "¿Cuál es el valor de (3²)(3³) / 3²?",
+      "options": {
+        "A": "9",
+        "B": "27",
+        "C": "81"
+      }
+    },
+    {
+      "id": 81,
+      "area": "Pensamiento matemático",
+      "topic": "Raíces",
+      "text": "Si √x = 7, entonces x es:",
+      "options": {
+        "A": "14",
+        "B": "49",
+        "C": "77"
+      }
+    },
+    {
+      "id": 82,
+      "area": "Pensamiento matemático",
+      "topic": "Proporcionalidad",
+      "text": "Un automóvil recorre 180 km usando 15 L de gasolina. Manteniendo el mismo rendimiento, ¿cuántos litros necesita para 300 km?",
+      "options": {
+        "A": "20 L",
+        "B": "25 L",
+        "C": "30 L"
+      }
+    },
+    {
+      "id": 83,
+      "area": "Pensamiento matemático",
+      "topic": "Porcentajes sucesivos",
+      "text": "Una tienda ofrece 15% de descuento y después 10% adicional sobre el precio ya rebajado. Para un artículo de $2,000, el precio final es:",
+      "options": {
+        "A": "$1,500",
+        "B": "$1,530",
+        "C": "$1,550"
+      }
+    },
+    {
+      "id": 84,
+      "area": "Pensamiento matemático",
+      "topic": "Sistemas de ecuaciones",
+      "text": "Si 2x + y = 11 y x - y = 1, ¿cuánto vale x?",
+      "options": {
+        "A": "3",
+        "B": "4",
+        "C": "5"
+      }
+    },
+    {
+      "id": 85,
+      "area": "Pensamiento matemático",
+      "topic": "Razón de cambio",
+      "text": "Un depósito se llena a razón constante. A los 4 minutos contiene 28 L y a los 10 minutos contiene 70 L. ¿Cuál es la tasa de llenado?",
+      "options": {
+        "A": "6 L/min",
+        "B": "7 L/min",
+        "C": "8 L/min"
+      }
+    },
+    {
+      "id": 86,
+      "area": "Inglés",
+      "topic": "First conditional",
+      "text": "“If it rains tomorrow, we ___ at home.”",
+      "options": {
+        "A": "stay",
+        "B": "will stay",
+        "C": "stayed"
+      }
+    },
+    {
+      "id": 87,
+      "area": "Inglés",
+      "topic": "Present perfect",
+      "text": "“She has lived here ___ 2022.”",
+      "options": {
+        "A": "for",
+        "B": "since",
+        "C": "from"
+      }
+    },
+    {
+      "id": 88,
+      "area": "Inglés",
+      "topic": "Present simple",
+      "text": "Choose the correct sentence:",
+      "options": {
+        "A": "He doesn't like coffee.",
+        "B": "He don't likes coffee.",
+        "C": "He doesn't likes coffee."
+      }
+    },
+    {
+      "id": 89,
+      "area": "Inglés",
+      "topic": "Comparatives",
+      "text": "“This book is ___ than the one I read last week.”",
+      "options": {
+        "A": "interesting",
+        "B": "more interesting",
+        "C": "most interesting"
+      }
+    },
+    {
+      "id": 90,
+      "area": "Inglés",
+      "topic": "Past perfect",
+      "text": "“By the time we arrived, the movie ___.”",
+      "options": {
+        "A": "started",
+        "B": "had started",
+        "C": "has start"
+      }
+    },
+    {
+      "id": 91,
+      "area": "Inglés",
+      "topic": "Reading comprehension",
+      "stimulusId": "en-1",
+      "text": "Why did Lucy start listening to podcasts?",
+      "options": {
+        "A": "To improve her English",
+        "B": "To learn mathematics",
+        "C": "To prepare for a sports event"
+      }
+    },
+    {
+      "id": 92,
+      "area": "Inglés",
+      "topic": "Reading comprehension",
+      "stimulusId": "en-1",
+      "text": "What changed after several months?",
+      "options": {
+        "A": "She stopped listening",
+        "B": "She could understand conversations more easily",
+        "C": "She forgot most of the words"
+      }
+    },
+    {
+      "id": 93,
+      "area": "Inglés",
+      "topic": "Vocabulary in context",
+      "stimulusId": "en-1",
+      "text": "The phrase “at first” means:",
+      "options": {
+        "A": "in the beginning",
+        "B": "finally",
+        "C": "every day"
+      }
+    },
+    {
+      "id": 94,
+      "area": "Inglés",
+      "topic": "Quantifiers",
+      "text": "“There isn't ___ information in the report.”",
+      "options": {
+        "A": "many",
+        "B": "much",
+        "C": "a few"
+      }
+    },
+    {
+      "id": 95,
+      "area": "Inglés",
+      "topic": "Passive voice",
+      "text": "Which sentence is in the passive voice?",
+      "options": {
+        "A": "The students completed the project.",
+        "B": "The project was completed by the students.",
+        "C": "The students are completing the project."
+      }
+    },
+    {
+      "id": 96,
+      "area": "Inglés",
+      "topic": "Second conditional",
+      "text": "“I would travel more if I ___ more free time.”",
+      "options": {
+        "A": "have",
+        "B": "had",
+        "C": "will have"
+      }
+    },
+    {
+      "id": 97,
+      "area": "Inglés",
+      "topic": "Vocabulary",
+      "text": "Choose the word closest in meaning to rapid:",
+      "options": {
+        "A": "slow",
+        "B": "quick",
+        "C": "quiet"
+      }
+    },
+    {
+      "id": 98,
+      "area": "Inglés",
+      "topic": "Indirect questions",
+      "text": "“Could you tell me where the station ___?”",
+      "options": {
+        "A": "is",
+        "B": "does",
+        "C": "be"
+      }
+    },
+    {
+      "id": 99,
+      "area": "Inglés",
+      "topic": "Present perfect",
+      "text": "Which sentence is correct?",
+      "options": {
+        "A": "I have never been to Canada.",
+        "B": "I never have went to Canada.",
+        "C": "I have never went to Canada."
+      }
+    },
+    {
+      "id": 100,
+      "area": "Inglés",
+      "topic": "Reading signs",
+      "text": "A notice says:\n\n“Employees must wear identification badges at all times.”\n\nWhat does it mean?",
+      "options": {
+        "A": "Badges are optional",
+        "B": "Employees must always display identification",
+        "C": "Only visitors need identification"
+      }
+    }
+  ]
+}

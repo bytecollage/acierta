@@ -1,0 +1,12 @@
+[
+  {
+    "id": "diagnostico-1",
+    "questions": "diagnostico-1/questions.json",
+    "answers": "diagnostico-1/answers.json"
+  },
+  {
+    "id": "diagnostico-2",
+    "questions": "diagnostico-2/questions.json",
+    "answers": "diagnostico-2/answers.json"
+  }
+]

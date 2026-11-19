@@ -1,0 +1,92 @@
+[
+  {
+    "id": "diagnostico-1",
+    "title": "Diagnóstico UADY / EXANI-I — Nivel 1",
+    "version": "2.0",
+    "questionCount": 80,
+    "estimatedMinutes": 60,
+    "questions": "diagnostico-1/questions.json",
+    "answers": "diagnostico-1/answers.json"
+  },
+  {
+    "id": "diagnostico-2",
+    "title": "Diagnóstico UADY / EXANI-I — Nivel 2",
+    "version": "2.0",
+    "questionCount": 100,
+    "estimatedMinutes": 75,
+    "questions": "diagnostico-2/questions.json",
+    "answers": "diagnostico-2/answers.json"
+  },
+  {
+    "id": "diagnostico-3",
+    "title": "Diagnóstico UADY / EXANI-I — Nivel 3",
+    "version": "2.0",
+    "questionCount": 100,
+    "estimatedMinutes": 75,
+    "questions": "diagnostico-3/questions.json",
+    "answers": "diagnostico-3/answers.json"
+  },
+  {
+    "id": "diagnostico-4",
+    "title": "Diagnóstico UADY / EXANI-I — Nivel 4",
+    "version": "2.0",
+    "questionCount": 100,
+    "estimatedMinutes": 75,
+    "questions": "diagnostico-4/questions.json",
+    "answers": "diagnostico-4/answers.json"
+  },
+  {
+    "id": "diagnostico-5",
+    "title": "Diagnóstico UADY / EXANI-I — Nivel 5",
+    "version": "2.0",
+    "questionCount": 100,
+    "estimatedMinutes": 75,
+    "questions": "diagnostico-5/questions.json",
+    "answers": "diagnostico-5/answers.json"
+  },
+  {
+    "id": "diagnostico-6",
+    "title": "Diagnóstico UADY / EXANI-I — Nivel 6",
+    "version": "2.0",
+    "questionCount": 150,
+    "estimatedMinutes": 255,
+    "questions": "diagnostico-6/questions.json",
+    "answers": "diagnostico-6/answers.json"
+  },
+  {
+    "id": "diagnostico-7",
+    "title": "Diagnóstico UADY / EXANI-I — Nivel 7",
+    "version": "2.0",
+    "questionCount": 150,
+    "estimatedMinutes": 255,
+    "questions": "diagnostico-7/questions.json",
+    "answers": "diagnostico-7/answers.json"
+  },
+  {
+    "id": "diagnostico-8",
+    "title": "Diagnóstico UADY / EXANI-I — Nivel 8",
+    "version": "2.0",
+    "questionCount": 150,
+    "estimatedMinutes": 255,
+    "questions": "diagnostico-8/questions.json",
+    "answers": "diagnostico-8/answers.json"
+  },
+  {
+    "id": "diagnostico-9",
+    "title": "Diagnóstico UADY / EXANI-I — Nivel 9",
+    "version": "2.0",
+    "questionCount": 150,
+    "estimatedMinutes": 255,
+    "questions": "diagnostico-9/questions.json",
+    "answers": "diagnostico-9/answers.json"
+  },
+  {
+    "id": "diagnostico-10",
+    "title": "Diagnóstico UADY / EXANI-I — Nivel 10",
+    "version": "2.0",
+    "questionCount": 150,
+    "estimatedMinutes": 255,
+    "questions": "diagnostico-10/questions.json",
+    "answers": "diagnostico-10/answers.json"
+  }
+]

@@ -1,0 +1,1186 @@
+{
+  "exam": {
+    "id": "diagnostico-4",
+    "title": "Diagnóstico UADY / EXANI-I — Nivel 4",
+    "version": "2.0",
+    "questionCount": 100,
+    "areas": [
+      {
+        "name": "Pensamiento científico",
+        "start": 1,
+        "end": 18
+      },
+      {
+        "name": "Comprensión lectora",
+        "start": 19,
+        "end": 36
+      },
+      {
+        "name": "Redacción indirecta",
+        "start": 37,
+        "end": 54
+      },
+      {
+        "name": "Pensamiento matemático",
+        "start": 55,
+        "end": 79
+      },
+      {
+        "name": "Inglés",
+        "start": 80,
+        "end": 100
+      }
+    ]
+  },
+  "stimuli": [
+    {
+      "id": "d4-lectura-1",
+      "area": "Comprensión lectora",
+      "instruction": "Lee el texto «El valor de los errores»:",
+      "text": "En el aprendizaje, equivocarse suele percibirse como señal de fracaso. Sin embargo, un error puede aportar información útil cuando se analiza. Si un estudiante resuelve mal una ecuación y solo copia la respuesta correcta, es posible que repita el mismo procedimiento después. En cambio, si identifica en qué paso cambió indebidamente un signo y explica por qué, obtiene una pista concreta sobre lo que necesita corregir.\n\nEsto no significa que todos los errores sean deseables ni que deban ignorarse. Significa que la retroalimentación es más útil cuando muestra el camino entre la respuesta inicial y una estrategia mejor. De ese modo, el error deja de ser únicamente un resultado y se convierte en evidencia sobre el proceso de pensamiento."
+    },
+    {
+      "id": "d4-lectura-2",
+      "area": "Comprensión lectora",
+      "instruction": "Lee el texto «Agua de lluvia»:",
+      "text": "Una escuela decidió captar agua de lluvia para utilizarla en el riego de jardines. El sistema conduce el agua desde los techos hacia un depósito y utiliza filtros para retirar hojas y otros residuos grandes. Antes de instalarlo, el equipo calculó el área de captación, revisó el promedio histórico de lluvia y estimó el consumo de agua de los jardines.\n\nDurante la temporada seca, el depósito no siempre contiene agua suficiente. Por eso, la escuela conserva una conexión a la red convencional. El objetivo del sistema no es sustituir por completo esa fuente, sino disminuir su uso cuando las condiciones lo permiten."
+    },
+    {
+      "id": "d4-lectura-3",
+      "area": "Comprensión lectora",
+      "instruction": "Lee el texto «Mapas y decisiones»:",
+      "text": "Un mapa no es una copia exacta del territorio. Para representar una zona extensa en una superficie pequeña, quien lo diseña debe seleccionar información, usar símbolos y reducir proporciones mediante una escala. Además, la proyección elegida puede deformar ciertas distancias, áreas o formas.\n\nEstas limitaciones no vuelven inútiles a los mapas. Al contrario, conocerlas permite elegir el tipo adecuado para cada propósito. Un mapa de transporte privilegia rutas y conexiones; uno topográfico representa con detalle el relieve. La pregunta importante no es si un mapa reproduce perfectamente la realidad, sino si representa de manera útil la información necesaria para una tarea concreta."
+    },
+    {
+      "id": "en-4-1",
+      "area": "Inglés",
+      "instruction": "Read the text:",
+      "text": "Lucy works at a small café near a university. She starts work at 7:00 a.m. and usually prepares sandwiches and drinks. She has lunch at noon. On Tuesdays, the café closes at 3:00 p.m., so Lucy goes to an English class after work. She wants to improve her English because she hopes to travel next year."
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "area": "Pensamiento científico",
+      "topic": "Genética y evolución",
+      "text": "La selección natural favorece, generación tras generación, a individuos que...",
+      "options": {
+        "A": "son siempre los más grandes de la población",
+        "B": "adquieren cualquier característica por esfuerzo y la heredan",
+        "C": "poseen características heredables que aumentan su éxito reproductivo en ese ambiente"
+      }
+    },
+    {
+      "id": 2,
+      "area": "Pensamiento científico",
+      "topic": "Ecología y ambiente",
+      "text": "Si disminuye drásticamente una población de depredadores, una consecuencia posible a corto plazo es que las presas...",
+      "options": {
+        "A": "desaparezcan necesariamente",
+        "B": "dejen de competir por recursos",
+        "C": "aumenten en número"
+      }
+    },
+    {
+      "id": 3,
+      "area": "Pensamiento científico",
+      "topic": "Ecología y ambiente",
+      "text": "La combustión de combustibles fósiles incrementa directamente la cantidad atmosférica de...",
+      "options": {
+        "A": "oxígeno molecular",
+        "B": "helio",
+        "C": "dióxido de carbono"
+      }
+    },
+    {
+      "id": 4,
+      "area": "Pensamiento científico",
+      "topic": "Ecología y ambiente",
+      "text": "La eutrofización de un lago puede ocurrir por exceso de fertilizantes porque estos...",
+      "options": {
+        "A": "eliminan todo el nitrógeno del agua",
+        "B": "impiden cualquier crecimiento vegetal",
+        "C": "aportan nutrientes que favorecen proliferaciones de algas"
+      }
+    },
+    {
+      "id": 5,
+      "area": "Pensamiento científico",
+      "topic": "Cuerpo humano y salud",
+      "text": "Las vacunas ayudan principalmente a prevenir ciertas enfermedades porque...",
+      "options": {
+        "A": "preparan al sistema inmunitario para reconocer agentes específicos",
+        "B": "sustituyen de manera permanente a los glóbulos blancos",
+        "C": "matan directamente todos los microorganismos del ambiente"
+      }
+    },
+    {
+      "id": 6,
+      "area": "Pensamiento científico",
+      "topic": "Cuerpo humano y salud",
+      "text": "La sudoración cuando aumenta la temperatura corporal contribuye a...",
+      "options": {
+        "A": "detener por completo el metabolismo",
+        "B": "aumentar indefinidamente la temperatura",
+        "C": "mantener la temperatura interna dentro de un intervalo adecuado"
+      }
+    },
+    {
+      "id": 7,
+      "area": "Pensamiento científico",
+      "topic": "Cuerpo humano y salud",
+      "text": "La principal función de los glóbulos rojos está relacionada con...",
+      "options": {
+        "A": "el transporte de oxígeno",
+        "B": "la producción de orina",
+        "C": "la digestión de grasas"
+      }
+    },
+    {
+      "id": 8,
+      "area": "Pensamiento científico",
+      "topic": "Tierra, clima y recursos",
+      "text": "Las estaciones del año se explican principalmente por...",
+      "options": {
+        "A": "la inclinación del eje terrestre y la traslación alrededor del Sol",
+        "B": "la rotación de la Luna",
+        "C": "cambios diarios en la distancia Tierra-Sol"
+      }
+    },
+    {
+      "id": 9,
+      "area": "Pensamiento científico",
+      "topic": "Tierra, clima y recursos",
+      "text": "Los sismos ocurren con frecuencia en límites de placas tectónicas debido a...",
+      "options": {
+        "A": "la liberación de energía acumulada por el movimiento de las placas",
+        "B": "la atracción magnética del Sol",
+        "C": "la evaporación del agua oceánica"
+      }
+    },
+    {
+      "id": 10,
+      "area": "Pensamiento científico",
+      "topic": "Tierra, clima y recursos",
+      "text": "El clima de una región se diferencia del tiempo atmosférico porque el clima describe...",
+      "options": {
+        "A": "solo lo que ocurre durante unas horas",
+        "B": "la posición exacta de las nubes en un instante",
+        "C": "patrones de condiciones durante periodos largos"
+      }
+    },
+    {
+      "id": 11,
+      "area": "Pensamiento científico",
+      "topic": "Datos, medición y evidencia",
+      "text": "Un estudio encuentra que quienes duermen más obtienen, en promedio, mejores calificaciones. Este resultado por sí solo permite concluir que...",
+      "options": {
+        "A": "existe una asociación, pero no necesariamente una relación causal",
+        "B": "las calificaciones determinan necesariamente las horas de sueño",
+        "C": "dormir más causa siempre mejores calificaciones"
+      }
+    },
+    {
+      "id": 12,
+      "area": "Pensamiento científico",
+      "topic": "Tierra, clima y recursos",
+      "text": "Una afirmación científica responsable sobre una nueva tecnología debe apoyarse principalmente en...",
+      "options": {
+        "A": "evidencia reproducible y análisis de riesgos y beneficios",
+        "B": "la opinión de una sola persona",
+        "C": "publicidad del fabricante únicamente"
+      }
+    },
+    {
+      "id": 13,
+      "area": "Pensamiento científico",
+      "topic": "Tierra, clima y recursos",
+      "text": "¿Cuál recurso se considera renovable a escala humana cuando se gestiona adecuadamente?",
+      "options": {
+        "A": "el petróleo",
+        "B": "el carbón",
+        "C": "la energía solar"
+      }
+    },
+    {
+      "id": 14,
+      "area": "Pensamiento científico",
+      "topic": "Átomos, mezclas y propiedades",
+      "text": "Dos objetos tienen el mismo volumen, pero uno posee mayor masa. Ese objeto tiene...",
+      "options": {
+        "A": "menor densidad",
+        "B": "mayor densidad",
+        "C": "la misma densidad necesariamente"
+      }
+    },
+    {
+      "id": 15,
+      "area": "Pensamiento científico",
+      "topic": "Movimiento y fuerzas",
+      "text": "Una persona ejerce la misma fuerza sobre el suelo usando zapatos normales o esquís. Con esquís la presión es menor porque...",
+      "options": {
+        "A": "la fuerza se distribuye sobre un área mayor",
+        "B": "la masa de la persona desaparece",
+        "C": "la gravedad deja de actuar"
+      }
+    },
+    {
+      "id": 16,
+      "area": "Pensamiento científico",
+      "topic": "Método científico y diseño experimental",
+      "text": "Un grupo quiere saber si la cantidad de luz afecta el crecimiento de plantas de frijol. ¿Cuál es la variable independiente?",
+      "options": {
+        "A": "La altura final de las plantas",
+        "B": "La cantidad de luz recibida",
+        "C": "El tipo de regla usada para medir"
+      }
+    },
+    {
+      "id": 17,
+      "area": "Pensamiento científico",
+      "topic": "Datos, medición y evidencia",
+      "text": "¿Cuál unidad del Sistema Internacional es apropiada para expresar la masa de una mochila?",
+      "options": {
+        "A": "litro",
+        "B": "newton",
+        "C": "kilogramo"
+      }
+    },
+    {
+      "id": 18,
+      "area": "Pensamiento científico",
+      "topic": "Datos, medición y evidencia",
+      "text": "En una gráfica de distancia contra tiempo, una línea horizontal indica que el objeto...",
+      "options": {
+        "A": "aumenta su rapidez constantemente",
+        "B": "regresa al punto de partida",
+        "C": "permanece en la misma posición"
+      }
+    },
+    {
+      "id": 19,
+      "area": "Comprensión lectora",
+      "topic": "Idea principal y tema",
+      "text": "¿Qué postura presenta el texto sobre los errores?",
+      "options": {
+        "A": "Deben evitarse ocultando cualquier respuesta incorrecta.",
+        "B": "Son siempre deseables sin importar sus consecuencias.",
+        "C": "Pueden convertirse en una fuente de aprendizaje si se analizan."
+      },
+      "stimulusId": "d4-lectura-1"
+    },
+    {
+      "id": 20,
+      "area": "Comprensión lectora",
+      "topic": "Relación y estructura de ideas",
+      "text": "¿Qué hace más útil el error de la ecuación?",
+      "options": {
+        "A": "Copiar únicamente la respuesta correcta.",
+        "B": "Borrar todo el procedimiento anterior.",
+        "C": "Identificar el paso incorrecto y explicar por qué lo fue."
+      },
+      "stimulusId": "d4-lectura-1"
+    },
+    {
+      "id": 21,
+      "area": "Comprensión lectora",
+      "topic": "Inferencia",
+      "text": "¿Qué tipo de retroalimentación favorece el texto?",
+      "options": {
+        "A": "La que señala cómo mejorar el procedimiento.",
+        "B": "La que evita mencionar el razonamiento.",
+        "C": "La que solo asigna una calificación."
+      },
+      "stimulusId": "d4-lectura-1"
+    },
+    {
+      "id": 22,
+      "area": "Comprensión lectora",
+      "topic": "Propósito y tono del autor",
+      "text": "La frase «Esto no significa que todos los errores sean deseables» sirve para...",
+      "options": {
+        "A": "limitar una posible interpretación extrema de la postura.",
+        "B": "contradecir por completo el primer párrafo.",
+        "C": "afirmar que nunca se aprende de un error."
+      },
+      "stimulusId": "d4-lectura-1"
+    },
+    {
+      "id": 23,
+      "area": "Comprensión lectora",
+      "topic": "Vocabulario en contexto",
+      "text": "En el último enunciado, «evidencia» se refiere a...",
+      "options": {
+        "A": "una sanción por responder mal.",
+        "B": "un premio por terminar primero.",
+        "C": "información que permite comprender cómo razonó el estudiante."
+      },
+      "stimulusId": "d4-lectura-1"
+    },
+    {
+      "id": 24,
+      "area": "Comprensión lectora",
+      "topic": "Propósito y tono del autor",
+      "text": "El texto busca principalmente...",
+      "options": {
+        "A": "demostrar que las calificaciones son innecesarias.",
+        "B": "explicar por qué analizar errores puede favorecer el aprendizaje.",
+        "C": "dar instrucciones para resolver una ecuación específica."
+      },
+      "stimulusId": "d4-lectura-1"
+    },
+    {
+      "id": 25,
+      "area": "Comprensión lectora",
+      "topic": "Información explícita",
+      "text": "¿Para qué usa la escuela el agua captada?",
+      "options": {
+        "A": "Para producir electricidad directamente.",
+        "B": "Para sustituir toda el agua potable del municipio.",
+        "C": "Para regar jardines."
+      },
+      "stimulusId": "d4-lectura-2"
+    },
+    {
+      "id": 26,
+      "area": "Comprensión lectora",
+      "topic": "Información explícita",
+      "text": "¿Qué función cumplen los filtros mencionados?",
+      "options": {
+        "A": "Convertir agua en combustible.",
+        "B": "Retirar hojas y residuos grandes.",
+        "C": "Aumentar la cantidad de lluvia."
+      },
+      "stimulusId": "d4-lectura-2"
+    },
+    {
+      "id": 27,
+      "area": "Comprensión lectora",
+      "topic": "Inferencia",
+      "text": "¿Por qué se revisó el promedio histórico de lluvia antes de instalar el sistema?",
+      "options": {
+        "A": "Para saber cuántos alumnos leen en la biblioteca.",
+        "B": "Para estimar cuánta agua podría captarse.",
+        "C": "Para cambiar la pendiente del techo sin medirla."
+      },
+      "stimulusId": "d4-lectura-2"
+    },
+    {
+      "id": 28,
+      "area": "Comprensión lectora",
+      "topic": "Idea principal y tema",
+      "text": "¿Cuál es el objetivo real del sistema?",
+      "options": {
+        "A": "Reducir el consumo de la red cuando haya agua de lluvia disponible.",
+        "B": "Eliminar inmediatamente toda conexión a la red.",
+        "C": "Mantener lleno el depósito durante cualquier sequía."
+      },
+      "stimulusId": "d4-lectura-2"
+    },
+    {
+      "id": 29,
+      "area": "Comprensión lectora",
+      "topic": "Relación y estructura de ideas",
+      "text": "«Por eso» vincula la insuficiencia de agua en temporada seca con...",
+      "options": {
+        "A": "la decisión de conservar una fuente alternativa.",
+        "B": "la eliminación de los filtros.",
+        "C": "el aumento del área de jardines."
+      },
+      "stimulusId": "d4-lectura-2"
+    },
+    {
+      "id": 30,
+      "area": "Comprensión lectora",
+      "topic": "Conclusión y evaluación",
+      "text": "¿Qué dato adicional ayudaría a evaluar el ahorro logrado?",
+      "options": {
+        "A": "El color de las paredes de la escuela.",
+        "B": "El volumen de agua de la red usado antes y después de instalar el sistema.",
+        "C": "El número de páginas de los libros de ciencias."
+      },
+      "stimulusId": "d4-lectura-2"
+    },
+    {
+      "id": 31,
+      "area": "Comprensión lectora",
+      "topic": "Idea principal y tema",
+      "text": "¿Cuál es la tesis central?",
+      "options": {
+        "A": "Todas las proyecciones representan exactamente las mismas propiedades.",
+        "B": "Un mapa útil debe copiar el territorio sin ninguna selección.",
+        "C": "La utilidad de un mapa depende de qué tan adecuada sea su representación para un propósito."
+      },
+      "stimulusId": "d4-lectura-3"
+    },
+    {
+      "id": 32,
+      "area": "Comprensión lectora",
+      "topic": "Información explícita",
+      "text": "¿Para qué se utiliza la escala en un mapa?",
+      "options": {
+        "A": "Para reducir proporcionalmente distancias del territorio.",
+        "B": "Para eliminar todos los símbolos.",
+        "C": "Para evitar cualquier deformación de una proyección."
+      },
+      "stimulusId": "d4-lectura-3"
+    },
+    {
+      "id": 33,
+      "area": "Comprensión lectora",
+      "topic": "Inferencia",
+      "text": "¿Por qué un mapa de transporte puede omitir detalles del relieve?",
+      "options": {
+        "A": "Porque el relieve no existe en las ciudades.",
+        "B": "Porque ningún mapa puede representar alturas.",
+        "C": "Porque prioriza información relevante para rutas y conexiones."
+      },
+      "stimulusId": "d4-lectura-3"
+    },
+    {
+      "id": 34,
+      "area": "Comprensión lectora",
+      "topic": "Vocabulario en contexto",
+      "text": "En «privilegia rutas y conexiones», «privilegia» significa...",
+      "options": {
+        "A": "da prioridad a",
+        "B": "confunde con",
+        "C": "oculta necesariamente"
+      },
+      "stimulusId": "d4-lectura-3"
+    },
+    {
+      "id": 35,
+      "area": "Comprensión lectora",
+      "topic": "Conclusión y evaluación",
+      "text": "Para planear una caminata en una montaña, sería más pertinente usar...",
+      "options": {
+        "A": "un mapa topográfico",
+        "B": "un mapa esquemático del metro",
+        "C": "un mapa político del continente sin relieve"
+      },
+      "stimulusId": "d4-lectura-3"
+    },
+    {
+      "id": 36,
+      "area": "Comprensión lectora",
+      "topic": "Propósito y tono del autor",
+      "text": "El autor menciona deformaciones de las proyecciones para...",
+      "options": {
+        "A": "probar que los mapas carecen de utilidad.",
+        "B": "mostrar una limitación que debe considerarse al usar mapas.",
+        "C": "afirmar que la escala es innecesaria."
+      },
+      "stimulusId": "d4-lectura-3"
+    },
+    {
+      "id": 37,
+      "area": "Redacción indirecta",
+      "topic": "Registro y adecuación",
+      "text": "Si un texto busca convencer al ayuntamiento de construir más ciclovías, su propósito principal es...",
+      "options": {
+        "A": "narrar una ficción",
+        "B": "describir un objeto sin postura",
+        "C": "argumentar"
+      }
+    },
+    {
+      "id": 38,
+      "area": "Redacción indirecta",
+      "topic": "Concordancia",
+      "text": "¿Cuál opción mantiene concordancia entre sujeto y verbo?",
+      "options": {
+        "A": "El grupo de bailarines ensayan cada tarde.",
+        "B": "El grupo de bailarines ensaya cada tarde.",
+        "C": "El grupo de bailarín ensayan cada tardes."
+      }
+    },
+    {
+      "id": 39,
+      "area": "Redacción indirecta",
+      "topic": "Puntuación",
+      "text": "¿Cuál oración emplea correctamente el punto y coma?",
+      "options": {
+        "A": "El laboratorio; cerró temprano, sin embargo el informe quedó terminado.",
+        "B": "El laboratorio cerró; temprano sin embargo, el informe quedó terminado.",
+        "C": "El laboratorio cerró temprano; sin embargo, el informe quedó terminado."
+      }
+    },
+    {
+      "id": 40,
+      "area": "Redacción indirecta",
+      "topic": "Acentuación y ortografía",
+      "text": "¿Cuál oración distingue correctamente «tú» y «tu»?",
+      "options": {
+        "A": "Tú debes revisar tú cuaderno.",
+        "B": "Tu debes revisar tú cuaderno.",
+        "C": "Tú debes revisar tu cuaderno."
+      }
+    },
+    {
+      "id": 41,
+      "area": "Redacción indirecta",
+      "topic": "Acentuación y ortografía",
+      "text": "¿Cuál opción está escrita correctamente?",
+      "options": {
+        "A": "La decisión fue coherente con la evidencia.",
+        "B": "La desición fue coherente con la evidensia.",
+        "C": "La decisión fue coerente con la evidencia."
+      }
+    },
+    {
+      "id": 42,
+      "area": "Redacción indirecta",
+      "topic": "Cohesión y conectores",
+      "text": "¿Qué conector expresa consecuencia? «Aumentó la demanda; ___, se amplió el horario».",
+      "options": {
+        "A": "a pesar de",
+        "B": "en cambio",
+        "C": "por lo tanto"
+      }
+    },
+    {
+      "id": 43,
+      "area": "Redacción indirecta",
+      "topic": "Cohesión y conectores",
+      "text": "¿Cuál versión tiene una referencia pronominal clara?",
+      "options": {
+        "A": "Carlos entregó el informe a Julia y este la archivó.",
+        "B": "Carlos entregó el informe a Julia y lo archivó ella eso.",
+        "C": "Carlos entregó el informe a Julia y ella lo archivó."
+      }
+    },
+    {
+      "id": 44,
+      "area": "Redacción indirecta",
+      "topic": "Registro y adecuación",
+      "text": "Para una solicitud formal a una institución, ¿qué opción es más adecuada?",
+      "options": {
+        "A": "Qué onda, necesito esos requisitos ya.",
+        "B": "Solicito atentamente información sobre los requisitos de inscripción.",
+        "C": "Oye, pásame lo de la inscripción cuando puedas."
+      }
+    },
+    {
+      "id": 45,
+      "area": "Redacción indirecta",
+      "topic": "Claridad y concisión",
+      "text": "Elige el verbo más preciso: «El científico ___ los datos obtenidos».",
+      "options": {
+        "A": "puso",
+        "B": "hizo",
+        "C": "analizó"
+      }
+    },
+    {
+      "id": 46,
+      "area": "Redacción indirecta",
+      "topic": "Coherencia y organización",
+      "text": "Ordena las ideas para explicar un procedimiento: 1) Registrar el resultado. 2) Medir 100 mL de agua. 3) Agregar la sustancia y mezclar.",
+      "options": {
+        "A": "1, 3, 2",
+        "B": "3, 1, 2",
+        "C": "2, 3, 1"
+      }
+    },
+    {
+      "id": 47,
+      "area": "Redacción indirecta",
+      "topic": "Registro y adecuación",
+      "text": "Si el propósito es explicar cómo funciona un fenómeno, conviene organizar el texto principalmente de manera...",
+      "options": {
+        "A": "publicitaria",
+        "B": "expositiva",
+        "C": "dialogada informal"
+      }
+    },
+    {
+      "id": 48,
+      "area": "Redacción indirecta",
+      "topic": "Registro y adecuación",
+      "text": "¿Cuál título corresponde mejor a un texto que explica causas y efectos de la contaminación del aire?",
+      "options": {
+        "A": "Contaminación del aire: causas y consecuencias",
+        "B": "Mis vacaciones favoritas",
+        "C": "Cómo armar una bicicleta en diez pasos"
+      }
+    },
+    {
+      "id": 49,
+      "area": "Redacción indirecta",
+      "topic": "Sintaxis y uso verbal",
+      "text": "Selecciona la oración bien construida.",
+      "options": {
+        "A": "Ayer publicaronse el resultado de las convocatorias ellos.",
+        "B": "Ayer se publicaron los resultados de la convocatoria.",
+        "C": "Ayer se publicó los resultados de la convocatoria."
+      }
+    },
+    {
+      "id": 50,
+      "area": "Redacción indirecta",
+      "topic": "Sintaxis y uso verbal",
+      "text": "Completa correctamente: «Si hubiera estudiado más, ___ mejor el problema».",
+      "options": {
+        "A": "comprendió mañana",
+        "B": "comprendería ayer",
+        "C": "habría comprendido"
+      }
+    },
+    {
+      "id": 51,
+      "area": "Redacción indirecta",
+      "topic": "Claridad y concisión",
+      "text": "Elige la palabra que conserva el sentido: «El resultado fue relevante para la investigación».",
+      "options": {
+        "A": "accidental",
+        "B": "importante",
+        "C": "inútil"
+      }
+    },
+    {
+      "id": 52,
+      "area": "Redacción indirecta",
+      "topic": "Claridad y concisión",
+      "text": "Elige la oración correcta.",
+      "options": {
+        "A": "Aunque el experimento fue sencillo, permitió obtener evidencia útil.",
+        "B": "Aunque el experimento fué sencillo permitió, obtener evidencia util.",
+        "C": "Aunque el experimento fue sencillo permitió obtener, evidencias útil."
+      }
+    },
+    {
+      "id": 53,
+      "area": "Redacción indirecta",
+      "topic": "Registro y adecuación",
+      "text": "Si un manual explica paso a paso cómo usar un extintor, su propósito es...",
+      "options": {
+        "A": "entretener mediante una trama",
+        "B": "debatir una tesis filosófica",
+        "C": "instruir"
+      }
+    },
+    {
+      "id": 54,
+      "area": "Redacción indirecta",
+      "topic": "Concordancia",
+      "text": "¿Cuál oración está correctamente escrita?",
+      "options": {
+        "A": "Esa fotografías antiguo muestran la plaza principal.",
+        "B": "Esas fotografía antiguas muestra la plaza principal.",
+        "C": "Esas fotografías antiguas muestran la plaza principal."
+      }
+    },
+    {
+      "id": 55,
+      "area": "Pensamiento matemático",
+      "topic": "Álgebra y ecuaciones",
+      "text": "Resuelve: x + 4 > 9.",
+      "options": {
+        "A": "x < 5",
+        "B": "x > 5",
+        "C": "x > 13"
+      }
+    },
+    {
+      "id": 56,
+      "area": "Pensamiento matemático",
+      "topic": "Sucesiones y patrones",
+      "text": "¿Cuál es el término 6 de la sucesión 4, 7, 10, 13, ...?",
+      "options": {
+        "A": "16",
+        "B": "19",
+        "C": "22"
+      }
+    },
+    {
+      "id": 57,
+      "area": "Pensamiento matemático",
+      "topic": "Aritmética y números",
+      "text": "¿Cuál número es mayor?",
+      "options": {
+        "A": "7/10",
+        "B": "0.72",
+        "C": "0.702"
+      }
+    },
+    {
+      "id": 58,
+      "area": "Pensamiento matemático",
+      "topic": "Proporcionalidad y razones",
+      "text": "Un mapa usa escala 1:50 000. Dos puntos están separados 3 cm en el mapa. ¿Qué distancia real representan?",
+      "options": {
+        "A": "0.15 km",
+        "B": "1.5 km",
+        "C": "150 km"
+      }
+    },
+    {
+      "id": 59,
+      "area": "Pensamiento matemático",
+      "topic": "Álgebra y ecuaciones",
+      "text": "Factoriza x² + 5x + 6.",
+      "options": {
+        "A": "(x+1)(x+6)",
+        "B": "(x+2)(x+3)",
+        "C": "(x-2)(x-3)"
+      }
+    },
+    {
+      "id": 60,
+      "area": "Pensamiento matemático",
+      "topic": "Geometría y medición",
+      "text": "En un triángulo rectángulo con catetos 6 y 8, la hipotenusa mide...",
+      "options": {
+        "A": "10",
+        "B": "14",
+        "C": "7"
+      }
+    },
+    {
+      "id": 61,
+      "area": "Pensamiento matemático",
+      "topic": "Geometría y medición",
+      "text": "Una recta vertical tiene pendiente...",
+      "options": {
+        "A": "0",
+        "B": "indefinida",
+        "C": "1"
+      }
+    },
+    {
+      "id": 62,
+      "area": "Pensamiento matemático",
+      "topic": "Estadística",
+      "text": "La moda de 3, 5, 5, 6, 8, 5, 9 es...",
+      "options": {
+        "A": "6",
+        "B": "9",
+        "C": "5"
+      }
+    },
+    {
+      "id": 63,
+      "area": "Pensamiento matemático",
+      "topic": "Probabilidad",
+      "text": "Una bolsa tiene 3 bolas rojas y 2 azules. La probabilidad de sacar una roja es...",
+      "options": {
+        "A": "3/5",
+        "B": "1/5",
+        "C": "2/5"
+      }
+    },
+    {
+      "id": 64,
+      "area": "Pensamiento matemático",
+      "topic": "Funciones y cambio",
+      "text": "Si y=12/x, al duplicar x, y...",
+      "options": {
+        "A": "se reduce a la mitad",
+        "B": "aumenta 12",
+        "C": "se duplica"
+      }
+    },
+    {
+      "id": 65,
+      "area": "Pensamiento matemático",
+      "topic": "Álgebra y ecuaciones",
+      "text": "Un automóvil usa 8 L por cada 100 km. Para 250 km, a la misma tasa, necesita...",
+      "options": {
+        "A": "20 L",
+        "B": "16 L",
+        "C": "31.25 L"
+      }
+    },
+    {
+      "id": 66,
+      "area": "Pensamiento matemático",
+      "topic": "Sucesiones y patrones",
+      "text": "En la secuencia 2, 6, 18, 54, ... cada término se obtiene multiplicando por...",
+      "options": {
+        "A": "4",
+        "B": "3",
+        "C": "6"
+      }
+    },
+    {
+      "id": 67,
+      "area": "Pensamiento matemático",
+      "topic": "Fracciones y porcentajes",
+      "text": "Una cuenta de $450 aumenta 8%. ¿Cuál es el nuevo total?",
+      "options": {
+        "A": "$458",
+        "B": "$486",
+        "C": "$414"
+      }
+    },
+    {
+      "id": 68,
+      "area": "Pensamiento matemático",
+      "topic": "Álgebra y ecuaciones",
+      "text": "Resuelve: 3x = 27.",
+      "options": {
+        "A": "24",
+        "B": "81",
+        "C": "9"
+      }
+    },
+    {
+      "id": 69,
+      "area": "Pensamiento matemático",
+      "topic": "Geometría y medición",
+      "text": "Un ángulo suplementario de 125° mide...",
+      "options": {
+        "A": "65°",
+        "B": "55°",
+        "C": "235°"
+      }
+    },
+    {
+      "id": 70,
+      "area": "Pensamiento matemático",
+      "topic": "Geometría y medición",
+      "text": "Una recta horizontal tiene pendiente...",
+      "options": {
+        "A": "0",
+        "B": "indefinida",
+        "C": "1"
+      }
+    },
+    {
+      "id": 71,
+      "area": "Pensamiento matemático",
+      "topic": "Estadística",
+      "text": "El rango de 12, 18, 7, 21, 15 es...",
+      "options": {
+        "A": "14",
+        "B": "21",
+        "C": "7"
+      }
+    },
+    {
+      "id": 72,
+      "area": "Pensamiento matemático",
+      "topic": "Probabilidad",
+      "text": "Al lanzar un dado, la probabilidad de obtener un número par es...",
+      "options": {
+        "A": "1/6",
+        "B": "1/2",
+        "C": "2/3"
+      }
+    },
+    {
+      "id": 73,
+      "area": "Pensamiento matemático",
+      "topic": "Proporcionalidad y razones",
+      "text": "Si 5 trabajadores hacen una tarea en 12 días al mismo ritmo, el trabajo total equivale a...",
+      "options": {
+        "A": "17 jornadas-persona",
+        "B": "2.4 jornadas-persona",
+        "C": "60 jornadas-persona"
+      }
+    },
+    {
+      "id": 74,
+      "area": "Pensamiento matemático",
+      "topic": "Fracciones y porcentajes",
+      "text": "Un artículo de $800 tiene 25% de descuento. ¿Cuál es el precio final?",
+      "options": {
+        "A": "$775",
+        "B": "$200",
+        "C": "$600"
+      }
+    },
+    {
+      "id": 75,
+      "area": "Pensamiento matemático",
+      "topic": "Álgebra y ecuaciones",
+      "text": "Si y = 2x + 3, ¿cuánto vale y cuando x = 4?",
+      "options": {
+        "A": "8",
+        "B": "11",
+        "C": "14"
+      }
+    },
+    {
+      "id": 76,
+      "area": "Pensamiento matemático",
+      "topic": "Geometría y medición",
+      "text": "Los ángulos interiores de un triángulo suman...",
+      "options": {
+        "A": "180°",
+        "B": "360°",
+        "C": "90°"
+      }
+    },
+    {
+      "id": 77,
+      "area": "Pensamiento matemático",
+      "topic": "Estadística",
+      "text": "Si todos los valores de un conjunto aumentan 5, la media...",
+      "options": {
+        "A": "se multiplica por 5 necesariamente",
+        "B": "permanece igual",
+        "C": "aumenta 5"
+      }
+    },
+    {
+      "id": 78,
+      "area": "Pensamiento matemático",
+      "topic": "Probabilidad",
+      "text": "Se elige al azar una letra de la palabra CASA. La probabilidad de obtener A es...",
+      "options": {
+        "A": "1/4",
+        "B": "1/2",
+        "C": "3/4"
+      }
+    },
+    {
+      "id": 79,
+      "area": "Pensamiento matemático",
+      "topic": "Álgebra y ecuaciones",
+      "text": "Un taxi cobra $35 de inicio y $12 por kilómetro. ¿Qué expresión representa el costo C para k kilómetros?",
+      "options": {
+        "A": "C=35+12k",
+        "B": "C=35k+12",
+        "C": "C=47k"
+      }
+    },
+    {
+      "id": 80,
+      "area": "Inglés",
+      "topic": "Reading comprehension",
+      "text": "Why does Lucy want to improve her English?",
+      "options": {
+        "A": "She wants a different lunch.",
+        "B": "She hopes to travel next year.",
+        "C": "She plans to leave the university today."
+      },
+      "stimulusId": "en-4-1"
+    },
+    {
+      "id": 81,
+      "area": "Inglés",
+      "topic": "Reading comprehension",
+      "text": "Where does Lucy work?",
+      "options": {
+        "A": "At a café near a university.",
+        "B": "At a train station.",
+        "C": "At a hospital."
+      },
+      "stimulusId": "en-4-1"
+    },
+    {
+      "id": 82,
+      "area": "Inglés",
+      "topic": "Reading comprehension",
+      "text": "What does Lucy usually prepare at work?",
+      "options": {
+        "A": "Sandwiches and drinks.",
+        "B": "Books and reports.",
+        "C": "Tickets and maps."
+      },
+      "stimulusId": "en-4-1"
+    },
+    {
+      "id": 83,
+      "area": "Inglés",
+      "topic": "Reading comprehension",
+      "text": "When does Lucy have lunch?",
+      "options": {
+        "A": "At 7:00 a.m.",
+        "B": "At noon.",
+        "C": "At 3:00 p.m."
+      },
+      "stimulusId": "en-4-1"
+    },
+    {
+      "id": 84,
+      "area": "Inglés",
+      "topic": "Reading comprehension",
+      "text": "What does Lucy do after work on Tuesdays?",
+      "options": {
+        "A": "She goes home immediately.",
+        "B": "She goes to an English class.",
+        "C": "She plays soccer."
+      },
+      "stimulusId": "en-4-1"
+    },
+    {
+      "id": 85,
+      "area": "Inglés",
+      "topic": "Questions and word order",
+      "text": "Choose the correct pronoun: «I saw Ana and Luis. I spoke to ___.»",
+      "options": {
+        "A": "their",
+        "B": "they",
+        "C": "them"
+      }
+    },
+    {
+      "id": 86,
+      "area": "Inglés",
+      "topic": "Vocabulary in context",
+      "text": "Complete: «I like tea, ___ I don't like coffee.»",
+      "options": {
+        "A": "and therefore not",
+        "B": "so because",
+        "C": "but"
+      }
+    },
+    {
+      "id": 87,
+      "area": "Inglés",
+      "topic": "Present simple and continuous",
+      "text": "Complete: «I ___ breakfast at 7 every day.»",
+      "options": {
+        "A": "have",
+        "B": "having",
+        "C": "has"
+      }
+    },
+    {
+      "id": 88,
+      "area": "Inglés",
+      "topic": "Vocabulary in context",
+      "text": "Complete: «I need to buy a ticket ___ the bus.»",
+      "options": {
+        "A": "at",
+        "B": "for",
+        "C": "by"
+      }
+    },
+    {
+      "id": 89,
+      "area": "Inglés",
+      "topic": "Vocabulary in context",
+      "text": "Choose the correct preposition: «The class starts ___ Monday.»",
+      "options": {
+        "A": "in the",
+        "B": "on",
+        "C": "at"
+      }
+    },
+    {
+      "id": 90,
+      "area": "Inglés",
+      "topic": "Vocabulary in context",
+      "text": "Complete: «The store is ___ the bank and the pharmacy.»",
+      "options": {
+        "A": "between",
+        "B": "through",
+        "C": "under both"
+      }
+    },
+    {
+      "id": 91,
+      "area": "Inglés",
+      "topic": "Vocabulary in context",
+      "text": "Choose the grammatically correct sentence about eating habits.",
+      "options": {
+        "A": "She doesn't eat meat.",
+        "B": "She don't eats meat.",
+        "C": "She doesn't eats meat."
+      }
+    },
+    {
+      "id": 92,
+      "area": "Inglés",
+      "topic": "Vocabulary in context",
+      "text": "Choose the correct possessive: «This is ___ notebook.»",
+      "options": {
+        "A": "Maria's",
+        "B": "Marias is",
+        "C": "Maria"
+      }
+    },
+    {
+      "id": 93,
+      "area": "Inglés",
+      "topic": "Vocabulary in context",
+      "text": "Choose the grammatically correct sentence describing an activity happening now.",
+      "options": {
+        "A": "They are studying now.",
+        "B": "They is study now.",
+        "C": "They studying now."
+      }
+    },
+    {
+      "id": 94,
+      "area": "Inglés",
+      "topic": "Past tenses",
+      "text": "Complete: «What ___ you doing when I called?»",
+      "options": {
+        "A": "were",
+        "B": "was",
+        "C": "did doing"
+      }
+    },
+    {
+      "id": 95,
+      "area": "Inglés",
+      "topic": "There is / are and prepositions",
+      "text": "Complete: «There ___ two chairs in the room.»",
+      "options": {
+        "A": "be",
+        "B": "are",
+        "C": "is"
+      }
+    },
+    {
+      "id": 96,
+      "area": "Inglés",
+      "topic": "There is / are and prepositions",
+      "text": "Choose the correct option: «There isn't ___ sugar left.»",
+      "options": {
+        "A": "a lot sugars",
+        "B": "much",
+        "C": "many"
+      }
+    },
+    {
+      "id": 97,
+      "area": "Inglés",
+      "topic": "Comparatives",
+      "text": "Choose the correct option: «She is ___ than her sister.»",
+      "options": {
+        "A": "taller",
+        "B": "tallest than",
+        "C": "more tall"
+      }
+    },
+    {
+      "id": 98,
+      "area": "Inglés",
+      "topic": "Past tenses",
+      "text": "Complete: «Yesterday I ___ to the market.»",
+      "options": {
+        "A": "goed",
+        "B": "go",
+        "C": "went"
+      }
+    },
+    {
+      "id": 99,
+      "area": "Inglés",
+      "topic": "Vocabulary in context",
+      "text": "Choose the grammatically correct sentence describing an object on a desk.",
+      "options": {
+        "A": "There be computer in desk.",
+        "B": "There is a computer on the desk.",
+        "C": "There are a computer on the desk."
+      }
+    },
+    {
+      "id": 100,
+      "area": "Inglés",
+      "topic": "Vocabulary in context",
+      "text": "Choose the grammatically correct question about water consumption.",
+      "options": {
+        "A": "How many water do you drink?",
+        "B": "How much water do you drink?",
+        "C": "How much waters you drink?"
+      }
+    }
+  ]
+}

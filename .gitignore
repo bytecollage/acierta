@@ -1,0 +1,9 @@
+.DS_Store
+__pycache__/
+*.pyc
+
+# Secretos del Apps Script (pepper y clave de administración). Ver apps-script/README.md
+apps-script/Config.gs
+
+# El historial vive en Google Sheets. Las copias locales no se publican.
+web/data/historial.json*

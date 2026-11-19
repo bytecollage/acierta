@@ -1,0 +1,917 @@
+{
+  "exam": {
+    "id": "diagnostico-1",
+    "title": "Diagnóstico UADY / EXANI-I — Nivel 1",
+    "version": "1.0",
+    "questionCount": 80,
+    "areas": [
+      {
+        "name": "Pensamiento científico",
+        "start": 1,
+        "end": 15
+      },
+      {
+        "name": "Comprensión lectora",
+        "start": 16,
+        "end": 30
+      },
+      {
+        "name": "Redacción indirecta",
+        "start": 31,
+        "end": 45
+      },
+      {
+        "name": "Pensamiento matemático",
+        "start": 46,
+        "end": 65
+      },
+      {
+        "name": "Inglés",
+        "start": 66,
+        "end": 80
+      }
+    ]
+  },
+  "questions": [
+    {
+      "id": 1,
+      "area": "Pensamiento científico",
+      "text": "Una planta se coloca cerca de una ventana durante cinco días. Otra planta de la misma especie y tamaño se mantiene en un armario oscuro, con la misma cantidad de agua y a la misma temperatura.\n\n¿Qué variable se está investigando principalmente?",
+      "options": {
+        "A": "Cantidad de agua",
+        "B": "Cantidad de luz",
+        "C": "Tipo de planta"
+      },
+      "topic": "Diseño experimental"
+    },
+    {
+      "id": 2,
+      "area": "Pensamiento científico",
+      "text": "Un estudiante quiere saber si la temperatura afecta la velocidad con la que se disuelve el azúcar en agua.\n\n¿Qué debe mantener constante?",
+      "options": {
+        "A": "La cantidad de azúcar y agua",
+        "B": "La temperatura del agua",
+        "C": "El tiempo de disolución"
+      },
+      "topic": "Diseño experimental"
+    },
+    {
+      "id": 3,
+      "area": "Pensamiento científico",
+      "text": "Un automóvil recorre 150 km en 3 horas manteniendo velocidad constante.\n\n¿Cuál es su velocidad?",
+      "options": {
+        "A": "50 km/h",
+        "B": "75 km/h",
+        "C": "450 km/h"
+      },
+      "topic": "Velocidad"
+    },
+    {
+      "id": 4,
+      "area": "Pensamiento científico",
+      "text": "Dos objetos de diferente masa caen desde la misma altura en condiciones donde puede despreciarse la resistencia del aire.\n\n¿Qué ocurre?",
+      "options": {
+        "A": "El más pesado cae primero",
+        "B": "El más ligero cae primero",
+        "C": "Llegan aproximadamente al mismo tiempo"
+      },
+      "topic": "Caída libre"
+    },
+    {
+      "id": 5,
+      "area": "Pensamiento científico",
+      "text": "Una cuchara metálica se deja dentro de una taza con agua caliente. Después de unos minutos, el mango se siente caliente.\n\nEl fenómeno se explica principalmente por:",
+      "options": {
+        "A": "conducción",
+        "B": "evaporación",
+        "C": "radiación"
+      },
+      "topic": "Transferencia de calor"
+    },
+    {
+      "id": 6,
+      "area": "Pensamiento científico",
+      "text": "¿Cuál situación representa un cambio químico?",
+      "options": {
+        "A": "Derretir hielo",
+        "B": "Oxidar un clavo",
+        "C": "Cortar una hoja de papel"
+      },
+      "topic": "Cambios físicos y químicos"
+    },
+    {
+      "id": 7,
+      "area": "Pensamiento científico",
+      "text": "Una sustancia tiene pH 2.\n\n¿Qué puede inferirse?",
+      "options": {
+        "A": "Es ácida",
+        "B": "Es neutra",
+        "C": "Es básica"
+      },
+      "topic": "Ácidos y bases"
+    },
+    {
+      "id": 8,
+      "area": "Pensamiento científico",
+      "text": "¿Cuál es la unidad básica estructural y funcional de los seres vivos?",
+      "options": {
+        "A": "Tejido",
+        "B": "Célula",
+        "C": "Órgano"
+      },
+      "topic": "Biología celular"
+    },
+    {
+      "id": 9,
+      "area": "Pensamiento científico",
+      "text": "Los hijos reciben información genética de sus padres principalmente mediante:",
+      "options": {
+        "A": "cromosomas",
+        "B": "nutrientes",
+        "C": "anticuerpos"
+      },
+      "topic": "Genética"
+    },
+    {
+      "id": 10,
+      "area": "Pensamiento científico",
+      "text": "En una cadena alimentaria:\n\npasto → saltamontes → rana → serpiente\n\nSi disminuyera drásticamente la población de saltamontes, ¿qué población sería afectada directamente por tener menos alimento?",
+      "options": {
+        "A": "Pasto",
+        "B": "Rana",
+        "C": "Serpiente"
+      },
+      "topic": "Ecología"
+    },
+    {
+      "id": 11,
+      "area": "Pensamiento científico",
+      "text": "Durante un experimento se obtienen estos resultados:\n\n10 °C → 70 s\n20 °C → 48 s\n30 °C → 31 s\n40 °C → 20 s\n\n¿Qué conclusión está mejor respaldada?",
+      "options": {
+        "A": "Al aumentar la temperatura disminuye el tiempo de reacción",
+        "B": "La temperatura no afecta la reacción",
+        "C": "Al aumentar la temperatura aumenta el tiempo"
+      },
+      "topic": "Interpretación de datos"
+    },
+    {
+      "id": 12,
+      "area": "Pensamiento científico",
+      "text": "¿Cuál fuente de energía es renovable?",
+      "options": {
+        "A": "Carbón",
+        "B": "Petróleo",
+        "C": "Solar"
+      },
+      "topic": "Energía renovable"
+    },
+    {
+      "id": 13,
+      "area": "Pensamiento científico",
+      "text": "Una persona empuja una caja, pero la caja no se mueve.\n\nDesde el punto de vista mecánico, el trabajo realizado sobre la caja debido a su desplazamiento es:",
+      "options": {
+        "A": "cero",
+        "B": "máximo",
+        "C": "igual al peso de la caja"
+      },
+      "topic": "Trabajo mecánico"
+    },
+    {
+      "id": 14,
+      "area": "Pensamiento científico",
+      "text": "¿Qué sistema del cuerpo humano transporta oxígeno y nutrientes hacia los tejidos?",
+      "options": {
+        "A": "Circulatorio",
+        "B": "Digestivo",
+        "C": "Nervioso"
+      },
+      "topic": "Sistema circulatorio"
+    },
+    {
+      "id": 15,
+      "area": "Pensamiento científico",
+      "text": "Una afirmación científica debería poder:",
+      "options": {
+        "A": "comprobarse mediante evidencia",
+        "B": "aceptarse porque la dijo una autoridad",
+        "C": "considerarse verdadera sin posibilidad de revisión"
+      },
+      "topic": "Método científico"
+    },
+    {
+      "id": 16,
+      "area": "Comprensión lectora",
+      "text": "Lee el texto:\n\nDurante muchos años se pensó que estudiar durante varias horas consecutivas era la mejor manera de aprender. Sin embargo, diferentes investigaciones sobre memoria indican que distribuir el estudio en sesiones separadas suele producir mejores resultados. Al recuperar información después de cierto tiempo, el cerebro debe realizar un esfuerzo adicional que fortalece el recuerdo. Esto no significa que las sesiones largas sean siempre inútiles, sino que espaciar el aprendizaje puede resultar especialmente beneficioso cuando se busca conservar conocimientos durante semanas o meses.\n\n¿Cuál es la idea principal?",
+      "options": {
+        "A": "Estudiar muchas horas siempre perjudica el aprendizaje",
+        "B": "Distribuir el estudio puede favorecer la retención a largo plazo",
+        "C": "La memoria funciona únicamente mediante repetición"
+      },
+      "topic": "Idea principal"
+    },
+    {
+      "id": 17,
+      "area": "Comprensión lectora",
+      "text": "Según el texto anterior, recuperar información después de cierto tiempo:",
+      "options": {
+        "A": "fortalece el recuerdo",
+        "B": "elimina información innecesaria",
+        "C": "impide aprender material nuevo"
+      },
+      "topic": "Información explícita"
+    },
+    {
+      "id": 18,
+      "area": "Comprensión lectora",
+      "text": "El texto afirma que las sesiones largas:",
+      "options": {
+        "A": "nunca funcionan",
+        "B": "son obligatorias",
+        "C": "no necesariamente son inútiles"
+      },
+      "topic": "Información explícita"
+    },
+    {
+      "id": 19,
+      "area": "Comprensión lectora",
+      "text": "La palabra “espaciar” se refiere principalmente a:",
+      "options": {
+        "A": "estudiar únicamente en espacios grandes",
+        "B": "distribuir el estudio a lo largo del tiempo",
+        "C": "estudiar diferentes materias simultáneamente"
+      },
+      "topic": "Vocabulario en contexto"
+    },
+    {
+      "id": 20,
+      "area": "Comprensión lectora",
+      "text": "El propósito principal del autor es:",
+      "options": {
+        "A": "explicar una estrategia de aprendizaje",
+        "B": "vender un método educativo",
+        "C": "criticar a los estudiantes"
+      },
+      "topic": "Propósito del autor"
+    },
+    {
+      "id": 21,
+      "area": "Comprensión lectora",
+      "text": "Lee el texto:\n\nEn muchas ciudades, plantar árboles se considera una medida para disminuir algunos efectos del aumento de temperatura urbana. Los árboles producen sombra y, mediante la transpiración, liberan agua hacia la atmósfera. Sin embargo, su eficacia depende de varios factores, como la especie elegida, la disponibilidad de agua, el suelo y la distribución de las áreas verdes. Por ello, plantar miles de árboles sin planificación no garantiza por sí mismo una reducción significativa de la temperatura.\n\n¿Cuál conclusión coincide con el texto?",
+      "options": {
+        "A": "Cualquier árbol reduce la temperatura de la misma manera",
+        "B": "Plantar árboles puede ayudar, pero requiere planificación",
+        "C": "Los árboles aumentan necesariamente la temperatura"
+      },
+      "topic": "Conclusión"
+    },
+    {
+      "id": 22,
+      "area": "Comprensión lectora",
+      "text": "Según el texto anterior, ¿qué mecanismo ayuda a disminuir la temperatura?",
+      "options": {
+        "A": "Transpiración",
+        "B": "Combustión",
+        "C": "Erosión"
+      },
+      "topic": "Información explícita"
+    },
+    {
+      "id": 23,
+      "area": "Comprensión lectora",
+      "text": "¿Qué afirma el autor sobre plantar miles de árboles?",
+      "options": {
+        "A": "Garantiza automáticamente buenos resultados",
+        "B": "Resulta siempre perjudicial",
+        "C": "Puede ser insuficiente si no existe planificación"
+      },
+      "topic": "Información explícita"
+    },
+    {
+      "id": 24,
+      "area": "Comprensión lectora",
+      "text": "¿Cuál factor NO menciona el texto?",
+      "options": {
+        "A": "Tipo de suelo",
+        "B": "Disponibilidad de agua",
+        "C": "Precio de las viviendas"
+      },
+      "topic": "Identificación de información"
+    },
+    {
+      "id": 25,
+      "area": "Comprensión lectora",
+      "text": "El tono del texto es principalmente:",
+      "options": {
+        "A": "informativo",
+        "B": "humorístico",
+        "C": "publicitario"
+      },
+      "topic": "Tono"
+    },
+    {
+      "id": 26,
+      "area": "Comprensión lectora",
+      "text": "Lee el texto:\n\nLa bicicleta fue durante décadas principalmente un medio de transporte cotidiano en algunas ciudades. Actualmente, además de esa función, diversas administraciones públicas la consideran una herramienta de movilidad urbana. Construir ciclovías, sin embargo, no es suficiente para incrementar su uso. La conexión entre rutas, la seguridad vial, los estacionamientos y la integración con otros medios de transporte también influyen en la decisión de desplazarse en bicicleta.\n\nSegún el texto:",
+      "options": {
+        "A": "las ciclovías son el único elemento necesario",
+        "B": "la infraestructura ciclista requiere varios componentes",
+        "C": "la bicicleta dejó de utilizarse como transporte"
+      },
+      "topic": "Idea principal"
+    },
+    {
+      "id": 27,
+      "area": "Comprensión lectora",
+      "text": "¿Qué significa en el texto que las rutas estén conectadas?",
+      "options": {
+        "A": "Que formen una red que permita desplazamientos útiles",
+        "B": "Que todas tengan exactamente la misma longitud",
+        "C": "Que únicamente se construyan en el centro"
+      },
+      "topic": "Vocabulario en contexto"
+    },
+    {
+      "id": 28,
+      "area": "Comprensión lectora",
+      "text": "¿Cuál es el tema central?",
+      "options": {
+        "A": "Historia de la fabricación de bicicletas",
+        "B": "Condiciones necesarias para fomentar movilidad ciclista",
+        "C": "Competencias profesionales de ciclismo"
+      },
+      "topic": "Tema central"
+    },
+    {
+      "id": 29,
+      "area": "Comprensión lectora",
+      "text": "Puede inferirse que una ciclovía aislada:",
+      "options": {
+        "A": "puede tener utilidad limitada",
+        "B": "garantiza un aumento del uso de bicicletas",
+        "C": "elimina los accidentes de tránsito"
+      },
+      "topic": "Inferencia"
+    },
+    {
+      "id": 30,
+      "area": "Comprensión lectora",
+      "text": "¿Qué elemento menciona el texto como complemento de las ciclovías?",
+      "options": {
+        "A": "Aeropuertos",
+        "B": "Estacionamientos",
+        "C": "Autopistas de cuota"
+      },
+      "topic": "Información explícita"
+    },
+    {
+      "id": 31,
+      "area": "Redacción indirecta",
+      "text": "Selecciona la opción escrita correctamente:",
+      "options": {
+        "A": "Los alumnos llegaron temprano, pero el maestro todavía no estaba.",
+        "B": "Los alumnos llegó temprano, pero el maestro todavía no estaba.",
+        "C": "Los alumnos llegaron temprano pero, el maestro todavía no estaba."
+      },
+      "topic": "Concordancia y puntuación"
+    },
+    {
+      "id": 32,
+      "area": "Redacción indirecta",
+      "text": "Selecciona la opción escrita correctamente:",
+      "options": {
+        "A": "María compro lápices cuadernos y borradores.",
+        "B": "María compró lápices, cuadernos y borradores.",
+        "C": "María compró, lápices cuadernos, y borradores."
+      },
+      "topic": "Acentuación y puntuación"
+    },
+    {
+      "id": 33,
+      "area": "Redacción indirecta",
+      "text": "Selecciona la opción escrita correctamente:",
+      "options": {
+        "A": "El médico recomendó que descansara.",
+        "B": "El médico recomendó de que descansara.",
+        "C": "El médico recomendó que descansará ayer."
+      },
+      "topic": "Régimen verbal"
+    },
+    {
+      "id": 34,
+      "area": "Redacción indirecta",
+      "text": "Selecciona la opción escrita correctamente:",
+      "options": {
+        "A": "Ayer fuimos al museo y vimos una exposición.",
+        "B": "Ayer fuimos al museo y vimos una exposiciónes.",
+        "C": "Ayer fuimos al museo e vimos una exposición."
+      },
+      "topic": "Ortografía"
+    },
+    {
+      "id": 35,
+      "area": "Redacción indirecta",
+      "text": "¿Cuál presenta concordancia correcta?",
+      "options": {
+        "A": "La mayoría de los estudiantes terminó el ejercicio.",
+        "B": "La mayoría de los estudiantes terminaron el ejercicio obligatoriamente por concordancia.",
+        "C": "La mayoría de los estudiante terminó los ejercicio."
+      },
+      "topic": "Concordancia"
+    },
+    {
+      "id": 36,
+      "area": "Redacción indirecta",
+      "text": "Selecciona la oración correctamente acentuada.",
+      "options": {
+        "A": "El médico explicó cómo tomar el medicamento.",
+        "B": "El medico explicó como tomar el medicamento.",
+        "C": "El médico explico cómo tomar el medicaménto."
+      },
+      "topic": "Acentuación"
+    },
+    {
+      "id": 37,
+      "area": "Redacción indirecta",
+      "text": "¿Qué conector completa mejor la oración?\n\n“El experimento estaba bien diseñado; ________, fue necesario repetirlo porque ocurrió una falla eléctrica.”",
+      "options": {
+        "A": "sin embargo",
+        "B": "por ejemplo",
+        "C": "asimismo"
+      },
+      "topic": "Conectores"
+    },
+    {
+      "id": 38,
+      "area": "Redacción indirecta",
+      "text": "¿Cuál expresión es más adecuada en un texto académico?",
+      "options": {
+        "A": "Los resultados estuvieron súper padres",
+        "B": "Los resultados fueron favorables",
+        "C": "Los resultados estuvieron bien chidos"
+      },
+      "topic": "Registro académico"
+    },
+    {
+      "id": 39,
+      "area": "Redacción indirecta",
+      "text": "Selecciona la oración más clara.",
+      "options": {
+        "A": "Ana le dijo a Laura que su trabajo estaba listo.",
+        "B": "Ana informó a Laura: “Tu trabajo está listo”.",
+        "C": "Ana le dijo que estaba listo de Laura su trabajo."
+      },
+      "topic": "Claridad y ambigüedad"
+    },
+    {
+      "id": 40,
+      "area": "Redacción indirecta",
+      "text": "Selecciona la opción correcta:",
+      "options": {
+        "A": "Hubieron muchas personas en el evento.",
+        "B": "Había muchas personas en el evento.",
+        "C": "Habían mucha persona en el evento."
+      },
+      "topic": "Verbo haber"
+    },
+    {
+      "id": 41,
+      "area": "Redacción indirecta",
+      "text": "¿Cuál opción utiliza correctamente los signos de interrogación?",
+      "options": {
+        "A": "¿Cuándo comenzará el curso?",
+        "B": "Cuándo ¿comenzará el curso?",
+        "C": "¿Cuándo comenzará el curso."
+      },
+      "topic": "Signos de interrogación"
+    },
+    {
+      "id": 42,
+      "area": "Redacción indirecta",
+      "text": "“El investigador reunió los datos. Posteriormente, ________ y redactó sus conclusiones.”",
+      "options": {
+        "A": "los analizó",
+        "B": "lo analizaron",
+        "C": "analizar"
+      },
+      "topic": "Cohesión gramatical"
+    },
+    {
+      "id": 43,
+      "area": "Redacción indirecta",
+      "text": "Selecciona la opción más coherente:",
+      "options": {
+        "A": "Estudió toda la semana; por eso, obtuvo un buen resultado.",
+        "B": "Estudió toda la semana; sin embargo, por eso obtuvo un buen resultado.",
+        "C": "Estudió toda la semana; además aunque obtuvo por eso."
+      },
+      "topic": "Coherencia"
+    },
+    {
+      "id": 44,
+      "area": "Redacción indirecta",
+      "text": "Selecciona la opción correcta:",
+      "options": {
+        "A": "No sé por qué ocurrió el problema.",
+        "B": "No se porque ocurrió el problema.",
+        "C": "No sé porqué ocurrió el problema."
+      },
+      "topic": "Por qué / porque / porqué"
+    },
+    {
+      "id": 45,
+      "area": "Redacción indirecta",
+      "text": "¿Cuál es la versión más concisa y clara?",
+      "options": {
+        "A": "En el día de hoy actualmente comenzaremos el curso.",
+        "B": "Hoy comenzaremos el curso.",
+        "C": "En la actualidad de hoy comenzaremos el curso ahora."
+      },
+      "topic": "Concisión"
+    },
+    {
+      "id": 46,
+      "area": "Pensamiento matemático",
+      "text": "¿Cuánto es 3/4 + 1/2?",
+      "options": {
+        "A": "1 1/4",
+        "B": "1 1/2",
+        "C": "5/8"
+      },
+      "topic": "Fracciones"
+    },
+    {
+      "id": 47,
+      "area": "Pensamiento matemático",
+      "text": "Un artículo cuesta $800 y tiene 25 % de descuento.\n\n¿Cuánto cuesta después del descuento?",
+      "options": {
+        "A": "$600",
+        "B": "$650",
+        "C": "$700"
+      },
+      "topic": "Porcentajes"
+    },
+    {
+      "id": 48,
+      "area": "Pensamiento matemático",
+      "text": "Si 5 cuadernos cuestan $150, ¿cuánto cuestan 8 al mismo precio unitario?",
+      "options": {
+        "A": "$210",
+        "B": "$240",
+        "C": "$280"
+      },
+      "topic": "Proporcionalidad"
+    },
+    {
+      "id": 49,
+      "area": "Pensamiento matemático",
+      "text": "Resuelve: 3x + 5 = 20",
+      "options": {
+        "A": "5",
+        "B": "8",
+        "C": "15"
+      },
+      "topic": "Ecuaciones lineales"
+    },
+    {
+      "id": 50,
+      "area": "Pensamiento matemático",
+      "text": "Resuelve: 2(x + 3) = 18",
+      "options": {
+        "A": "6",
+        "B": "9",
+        "C": "12"
+      },
+      "topic": "Ecuaciones lineales"
+    },
+    {
+      "id": 51,
+      "area": "Pensamiento matemático",
+      "text": "¿Cuánto vale 2³ × 2²?",
+      "options": {
+        "A": "16",
+        "B": "32",
+        "C": "64"
+      },
+      "topic": "Potencias"
+    },
+    {
+      "id": 52,
+      "area": "Pensamiento matemático",
+      "text": "√144 =",
+      "options": {
+        "A": "10",
+        "B": "12",
+        "C": "14"
+      },
+      "topic": "Raíces"
+    },
+    {
+      "id": 53,
+      "area": "Pensamiento matemático",
+      "text": "Un rectángulo mide 8 cm de largo y 5 cm de ancho.\n\n¿Cuál es su área?",
+      "options": {
+        "A": "13 cm²",
+        "B": "26 cm²",
+        "C": "40 cm²"
+      },
+      "topic": "Geometría"
+    },
+    {
+      "id": 54,
+      "area": "Pensamiento matemático",
+      "text": "Un triángulo tiene base de 10 cm y altura de 6 cm.\n\n¿Cuál es su área?",
+      "options": {
+        "A": "30 cm²",
+        "B": "60 cm²",
+        "C": "80 cm²"
+      },
+      "topic": "Geometría"
+    },
+    {
+      "id": 55,
+      "area": "Pensamiento matemático",
+      "text": "¿Cuál es el promedio de 6, 8, 10 y 12?",
+      "options": {
+        "A": "8",
+        "B": "9",
+        "C": "10"
+      },
+      "topic": "Promedio"
+    },
+    {
+      "id": 56,
+      "area": "Pensamiento matemático",
+      "text": "En una bolsa hay 3 bolas rojas y 2 azules. Si se extrae una al azar, ¿cuál es la probabilidad de sacar una roja?",
+      "options": {
+        "A": "2/5",
+        "B": "3/5",
+        "C": "3/2"
+      },
+      "topic": "Probabilidad"
+    },
+    {
+      "id": 57,
+      "area": "Pensamiento matemático",
+      "text": "La secuencia es:\n\n2, 5, 8, 11, 14, ___",
+      "options": {
+        "A": "16",
+        "B": "17",
+        "C": "18"
+      },
+      "topic": "Sucesiones"
+    },
+    {
+      "id": 58,
+      "area": "Pensamiento matemático",
+      "text": "Un automóvil consume 8 litros cada 100 km.\n\n¿Cuántos litros necesita aproximadamente para recorrer 250 km?",
+      "options": {
+        "A": "16",
+        "B": "20",
+        "C": "25"
+      },
+      "topic": "Proporcionalidad"
+    },
+    {
+      "id": 59,
+      "area": "Pensamiento matemático",
+      "text": "Si y = 2x + 1, ¿cuál es el valor de y cuando x = 4?",
+      "options": {
+        "A": "7",
+        "B": "8",
+        "C": "9"
+      },
+      "topic": "Funciones lineales"
+    },
+    {
+      "id": 60,
+      "area": "Pensamiento matemático",
+      "text": "¿Cuál expresión representa “el doble de un número más cinco”?",
+      "options": {
+        "A": "2x + 5",
+        "B": "2(x + 5)",
+        "C": "x + 10"
+      },
+      "topic": "Expresiones algebraicas"
+    },
+    {
+      "id": 61,
+      "area": "Pensamiento matemático",
+      "text": "Un tanque está lleno al 60 % y contiene 180 litros.\n\n¿Cuál es la capacidad total?",
+      "options": {
+        "A": "240 L",
+        "B": "300 L",
+        "C": "360 L"
+      },
+      "topic": "Porcentajes"
+    },
+    {
+      "id": 62,
+      "area": "Pensamiento matemático",
+      "text": "Una persona tenía $1,200. Gastó 1/4 de esa cantidad.\n\n¿Cuánto le queda?",
+      "options": {
+        "A": "$300",
+        "B": "$800",
+        "C": "$900"
+      },
+      "topic": "Fracciones"
+    },
+    {
+      "id": 63,
+      "area": "Pensamiento matemático",
+      "text": "Observa la relación:\n\nx=1 → y=4\nx=2 → y=7\nx=3 → y=10\nx=4 → y=13\n\n¿Qué relación describe la tabla?",
+      "options": {
+        "A": "y = 3x + 1",
+        "B": "y = 2x + 2",
+        "C": "y = 4x"
+      },
+      "topic": "Funciones lineales"
+    },
+    {
+      "id": 64,
+      "area": "Pensamiento matemático",
+      "text": "Un cuadrado tiene perímetro de 36 cm.\n\n¿Cuánto mide cada lado?",
+      "options": {
+        "A": "6 cm",
+        "B": "9 cm",
+        "C": "12 cm"
+      },
+      "topic": "Geometría"
+    },
+    {
+      "id": 65,
+      "area": "Pensamiento matemático",
+      "text": "Un estudiante obtuvo: 8, 8, 9, 7 y 10.\n\n¿Cuál es la mediana?",
+      "options": {
+        "A": "8",
+        "B": "8.4",
+        "C": "9"
+      },
+      "topic": "Mediana"
+    },
+    {
+      "id": 66,
+      "area": "Inglés",
+      "text": "“My brother ___ soccer every Saturday.”",
+      "options": {
+        "A": "play",
+        "B": "plays",
+        "C": "playing"
+      },
+      "topic": "Present simple"
+    },
+    {
+      "id": 67,
+      "area": "Inglés",
+      "text": "“Yesterday we ___ to the movies.”",
+      "options": {
+        "A": "go",
+        "B": "went",
+        "C": "gone"
+      },
+      "topic": "Past simple"
+    },
+    {
+      "id": 68,
+      "area": "Inglés",
+      "text": "“There ___ two books on the table.”",
+      "options": {
+        "A": "is",
+        "B": "are",
+        "C": "be"
+      },
+      "topic": "There is / are"
+    },
+    {
+      "id": 69,
+      "area": "Inglés",
+      "text": "“I am thirsty. I need ___ water.”",
+      "options": {
+        "A": "some",
+        "B": "many",
+        "C": "a few"
+      },
+      "topic": "Quantifiers"
+    },
+    {
+      "id": 70,
+      "area": "Inglés",
+      "text": "Which sentence is correct?",
+      "options": {
+        "A": "She can swims very well.",
+        "B": "She can swim very well.",
+        "C": "She cans swim very well."
+      },
+      "topic": "Modal verbs"
+    },
+    {
+      "id": 71,
+      "area": "Inglés",
+      "text": "Read the text:\n\nTom usually gets up at seven o'clock. He has breakfast and then takes the bus to school. His classes start at eight. On Fridays, his father drives him to school.\n\nHow does Tom usually go to school?",
+      "options": {
+        "A": "By bus",
+        "B": "By bicycle",
+        "C": "By car"
+      },
+      "topic": "Reading comprehension"
+    },
+    {
+      "id": 72,
+      "area": "Inglés",
+      "text": "Who drives him on Fridays?",
+      "options": {
+        "A": "His teacher",
+        "B": "His father",
+        "C": "His brother"
+      },
+      "topic": "Reading comprehension"
+    },
+    {
+      "id": 73,
+      "area": "Inglés",
+      "text": "What time do his classes start?",
+      "options": {
+        "A": "7:00",
+        "B": "8:00",
+        "C": "9:00"
+      },
+      "topic": "Reading comprehension"
+    },
+    {
+      "id": 74,
+      "area": "Inglés",
+      "text": "Choose the opposite of expensive.",
+      "options": {
+        "A": "cheap",
+        "B": "large",
+        "C": "difficult"
+      },
+      "topic": "Vocabulary"
+    },
+    {
+      "id": 75,
+      "area": "Inglés",
+      "text": "“My house is ___ than yours.”",
+      "options": {
+        "A": "big",
+        "B": "bigger",
+        "C": "biggest"
+      },
+      "topic": "Comparatives"
+    },
+    {
+      "id": 76,
+      "area": "Inglés",
+      "text": "“What are you doing?”",
+      "options": {
+        "A": "I study every day.",
+        "B": "I am studying now.",
+        "C": "I studied tomorrow."
+      },
+      "topic": "Present continuous"
+    },
+    {
+      "id": 77,
+      "area": "Inglés",
+      "text": "“We don't have ___ milk.”",
+      "options": {
+        "A": "any",
+        "B": "many",
+        "C": "few"
+      },
+      "topic": "Quantifiers"
+    },
+    {
+      "id": 78,
+      "area": "Inglés",
+      "text": "Which sentence expresses a future plan?",
+      "options": {
+        "A": "I am going to visit my grandmother tomorrow.",
+        "B": "I visited my grandmother yesterday.",
+        "C": "I visit my grandmother last week."
+      },
+      "topic": "Future plans"
+    },
+    {
+      "id": 79,
+      "area": "Inglés",
+      "text": "Choose the correct question.",
+      "options": {
+        "A": "Where you live?",
+        "B": "Where do you live?",
+        "C": "Where does you live?"
+      },
+      "topic": "Questions"
+    },
+    {
+      "id": 80,
+      "area": "Inglés",
+      "text": "A sign says:\n\n“Library closes at 6:00 p.m.”\n\nWhat does it mean?",
+      "options": {
+        "A": "You cannot enter after 6:00 p.m.",
+        "B": "The library opens at 6:00 p.m.",
+        "C": "The library is open all night."
+      },
+      "topic": "Reading signs"
+    }
+  ]
+}
