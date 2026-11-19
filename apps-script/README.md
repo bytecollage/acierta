@@ -48,7 +48,7 @@ formato de texto plano. No edites los encabezados a mano.
    Google pueda iniciar sesión. En modo *Testing* solo entran los usuarios de prueba.
 4. **Clients → Create client → Web application**. En *Authorized JavaScript origins*
    añade:
-   - `https://ycaceres.github.io`
+   - `https://bytecollage.github.io`
    - `http://localhost:8080`
    - `http://localhost`
 

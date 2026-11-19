@@ -10,7 +10,7 @@ Implementa la especificación de [`../spec/`](../spec/README.md).
 
 ## Publicación
 
-La app se publica en GitHub Pages: <https://ycaceres.github.io/exani/>. Cada push a `main`
+La app se publica en GitHub Pages: <https://bytecollage.github.io/acierta/>. Cada push a `main`
 ejecuta `.github/workflows/pages.yml`, que valida los exámenes, prueba el Apps Script y
 publica esta carpeta (sin `server.py`).
 

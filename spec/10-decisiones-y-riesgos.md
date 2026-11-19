@@ -173,7 +173,7 @@ solo sirve archivos estáticos, así que la API de `server.py` (D-09) deja de se
 
 **Decisión.**
 
-- **Hosting.** GitHub Pages, repo público `ycaceres/exani`. El workflow
+- **Hosting.** GitHub Pages, repo público `bytecollage/acierta` (antes `ycaceres/exani`, transferido el 2026-11-19). El workflow
   `.github/workflows/pages.yml` valida los exámenes, prueba el Apps Script y publica `web/`.
 - **Base de datos.** Un Google Spreadsheet detrás de un Apps Script publicado como
   aplicación web (`apps-script/`). La API pública solo permite `list` y `create`: **no hay
