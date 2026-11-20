@@ -204,6 +204,52 @@ hoja y en cada navegador. Por eso:
 
 ---
 
+## D-15 · Módulos ES nativos, sin bundler
+
+**Problema.** Los siete scripts se comunicaban por globales (`window.Storage`, `window.Auth`…),
+dependían del orden de los `<script>` y repetían utilidades. `window.Storage` además pisaba la
+interfaz `Storage` del navegador.
+
+**Decisión.** `import`/`export` nativos (`<script type="module">`), sin herramientas de build:
+publicar sigue siendo copiar `web/`. Las utilidades comunes van en `js/ui/dom.js`. La migración
+de ids (D-14) deja de correr al cargar el script y la hace `Storage.init()` la primera vez.
+
+**Versión en los import.** Los `import` internos no reciben el `?v=` del HTML, así que se escriben
+con `?v=__BUILD__` y la publicación lo sustituye también dentro de los JS. Debe ser igual en todos
+los archivos: con dos URL, el mismo módulo se cargaría dos veces con estado separado.
+`tests/modules.test.js` lo vigila.
+
+**Capas.** La lógica pura (corrección, cadena, ids, intentos, estadísticas) va en `js/domain/`,
+sin acceso al navegador y con pruebas en Node; la carga de archivos en `js/data/`; las vistas
+solo pintan.
+
+**Descartado.** esbuild u otro bundler: resolvería la versión y minificaría, pero añade
+`node_modules` y un paso de build para una app de unas 2 000 líneas.
+
+---
+
+## D-16 · Pantallas por módulo y rutas explícitas
+
+**Problema.** `app.js` (unas 850 líneas) tenía el router, el cronómetro, el panel, el examen, los
+resultados y las barras, con estado compartido entre todos. La acción de abrir un examen
+(empezar, continuar, ver) viajaba en una variable aparte del hash (`nextAction`), así que la URL
+no decía qué iba a pasar y recargar podía hacer otra cosa.
+
+**Decisión.**
+
+- Un módulo por pantalla (`screens/`), el intento abierto en `services/exam-session.js` (sin DOM,
+  con reloj inyectable para las pruebas) y la barra en `ui/appbar.js`. `main.js` es la entrada y
+  decide qué abrir para cada ruta; `router.js` solo interpreta el hash.
+- La acción va en la URL: `#examen/<id>` continúa y `#examen/<id>/nuevo` empieza de cero. `/nuevo`
+  se reemplaza al instante por `#examen/<id>` para que recargar no reinicie otra vez. ↻ dentro del
+  examen usa `redirect()` y no añade una entrada al historial.
+- Desaparece `view-history`: hacía lo mismo que `view` (ambas ignoran un intento a medias y
+  muestran el último resultado).
+
+**Compatibilidad.** Todas las URL anteriores siguen funcionando; no cambia nada guardado.
+
+---
+
 ## Riesgos abiertos
 
 ### R-01 · Los temas son demasiado finos para recomendar estudio · *parcialmente mitigado*

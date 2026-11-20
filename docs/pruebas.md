@@ -7,7 +7,8 @@ publica.
 
 | Comando | Qué comprueba |
 |---|---|
-| `node tools/validate-exams.js` | Los 10 exámenes pasan todas las validaciones de `grading.js` ([datos.md](datos.md) §5) |
+| `node tools/validate-exams.js` | Los 10 exámenes pasan todas las validaciones de `domain/grading.js` ([datos.md](datos.md) §5) |
+| `node --test tests/*.test.js` | El código del navegador sin navegador: validación de catálogo, examen y clave; cadena de respuestas en los dos formatos; corrección real de N0E01 (puntaje, áreas, temas, azar, minutos); `canonId` igual en `storage.js` y `Code.gs`; migración de ids guardados en el navegador; reglas de los módulos (todo `import` relativo con `?v=__BUILD__`, sin globales `window.*`, `domain/` sin navegador); estadísticas de Mi progreso y del reporte (`stats.test.js`); reconstrucción de intentos y forma exacta del registro que acepta `Code.gs` (`attempt.test.js`); rutas por hash (`router.test.js`); sesión de examen con reloj simulado: abrir, responder, pausa por inactividad, continuar y empezar de cero (`exam-session.test.js`); cerrar sesión durante la actualización en segundo plano no deja el historial anterior (`storage.test.js`). `tests/load.js` es el único que sabe cómo se cargan los scripts |
 | `node apps-script/test.js` | La API con los servicios de Google simulados: rechaza tokens inválidos o de otra aplicación; importa y reclama intentos por correo sin guardar correos; un estudiante no ve los intentos de otro; recalcula el número de intento por fecha; no duplica; rechaza datos inválidos y fórmulas; descarta campos desconocidos; aplica el límite de envíos |
 
 ---
@@ -38,6 +39,7 @@ teléfono real.
 | M-09 | Tocar una fila de Completados y pulsar «atrás» | Abre el resultado; «atrás» regresa a Completados |
 | M-09b | En Resultados, pulsar 👁 *Ver detalles* y luego ← | Muestra el examen corregido con las falladas en rojo; ← vuelve al resultado |
 | M-09c | Pulsar ↻ en la barra del examen | Diálogo de confirmación; *Cancelar* conserva las respuestas, *Comenzar de nuevo* deja 0/N y el cronómetro en cero |
+| M-09d | Empezar un examen sin intento, recargar, y pulsar ↻ y aceptar | La URL queda en `#examen/<id>` (nunca en `/nuevo`); recargar conserva las respuestas; tras ↻ empieza en 0 y «atrás» lleva a la lista |
 | M-10 | Recargar en `#completados` y en `#examen/<id>` sin intento | Se queda en Completados; la segunda lleva a Exámenes |
 
 ### Examen
@@ -49,6 +51,8 @@ teléfono real.
 | M-13 | Elegir a propósito una incorrecta | Roja con «Tu respuesta» y la correcta verde con «Respuesta correcta»; se distinguen en escala de grises |
 | M-14 | Intentar cambiar una respuesta ya corregida | Opciones deshabilitadas |
 | M-15 | Bloque de lectura 📱 | El texto aparece una vez y se puede ocultar en el celular; cada pregunta lo referencia con `aria-describedby` |
+| M-15b | Pregunta 29 de N1E05 con el celular en horizontal 📱 (o una ventana de unos 844×390) | El texto se desplaza con la página, aparece *Ocultar texto* y las preguntas 29–33 se ven y se pueden responder |
+| M-15c | La misma pregunta en una ventana de escritorio baja (unos 1024×700) | El texto queda fijo con como máximo la mitad del alto, con desplazamiento propio y degradado al pie; las preguntas se ven debajo; al final del texto la última línea se lee completa |
 | M-16 | Durante el examen | El tema no aparece ni está en el DOM; aparece al corregir |
 
 ### Tiempo y cadena

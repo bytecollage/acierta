@@ -103,7 +103,7 @@ Se carga solo al pulsar *Terminar*.
 
 ## 5. Validaciones
 
-`web/js/grading.js` las aplica en la app y `tools/validate-exams.js` las aplica en
+`web/js/domain/grading.js` las aplica en la app y `tools/validate-exams.js` las aplica en
 cada push. Ante cualquier fallo, la app se detiene con un mensaje que dice el archivo, la
 pregunta y el problema.
 

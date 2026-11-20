@@ -57,11 +57,18 @@ node apps-script/test.js              # pruebas de la API con los servicios de G
 web/                 la aplicación que se publica
   index.html         bienvenida
   panel.html         pestañas Exámenes / Completados / Mi progreso, examen y resultados
-  js/                config, auth, storage, grading, charts, dashboard, app
+  js/                módulos ES por capas (docs/arquitectura.md §1)
+    main.js          entrada del panel; router.js, rutas por hash
+    screens/         una por pantalla
+    services/        intento abierto (cronómetro, guardar, terminar)
+    ui/              barra, avisos, gráficas y piezas comunes
+    data/            catálogo, historial (storage) e inicio de sesión (auth)
+    domain/          lógica pura: corrección, cadena, intentos, estadísticas
   data/              catálogo y exámenes (JSON)
   icons/             ícono de la app (SVG fuente + PNG)
   server.py          servidor estático para desarrollo
 apps-script/         API del historial (Google Apps Script) y sus pruebas
+tests/               pruebas del código del navegador (node --test tests/*.test.js)
 tools/
   validate-exams.js  valida los exámenes con la misma lógica de la app
   exam-builder/      generador de los exámenes N1

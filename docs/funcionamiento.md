@@ -76,7 +76,10 @@ enlace, con un chevron › a la derecha. Reintentar o comenzar de nuevo se hace 
 la barra del examen o en la tarjeta del resultado.
 
 **Navegación por hash.** Cada vista tiene su URL: `#examenes`, `#completados`,
-`#progreso`, `#reporte`, `#examen/<id>`, `#resultados/<id>`, `#correccion/<id>`. El botón «atrás» del celular regresa del
+`#progreso`, `#reporte`, `#examen/<id>`, `#resultados/<id>`, `#correccion/<id>`. Empezar de cero
+(fila sin intento, ↻ del examen o del resultado) usa `#examen/<id>/nuevo`, que la app reemplaza al
+instante por `#examen/<id>`: recargar continúa el intento en lugar de reiniciarlo, y ↻ dentro del
+examen no añade una entrada al historial. El botón «atrás» del celular regresa del
 examen a las pestañas. Salir del examen (atrás, la flecha ← de la barra fija o una pestaña) guarda el
 intento y detiene el cronómetro. Recargar `#examen/<id>` sin intento guardado lleva a
 EXÁMENES en lugar de crear uno.
@@ -102,8 +105,15 @@ Todas las preguntas en una sola página, agrupadas por área en el orden de `exa
   como pista. Se inyecta al corregir. Las áreas sí se muestran.
 
 **Textos de lectura.** Las preguntas que comparten `stimulusId` forman un bloque: el texto
-aparece una vez, arriba, con borde y fondo propios. En escritorio queda fijo mientras se
-recorren sus preguntas; en el celular se puede ocultar con *Ocultar texto / Ver texto*.
+aparece una vez, arriba, con borde y fondo propios.
+
+- **Pantalla alta** (más de 640 px de ancho y de 600 px de alto): el texto queda fijo bajo la
+  barra mientras se recorren sus preguntas, pero nunca ocupa más de la mitad de la pantalla. Si
+  es más largo, se desplaza dentro de su recuadro, y un degradado al pie avisa que hay más texto.
+- **Pantalla angosta o baja** (celular en vertical u horizontal): el texto se desplaza con la
+  página y se puede ocultar con *Ocultar texto / Ver texto*. Fijo taparía las preguntas: en un
+  celular en horizontal quedan unos 330 px libres y un texto largo mide casi el doble.
+
 Cada pregunta del bloque lo referencia con `aria-describedby`.
 
 ### 2.1 Terminar
@@ -222,6 +232,10 @@ Reglas de los temas:
   60 % de aciertos. Si ninguno cumple, se dice así, sin rellenar con temas de una pregunta.
 - Por defecto se usan **solo primeros intentos**: repetir un examen mide en parte memoria.
   El interruptor *Incluir repeticiones* las suma y muestra un aviso.
+
+Los umbrales (3 observaciones, 60 %, intento partido si el reloj pasa de 3 × el tiempo activo)
+y todos los cálculos de esta pantalla y del resumen están en `web/js/domain/stats.js`, con
+pruebas en `tests/stats.test.js`.
 
 Las gráficas SVG se dibujan al ancho real del contenedor, así que el texto conserva su tamaño
 en el celular; la de evolución por examen tiene una tabla equivalente en *Ver datos de la

@@ -26,17 +26,21 @@ jobs:
       - name: Validar exámenes
         run: node tools/validate-exams.js
 
+      - name: Pruebas del cliente
+        run: node --test tests/*.test.js
+
       - name: Probar el Apps Script
         run: node apps-script/test.js
 
       - name: Preparar sitio
         # Solo la app: sin el servidor de desarrollo ni historiales locales.
         run: |
-          rsync -a --exclude server.py --exclude __pycache__ --exclude 'historial.json*' web/ _site/
-          # Versión en las URL de JS y CSS: tras publicar, nadie mezcla HTML nuevo con JS viejo
-          # de la caché de GitHub Pages (10 min).
-          sed -i "s/__BUILD__/${GITHUB_SHA::7}/g" _site/*.html
-          ! grep -l "__BUILD__" _site/*.html
+          rsync -a --exclude server.py --exclude __pycache__ --exclude 'historial.json*' --exclude js/package.json web/ _site/
+          # Versión en las URL de JS y CSS, también en los import de los módulos (D-15): tras
+          # publicar, nadie mezcla HTML nuevo con JS viejo de la caché de GitHub Pages (10 min).
+          find _site -maxdepth 1 -name '*.html' -exec sed -i "s/__BUILD__/${GITHUB_SHA::7}/g" {} +
+          find _site/js -name '*.js' -exec sed -i "s/__BUILD__/${GITHUB_SHA::7}/g" {} +
+          ! grep -rl "__BUILD__" _site --include='*.html' --include='*.js'
 
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

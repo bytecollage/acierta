@@ -52,15 +52,13 @@
   <p class="small muted center-text"><a href="privacidad.html">Aviso de privacidad</a></p>
 </div>
 
-<script src="js/config.js?v=__BUILD__"></script>
-<script src="js/auth.js?v=__BUILD__"></script>
-<script src="js/storage.js?v=__BUILD__"></script>
-<script>
+<script type="module">
   // Carga anticipada: mientras se leen las instrucciones se trae el catálogo y el
   // historial. El historial queda en caché y el panel lo pinta al instante. El inicio de
   // sesión (y su renovación) está en el panel: aquí no se muestra nada de Google.
+  import * as Storage from "./js/data/storage.js?v=__BUILD__";
   fetch("data/exams.json", { cache: "no-cache" }).catch(() => {});
-  window.Storage.init();
+  Storage.init();
 </script>
 </body>
 </html>
