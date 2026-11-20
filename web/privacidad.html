@@ -2,16 +2,22 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Privacidad · Acierta</title>
 <link rel="stylesheet" href="styles.css?v=__BUILD__">
 </head>
-<body>
+<body class="app" data-screen="privacidad">
+<!-- Misma barra que el resto de la app: ← vuelve a la bienvenida. -->
+<header class="appbar">
+  <div class="appbar-inner">
+    <a class="btn icon-btn ghost" href="index.html" aria-label="Volver a Acierta" title="Volver a Acierta">
+      <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    </a>
+    <h1 class="appbar-title">Aviso de privacidad</h1>
+  </div>
+</header>
+
 <div class="wrap">
-  <header>
-    <h1>Aviso de privacidad</h1>
-    <p class="lead">Acierta · Exámenes diagnósticos · actualizado el 19 de noviembre de 2026</p>
-  </header>
 
   <section class="card">
     <h2>Qué se guarda</h2>
@@ -52,10 +58,15 @@
   <section class="card">
     <h2>Contacto y borrado</h2>
     <p>Para preguntas o para pedir que se borre tu historial, escribe a
-       <a href="mailto:yander.caceres@gmail.com">yander.caceres@gmail.com</a>.</p>
+       <a href="mailto:acierta@bytecollage.com">acierta@bytecollage.com</a>.</p>
   </section>
-
-  <p><a class="btn" href="index.html">Volver a Acierta</a></p>
 </div>
+
+<!-- Pie: misma línea que el panel. -->
+<footer class="appfooter">
+  <div class="appfooter-inner">
+    <p class="appfooter-note">Acierta · Exámenes diagnósticos · actualizado el 19 de noviembre de 2026</p>
+  </div>
+</footer>
 </body>
 </html>

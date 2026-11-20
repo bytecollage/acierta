@@ -67,7 +67,6 @@ h3 { font-size: 16px; margin: 0 0 8px; }
 p { margin: 0 0 12px; }
 a { color: var(--accent); }
 
-.lead { color: var(--muted); margin-bottom: var(--gap); }
 
 .card {
   background: var(--surface);
@@ -339,7 +338,8 @@ select {
 body.app { display: flex; flex-direction: column; min-height: 100vh; min-height: 100dvh; }
 body.app .wrap { flex: 1 0 auto; width: 100%; }
 body.app[data-screen="panel"] .wrap,
-body.app[data-screen="reporte"] .wrap { padding-bottom: var(--gap); }
+body.app[data-screen="reporte"] .wrap,
+body.app[data-screen="privacidad"] .wrap { padding-bottom: var(--gap); }
 
 /* Pie: misma línea, alto y márgenes que la barra fija de arriba, sin fondo. */
 .appfooter {
@@ -350,6 +350,7 @@ body.app[data-screen="reporte"] .wrap { padding-bottom: var(--gap); }
                    display: flex; align-items: center; justify-content: center; }
 /* Sin sesión el pie no tiene nada que mostrar: el botón de Google está en el aviso de arriba. */
 .appfooter:has(.account:empty) { display: none; }
+.appfooter-note { margin: 0; font-size: var(--fs-sm); color: var(--muted); text-align: center; line-height: 1.4; }
 .appfooter .account { margin: 0; min-height: 0; flex-wrap: nowrap; min-width: 0; }
 .appfooter .account-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .appfooter .link-btn { white-space: nowrap; flex: none; }
