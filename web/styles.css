@@ -184,6 +184,30 @@ a.exam-row.is-active:hover { background: #e3edfd; }
 .stimulus .instr { font-weight: 600; font-size: var(--fs-sm); margin-bottom: 8px; }
 .stimulus .text { white-space: pre-wrap; }
 .stimulus-toggle { display: none; }
+/* Pantalla alta: el texto sigue fijo, pero nunca ocupa más de la mitad; si es más largo se
+   desplaza dentro de su recuadro y las preguntas quedan siempre a la vista debajo. El
+   degradado del pie (pegado al borde inferior) avisa de que hay más texto; al llegar al
+   final queda como margen inferior. */
+@media (min-width: 641px) and (min-height: 601px) {
+  .stimulus {
+    max-height: 50dvh; overflow-y: auto; overscroll-behavior: contain;
+    padding-bottom: 0;
+  }
+  .stimulus::after {
+    content: ""; display: block; position: sticky; bottom: 0; height: 28px;
+    background: linear-gradient(to bottom, transparent, var(--accent-soft) 85%);
+    pointer-events: none;
+  }
+}
+/* Pantalla baja o angosta (teléfono en vertical u horizontal): el texto se desplaza con la
+   página, y «Ocultar texto» permite plegarlo. Fijo taparía las preguntas. */
+@media (max-width: 640px), (max-height: 600px) {
+  .stimulus { position: static; }
+  .stimulus-toggle {
+    display: inline-flex; margin: 0 0 8px 8px; font-size: var(--fs-sm);
+    padding: 7px 12px; min-height: 38px;
+  }
+}
 .stimulus-block .q { background: var(--surface); }
 
 .q {
@@ -422,11 +446,7 @@ body.app[data-screen="privacidad"] .wrap { padding-bottom: var(--gap); }
   .opt { margin-bottom: 6px; }
   .opt label { padding: 9px 10px; gap: 8px; }
   .stimulus-block { padding: 4px 0; border-left-width: 3px; }
-  .stimulus { position: static; padding: 12px; }
-  .stimulus-toggle {
-    display: inline-flex; margin: 0 0 8px 8px; font-size: var(--fs-sm);
-    padding: 7px 12px; min-height: 38px;
-  }
+  .stimulus { padding: 12px; }
   .stimulus-block .q { margin: 0 6px 6px; }
   .area-block { margin-bottom: 20px; }
   details { padding: 10px 12px; }
